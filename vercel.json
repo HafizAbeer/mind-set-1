@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://mindset-backend-rust.vercel.app/api/$1"
+      "destination": "https://mind-set-1-s6gf.vercel.app//api/$1"
     },
     {
       "source": "/(.*)",

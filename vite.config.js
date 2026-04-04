@@ -15,7 +15,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://mindset-backend-rust.vercel.app/",
+        target: "https://mind-set-1-s6gf.vercel.app/",
         changeOrigin: true,
       },
     },
