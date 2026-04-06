@@ -140,24 +140,27 @@ const navMain = [
       },
       {
         title: "Script",
-        // url: "/script",
+        url: "/script",
         icon: scriptIcon,
         subItems: [
           {
             title: "Life Script",
             url: "/life-script",
+            activeClass: "!bg-[#E2E464] !text-white font-semibold shadow-md",
             activePaths: ["/life-script", "/life-script-select"],
             icon: scriptIcon,
           },
           {
             title: "New Script",
             url: "/new-script",
+            activeClass: "!bg-[#CB4CE2] !text-white font-semibold shadow-md",
             activePaths: ["/new-script", "/new-script-select"],
             icon: scriptIcon,
           },
           {
             title: "Old Script",
             url: "/old-script",
+            activeClass: "!bg-[#70EC44] !text-white font-semibold shadow-md",
             activePaths: ["/old-script", "/old-script-select"],
             icon: scriptIcon,
           },
@@ -192,7 +195,7 @@ const navMain = [
         title: "Reward Choice",
         url: "/reward-choice",
         icon: rewardChoiceIcon,
-        activeClass: "!bg-[#6CB083] !text-white font-semibold shadow-md",
+        activeClass: "!bg-[#FF35355C] !text-white font-semibold shadow-md",
         activePaths: ["/reward-choice", "/reward-choice-select"],
       },
       {
@@ -227,7 +230,11 @@ export function AppSidebar() {
   const isScriptActiveRoute = React.useMemo(() => {
     const radarGroup = navMain.find((g) => g.title === "Radar Modules");
     const scriptItem = radarGroup?.items?.find((i) => i.title === "Script");
-    if (!scriptItem?.subItems) return false;
+    if (!scriptItem) return false;
+
+    if (location.pathname === scriptItem.url) return true;
+
+    if (!scriptItem.subItems) return false;
 
     return scriptItem.subItems.some((subItem) => {
       if (subItem.activePaths) {
@@ -267,10 +274,10 @@ export function AppSidebar() {
       style={
         isCollapsed
           ? {
-              top: "16px",
-              bottom: "16px",
-              height: "auto",
-            }
+            top: "16px",
+            bottom: "16px",
+            height: "auto",
+          }
           : undefined
       }
     >
@@ -338,10 +345,17 @@ export function AppSidebar() {
                         : location.pathname === item.url;
 
                       if (hasSubItems) {
+                        const activeSubItem = item.subItems.find(subItem => 
+                          subItem.activePaths 
+                            ? subItem.activePaths.includes(location.pathname) 
+                            : location.pathname === subItem.url
+                        );
+                        const activeClassToUse = activeSubItem?.activeClass || "!bg-gradient-to-r from-[#6BC7FF] to-[#009FE5] !text-white font-semibold shadow-md";
+
                         return (
                           <SidebarMenuItem
                             key={item.title}
-                            className={`${isCollapsed ? "flex justify-center" : ""}`}
+                            className={`${isCollapsed ? "flex justify-center" : "flex-col"}`}
                           >
                             <SidebarMenuButton
                               tooltip={item.title}
@@ -354,17 +368,15 @@ export function AppSidebar() {
                                 isScriptItem ? isScriptActiveRoute : false
                               }
                               className={`
-                                    ${
-                                      isCollapsed
-                                        ? "h-11 w-11 p-[10px]"
-                                        : "h-11 w-full px-[12px] py-[10px] gap-2"
-                                    }
+                                    ${isCollapsed
+                                  ? "h-11 w-11 p-[10px]"
+                                  : "h-11 w-full px-[12px] py-[10px] gap-2"
+                                }
                                     rounded-[10px] transition-all duration-200
-                                    ${
-                                      isScriptActiveRoute
-                                        ? "!bg-gradient-to-r from-[#6BC7FF] to-[#009FE5] !text-white font-semibold shadow-md"
-                                        : "text-slate-400 hover:text-white hover:bg-white/5"
-                                    }
+                                    ${isScriptActiveRoute
+                                  ? activeClassToUse
+                                  : "text-slate-400 hover:text-white hover:bg-white/5"
+                                }
                                   `}
                             >
                               <img
@@ -381,45 +393,47 @@ export function AppSidebar() {
                               {!isCollapsed && (
                                 <ChevronDown
                                   size={16}
-                                  className={`ml-auto transition-transform duration-200 ${
-                                    isScriptOpen || isScriptActiveRoute
-                                      ? "rotate-180"
-                                      : ""
-                                  }`}
+                                  className={`ml-auto transition-transform duration-200 ${isScriptOpen
+                                    ? "rotate-180"
+                                    : ""
+                                    }`}
                                 />
                               )}
                             </SidebarMenuButton>
 
-                            {!isCollapsed &&
-                              (isScriptOpen || isScriptActiveRoute) && (
-                                <SidebarMenuSub className="mt-1">
-                                  {item.subItems.map((subItem) => (
+                            {!isCollapsed && isScriptOpen && (
+                              <SidebarMenuSub className="mt-1">
+                                {item.subItems.map((subItem) => {
+                                  const isSubActive = subItem.activePaths
+                                    ? subItem.activePaths.includes(location.pathname)
+                                    : location.pathname === subItem.url;
+                                    
+                                  return (
                                     <SidebarMenuSubButton
                                       key={subItem.title}
-                                      isActive={
-                                        subItem.activePaths
-                                          ? subItem.activePaths.includes(
-                                              location.pathname,
-                                            )
-                                          : location.pathname === subItem.url
-                                      }
-                                      onClick={() =>
-                                        handleNavigation(subItem.url)
-                                      }
-                                      className="flex items-center gap-2 px-[12px] py-0.5 text-left"
+                                      isActive={isSubActive}
+                                      onClick={() => handleNavigation(subItem.url)}
+                                      className={`flex items-center gap-2 px-[12px] py-[8px] text-left rounded-[10px] transition-all duration-200 mt-1 ${
+                                        isSubActive
+                                          ? subItem.activeClass || "!bg-white/20 !text-white font-semibold shadow-sm"
+                                          : "text-slate-400 hover:text-white hover:bg-white/5"
+                                      }`}
                                     >
                                       <img
                                         src={subItem.icon}
                                         alt=""
-                                        className="w-4 h-4 object-contain opacity-90"
+                                        className={`w-4 h-4 object-contain ${
+                                          isSubActive ? "brightness-200" : "opacity-90"
+                                        }`}
                                       />
                                       <span className="truncate">
                                         {subItem.title}
                                       </span>
                                     </SidebarMenuSubButton>
-                                  ))}
-                                </SidebarMenuSub>
-                              )}
+                                  );
+                                })}
+                              </SidebarMenuSub>
+                            )}
                           </SidebarMenuItem>
                         );
                       }
@@ -438,42 +452,38 @@ export function AppSidebar() {
                       return (
                         <SidebarMenuItem
                           key={item.title}
-                          className={`${
-                            isCollapsed
-                              ? item.title === "Cause"
-                                ? "flex flex-col items-center"
-                                : "flex justify-center"
-                              : ""
-                          }`}
+                          className={`${isCollapsed
+                            ? item.title === "Cause"
+                              ? "flex flex-col items-center"
+                              : "flex justify-center"
+                            : ""
+                            }`}
                         >
                           <SidebarMenuButton
                             tooltip={item.title}
                             onClick={() => handleNavigation(item.url)}
                             isActive={isItemActive}
                             className={`
-                                    ${
-                                      isCollapsed
-                                        ? "h-11 w-11 p-[10px]"
-                                        : "h-11 w-full px-[12px] py-[10px] gap-2"
-                                    }
+                                    ${isCollapsed
+                                ? "h-11 w-11 p-[10px]"
+                                : "h-11 w-full px-[12px] py-[10px] gap-2"
+                              }
                                     rounded-[10px] transition-all duration-200
-                                    ${
-                                      isItemActive
-                                        ? item.activeClass ||
-                                          mindsetActiveClass ||
-                                          "!bg-gradient-to-r from-[#6BC7FF] to-[#009FE5] !text-white font-semibold shadow-md"
-                                        : "text-slate-400 hover:text-white hover:bg-white/5"
-                                    }
+                                    ${isItemActive
+                                ? item.activeClass ||
+                                mindsetActiveClass ||
+                                "!bg-gradient-to-r from-[#6BC7FF] to-[#009FE5] !text-white font-semibold shadow-md"
+                                : "text-slate-400 hover:text-white hover:bg-white/5"
+                              }
                                   `}
                           >
                             <img
                               src={item.icon}
                               alt=""
-                              className={`${isCollapsed ? "w-6 h-6" : "w-5 h-5"} object-contain transition-all duration-200 ${
-                                isItemActive
-                                  ? "brightness-200"
-                                  : "opacity-90 group-hover:opacity-100"
-                              }`}
+                              className={`${isCollapsed ? "w-6 h-6" : "w-5 h-5"} object-contain transition-all duration-200 ${isItemActive
+                                ? "brightness-200"
+                                : "opacity-90 group-hover:opacity-100"
+                                }`}
                             />
                             <span
                               className={`font-inter font-semibold text-[16px] leading-[20px] text-white ${isCollapsed ? "hidden" : "block"}`}
@@ -485,9 +495,8 @@ export function AppSidebar() {
                           {/* "Cause" text ke neeche 1 line indicator (expanded + collapsed dono mein) */}
                           {item.title === "Cause" && (
                             <div
-                              className={`bg-white rounded-full transition-all duration-300 ${
-                                isCollapsed ? "mx-auto" : "ml-1"
-                              }`}
+                              className={`bg-white rounded-full transition-all duration-300 ${isCollapsed ? "mx-auto" : "ml-1"
+                                }`}
                               style={{
                                 width: isCollapsed ? "40px" : "178px",
                                 height: "3px",
@@ -523,11 +532,10 @@ export function AppSidebar() {
                 className={`
                                     ${isCollapsed ? "h-11 w-11 p-2" : "h-11 w-full px-[12px] py-[10px] gap-2"}
                                     rounded-[10px] transition-all duration-200
-                                    ${
-                                      location.pathname === "/settings"
-                                        ? "!bg-[#4070DA] !text-white font-semibold shadow-md"
-                                        : "text-slate-400 hover:text-white hover:bg-white/5"
-                                    }
+                                    ${location.pathname === "/settings"
+                    ? "!bg-[#4070DA] !text-white font-semibold shadow-md"
+                    : "text-slate-400 hover:text-white hover:bg-white/5"
+                  }
                                 `}
               >
                 <img

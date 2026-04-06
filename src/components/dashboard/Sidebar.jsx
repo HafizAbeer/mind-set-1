@@ -389,7 +389,7 @@ const Sidebar = ({ isCollapsed, onToggle }) => {
               iconPath={rewardIcon}
               label="Reward Choice"
               active={["/reward-choice", "/reward-choice-select"].includes(location.pathname)}
-              activeClass="bg-[#6CB083]"
+              activeClass="bg-[#FF35355C]"
               isCollapsed={isCollapsed}
               to="/reward-choice"
               onClick={onToggle}
