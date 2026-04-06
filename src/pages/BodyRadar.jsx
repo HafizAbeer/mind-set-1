@@ -51,7 +51,7 @@ const BodyRadar = () => {
       themeGradientGhost="linear-gradient(180deg, rgba(255, 125, 125, 0.15) 0%, rgba(209, 104, 104, 0.15) 100%)"
       themeGhostCircle="rgba(255, 125, 125, 0.20)"
       themeCardBg="rgba(255, 125, 125, 0.42)"
-      backButtonText="Back to Reflection"
+      backButtonText="Back"
       onBack={() => navigate("/reflection-questions")}
       onContinue={() => navigate("/body-select")}
     />

@@ -28,7 +28,7 @@ const SuccessGuage = () => {
             themeGradientGhost="linear-gradient(180deg, rgba(209, 104, 104, 0.15) 0%, rgba(209, 104, 104, 0.15) 100%)"
             themeGhostCircle="rgba(209, 104, 104, 0.20)"
             themeCardBg="rgba(209, 104, 104, 0.24)"
-            backButtonText="Back to start"
+            backButtonText="Back"
             onBack={() => navigate('/dashboard')}
             onContinue={() => navigate('/success-gauge-select')}
         />

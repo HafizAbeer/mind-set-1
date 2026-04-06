@@ -209,15 +209,13 @@ const BodyRadarSelect = () => {
                             <button
                               key={opt.id}
                               onClick={() => toggleSelection(opt.id)}
-                              className={`h-[48px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${
-                                opt.fullWidth
+                              className={`h-[48px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${opt.fullWidth
                                   ? "sm:col-span-2 w-full"
                                   : "w-full max-w-[440px]"
-                              } ${
-                                selectedIds.includes(opt.id)
+                                } ${selectedIds.includes(opt.id)
                                   ? "text-white border-transparent shadow-lg active:scale-95"
                                   : "text-[#C5C5C5] hover:text-white"
-                              }`}
+                                }`}
                               style={{
                                 background: selectedIds.includes(opt.id)
                                   ? themeGradient
@@ -265,7 +263,7 @@ const BodyRadarSelect = () => {
                   className="flex-1 xl:w-[468px] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all shadow-lg border-2 border-[#D16868] text-[15px] md:text-[20px] hover:opacity-90 active:scale-95"
                   style={{ background: themeGradient }}
                 >
-                  Continue to Symptoms
+                  Continue
                   <ArrowRight size={24} className="shrink-0" />
                 </button>
               </div>

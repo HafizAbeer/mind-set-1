@@ -29,7 +29,7 @@ const SymptomRadar = () => {
       themeGradientGhost="linear-gradient(180deg, rgba(42, 171, 238, 0.15) 0%, rgba(42, 171, 238, 0.15) 100%)"
       themeGhostCircle="rgba(42, 171, 238, 0.20)"
       themeCardBg="rgba(42, 171, 238, 0.24)"
-      backButtonText="Back to Body"
+      backButtonText="Back"
       onBack={() => navigate('/body')}
       onContinue={() => navigate('/symptom-select')}
     />

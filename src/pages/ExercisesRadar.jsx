@@ -34,15 +34,15 @@ const ExercisesRadar = () => {
         themeGradientGhost="linear-gradient(180deg, rgba(255, 103, 33, 0.15) 0%, rgba(255, 103, 33, 0.15) 100%)"
         themeGhostCircle="rgba(255, 103, 33, 0.20)"
         themeCardBg="rgba(255, 103, 33, 0.24)"
-        backButtonText="Back to Anchor"
+        backButtonText="Back"
         showInfoIcon={true}
         onInfoClick={() => setIsInfoModalOpen(true)}
         onBack={() => navigate('/anchor')}
         onContinue={() => navigate('/exercises-select')}
       />
-      <ExerciseInfoModal 
-        isOpen={isInfoModalOpen} 
-        onClose={() => setIsInfoModalOpen(false)} 
+      <ExerciseInfoModal
+        isOpen={isInfoModalOpen}
+        onClose={() => setIsInfoModalOpen(false)}
       />
     </>
   );

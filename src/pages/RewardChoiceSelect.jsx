@@ -139,7 +139,7 @@ const RewardChoiceSelect = () => {
                     WebkitBackdropFilter: "blur(6px)",
                   }}
                 >
-                  Continue to Start
+                  Continue
                   <ArrowRight size={24} className="shrink-0" />
                 </button>
               </div>

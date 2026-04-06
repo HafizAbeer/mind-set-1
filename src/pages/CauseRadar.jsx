@@ -33,7 +33,7 @@ const CauseRadar = () => {
       themeGradientGhost="linear-gradient(180deg, rgba(136, 236, 101, 0.15) 0%, rgba(136, 236, 101, 0.15) 100%)"
       themeGhostCircle="rgba(136, 236, 101, 0.20)"
       themeCardBg="rgba(136, 236, 101, 0.24)"
-      backButtonText="Back to Trigger"
+      backButtonText="Back"
       onBack={() => navigate('/trigger')}
       onContinue={() => navigate('/cause-select')}
     />

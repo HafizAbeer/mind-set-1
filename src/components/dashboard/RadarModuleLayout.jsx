@@ -203,7 +203,7 @@ const RadarModuleLayout = ({
               variant="ghost"
               onClick={onBack}
               className={cn(
-                "box-border h-auto min-h-[64px] w-full gap-2 whitespace-normal rounded-[10px] p-5 font-inter text-base font-bold text-white transition-all hover:bg-white/5 active:scale-95 lg:w-[min(468px,100%)]",
+                "box-border h-auto min-h-[64px] w-full gap-2 whitespace-normal rounded-[10px] p-5 font-inter text-base text-[20px] font-bold text-white transition-all hover:bg-white/5 active:scale-95 lg:w-[min(468px,100%)]",
               )}
               style={{
                 background: themeGradientGhost,
@@ -218,7 +218,7 @@ const RadarModuleLayout = ({
               variant="ghost"
               onClick={onContinue}
               className={cn(
-                "box-border h-auto min-h-[64px] w-full gap-2 whitespace-normal rounded-[10px] p-5 font-inter text-base font-bold text-white shadow-lg transition-all hover:opacity-90 active:scale-95 lg:w-[min(468px,100%)]",
+                "box-border h-auto min-h-[64px] w-full gap-2 whitespace-normal rounded-[10px] p-5 font-inter text-base text-[20px] font-bold text-white shadow-lg transition-all hover:opacity-90 active:scale-95 lg:w-[min(468px,100%)]",
               )}
               style={{
                 background: themeGradient,

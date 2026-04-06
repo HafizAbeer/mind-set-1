@@ -175,7 +175,7 @@ const ReflectionQuestions = () => {
                     boxShadow: "0 8px 24px -6px rgba(240, 182, 20, 0.4)",
                   }}
                 >
-                  Continue to Body
+                  Continue
                   <ArrowRight size={24} className="shrink-0" />
                 </button>
               </div>

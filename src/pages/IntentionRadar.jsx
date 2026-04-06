@@ -37,15 +37,15 @@ const IntentionRadar = () => {
         themeGradientGhost="linear-gradient(180deg, rgba(251, 169, 11, 0.15) 0%, rgba(251, 169, 11, 0.15) 100%)"
         themeGhostCircle="rgba(251, 169, 11, 0.20)"
         themeCardBg="rgba(251, 169, 11, 0.24)"
-        backButtonText="Back to Symptom"
+        backButtonText="Back"
         showInfoIcon={true}
         onInfoClick={() => setIsInfoModalOpen(true)}
         onBack={() => navigate('/symptom')}
         onContinue={() => navigate('/intention-select')}
       />
-      <IntentionInfoModal 
-        isOpen={isInfoModalOpen} 
-        onClose={() => setIsInfoModalOpen(false)} 
+      <IntentionInfoModal
+        isOpen={isInfoModalOpen}
+        onClose={() => setIsInfoModalOpen(false)}
       />
     </>
   );

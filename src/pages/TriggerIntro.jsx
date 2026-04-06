@@ -44,7 +44,7 @@ const TriggerIntroPage = () => {
       }
       onBack={() => navigate("/mindset")}
       onContinue={() => navigate("/trigger-radar")}
-      backButtonText="Back to Mindset"
+      backButtonText="Back"
     />
   );
 };

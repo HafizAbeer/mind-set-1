@@ -8,7 +8,7 @@ import micIcon from "../assets/icons/mic-icon.svg"
 const ReflectionViews = () => {
   const navigate = useNavigate();
   const outletContext = useOutletContext();
-  const setLegacySidebarOpen = outletContext?.setLegacySidebarOpen || (() => {});
+  const setLegacySidebarOpen = outletContext?.setLegacySidebarOpen || (() => { });
   const [realisticValue, setRealisticValue] = useState("");
   const [theoreticalValue, setTheoreticalValue] = useState("");
 
@@ -50,7 +50,7 @@ const ReflectionViews = () => {
   return (
     <div className="min-h-screen w-full relative overflow-hidden flex flex-col items-center">
       {/* Brain Logo Top-Left */}
-      <div 
+      <div
         className="absolute top-6 left-6 sm:top-[40px] sm:left-[40px] z-50 cursor-pointer transition-transform active:scale-95 hover:opacity-80"
         onClick={() => setLegacySidebarOpen(true)}
       >
@@ -112,7 +112,7 @@ const ReflectionViews = () => {
                 boxShadow: "0 8px 24px -6px rgba(240, 182, 20, 0.4)",
               }}
             >
-              Continue to Body
+              Continue
               <ArrowRight size={24} className="shrink-0" />
             </button>
           </div>

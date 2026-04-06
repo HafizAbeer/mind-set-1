@@ -222,7 +222,7 @@ const TriggerRadar = () => {
                   }}
                 >
                   <ArrowLeft size={24} className="shrink-0" />
-                  Back to Mindset
+                  Back
                 </Button>
                 <Button
                   type="button"
@@ -231,7 +231,7 @@ const TriggerRadar = () => {
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[10px] border-2 border-[#526FFF] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all shadow-lg text-[15px] md:text-[20px] hover:opacity-90 active:scale-95"
                   style={{ background: themeGradient }}
                 >
-                  Continue to Cause
+                  Continue
                   <ArrowRight size={24} className="shrink-0" />
                 </Button>
               </div>

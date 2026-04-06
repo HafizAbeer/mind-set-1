@@ -32,7 +32,7 @@ const LifeScriptRadar = () => {
       themeGradientGhost="linear-gradient(180deg, rgba(226, 228, 100, 0.15) 0%, rgba(226, 228, 100, 0.15) 100%)"
       themeGhostCircle="rgba(226, 228, 100, 0.20)"
       themeCardBg="rgba(226, 228, 100, 0.24)"
-      backButtonText="Back to exercises"
+      backButtonText="Back"
       onBack={() => navigate('/exercises')}
       onContinue={() => navigate('/life-script-select')}
     />

@@ -32,7 +32,7 @@ const OldScriptRadar = () => {
       themeGradientGhost="linear-gradient(180deg, rgba(72, 200, 86, 0.15) 0%, rgba(72, 200, 86, 0.15) 100%)"
       themeGhostCircle="rgba(72, 200, 86, 0.20)"
       themeCardBg="rgba(72, 200, 86, 0.24)"
-      backButtonText="Back to Life Script"
+      backButtonText="Back"
       onBack={() => navigate('/life-script')}
       onContinue={() => navigate('/old-script-select')}
     />

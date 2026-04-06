@@ -29,7 +29,7 @@ const RewardChoice = () => {
             themeGradientGhost="linear-gradient(180deg, rgba(72, 200, 86, 0.15) 0%, rgba(72, 200, 86, 0.15) 100%)"
             themeGhostCircle="rgba(72, 200, 86, 0.20)"
             themeCardBg="rgba(72, 200, 86, 0.24)"
-            backButtonText="Back to Success Gauge"
+            backButtonText="Back"
             onBack={() => navigate('/success-guage')}
             onContinue={() => navigate('/reward-choice-select')}
         />

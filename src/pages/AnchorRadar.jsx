@@ -32,7 +32,7 @@ const AnchorRadar = () => {
       themeGradientGhost="linear-gradient(180deg, rgba(255, 91, 134, 0.15) 0%, rgba(255, 91, 134, 0.15) 100%)"
       themeGhostCircle="rgba(255, 91, 134, 0.20)"
       themeCardBg="rgba(255, 91, 134, 0.24)"
-      backButtonText="Back to Intention"
+      backButtonText="Back"
       onBack={() => navigate('/intention')}
       onContinue={() => navigate('/anchor-select')}
     />

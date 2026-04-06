@@ -33,7 +33,7 @@ const NewScriptRadar = () => {
       themeGradientGhost="linear-gradient(180deg, rgba(206, 92, 255, 0.15) 0%, rgba(206, 92, 255, 0.15) 100%)"
       themeGhostCircle="rgba(206, 92, 255, 0.20)"
       themeCardBg="rgba(206, 92, 255, 0.24)"
-      backButtonText="Back to Old Script"
+      backButtonText="Back"
       onBack={() => navigate('/old-script')}
       onContinue={() => navigate('/new-script-select')}
     />

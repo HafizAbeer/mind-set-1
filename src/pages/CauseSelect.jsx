@@ -141,11 +141,10 @@ const CauseSelect = () => {
                       <button
                         key={opt.id}
                         onClick={() => setSelectedId(opt.id)}
-                        className={`w-full max-w-[440px] h-[48px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${
-                          selectedId === opt.id
+                        className={`w-full max-w-[440px] h-[48px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${selectedId === opt.id
                             ? "text-white border-transparent shadow-lg active:scale-95"
                             : "text-[#C5C5C5] hover:text-white"
-                        }`}
+                          }`}
                         style={{
                           background:
                             selectedId === opt.id
@@ -165,11 +164,10 @@ const CauseSelect = () => {
                       <button
                         key={opt.id}
                         onClick={() => setSelectedId(opt.id)}
-                        className={`w-full max-w-[440px] h-[48px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${
-                          selectedId === opt.id
+                        className={`w-full max-w-[440px] h-[48px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${selectedId === opt.id
                             ? "text-white border-transparent shadow-lg active:scale-95"
                             : "text-[#C5C5C5] hover:text-white"
-                        }`}
+                          }`}
                         style={{
                           background:
                             selectedId === opt.id
@@ -188,11 +186,10 @@ const CauseSelect = () => {
                 <div className="w-full flex justify-center mt-[10px]">
                   <button
                     onClick={() => setSelectedId(999)}
-                    className={`w-full max-w-[440px] md:max-w-[928px] h-[48px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${
-                      selectedId === 999
+                    className={`w-full max-w-[440px] md:max-w-[928px] h-[48px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${selectedId === 999
                         ? "text-white border-transparent shadow-lg active:scale-95"
                         : "text-[#C5C5C5] hover:text-white"
-                    }`}
+                      }`}
                     style={{
                       background:
                         selectedId === 999
@@ -218,7 +215,7 @@ const CauseSelect = () => {
                   }}
                 >
                   <ArrowLeft size={24} className="shrink-0" />
-                  Back to Cause
+                  Back
                 </Button>
                 <Button
                   type="button"
@@ -227,7 +224,7 @@ const CauseSelect = () => {
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all shadow-lg border-2 border-[#88EC65] text-[15px] md:text-[20px] hover:opacity-90 hover:bg-transparent! active:scale-95"
                   style={{ background: themeGradient }}
                 >
-                  Continue to Reflection
+                  Continue
                   <ArrowRight size={24} className="shrink-0" />
                 </Button>
               </div>

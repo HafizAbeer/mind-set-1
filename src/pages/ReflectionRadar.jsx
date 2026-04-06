@@ -34,15 +34,15 @@ const ReflectionRadar = () => {
         themeGradientGhost="linear-gradient(180deg, rgba(240, 182, 20, 0.15) 0%, rgba(240, 182, 20, 0.15) 100%)"
         themeGhostCircle="rgba(240, 182, 20, 0.20)"
         themeCardBg="rgba(240, 182, 20, 0.24)"
-        backButtonText="Back to Cause"
+        backButtonText="Back"
         showInfoIcon={true}
         onInfoClick={() => setIsInfoModalOpen(true)}
         onBack={() => navigate('/cause')}
         onContinue={() => navigate('/reflection-questions')}
       />
-      <ReflectionInfoModal 
-        isOpen={isInfoModalOpen} 
-        onClose={() => setIsInfoModalOpen(false)} 
+      <ReflectionInfoModal
+        isOpen={isInfoModalOpen}
+        onClose={() => setIsInfoModalOpen(false)}
       />
     </>
   );

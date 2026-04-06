@@ -164,7 +164,7 @@ const NegativeMindset = () => {
                   }}
                 >
                   <ArrowLeft size={24} className="shrink-0" />
-                  Back to Radar
+                  Back
                 </Button>
                 <Button
                   type="button"
@@ -176,7 +176,7 @@ const NegativeMindset = () => {
                       "linear-gradient(180deg, #FF646A 0%, #B23737 100%)",
                   }}
                 >
-                  Continue to Trigger
+                  Continue
                   <ArrowRight size={24} className="shrink-0" />
                 </Button>
               </div>
