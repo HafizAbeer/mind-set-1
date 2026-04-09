@@ -1,44 +1,47 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
+const userSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    gender: {
+      type: String,
+      required: false,
+      enum: ["Male", "Female"],
+    },
+    role: {
+      type: String,
+      required: true,
+      enum: ["User", "Therapist"],
+      default: "User",
+    },
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
+    verificationCode: {
+      type: String,
+      default: null,
+    },
+    resetPasswordToken: String,
+    resetPasswordExpire: Date,
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  gender: {
-    type: String,
-    required: false,
-    enum: ["Male", "Female"]
-  },
-  role: {
-    type: String,
-    required: true,
-    enum: ["User", "Therapist"],
-    default: "User"
-  },
-  isVerified: {
-    type: Boolean,
-    default: false,
-  },
-  verificationCode: {
-    type: String,
-    default: null,
-  },
-  resetPasswordToken: String,
-  resetPasswordExpire: Date,
-}, { timestamps: true });
+  { timestamps: true },
+);
 
-userSchema.pre("save", async function() {
+userSchema.pre("save", async function () {
   if (!this.isModified("password")) {
     return;
   }
@@ -47,7 +50,7 @@ userSchema.pre("save", async function() {
 });
 
 // Method to compare password
-userSchema.methods.matchPassword = async function(enteredPassword) {
+userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 

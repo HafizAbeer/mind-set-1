@@ -7,6 +7,13 @@ import successGaugeIcon from "../assets/radarModulesIcon/successGuage-red-icon.s
 
 const NoChangings = () => {
   const navigate = useNavigate();
+  const [selectedIndices, setSelectedIndices] = useState([]);
+
+  const toggleCharacteristic = (index) => {
+    setSelectedIndices((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
+  };
 
   const characteristics = [
     "still frequent dark thoughts",
@@ -52,19 +59,31 @@ const NoChangings = () => {
                 </div>
 
                 <div className="flex flex-col gap-[12px] w-full">
-                  {characteristics.map((item, index) => (
-                    <div
-                      key={index}
-                      className="min-h-[64px] w-full rounded-[16px] p-[16px_20px] flex items-center justify-center transition-all font-inter font-bold text-[18px] sm:text-[20px] border-[#D1686880] text-white text-center"
-                      style={{
-                        background: "linear-gradient(135deg, #E1737350, #A3454550)",
-                        borderWidth: "1px 1px 1px 5px",
-                        borderStyle: "solid",
-                      }}
-                    >
-                      {item}
-                    </div>
-                  ))}
+                  {characteristics.map((item, index) => {
+                    const isSelected = selectedIndices.includes(index);
+                    return (
+                      <button
+                        key={index}
+                        type="button"
+                        onClick={() => toggleCharacteristic(index)}
+                        aria-pressed={isSelected}
+                        className={`min-h-[64px] w-full rounded-[16px] p-[16px_20px] flex items-center justify-center transition-all font-inter font-bold text-[18px] sm:text-[20px] text-white text-center ${
+                          isSelected
+                            ? "border-2 border-[#D16868] shadow-lg active:scale-[0.99]"
+                            : "border-[#D1686880] active:scale-[0.99]"
+                        }`}
+                        style={{
+                          background: isSelected
+                            ? "linear-gradient(180deg, #E17373 0%, #A34545 100%)"
+                            : "linear-gradient(135deg, #E1737350, #A3454550)",
+                          borderWidth: isSelected ? "2px" : "1px 1px 1px 5px",
+                          borderStyle: "solid",
+                        }}
+                      >
+                        {item}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 

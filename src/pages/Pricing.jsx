@@ -93,7 +93,6 @@ const Pricing = () => {
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden font-inter">
       <div className="min-h-screen flex flex-col items-center pt-24 pb-16 px-4 sm:px-6">
-
         {/* Header Section */}
         <div className="flex flex-col items-center mb-12 sm:mb-16 mt-4">
           <div className="flex items-center justify-center h-[28px] px-[12px] py-[6px] rounded-[100px] border border-white/10 bg-gradient-to-b from-[#71CFFF]/50 to-[#0089CF]/50 text-white text-[12px] font-medium leading-none mb-6">
@@ -102,11 +101,15 @@ const Pricing = () => {
 
           <h1 className="text-4xl md:text-[52px] font-bold text-white text-center mb-6 leading-tight tracking-tight">
             Discover Products <br />
-            With the <span className="bg-gradient-to-b from-[#FFFFFF]/80 to-[#02A0F3] bg-clip-text text-transparent">Best Pricing</span>
+            With the{" "}
+            <span className="bg-gradient-to-b from-[#FFFFFF]/80 to-[#02A0F3] bg-clip-text text-transparent">
+              Best Pricing
+            </span>
           </h1>
 
           <p className="text-[#A0A0A0] text-sm sm:text-base text-center max-w-2xl px-4 leading-relaxed">
-            Your free trial ends at this stage of the protocol. Unlock the full potential of New Mindset <br className="hidden md:block" />
+            Your free trial ends at this stage of the protocol. Unlock the full
+            potential of New Mindset <br className="hidden md:block" />
             and continue your journey to mental wellness.
           </p>
         </div>
@@ -121,10 +124,11 @@ const Pricing = () => {
               <div
                 key={index}
                 onClick={() => setSelectedPlan(plan.name)}
-                className={`relative rounded-[24px] p-6 lg:p-8 flex flex-col shadow-2xl cursor-pointer transition-all duration-300 hover:scale-[1.02] ${isActive
-                  ? "backdrop-blur-[84px] bg-[linear-gradient(180deg,rgba(0,159,229,0.12)_0%,rgba(0,159,229,0.04)_50%,rgba(0,159,229,0.07)_100%)] border-transparent"
-                  : "bg-[#1C1C24] border border-white/5 hover:border-white/20"
-                  }`}
+                className={`relative rounded-[24px] p-6 lg:p-8 flex flex-col shadow-2xl cursor-pointer transition-all duration-300 hover:scale-[1.02] ${
+                  isActive
+                    ? "backdrop-blur-[84px] bg-[linear-gradient(180deg,rgba(0,159,229,0.12)_0%,rgba(0,159,229,0.04)_50%,rgba(0,159,229,0.07)_100%)] border-transparent"
+                    : "bg-[#1C1C24] border border-white/5 hover:border-white/20"
+                }`}
               >
                 {/* Active Card Glow / Border */}
                 {isActive && (
@@ -134,10 +138,12 @@ const Pricing = () => {
                       className="absolute inset-0 rounded-[24px] pointer-events-none"
                       style={{
                         padding: "2px",
-                        background: "linear-gradient(180deg, rgba(0, 159, 229, 0) 0%, rgba(0, 159, 229, 1) 50%, rgba(0, 159, 229, 0) 100%)",
-                        WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                        background:
+                          "linear-gradient(180deg, rgba(0, 159, 229, 0) 0%, rgba(0, 159, 229, 1) 50%, rgba(0, 159, 229, 0) 100%)",
+                        WebkitMask:
+                          "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
                         WebkitMaskComposite: "xor",
-                        maskComposite: "exclude"
+                        maskComposite: "exclude",
                       }}
                     />
 
@@ -151,10 +157,13 @@ const Pricing = () => {
                 <div className="flex items-center justify-between mb-6 z-10">
                   <div className="relative">
                     {/* Radio Button */}
-                    <div className={`w-6 h-6 flex items-center justify-center rounded-full transition-colors ${isActive
-                      ? "bg-[#009FE5]"
-                      : "bg-white/10 border border-white/5"
-                      }`}>
+                    <div
+                      className={`w-6 h-6 flex items-center justify-center rounded-full transition-colors ${
+                        isActive
+                          ? "bg-[#009FE5]"
+                          : "bg-white/10 border border-white/5"
+                      }`}
+                    >
                       <div className="w-[12px] h-[12px] rounded-full border-[2.5px] border-white bg-transparent" />
                     </div>
                   </div>
@@ -172,7 +181,10 @@ const Pricing = () => {
                       "Free"
                     ) : (
                       <>
-                        Pro <span className="font-normal text-white/90">{plan.name.split(" ")[1]}</span>
+                        Pro{" "}
+                        <span className="font-normal text-white/90">
+                          {plan.name.split(" ")[1]}
+                        </span>
                       </>
                     )}
                   </h3>
@@ -199,7 +211,9 @@ const Pricing = () => {
                 <div className="w-full h-[1px] bg-white/10 my-6 z-10"></div>
 
                 <div className="z-10 w-full">
-                  <p className="text-sm font-semibold text-white mb-4">What you will get</p>
+                  <p className="text-sm font-semibold text-white mb-4">
+                    What you will get
+                  </p>
                   <ul className="flex flex-col gap-3.5">
                     {plan.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-3">
@@ -216,14 +230,15 @@ const Pricing = () => {
                             strokeWidth={2}
                           />
                         )}
-                        <span className={`text-sm ${isFree ? "text-[#A0A0A0]" : "text-white/90"}`}>
+                        <span
+                          className={`text-sm ${isFree ? "text-[#A0A0A0]" : "text-white/90"}`}
+                        >
                           {feature}
                         </span>
                       </li>
                     ))}
                   </ul>
                 </div>
-
               </div>
             );
           })}

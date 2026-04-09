@@ -34,7 +34,13 @@ const Settings = () => {
     push: true,
   });
 
-  const SettingCard = ({ title, subtitle, icon, children, iconBg = "bg-white/5" }) => (
+  const SettingCard = ({
+    title,
+    subtitle,
+    icon,
+    children,
+    iconBg = "bg-white/5",
+  }) => (
     <div className="bg-[#1C1C24] border border-white/5 rounded-[24px] p-6 sm:p-8 shadow-xl flex flex-col gap-6">
       <div className="flex items-start gap-4">
         <div className={`p-3 ${iconBg} rounded-[14px] border border-white/5`}>
@@ -55,7 +61,11 @@ const Settings = () => {
 
   const InputField = ({ label, placeholder, value, type = "text" }) => (
     <div className="flex flex-col gap-2 mb-4">
-      {label && <label className="text-sm font-semibold text-white/60 ml-1">{label}</label>}
+      {label && (
+        <label className="text-sm font-semibold text-white/60 ml-1">
+          {label}
+        </label>
+      )}
       <input
         type={type}
         placeholder={placeholder}
@@ -65,12 +75,21 @@ const Settings = () => {
     </div>
   );
 
-  const ActionButton = ({ children, variant = "primary", className = "", ...props }) => {
+  const ActionButton = ({
+    children,
+    variant = "primary",
+    className = "",
+    ...props
+  }) => {
     const variants = {
-      primary: "bg-gradient-to-t from-[#738AFF] to-[#3C56D8] hover:bg-[#3d64ef] text-white shadow-[#4F75FF]/20",
-      secondary: "bg-[#27282E] hover:bg-[#34363D] text-white border border-white/5",
-      danger: "bg-gradient-to-b from-[#FF6A6A] to-[#C83636] hover:bg-[#d06262] text-white",
-      premium: "bg-gradient-to-b from-[#FF996A] to-[#FF6721] text-white shadow-[#FF5232]/20"
+      primary:
+        "bg-gradient-to-t from-[#738AFF] to-[#3C56D8] hover:bg-[#3d64ef] text-white shadow-[#4F75FF]/20",
+      secondary:
+        "bg-[#27282E] hover:bg-[#34363D] text-white border border-white/5",
+      danger:
+        "bg-gradient-to-b from-[#FF6A6A] to-[#C83636] hover:bg-[#d06262] text-white",
+      premium:
+        "bg-gradient-to-b from-[#FF996A] to-[#FF6721] text-white shadow-[#FF5232]/20",
     };
 
     return (
@@ -97,13 +116,21 @@ const Settings = () => {
     </div>
   );
 
-  const ListItem = ({ label, description, onClick, rightIcon: RightIcon, onIconClick }) => (
+  const ListItem = ({
+    label,
+    description,
+    onClick,
+    rightIcon: RightIcon,
+    onIconClick,
+  }) => (
     <div
       onClick={onClick}
       className="flex items-center justify-between p-4 bg-[#27282E] rounded-xl mb-3 cursor-pointer hover:bg-[#34363D] transition-all border border-white/5 group"
     >
       <div className="flex-1 flex flex-col gap-0.5">
-        <span className="text-sm font-bold text-white group-hover:text-white/90">{label}</span>
+        <span className="text-sm font-bold text-white group-hover:text-white/90">
+          {label}
+        </span>
         <p className="text-xs text-[#A0A0A0]">{description}</p>
       </div>
       <div className="flex items-center gap-3">
@@ -149,7 +176,7 @@ const Settings = () => {
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden">
-      <div className="min-h-screen flex items-start justify-center overflow-auto custom-scrollbar px-3 pt-[100px] lg:pt-12 pb-6">
+      <div className="min-h-screen flex items-start justify-center overflow-auto custom-scrollbar px-8 pt-[100px] lg:pt-12 pb-6">
         <div className="relative flex w-full max-w-[1400px] text-white font-sans transition-all duration-300">
           <div className="flex-1 flex flex-col gap-8 px-4 lg:py-15 xl:p-0">
             {/* Header section */}
@@ -177,7 +204,11 @@ const Settings = () => {
                 iconBg="bg-[#4F75FF]/10"
               >
                 <InputField label="Full Name" placeholder="Kashif..." />
-                <InputField label="Email" placeholder="John@example.com" type="email" />
+                <InputField
+                  label="Email"
+                  placeholder="John@example.com"
+                  type="email"
+                />
                 <ActionButton className="mt-2">Save Changes</ActionButton>
               </SettingCard>
 
@@ -193,25 +224,33 @@ const Settings = () => {
                     label="Create calendar reminders"
                     description="Receive daily self generated exercise reminders"
                     checked={notifications.calendar}
-                    onChange={(val) => setNotifications({ ...notifications, calendar: val })}
+                    onChange={(val) =>
+                      setNotifications({ ...notifications, calendar: val })
+                    }
                   />
                   <ToggleItem
                     label="Skip dialogues"
                     description="Override protocol dialogues on daily use"
                     checked={notifications.dialogues}
-                    onChange={(val) => setNotifications({ ...notifications, dialogues: val })}
+                    onChange={(val) =>
+                      setNotifications({ ...notifications, dialogues: val })
+                    }
                   />
                   <ToggleItem
                     label="Weekly Reports"
                     description="Get weekly summary reports"
                     checked={notifications.weekly}
-                    onChange={(val) => setNotifications({ ...notifications, weekly: val })}
+                    onChange={(val) =>
+                      setNotifications({ ...notifications, weekly: val })
+                    }
                   />
                   <ToggleItem
                     label="Receive push notifications"
                     description="Organize real alarm push notifications"
                     checked={notifications.push}
-                    onChange={(val) => setNotifications({ ...notifications, push: val })}
+                    onChange={(val) =>
+                      setNotifications({ ...notifications, push: val })
+                    }
                   />
                 </div>
               </SettingCard>
@@ -225,7 +264,9 @@ const Settings = () => {
               >
                 <div className="flex flex-col gap-4">
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-semibold text-white/60 ml-1">Language</label>
+                    <label className="text-sm font-semibold text-white/60 ml-1">
+                      Language
+                    </label>
                     <select className="w-full bg-[#27282E] border border-white/5 rounded-[12px] px-4 py-3 text-white appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#4F75FF]/50 transition-all font-inter">
                       <option>English</option>
                       <option>German</option>
@@ -233,7 +274,9 @@ const Settings = () => {
                     </select>
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-semibold text-white/60 ml-1">Region</label>
+                    <label className="text-sm font-semibold text-white/60 ml-1">
+                      Region
+                    </label>
                     <select className="w-full bg-[#27282E] border border-white/5 rounded-[12px] px-4 py-3 text-white appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#4F75FF]/50 transition-all font-inter">
                       <option>United States</option>
                       <option>Germany</option>
@@ -254,14 +297,24 @@ const Settings = () => {
                 <div className="bg-[#27282E] p-6 rounded-2xl border border-white/5 mb-6">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm text-[#A0A0A0]">Current Plan</span>
-                    <span className="px-2 py-0.5 bg-white/5 rounded text-[10px] font-bold text-white uppercase tracking-wider">Free</span>
+                    <span className="px-2 py-0.5 bg-white/5 rounded text-[10px] font-bold text-white uppercase tracking-wider">
+                      Free
+                    </span>
                   </div>
-                  <h4 className="text-2xl font-bold text-white mb-2">Free Trial</h4>
+                  <h4 className="text-2xl font-bold text-white mb-2">
+                    Free Trial
+                  </h4>
                   <p className="text-sm text-[#A0A0A0] leading-snug font-medium">
-                    Access to basic radar modules and limited statistic insights.
+                    Access to basic radar modules and limited statistic
+                    insights.
                   </p>
                 </div>
-                <ActionButton variant="premium" onClick={() => navigate("/pricing")}>Upgrade to Premium</ActionButton>
+                <ActionButton
+                  variant="premium"
+                  onClick={() => navigate("/pricing")}
+                >
+                  Upgrade to Premium
+                </ActionButton>
               </SettingCard>
 
               {/* Security */}
@@ -274,7 +327,9 @@ const Settings = () => {
                 {!isChangingPassword ? (
                   <div className="flex flex-col gap-6">
                     <div className="flex flex-col gap-2">
-                      <label className="text-sm font-semibold text-white/60 ml-1">Password</label>
+                      <label className="text-sm font-semibold text-white/60 ml-1">
+                        Password
+                      </label>
                       <div className="w-full bg-[#27282E] border border-white/5 rounded-[12px] px-4 py-3 text-white/40 font-inter">
                         ••••••••••
                       </div>
@@ -293,8 +348,16 @@ const Settings = () => {
                   </div>
                 ) : (
                   <div className="flex flex-col gap-4">
-                    <InputField label="Current Password" placeholder="••••••••" type="password" />
-                    <InputField label="New Password" placeholder="••••••••" type="password" />
+                    <InputField
+                      label="Current Password"
+                      placeholder="••••••••"
+                      type="password"
+                    />
+                    <InputField
+                      label="New Password"
+                      placeholder="••••••••"
+                      type="password"
+                    />
                     <div className="flex gap-4 mt-2">
                       <ActionButton
                         variant="secondary"
@@ -302,7 +365,9 @@ const Settings = () => {
                       >
                         Cancel
                       </ActionButton>
-                      <ActionButton onClick={() => setIsChangingPassword(false)}>
+                      <ActionButton
+                        onClick={() => setIsChangingPassword(false)}
+                      >
                         Save Password
                       </ActionButton>
                     </div>
@@ -317,7 +382,10 @@ const Settings = () => {
                 icon={privacyIcon}
                 iconBg="bg-[#E17373]/10"
               >
-                <ListItem label="Contact Support" description="Get help from our team" />
+                <ListItem
+                  label="Contact Support"
+                  description="Get help from our team"
+                />
                 <ListItem
                   label="Privacy Policy"
                   description="Terms and privacy policy"
@@ -334,13 +402,13 @@ const Settings = () => {
                 <div className="grid grid-cols-2 gap-4 mt-6">
                   <ActionButton
                     variant="danger"
-                    onClick={() => setModalType('delete')}
+                    onClick={() => setModalType("delete")}
                   >
                     Delete Account
                   </ActionButton>
                   <ActionButton
                     variant="danger"
-                    onClick={() => setModalType('logout')}
+                    onClick={() => setModalType("logout")}
                   >
                     Log Out
                   </ActionButton>
@@ -352,24 +420,24 @@ const Settings = () => {
       </div>
 
       {/* Confirmation Modals */}
-      {modalType === 'logout' && (
+      {modalType === "logout" && (
         <ConfirmationModal
           title="Log Out"
           confirmText="Log Out"
           onCancel={() => setModalType(null)}
           onConfirm={() => {
-            console.log('Logging out...');
+            console.log("Logging out...");
             setModalType(null);
           }}
         />
       )}
-      {modalType === 'delete' && (
+      {modalType === "delete" && (
         <ConfirmationModal
           title="Delete Account"
           confirmText="Delete"
           onCancel={() => setModalType(null)}
           onConfirm={() => {
-            console.log('Deleting account...');
+            console.log("Deleting account...");
             setModalType(null);
           }}
         />

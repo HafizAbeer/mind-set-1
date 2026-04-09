@@ -19,8 +19,15 @@ function FloatingEdgeToggle() {
   if (isMobile || state !== "collapsed") return null;
 
   return (
-    <div className="absolute top-4 left-4 z-50">
-      <SidebarTrigger className="text-white hover:bg-zinc-800" />
+    <div
+      className="pointer-events-none fixed top-10 z-50 -translate-y-1/2"
+      style={{
+        left: "calc(var(--sidebar-width-icon) + 2rem)",
+      }}
+    >
+      <div className="pointer-events-auto">
+        <SidebarTrigger className="text-white hover:bg-zinc-800" />
+      </div>
     </div>
   );
 }
