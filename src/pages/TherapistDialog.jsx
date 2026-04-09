@@ -17,7 +17,7 @@ const TherapistDialog = () => {
       doctor: {
         label: "Mindset Intentionhint:",
         category: "Angry-work-impatience",
-        entry: "not thinking \"I must\" mantra",
+        entry: 'not thinking "I must" mantra',
       },
       me: {
         label: "Answer/Reaction",
@@ -31,7 +31,7 @@ const TherapistDialog = () => {
       doctor: {
         label: "Mindset Intentionhint:",
         category: "Angry-work-impatience",
-        entry: "not thinking \"I must\" mantra",
+        entry: 'not thinking "I must" mantra',
       },
       me: {
         label: "Answer/Reaction",
@@ -45,7 +45,7 @@ const TherapistDialog = () => {
       doctor: {
         label: "Mindset Intentionhint:",
         category: "Angry-work-impatience",
-        entry: "not thinking \"I must\" mantra",
+        entry: 'not thinking "I must" mantra',
       },
       me: {
         label: "Answer/Reaction",
@@ -59,7 +59,7 @@ const TherapistDialog = () => {
       doctor: {
         label: "Mindset Intentionhint:",
         category: "Angry-work-impatience",
-        entry: "not thinking \"I must\" mantra",
+        entry: 'not thinking "I must" mantra',
       },
       me: {
         label: "Answer/Reaction",
@@ -80,7 +80,7 @@ const TherapistDialog = () => {
         <div className="relative flex w-full max-w-[1400px] text-white font-sans transition-all duration-300">
           <div className="flex-1 flex flex-col gap-8 px-4 lg:py-15 xl:p-0">
             {/* Header section */}
-            <div className="flex items-start justify-between w-full gap-4">
+            <div className="flex items-start justify-between w-full px-3 gap-4">
               <div className="flex items-center gap-3 sm:gap-5">
                 <div className="p-1.5 bg-white/5 rounded-2xl border border-white/5 shadow-inner shrink-0">
                   <img
@@ -133,7 +133,10 @@ const TherapistDialog = () => {
                 </button>
                 <div className="flex flex-col gap-4">
                   {historyData.map((item) => (
-                    <div key={`doctor-${item.id}`} className="flex flex-col gap-2">
+                    <div
+                      key={`doctor-${item.id}`}
+                      className="flex flex-col gap-2"
+                    >
                       <div className="p-6 rounded-[24px] border-2 border-[#2E3A5F] bg-[#1C1C24] shadow-xl flex flex-col gap-2 min-h-[170px]">
                         <span className="text-base text-white font-medium mb-1">
                           {item.date}

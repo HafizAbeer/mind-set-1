@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { createPortal } from "react-dom";
 import { ArrowLeft, ArrowRight, Info } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
-import Sidebar from "./Sidebar";
+import { LegacySidebarPortal } from "./LegacySidebarPortal";
 import mindsetLogo from "../../assets/mindset-logo.svg";
 import collapseIcon from "../../assets/icons/collapse-icon.svg";
 
@@ -34,31 +33,12 @@ const RadarModuleLayout = ({
 }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const portalTarget =
-    typeof document !== "undefined" ? document.body : null;
-
-  const sidebarOverlay =
-    isSidebarOpen && portalTarget
-      ? createPortal(
-        <>
-          <div
-            className="fixed inset-0 z-90 bg-black/60 backdrop-blur-sm transition-opacity duration-300"
-            onClick={() => setIsSidebarOpen(false)}
-          />
-          <div className="fixed left-0 top-0 z-120 h-screen">
-            <Sidebar
-              isCollapsed={false}
-              onToggle={() => setIsSidebarOpen(false)}
-            />
-          </div>
-        </>,
-        portalTarget,
-      )
-      : null;
-
   return (
     <div className="relative flex min-h-screen flex-1 flex-col items-center overflow-hidden px-4 py-10 font-sans sm:px-6">
-      {sidebarOverlay}
+      <LegacySidebarPortal
+        open={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+      />
 
       <div className="pointer-events-none absolute inset-0 select-none opacity-10">
         <div className="h-full w-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.05)_0%,transparent_70%)]" />

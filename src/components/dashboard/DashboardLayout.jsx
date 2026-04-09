@@ -7,11 +7,8 @@ import { AppSidebar } from "@/components/dashboard/AppSidebar";
 import { Outlet, useLocation } from "react-router-dom";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import React from "react";
-import { createPortal } from "react-dom";
-import LegacySidebar from "@/components/dashboard/Sidebar";
+import { LegacySidebarPortal } from "@/components/dashboard/LegacySidebarPortal";
 import mindsetLogo from "@/assets/mindset-logo.svg";
-import collapseIcon from "@/assets/icons/collapse-icon.svg";
-import { cn } from "@/lib/utils";
 
 function FloatingEdgeToggle() {
   const { state, isMobile } = useSidebar();
@@ -86,26 +83,6 @@ export default function DashboardLayout() {
     isDashboardScreen || isTherapistPage || isRadarPage;
 
   const [legacySidebarOpen, setLegacySidebarOpen] = React.useState(false);
-  const portalTarget = typeof document !== "undefined" ? document.body : null;
-
-  const legacySidebarOverlay =
-    legacySidebarOpen && portalTarget
-      ? createPortal(
-          <>
-            <div
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[90]"
-              onClick={() => setLegacySidebarOpen(false)}
-            />
-            <div className="fixed left-0 top-0 z-[120] h-screen">
-              <LegacySidebar
-                isCollapsed={false}
-                onToggle={() => setLegacySidebarOpen(false)}
-              />
-            </div>
-          </>,
-          portalTarget,
-        )
-      : null;
 
   return (
     <TooltipProvider>
@@ -140,7 +117,10 @@ export default function DashboardLayout() {
               </div>
             )}
 
-            {legacySidebarOverlay}
+            <LegacySidebarPortal
+              open={legacySidebarOpen}
+              onClose={() => setLegacySidebarOpen(false)}
+            />
 
             {/* xl: collapsed sidebar edge toggle */}
             {shouldShowAppSidebar && (
