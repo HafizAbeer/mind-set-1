@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import brainImage from "../assets/brain-image.png";
 import heroPattern from "../assets/hero-pattern.svg";
 import shareIcon from "../assets/share-icon.svg";
+import { useInstallPrompt } from "../hooks/useInstallPrompt";
 
 const footerLinks = [
   { label: "Disclaimer", path: "/disclaimer" },
@@ -14,6 +15,7 @@ const footerLinks = [
 
 export default function Hero() {
   const navigate = useNavigate();
+  const { canInstall, install } = useInstallPrompt();
 
   return (
     <div className="relative h-dvh w-full bg-[#1e1f24] overflow-hidden flex flex-col items-center">
@@ -32,10 +34,15 @@ export default function Hero() {
       {/* Top gradient glow */}
       <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[1000px] h-[200px] bg-[radial-gradient(ellipse,rgba(107,199,255,0.08)_0%,transparent_70%)] pointer-events-none" />
 
-      {/* Share button */}
-      <button className="absolute top-5 right-5 md:top-8 md:right-10 z-10 w-[50px] h-[50px] border border-white rounded-md flex items-center justify-center hover:bg-white/10 transition-colors">
-        <img src={shareIcon} alt="Share" className="w-5 h-5" />
-      </button>
+      {/* Install app button */}
+      {canInstall && (
+        <button
+          onClick={install}
+          className="absolute top-5 right-5 md:top-8 md:right-10 z-10 w-[50px] h-[50px] border border-white rounded-md flex items-center justify-center hover:bg-white/10 transition-colors"
+        >
+          <img src={shareIcon} alt="Install App" className="w-5 h-5" />
+        </button>
+      )}
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-between w-full max-w-[1440px] px-4 py-[2vh] h-full">
