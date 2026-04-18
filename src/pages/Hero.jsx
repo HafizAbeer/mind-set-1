@@ -53,20 +53,27 @@ export default function Hero() {
         </div>
 
         {/* Middle section: Brain image - shrinks to fit */}
-        <button
-          onClick={() => navigate("/login")}
-          className="relative group cursor-pointer flex-1 flex items-center justify-center min-h-0 my-2"
-        >
-          <div className="absolute inset-[-15%] rounded-full bg-[radial-gradient(circle,rgba(107,199,255,0.06)_0%,transparent_70%)] group-hover:bg-[radial-gradient(circle,rgba(107,199,255,0.12)_0%,transparent_70%)] transition-all duration-500" />
+        <div className="flex-1 flex items-center justify-center min-h-0 my-[50px]">
+          <button
+            onClick={() => navigate("/login")}
+            className="relative group cursor-pointer shrink-0 rounded-full"
+            style={{
+              "--size": "min(540px, 75vw, calc(100dvh - 450px))",
+              width: "var(--size)",
+              height: "var(--size)",
+            }}
+          >
+            <div className="absolute inset-[-15%] rounded-full bg-[radial-gradient(circle,rgba(107,199,255,0.06)_0%,transparent_70%)] group-hover:bg-[radial-gradient(circle,rgba(107,199,255,0.12)_0%,transparent_70%)] transition-all duration-500" />
 
-          <div className="relative aspect-square h-full max-h-full max-w-[540px] rounded-full border border-white/40 flex items-center justify-center group-hover:border-white/70 transition-colors duration-300">
-            <img
-              src={brainImage}
-              alt="Mindset Brain"
-              className="w-[85%] h-[85%] object-contain -scale-y-100 drop-shadow-[0_0_40px_rgba(107,199,255,0.15)] group-hover:drop-shadow-[0_0_60px_rgba(107,199,255,0.25)] transition-all duration-500"
-            />
-          </div>
-        </button>
+            <div className="w-full h-full rounded-full border border-white/40 flex items-center justify-center group-hover:border-white/70 transition-colors duration-300">
+              <img
+                src={brainImage}
+                alt="Mindset Brain"
+                className="w-full h-full object-contain -scale-y-100 drop-shadow-[0_0_40px_rgba(107,199,255,0.15)] group-hover:drop-shadow-[0_0_60px_rgba(107,199,255,0.25)] transition-all duration-500"
+              />
+            </div>
+          </button>
+        </div>
 
         {/* Bottom section: Tagline + Footer */}
         <div className="flex flex-col items-center shrink-0 gap-3 md:gap-5">
