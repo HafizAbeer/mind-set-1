@@ -4,12 +4,12 @@ import heroPattern from "../assets/hero-pattern.svg";
 import shareIcon from "../assets/share-icon.svg";
 
 const footerLinks = [
-  "Disclaimer",
-  "Manual",
-  "Terms of use",
-  "Literature",
-  "Privacy policy",
-  "Impressum",
+  { label: "Disclaimer", path: "/disclaimer" },
+  { label: "Manual", path: "/manual" },
+  { label: "Terms of use", path: "/terms-of-use" },
+  { label: "Literature", path: "/literature" },
+  { label: "Privacy policy", path: "/privacy-policy" },
+  { label: "Impressum", path: "/impressum" },
 ];
 
 export default function Hero() {
@@ -77,9 +77,10 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 max-w-[1400px]">
-            {footerLinks.map((label) => (
+            {footerLinks.map(({ label, path }) => (
               <button
                 key={label}
+                onClick={() => navigate(path)}
                 className="border border-white rounded-full px-5 md:px-8 py-1 text-white/55 font-inter font-medium text-xs md:text-sm lg:text-base tracking-[2px] md:tracking-[5px] hover:text-white/80 hover:border-white/80 transition-colors"
               >
                 {label}

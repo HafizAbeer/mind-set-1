@@ -73,6 +73,7 @@ import TherapistNewEntry from "./pages/TherapistNewEntry";
 import Settings from "./pages/Settings";
 import Pricing from "./pages/Pricing";
 import Hero from "./pages/Hero";
+import PlaceholderPage from "./pages/PlaceholderPage";
 
 
 function App() {
@@ -196,6 +197,12 @@ function App() {
 
         {/* Default Redirect */}
         <Route path="/" element={<Hero />} />
+        <Route path="/disclaimer" element={<PlaceholderPage title="Disclaimer" />} />
+        <Route path="/manual" element={<PlaceholderPage title="Manual" />} />
+        <Route path="/terms-of-use" element={<PlaceholderPage title="Terms of use" />} />
+        <Route path="/literature" element={<PlaceholderPage title="Literature" />} />
+        <Route path="/privacy-policy" element={<PlaceholderPage title="Privacy policy" />} />
+        <Route path="/impressum" element={<PlaceholderPage title="Impressum" />} />
 
       </Routes>
     </Router>
