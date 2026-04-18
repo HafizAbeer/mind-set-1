@@ -72,6 +72,7 @@ import TherapistDialog from "./pages/TherapistDialog";
 import TherapistNewEntry from "./pages/TherapistNewEntry";
 import Settings from "./pages/Settings";
 import Pricing from "./pages/Pricing";
+import Hero from "./pages/Hero";
 
 
 function App() {
@@ -194,7 +195,7 @@ function App() {
         </Route>
 
         {/* Default Redirect */}
-        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/" element={<Hero />} />
 
       </Routes>
     </Router>
