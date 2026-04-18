@@ -16,7 +16,7 @@ export default function Hero() {
   const navigate = useNavigate();
 
   return (
-    <div className="relative min-h-screen w-full bg-[#1e1f24] overflow-hidden flex flex-col items-center">
+    <div className="relative h-dvh w-full bg-[#1e1f24] overflow-hidden flex flex-col items-center">
       {/* Background pattern */}
       <div className="absolute inset-0 flex items-start justify-center pointer-events-none opacity-30">
         <img
@@ -38,29 +38,28 @@ export default function Hero() {
       </button>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center w-full max-w-[1440px] px-4 pt-8 md:pt-12 flex-1">
-        {/* Title */}
-        <h1 className="font-sans font-medium text-white text-5xl sm:text-6xl md:text-7xl lg:text-[96px] text-center leading-tight">
-          New Mindset
-        </h1>
+      <div className="relative z-10 flex flex-col items-center justify-between w-full max-w-[1440px] px-4 py-[2vh] h-full">
+        {/* Top section: Title + Subtitle */}
+        <div className="flex flex-col items-center shrink-0">
+          <h1 className="font-sans font-medium text-white text-5xl sm:text-6xl md:text-7xl lg:text-[96px] text-center leading-tight">
+            New Mindset
+          </h1>
 
-        {/* Subtitle pill */}
-        <div className="mt-4 md:mt-6 border border-white rounded-full px-6 md:px-10 py-2">
-          <p className="font-inter font-medium text-white text-xs sm:text-sm md:text-lg lg:text-xl text-center tracking-[3px] md:tracking-[5px]">
-            A way to change your approach to life and it's stresses
-          </p>
+          <div className="mt-4 md:mt-6 border border-white rounded-full px-6 md:px-10 py-2">
+            <p className="font-inter font-medium text-white text-xs sm:text-sm md:text-lg lg:text-xl text-center tracking-[3px] md:tracking-[5px]">
+              A way to change your approach to life and it's stresses
+            </p>
+          </div>
         </div>
 
-        {/* Brain image - clickable */}
+        {/* Middle section: Brain image - shrinks to fit */}
         <button
           onClick={() => navigate("/login")}
-          className="relative mt-6 md:mt-10 group cursor-pointer"
+          className="relative group cursor-pointer flex-1 flex items-center justify-center min-h-0 my-2"
         >
-          {/* Outer glow ring */}
           <div className="absolute inset-[-15%] rounded-full bg-[radial-gradient(circle,rgba(107,199,255,0.06)_0%,transparent_70%)] group-hover:bg-[radial-gradient(circle,rgba(107,199,255,0.12)_0%,transparent_70%)] transition-all duration-500" />
 
-          {/* Circle border */}
-          <div className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[450px] md:h-[450px] lg:w-[540px] lg:h-[540px] rounded-full border border-white/40 flex items-center justify-center group-hover:border-white/70 transition-colors duration-300">
+          <div className="relative aspect-square h-full max-h-full max-w-[540px] rounded-full border border-white/40 flex items-center justify-center group-hover:border-white/70 transition-colors duration-300">
             <img
               src={brainImage}
               alt="Mindset Brain"
@@ -69,25 +68,24 @@ export default function Hero() {
           </div>
         </button>
 
-        {/* Tagline pill */}
-        <div className="mt-6 md:mt-10 border border-white rounded-full px-6 md:px-16 py-4 md:py-6">
-          <p className="font-inter font-medium text-white text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-[65px] text-center leading-tight">
-            mindful – transformative - individual
-          </p>
-        </div>
-      </div>
+        {/* Bottom section: Tagline + Footer */}
+        <div className="flex flex-col items-center shrink-0 gap-3 md:gap-5">
+          <div className="border border-white rounded-full px-6 md:px-16 py-4 md:py-6">
+            <p className="font-inter font-medium text-white text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-[65px] text-center leading-tight">
+              mindful – transformative - individual
+            </p>
+          </div>
 
-      {/* Footer links */}
-      <div className="relative z-10 w-full px-4 pb-6 md:pb-8 mt-auto">
-        <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 max-w-[1400px] mx-auto">
-          {footerLinks.map((label) => (
-            <button
-              key={label}
-              className="border border-white rounded-full px-5 md:px-8 py-1 text-white/55 font-inter font-medium text-xs md:text-sm lg:text-base tracking-[2px] md:tracking-[5px] hover:text-white/80 hover:border-white/80 transition-colors"
-            >
-              {label}
-            </button>
-          ))}
+          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 max-w-[1400px]">
+            {footerLinks.map((label) => (
+              <button
+                key={label}
+                className="border border-white rounded-full px-5 md:px-8 py-1 text-white/55 font-inter font-medium text-xs md:text-sm lg:text-base tracking-[2px] md:tracking-[5px] hover:text-white/80 hover:border-white/80 transition-colors"
+              >
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>
