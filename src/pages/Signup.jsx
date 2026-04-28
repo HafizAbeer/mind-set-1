@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { User, Mail, Lock } from "lucide-react";
 import AuthLayout from "../components/auth/AuthLayout";
 import AuthInput from "../components/auth/AuthInput";
 import AuthButton from "../components/auth/AuthButton";
 import AuthCheckbox from "../components/auth/AuthCheckbox";
 import AuthSelect from "../components/auth/AuthSelect";
-import AgreementModal from "../components/auth/AgreementModal";
 
 const SignupPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,7 +20,6 @@ const SignupPage = () => {
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [isAgreementOpen, setIsAgreementOpen] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -75,7 +74,15 @@ const SignupPage = () => {
       return;
     }
     setError("");
-    setIsAgreementOpen(true);
+    if (formData.role === "User") {
+      navigate("/agreement-user", { state: { formData, mode: "signup" } });
+      return;
+    }
+    navigate("/agreement-therapist", { state: { formData } });
+  };
+
+  const handleTermsOfServiceClick = () => {
+    navigate("/agreement-user", { state: { formData, mode: "tos" } });
   };
 
   return (
@@ -86,6 +93,11 @@ const SignupPage = () => {
       footerLinkHref="/login"
     >
       <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+        {location?.state?.agreementError && (
+          <div className="text-red-500 text-sm text-center">
+            {location.state.agreementError}
+          </div>
+        )}
         {error && (
           <div className="text-red-500 text-sm text-center">{error}</div>
         )}
@@ -176,7 +188,7 @@ const SignupPage = () => {
                 By creating an account, you agree to the{" "}
                 <button
                   type="button"
-                  onClick={handleSignupClick}
+                  onClick={handleTermsOfServiceClick}
                   className="text-[#6BC7FF] underline"
                 >
                   Terms of Service
@@ -187,12 +199,6 @@ const SignupPage = () => {
           />
         </div>
       </form>
-      <AgreementModal
-        isOpen={isAgreementOpen}
-        onClose={() => setIsAgreementOpen(false)}
-        onAccept={() => handleSubmit()}
-        role={formData.role}
-      />
     </AuthLayout>
   );
 };

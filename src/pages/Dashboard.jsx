@@ -4,11 +4,9 @@ import RadarVisualization from "../components/dashboard/RadarVisualization";
 import { BarChart3, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import successGaugeIcon from "../assets/radarModulesIcon/successGuage-red-icon.svg";
-import ImpressumModal from "../components/dashboard/ImpressumModal";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const [isImpressumOpen, setIsImpressumOpen] = React.useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem("userToken");
@@ -148,7 +146,7 @@ const Dashboard = () => {
                       <RadarVisualization />
 
                       <button
-                        onClick={() => setIsImpressumOpen(true)}
+                        onClick={() => navigate("/impressum")}
                         className="hidden lg:flex absolute z-30 glass text-white hover:bg-white/10 items-center justify-center w-[218px] h-[56px] font-inter font-semibold leading-[24px] tracking-[5px]
                         lg:left-[400px]
                         xl:left-[calc(50%+220px)]
@@ -217,7 +215,7 @@ const Dashboard = () => {
                         Log Out
                       </button>
                       <button
-                        onClick={() => setIsImpressumOpen(true)}
+                        onClick={() => navigate("/impressum")}
                         className="w-full sm:flex-1 h-[56px] glass text-white hover:bg-white/10 flex items-center justify-center text-center font-inter font-medium leading-[24px] tracking-[5px]"
                         style={{
                           borderRadius: "13px",
@@ -236,10 +234,6 @@ const Dashboard = () => {
           </div>
         </main>
       </div>
-      <ImpressumModal
-        isOpen={isImpressumOpen}
-        onClose={() => setIsImpressumOpen(false)}
-      />
     </div>
   );
 };

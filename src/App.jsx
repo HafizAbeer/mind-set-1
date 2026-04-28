@@ -74,6 +74,14 @@ import Settings from "./pages/Settings";
 import Pricing from "./pages/Pricing";
 import Hero from "./pages/Hero";
 import PlaceholderPage from "./pages/PlaceholderPage";
+import Disclaimer from "./pages/Disclaimer";
+import Manual from "./pages/Manual";
+import TermsOfUse from "./pages/TermsOfUse";
+import Literature from "./pages/Literature";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Impressum from "./pages/Impressum";
+import AgreementUser from "./pages/AgreementUser";
+import AgreementTherapist from "./pages/AgreementTherapist";
 
 
 function App() {
@@ -83,6 +91,8 @@ function App() {
         {/* Auth Routes */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/agreement-user" element={<AgreementUser />} />
+        <Route path="/agreement-therapist" element={<AgreementTherapist />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/enter-pin" element={<EnterPinPage />} />
         <Route path="/new-password" element={<NewPasswordPage />} />
@@ -197,12 +207,12 @@ function App() {
 
         {/* Default Redirect */}
         <Route path="/" element={<Hero />} />
-        <Route path="/disclaimer" element={<PlaceholderPage title="Disclaimer" />} />
-        <Route path="/manual" element={<PlaceholderPage title="Manual" />} />
-        <Route path="/terms-of-use" element={<PlaceholderPage title="Terms of use" />} />
-        <Route path="/literature" element={<PlaceholderPage title="Literature" />} />
-        <Route path="/privacy-policy" element={<PlaceholderPage title="Privacy policy" />} />
-        <Route path="/impressum" element={<PlaceholderPage title="Impressum" />} />
+        <Route path="/disclaimer" element={<Disclaimer />} />
+        <Route path="/manual" element={<Manual />} />
+        <Route path="/terms-of-use" element={<TermsOfUse />} />
+        <Route path="/literature" element={<Literature />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/impressum" element={<Impressum />} />
 
       </Routes>
     </Router>

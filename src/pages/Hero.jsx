@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import brainImage from "../assets/brain-image.png";
-import heroPattern from "../assets/hero-pattern.svg";
 import shareIcon from "../assets/share-icon.svg";
 import { useInstallPrompt } from "../hooks/useInstallPrompt";
 
@@ -18,22 +17,8 @@ export default function Hero() {
   const { canInstall, install } = useInstallPrompt();
 
   return (
-    <div className="relative h-dvh w-full bg-[#1e1f24] overflow-hidden flex flex-col items-center">
-      {/* Background pattern */}
-      <div className="absolute inset-0 flex items-start justify-center pointer-events-none opacity-30">
-        <img
-          src={heroPattern}
-          alt=""
-          className="w-full max-w-[1462px] h-auto mt-[-5%]"
-        />
-      </div>
-
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-[60%] bg-gradient-to-t from-[#1e1f24] via-[#1e1f24]/80 to-transparent pointer-events-none" />
-
-      {/* Top gradient glow */}
+    <div className="relative h-dvh w-full bg-background overflow-hidden flex flex-col items-center">
       <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[1000px] h-[200px] bg-[radial-gradient(ellipse,rgba(107,199,255,0.08)_0%,transparent_70%)] pointer-events-none" />
-
       {/* Install app button */}
       {canInstall && (
         <button
