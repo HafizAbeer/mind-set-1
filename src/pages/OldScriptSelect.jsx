@@ -4,9 +4,15 @@ import { ArrowLeft, ArrowRight, Plus, Info } from "lucide-react";
 import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
 import oldScriptIcon from "../assets/radarModulesIcon/oldScriptGreen-icon.svg";
+import {
+  patchScreeningSelection,
+  screeningDefaults,
+  useScreeningSelection,
+} from "@/lib/screeningSelection";
 
 const OldScriptSelect = () => {
   const navigate = useNavigate();
+  const { lifeScriptLabel } = useScreeningSelection();
   const [selectedIds, setSelectedIds] = useState([7]); // Default selected: to be a smart aleck (id 7)
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [customInput, setCustomInput] = useState("");
@@ -71,7 +77,7 @@ const OldScriptSelect = () => {
                 <Info size={24} className="text-white shrink-0" />
                 <div className="flex-1 flex flex-col items-center justify-center">
                   <p className="font-inter font-semibold text-[clamp(16px,4vw,22px)] leading-tight sm:leading-[28px] tracking-[0px] text-[#48C856] m-0 text-center">
-                    You have identified <span style={{ color: 'white' }}>“Life Script”</span> as your Life Script. Which of the following<br className="hidden sm:block" />
+                    You have identified <span style={{ color: 'white' }}>“{lifeScriptLabel}”</span> as your Life Script. Which of the following<br className="hidden sm:block" />
                     <span style={{ color: 'white' }}>“Old Life Script qualities”</span> would you like to leave behind?
                   </p>
                 </div>
@@ -129,7 +135,16 @@ const OldScriptSelect = () => {
                 </button>
                 <button
                   type="button"
-                  onClick={() => navigate("/new-script")}
+                  onClick={() => {
+                    const labels = selectedIds
+                      .map((id) => scripts.find((s) => s.id === id)?.label)
+                      .filter(Boolean);
+                    const oldScriptSummary = labels.length
+                      ? labels.join(", ")
+                      : screeningDefaults.oldScriptSummary;
+                    patchScreeningSelection({ oldScriptSummary });
+                    navigate("/new-script");
+                  }}
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all shadow-lg border-2 border-[#48C856] text-[15px] md:text-[20px] hover:opacity-90 active:scale-95"
                   style={{ background: themeGradient }}
                 >

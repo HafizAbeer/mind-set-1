@@ -4,6 +4,10 @@ import { ArrowLeft, ArrowRight, Plus, Info } from "lucide-react";
 import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
 import scriptIcon from "../assets/radarModulesIcon/lifeScript-lightGreen-icon.svg";
+import {
+  patchScreeningSelection,
+  screeningDefaults,
+} from "@/lib/screeningSelection";
 
 const LifeScriptSelect = () => {
   const navigate = useNavigate();
@@ -130,7 +134,16 @@ const LifeScriptSelect = () => {
                 </button>
                 <button
                   type="button"
-                  onClick={() => navigate("/old-script")}
+                  onClick={() => {
+                    const id = selectedIds[0];
+                    const lifeScriptLabel =
+                      id != null
+                        ? scripts.find((s) => s.id === id)?.label ??
+                          screeningDefaults.lifeScriptLabel
+                        : screeningDefaults.lifeScriptLabel;
+                    patchScreeningSelection({ lifeScriptLabel });
+                    navigate("/old-script");
+                  }}
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all shadow-lg border-2 border-[#E2E464] text-[15px] md:text-[20px] hover:opacity-90 active:scale-95"
                   style={{ background: themeGradient }}
                 >

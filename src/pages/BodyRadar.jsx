@@ -2,9 +2,11 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import RadarModuleLayout from "../components/dashboard/RadarModuleLayout";
 import bodyIcon from "../assets/radarModulesIcon/body-red-icon.svg";
+import { useScreeningSelection } from "@/lib/screeningSelection";
 
 const BodyRadar = () => {
   const navigate = useNavigate();
+  const { mindsetLabel, triggerLabel, causeLabel } = useScreeningSelection();
 
   return (
     <RadarModuleLayout
@@ -16,16 +18,16 @@ const BodyRadar = () => {
         <>
           You have found{" "}
           <span style={{ color: "#D16868" }} className="italic">
-            “cause”
+            “{causeLabel}”
           </span>
           <br />
           as deeper cause for{" "}
           <span style={{ color: "#D16868" }} className="italic">
-            “trigger”
+            “{triggerLabel}”
           </span>{" "}
           of{" "}
           <span style={{ color: "#D16868" }} className="italic">
-            “Mindset”
+            “{mindsetLabel}”
           </span>
           .<br />
           You have also reflected carefully about the details of this

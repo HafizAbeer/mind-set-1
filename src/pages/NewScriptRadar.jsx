@@ -2,9 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import RadarModuleLayout from '../components/dashboard/RadarModuleLayout';
 import newScriptIcon from '../assets/radarModulesIcon/newScript-purple-icon.svg';
+import { useScreeningSelection } from '@/lib/screeningSelection';
 
 const NewScriptRadar = () => {
   const navigate = useNavigate();
+  const { lifeScriptLabel, oldScriptSummary } = useScreeningSelection();
 
   return (
     <RadarModuleLayout
@@ -14,8 +16,8 @@ const NewScriptRadar = () => {
       stepTitle="All right,"
       description={
         <>
-          You have defined <span className="italic text-[#CE5CFF]">"life script"</span> as your actual life-script and<br />
-          found <span className="italic text-[#CE5CFF]">"old script/s"</span> as disturbing aspect/s in it.<br />
+          You have defined <span className="italic text-[#CE5CFF]">“{lifeScriptLabel}”</span> as your actual life-script and<br />
+          found <span className="italic text-[#CE5CFF]">“{oldScriptSummary}”</span> as disturbing aspect/s in it.<br />
           With which new positively estimated <span className="text-[#CE5CFF]">script-characteristic/s</span><br />
           you want to strengthen or enhance your life script.
         </>

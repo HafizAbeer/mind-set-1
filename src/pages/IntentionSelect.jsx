@@ -6,6 +6,10 @@ import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
 import intentionIcon from "../assets/radarModulesIcon/intention-yellow-icon.svg";
 import MindsetOverlayCard from "../components/dashboard/MindsetOverlayCard";
+import {
+  patchScreeningSelection,
+  screeningDefaults,
+} from "@/lib/screeningSelection";
 
 /**
  * Data mapping for mindset quotes associated with intention IDs.
@@ -252,7 +256,16 @@ const IntentionSelect = () => {
                 </button>
                 <button
                   type="button"
-                  onClick={() => navigate("/anchor")}
+                  onClick={() => {
+                    const id = selectedIds[0];
+                    const intentionLabel =
+                      id != null
+                        ? intentions.find((i) => i.id === id)?.label ??
+                          screeningDefaults.intentionLabel
+                        : screeningDefaults.intentionLabel;
+                    patchScreeningSelection({ intentionLabel });
+                    navigate("/anchor");
+                  }}
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all shadow-lg border-2 border-[#FBA90B] text-[15px] md:text-[20px] hover:opacity-90 active:scale-95"
                   style={{ background: themeGradient }}
                 >

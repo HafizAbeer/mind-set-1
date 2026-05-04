@@ -2,9 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import RadarModuleLayout from '../components/dashboard/RadarModuleLayout';
 import oldScriptIcon from '../assets/radarModulesIcon/oldScriptGreen-icon.svg';
+import { useScreeningSelection } from '@/lib/screeningSelection';
 
 const OldScriptRadar = () => {
   const navigate = useNavigate();
+  const { lifeScriptLabel } = useScreeningSelection();
 
   return (
     <RadarModuleLayout
@@ -14,7 +16,7 @@ const OldScriptRadar = () => {
       stepTitle="Fine..."
       description={
         <>
-          So let’s start with this role of <span style={{ color: '#48C856' }} className="italic">“life script”</span> as your actual life script.<br />
+          So let’s start with this role of <span style={{ color: '#48C856' }} className="italic">“{lifeScriptLabel}”</span> as your actual life script.<br />
           Unfortunately you’r feeling stressed right now in this role.<br />
           Which of your troublesome Traits inherent in your script you<br />
           want to fight in the near future?

@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import RadarModuleLayout from '../components/dashboard/RadarModuleLayout';
 import exerciseIcon from '../assets/radarModulesIcon/exercise-orange-icon.svg';
 import ExerciseInfoModal from '../components/dashboard/ExerciseInfoModal';
+import { useScreeningSelection } from '@/lib/screeningSelection';
 
 const ExercisesRadar = () => {
   const navigate = useNavigate();
   const [isInfoModalOpen, setIsInfoModalOpen] = React.useState(false);
+  const { intentionLabel } = useScreeningSelection();
 
   return (
     <>
@@ -26,7 +28,7 @@ const ExercisesRadar = () => {
         footerText={
           <>
             You can choose from the following list which exercises you prefer in<br />
-            order to strengthen and develop <span style={{ color: '#FF6721' }} className="italic">‘Intention’</span> as your new mindset.
+            order to strengthen and develop <span style={{ color: '#FF6721' }} className="italic">‘{intentionLabel}’</span> as your new mindset.
           </>
         }
         themeColor="#FF6721"

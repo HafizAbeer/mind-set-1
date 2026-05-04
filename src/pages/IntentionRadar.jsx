@@ -1,12 +1,20 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import RadarModuleLayout from '../components/dashboard/RadarModuleLayout';
-import intentionIcon from '../assets/radarModulesIcon/intention-yellow-icon.svg';
-import IntentionInfoModal from '../components/dashboard/IntentionInfoModal';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import RadarModuleLayout from "../components/dashboard/RadarModuleLayout";
+import intentionIcon from "../assets/radarModulesIcon/intention-yellow-icon.svg";
+import IntentionInfoModal from "../components/dashboard/IntentionInfoModal";
+import { useScreeningSelection } from "@/lib/screeningSelection";
 
 const IntentionRadar = () => {
   const navigate = useNavigate();
   const [isInfoModalOpen, setIsInfoModalOpen] = React.useState(false);
+  const {
+    symptomSummary,
+    bodyStructureLabel,
+    mindsetLabel,
+    triggerLabel,
+    causeLabel,
+  } = useScreeningSelection();
 
   return (
     <>
@@ -17,19 +25,40 @@ const IntentionRadar = () => {
         stepTitle="Great, good body awareness!!!"
         description={
           <>
-            You have assigned <span style={{ color: '#FBA90B' }} className="italic">“syptom”</span> in the<br />
-            <span style={{ color: '#FBA90B' }} className="italic">“body structure”</span> as associated<br />
+            You have assigned{" "}
+            <span style={{ color: "#FBA90B" }} className="italic">
+              “{symptomSummary}”
+            </span>{" "}
+            in the
+            <br />
+            <span style={{ color: "#FBA90B" }} className="italic">
+              “{bodyStructureLabel}”
+            </span>{" "}
+            as associated
+            <br />
             symptom.
           </>
         }
         footerTitle="Now Select:"
         footerText={
           <>
-            From the list of desired mindsets, thoughts or emotional states, which<br />
-            ones would you ideally like to adopt in order to be able to cope with<br />
-            <span style={{ color: '#FBA90B' }} className="italic">‘mindset’</span>{' '}
-            <span style={{ color: '#2AABEE' }} className="italic">‘triggers’</span> and{' '}
-            <span style={{ color: '#88EC65' }} className="italic">‘causes’</span> in the future?
+            From the list of desired mindsets, thoughts or emotional states,
+            which
+            <br />
+            ones would you ideally like to adopt in order to be able to cope
+            with
+            <br />
+            <span style={{ color: "#FBA90B" }} className="italic">
+              ‘{mindsetLabel}’
+            </span>{" "}
+            <span style={{ color: "#2AABEE" }} className="italic">
+              ‘{triggerLabel}’
+            </span>{" "}
+            and{" "}
+            <span style={{ color: "#88EC65" }} className="italic">
+              ‘{causeLabel}’
+            </span>{" "}
+            in the future?
           </>
         }
         themeColor="#FBA90B"
@@ -40,8 +69,8 @@ const IntentionRadar = () => {
         backButtonText="Back"
         showInfoIcon={true}
         onInfoClick={() => setIsInfoModalOpen(true)}
-        onBack={() => navigate('/symptom')}
-        onContinue={() => navigate('/intention-select')}
+        onBack={() => navigate("/symptom")}
+        onContinue={() => navigate("/intention-select")}
       />
       <IntentionInfoModal
         isOpen={isInfoModalOpen}

@@ -4,9 +4,16 @@ import { ArrowLeft, ArrowRight, Plus, Info } from "lucide-react";
 import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
 import symptomIcon from "../assets/radarModulesIcon/symptom-blue-icon.svg";
+import {
+  patchScreeningSelection,
+  screeningDefaults,
+  useScreeningSelection,
+} from "@/lib/screeningSelection";
 
 const SymptomSelect = () => {
   const navigate = useNavigate();
+  const { mindsetLabel, triggerLabel, bodyStructureLabel } =
+    useScreeningSelection();
   const [selectedIds, setSelectedIds] = useState([1]); // Default selected: pain (id 1)
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [customInput, setCustomInput] = useState("");
@@ -90,15 +97,15 @@ const SymptomSelect = () => {
                   <p className="font-inter font-semibold text-[clamp(16px,4vw,22px)] leading-tight sm:leading-[28px] tracking-[0px] text-white m-0 text-center">
                     You have identified{" "}
                     <span className="font-semibold italic text-[#2AABEE]">
-                      “Trigger”
+                      “{triggerLabel}”
                     </span>{" "}
                     as your trigger for{" "}
                     <span className="font-semibold italic text-[#2AABEE]">
-                      “Mindset”
+                      “{mindsetLabel}”
                     </span>{" "}
                     as mindset. What symptom you perceive most clearly in your{" "}
                     <span className="font-semibold italic text-[#2AABEE]">
-                      “Structure”
+                      “{bodyStructureLabel}”
                     </span>
                     ?
                   </p>
@@ -159,7 +166,16 @@ const SymptomSelect = () => {
                 </button>
                 <button
                   type="button"
-                  onClick={() => navigate("/intention")}
+                  onClick={() => {
+                    const labels = selectedIds
+                      .map((id) => symptoms.find((s) => s.id === id)?.label)
+                      .filter(Boolean);
+                    const symptomSummary = labels.length
+                      ? labels.join(", ")
+                      : screeningDefaults.symptomSummary;
+                    patchScreeningSelection({ symptomSummary });
+                    navigate("/intention");
+                  }}
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all shadow-lg border-2 border-[#2AABEE] text-[15px] md:text-[20px] hover:opacity-90 active:scale-95"
                   style={{ background: themeGradient }}
                 >

@@ -3,11 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Plus, Info, User2, X } from "lucide-react";
 import { LegacySidebarPortal } from "../components/dashboard/LegacySidebarPortal";
 import { cn } from "@/lib/utils";
+import {
+  patchScreeningSelection,
+  screeningDefaults,
+  useScreeningSelection,
+} from "@/lib/screeningSelection";
 import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
 
 const BodyRadarSelect = () => {
   const navigate = useNavigate();
+  const { mindsetLabel, causeLabel } = useScreeningSelection();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedIds, setSelectedIds] = useState([4]); // Default selected: Bassin (id 4)
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -175,11 +181,11 @@ const BodyRadarSelect = () => {
                   <p className="font-inter font-semibold text-[22px] leading-[28px] tracking-[0px] text-white m-0 text-center">
                     You have found{" "}
                     <span className="font-semibold italic text-[#D16868]">
-                      “cause”
+                      “{causeLabel}”
                     </span>{" "}
                     as deeper cause for{" "}
                     <span className="font-semibold italic text-[#D16868]">
-                      “Mindset”
+                      “{mindsetLabel}”
                     </span>{" "}
                     mindset. where in your body do you feel the mindset most
                     clearly?
@@ -259,7 +265,17 @@ const BodyRadarSelect = () => {
                   Back
                 </button>
                 <button
-                  onClick={() => navigate("/symptom")}
+                  onClick={() => {
+                    const allOpts = sections.flatMap((s) => s.options);
+                    const labels = selectedIds
+                      .map((id) => allOpts.find((o) => o.id === id)?.label)
+                      .filter(Boolean);
+                    const bodyStructureLabel = labels.length
+                      ? labels.join(", ")
+                      : screeningDefaults.bodyStructureLabel;
+                    patchScreeningSelection({ bodyStructureLabel });
+                    navigate("/symptom");
+                  }}
                   className="flex-1 xl:w-[468px] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all shadow-lg border-2 border-[#D16868] text-[15px] md:text-[20px] hover:opacity-90 active:scale-95"
                   style={{ background: themeGradient }}
                 >

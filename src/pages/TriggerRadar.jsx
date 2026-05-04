@@ -9,12 +9,18 @@ import collapseIcon from "../assets/icons/collapse-icon.svg";
 import CustomTriggerModal from "../components/dashboard/CustomTriggerModal";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import {
+  patchScreeningSelection,
+  screeningDefaults,
+  useScreeningSelection,
+} from "@/lib/screeningSelection";
 
 const TriggerRadar = () => {
   const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(9);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { mindsetLabel } = useScreeningSelection();
 
   const strivingOptions = [
     { id: 1, label: "health" },
@@ -67,6 +73,8 @@ const TriggerRadar = () => {
     { id: 45, label: "work situation" },
     { id: 46, label: "illness" },
   ];
+
+  const allTriggerOptions = [...strivingOptions, ...aversionOptions];
 
   const themeColor = "#3C56D8";
   const themeGradient = "linear-gradient(180deg, #738AFF 0%, #3C56D8 100%)";
@@ -138,8 +146,8 @@ const TriggerRadar = () => {
                 <div className="w-full max-w-[857px] flex flex-col items-center justify-center">
                   <p className="font-inter font-medium text-[24px] leading-[33px] tracking-[-2px] text-[#6B83FF] m-0 text-center">
                     You have chosen “
-                    <span className="font-medium text-white">Mindset</span>” as
-                    your mindset. What triggered this mindset?
+                    <span className="font-medium text-white">{mindsetLabel}</span>
+                    ” as your mindset. What triggered this mindset?
                     <br />
                     Has it a Intentionful or an avoiding character?
                   </p>
@@ -226,7 +234,15 @@ const TriggerRadar = () => {
                 </Button>
                 <Button
                   type="button"
-                  onClick={() => navigate("/cause")}
+                  onClick={() => {
+                    const triggerLabel =
+                      selectedId === 0
+                        ? "no clear trigger"
+                        : allTriggerOptions.find((o) => o.id === selectedId)
+                            ?.label ?? screeningDefaults.triggerLabel;
+                    patchScreeningSelection({ triggerLabel });
+                    navigate("/cause");
+                  }}
                   variant="ghost"
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[10px] border-2 border-[#526FFF] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all shadow-lg text-[15px] md:text-[20px] hover:opacity-90 active:scale-95"
                   style={{ background: themeGradient }}

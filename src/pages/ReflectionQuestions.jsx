@@ -11,9 +11,11 @@ import {
 import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
 import reflectionIcon from "../assets/radarModulesIcon/reflection-yellow-icon.svg";
+import { useScreeningSelection } from "@/lib/screeningSelection";
 
 const ReflectionQuestions = () => {
   const navigate = useNavigate();
+  const { mindsetLabel, triggerLabel, causeLabel } = useScreeningSelection();
   const [selectedId, setSelectedId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [customInput, setCustomInput] = useState("");
@@ -72,11 +74,11 @@ const ReflectionQuestions = () => {
                 <div className="flex-1 flex flex-col items-center justify-center">
                   <p className="font-inter font-medium text-[clamp(16px,4vw,24px)] leading-tight sm:leading-[36px] tracking-[0px] text-[#F0B614] m-0 text-center">
                     You have identified{" "}
-                    <span className="text-white italic">"Trigger"</span> as your
+                    <span className="text-white italic">“{triggerLabel}”</span> as your
                     trigger for{" "}
-                    <span className="text-white italic">"Mindset"</span> as
+                    <span className="text-white italic">“{mindsetLabel}”</span> as
                     stressor. <br className="hidden sm:block" />
-                    <span className="text-white italic">"Cause"</span> you defined
+                    <span className="text-white italic">“{causeLabel}”</span> you defined
                     as the the deeper cause for the result. <br className="hidden sm:block" />
                     Try to openly reflect on at least one of the considerations.
                   </p>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import RadarModuleLayout from "../components/dashboard/RadarModuleLayout";
-import rewardChoiceIcon from "../assets/radarModulesIcon/reward-green-icon.svg";
+import rewardChoiceIcon from "../assets/radarModulesIcon/reward-red-icon.svg";
 
 const RewardChoice = () => {
   const navigate = useNavigate();
@@ -26,11 +26,11 @@ const RewardChoice = () => {
           yourself.
         </>
       }
-      themeColor="#35FF795C"
-      themeGradient="linear-gradient(180deg, #6CB083 0%, #115A2A 100%)"
-      themeGradientGhost="linear-gradient(180deg, rgba(72, 200, 86, 0.15) 0%, rgba(72, 200, 86, 0.15) 100%)"
-      themeGhostCircle="rgba(72, 200, 86, 0.20)"
-      themeCardBg="rgba(72, 200, 86, 0.24)"
+      themeColor="white"
+      themeGradient="linear-gradient(to top, #FF3535, #FF35352A)"
+      themeGradientGhost="#FF35355C"
+      themeGhostCircle="#FF35355C"
+      themeCardBg="#FF35355C"
       backButtonText="Back"
       onBack={() => navigate("/success-gauge")}
       onContinue={() => navigate("/reward-choice-select")}

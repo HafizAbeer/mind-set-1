@@ -6,11 +6,17 @@ import collapseIcon from "../assets/icons/collapse-icon.svg";
 import CustomCauseModal from "../components/dashboard/CustomCauseModal";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import {
+  patchScreeningSelection,
+  screeningDefaults,
+  useScreeningSelection,
+} from "@/lib/screeningSelection";
 
 const CauseSelect = () => {
   const navigate = useNavigate();
   const [selectedId, setSelectedId] = useState(5); // Default: 'generalise' per image
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { mindsetLabel, triggerLabel } = useScreeningSelection();
 
   const causeOptions = [
     { id: 1, label: "Catastrophising" },
@@ -105,11 +111,11 @@ const CauseSelect = () => {
                   <p className="font-inter font-semibold text-[24px] leading-[34px] tracking-[0px] text-[#96FF71] m-0 text-center">
                     You have identified{" "}
                     <span className="font-semibold italic text-white">
-                      “Trigger”
+                      “{triggerLabel}”
                     </span>{" "}
                     as your trigger for{" "}
                     <span className="font-semibold italic text-white">
-                      “Mindset”
+                      “{mindsetLabel}”
                     </span>{" "}
                     as mindset.
                     <br />
@@ -219,7 +225,15 @@ const CauseSelect = () => {
                 </Button>
                 <Button
                   type="button"
-                  onClick={() => navigate("/reflection")}
+                  onClick={() => {
+                    const causeLabel =
+                      selectedId === 999
+                        ? "no can't identify a definite cause"
+                        : causeOptions.find((o) => o.id === selectedId)?.label ??
+                          screeningDefaults.causeLabel;
+                    patchScreeningSelection({ causeLabel });
+                    navigate("/reflection");
+                  }}
                   variant="ghost"
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all shadow-lg border-2 border-[#88EC65] text-[15px] md:text-[20px] hover:opacity-90 hover:bg-transparent! active:scale-95"
                   style={{ background: themeGradient }}

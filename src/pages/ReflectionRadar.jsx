@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import RadarModuleLayout from '../components/dashboard/RadarModuleLayout';
 import reflectionIcon from '../assets/radarModulesIcon/reflection-yellow-icon.svg';
 import ReflectionInfoModal from '../components/dashboard/ReflectionInfoModal';
+import { useScreeningSelection } from '@/lib/screeningSelection';
 
 const ReflectionRadar = () => {
   const navigate = useNavigate();
   const [isInfoModalOpen, setIsInfoModalOpen] = React.useState(false);
+  const { mindsetLabel, triggerLabel, causeLabel } = useScreeningSelection();
 
   return (
     <>
@@ -17,8 +19,8 @@ const ReflectionRadar = () => {
         stepTitle="Very well, you got off to a good start."
         description={
           <>
-            You’ve identified <span style={{ color: '#F0B614' }} className="italic">“cause”</span> as an underlying<br />
-            cause for <span style={{ color: '#F0B614' }} className="italic">“trigger”</span> as trigger of <span style={{ color: '#F0B614' }} className="italic">“mindset”</span> in<br />
+            You’ve identified <span style={{ color: '#F0B614' }} className="italic">“{causeLabel}”</span> as an underlying<br />
+            cause for <span style={{ color: '#F0B614' }} className="italic">“{triggerLabel}”</span> as trigger of <span style={{ color: '#F0B614' }} className="italic">“{mindsetLabel}”</span> in<br />
             your mindset screening.
           </>
         }

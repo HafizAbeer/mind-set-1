@@ -8,6 +8,10 @@ import collapseIcon from "../assets/icons/collapse-icon.svg";
 import CustomMindsetModal from "../components/dashboard/CustomMindsetModal";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import {
+  patchScreeningSelection,
+  screeningDefaults,
+} from "@/lib/screeningSelection";
 
 const UnclearMindset = () => {
   const navigate = useNavigate();
@@ -152,7 +156,13 @@ const UnclearMindset = () => {
                 </Button>
                 <Button
                   type="button"
-                  onClick={() => navigate("/trigger")}
+                  onClick={() => {
+                    const label =
+                      mindsetOptions.find((o) => o.id === selectedId)
+                        ?.label ?? screeningDefaults.mindsetLabel;
+                    patchScreeningSelection({ mindsetLabel: label });
+                    navigate("/trigger");
+                  }}
                   variant="ghost"
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[10px] border-2 border-[#FFC350] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all hover:opacity-90 active:scale-95 shadow-lg text-[15px] md:text-[20px]"
                   style={{

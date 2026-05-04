@@ -2,9 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import RadarModuleLayout from '../components/dashboard/RadarModuleLayout';
 import symptomIcon from '../assets/radarModulesIcon/symptom-blue-icon.svg';
+import { useScreeningSelection } from '@/lib/screeningSelection';
 
 const SymptomRadar = () => {
   const navigate = useNavigate();
+  const { bodyStructureLabel } = useScreeningSelection();
 
   return (
     <RadarModuleLayout
@@ -14,7 +16,7 @@ const SymptomRadar = () => {
       stepTitle="Fine !!!"
       description={
         <>
-          You have now determined the <span style={{ color: '#2AABEE' }} className="italic">“body structure”</span> or region<br />
+          You have now determined the <span style={{ color: '#2AABEE' }} className="italic">“{bodyStructureLabel}”</span> or region<br />
           as embodiment for the present mindset.
         </>
       }

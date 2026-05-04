@@ -2,9 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import RadarModuleLayout from '../components/dashboard/RadarModuleLayout';
 import anchorIcon from '../assets/radarModulesIcon/anchor-pink-icon.svg';
+import { useScreeningSelection } from '@/lib/screeningSelection';
 
 const AnchorRadar = () => {
   const navigate = useNavigate();
+  const { intentionLabel, mindsetLabel } = useScreeningSelection();
 
   return (
     <RadarModuleLayout
@@ -15,8 +17,8 @@ const AnchorRadar = () => {
       description={
         <>
           You have now gone through all the steps of the <span className="font-semibold">mindfulness</span><br />
-          process and determined <span style={{ color: '#FF5B86' }} className="italic">“Intention/es”</span> as desired<br />
-          <span style={{ color: '#FF5B86' }} className="italic">“mindset/s.”</span>
+          process and determined <span style={{ color: '#FF5B86' }} className="italic">“{intentionLabel}”</span> as desired<br />
+          <span style={{ color: '#FF5B86' }} className="italic">“{mindsetLabel}”</span>
         </>
       }
       footerTitle="Now:"
