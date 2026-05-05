@@ -7,10 +7,6 @@ import collapseIcon from "../assets/icons/collapse-icon.svg";
 import exerciseIcon from "../assets/radarModulesIcon/exercise-orange-icon.svg";
 import ExerciseOverlayCard from "../components/dashboard/ExerciseOverlayCard";
 
-/**
- * Data mapping for exercise quotes associated with exercise IDs.
- * Simply add new ID-Quote pairs here to scale up to 200+ cards.
- */
 const EXERCISE_QUOTES = {
   1: "As soon as I feel my familiar stress trigger coming on, I place my calming hand/s on the part of my body that I feel connected to it. I am determined to mindfully apply my desired mindset and no longer follow the old paths.",
   2: "Starting today, I will go for a walk in the fresh air once a day. I will merge with nature and enjoy the movement and breathing.I will let all my thoughts run through my head and organise them.",
@@ -71,9 +67,12 @@ const EXERCISE_QUOTES = {
 
 const ExercisesSelect = () => {
   const navigate = useNavigate();
-  const [selectedIds, setSelectedIds] = useState([7]); // Default selected: visualization (id 7)
+  const [selectedIds, setSelectedIds] = useState([null]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [overlayConfig, setOverlayConfig] = useState({ isVisible: false, text: "" });
+  const [overlayConfig, setOverlayConfig] = useState({
+    isVisible: false,
+    text: "",
+  });
   const [customInput, setCustomInput] = useState("");
 
   useEffect(() => {
@@ -160,9 +159,7 @@ const ExercisesSelect = () => {
   return (
     <div className="relative h-screen w-full overflow-hidden">
       <div className="h-full flex items-start justify-center pt-[100px] sm:pt-[100px] md:pt-[120px] xl:pt-6 pb-4 overflow-y-auto custom-scrollbar">
-        <div
-          className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6"
-        >
+        <div className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6">
           <div className="flex w-full gap-[20px] sm:gap-[32px] md:gap-[48px] xl:gap-[0px] h-full relative z-10 justify-center">
             <div className="w-full max-w-[956px] flex flex-col h-full gap-[16px] sm:gap-[24px]">
               <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0">
@@ -176,7 +173,8 @@ const ExercisesSelect = () => {
                     Exercises Radar
                   </h1>
                   <p className="text-[clamp(14px,4vw,18px)] font-inter font-medium text-[#C5C5C5] m-0 leading-snug mt-1 sm:mt-2">
-                    Select which exercises you prefer to strengthen your new mindset.
+                    Select which exercises you prefer to strengthen your new
+                    mindset.
                   </p>
                 </div>
               </div>
@@ -212,10 +210,11 @@ const ExercisesSelect = () => {
                     <button
                       key={exercise.id}
                       onClick={() => toggleSelection(exercise.id)}
-                      className={`h-[48px] w-full max-w-[440px] rounded-[10px] p-[12px_20px] flex items-center justify-between transition-all font-inter font-medium text-[15px] border ${selectedIds.includes(exercise.id)
-                        ? "text-white border-transparent shadow-lg active:scale-95"
-                        : "text-[#C2C2C2] hover:text-white"
-                        }`}
+                      className={`h-[48px] w-full max-w-[440px] rounded-[10px] p-[12px_20px] flex items-center justify-between transition-all font-inter font-medium text-[15px] border ${
+                        selectedIds.includes(exercise.id)
+                          ? "text-white border-transparent shadow-lg active:scale-95"
+                          : "text-[#C2C2C2] hover:text-white"
+                      }`}
                       style={{
                         background: selectedIds.includes(exercise.id)
                           ? themeGradient
@@ -269,7 +268,9 @@ const ExercisesSelect = () => {
                 >
                   <div
                     className="absolute inset-0 bg-black/70 backdrop-blur-md"
-                    onClick={() => setOverlayConfig({ isVisible: false, text: "" })}
+                    onClick={() =>
+                      setOverlayConfig({ isVisible: false, text: "" })
+                    }
                     aria-hidden
                   />
                   <div
@@ -287,15 +288,17 @@ const ExercisesSelect = () => {
                             .share({
                               text: overlayConfig.text.replace(/\n/g, " "),
                             })
-                            .catch(() => { });
+                            .catch(() => {});
                         } else {
-                          navigator.clipboard?.writeText(overlayConfig.text.replace(/\n/g, " "));
+                          navigator.clipboard?.writeText(
+                            overlayConfig.text.replace(/\n/g, " "),
+                          );
                         }
                       }}
                     />
                   </div>
                 </div>,
-                document.body
+                document.body,
               )}
 
             {/* Add Custom Exercise Modal */}

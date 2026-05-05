@@ -7,7 +7,7 @@ import successGaugeIcon from "../assets/radarModulesIcon/successGuage-red-icon.s
 
 const SuccessGaugeSelect = () => {
   const navigate = useNavigate();
-  const [selectedId, setSelectedId] = useState(1); // Default selected: Slight Improvement (id 1)
+  const [selectedId, setSelectedId] = useState(null);
 
   const options = [
     { id: 1, label: "Slight Improvement" },
@@ -25,14 +25,15 @@ const SuccessGaugeSelect = () => {
   return (
     <div className="relative h-screen w-full overflow-hidden">
       <div className="h-full flex items-start justify-center pt-[100px] sm:pt-[100px] md:pt-[120px] xl:pt-6 pb-4 overflow-y-auto custom-scrollbar">
-        <div
-          className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6"
-        >
+        <div className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6">
           <div className="flex w-full gap-[20px] sm:gap-[32px] md:gap-[48px] xl:gap-[0px] h-full relative z-10 justify-center">
-
             <div className="w-full max-w-[956px] flex flex-col h-full gap-[16px] sm:gap-[24px]">
               <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0">
-                <img src={successGaugeIcon} alt="Icon" className="w-12 h-12 object-contain shrink-0" />
+                <img
+                  src={successGaugeIcon}
+                  alt="Icon"
+                  className="w-12 h-12 object-contain shrink-0"
+                />
                 <div className="flex flex-col justify-center w-full">
                   <h1 className="text-[clamp(24px,5vw,32px)] font-inter font-bold text-white m-0 leading-tight tracking-[-0.3px]">
                     Success Gauge
@@ -49,7 +50,8 @@ const SuccessGaugeSelect = () => {
                     Mindset development
                   </h2>
                   <p className="text-[clamp(14px,3.5vw,18px)] font-inter font-medium text-[#C5C5C5] m-0">
-                    Select the option that best represents your current development.
+                    Select the option that best represents your current
+                    development.
                   </p>
                 </div>
 
@@ -72,13 +74,16 @@ const SuccessGaugeSelect = () => {
                           navigate(routeMap[option.label]);
                         }
                       }}
-                      className={`min-h-[64px] sm:min-h-[80px] w-full rounded-[16px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-bold text-[18px] sm:text-[22px] border-2 ${selectedId === option.id
-                        ? "text-white border-transparent shadow-lg active:scale-[0.98]"
-                        : "text-white hover:bg-white/5"
-                        }`}
+                      className={`min-h-[64px] sm:min-h-[80px] w-full rounded-[16px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-bold text-[18px] sm:text-[22px] border-2 ${
+                        selectedId === option.id
+                          ? "text-white border-transparent shadow-lg active:scale-[0.98]"
+                          : "text-white hover:bg-white/5"
+                      }`}
                       style={{
-                        background: selectedId === option.id ? themeGradient : "#27282E",
-                        borderColor: selectedId === option.id ? "#D16868" : "#83848A",
+                        background:
+                          selectedId === option.id ? themeGradient : "#27282E",
+                        borderColor:
+                          selectedId === option.id ? "#D16868" : "#83848A",
                       }}
                     >
                       {option.label}

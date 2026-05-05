@@ -97,9 +97,12 @@ const INTENTION_QUOTES = {
 
 const IntentionSelect = () => {
   const navigate = useNavigate();
-  const [selectedIds, setSelectedIds] = useState([4]); // Default selected: Trust in the future (id 4)
+  const [selectedIds, setSelectedIds] = useState([null]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [overlayConfig, setOverlayConfig] = useState({ isVisible: false, text: "" });
+  const [overlayConfig, setOverlayConfig] = useState({
+    isVisible: false,
+    text: "",
+  });
   const [customInput, setCustomInput] = useState("");
 
   useEffect(() => {
@@ -126,45 +129,84 @@ const IntentionSelect = () => {
   };
 
   const intentions = [
-    { id: 1, label: "Mindfulness" }, { id: 2, label: "New beginning" },
-    { id: 3, label: "Discipline" }, { id: 4, label: "Trust in the future" },
-    { id: 5, label: "Frugality" }, { id: 6, label: "Offensive Spirit" },
-    { id: 7, label: "Love" }, { id: 8, label: "Harmony" },
-    { id: 9, label: "Serenity" }, { id: 10, label: "Enthusiasm" },
-    { id: 11, label: "Generosity" }, { id: 12, label: "Forgiveness" },
-    { id: 13, label: "Self Care" }, { id: 14, label: "Indulgence towards oneself" },
-    { id: 15, label: "Indulgence towards others" }, { id: 16, label: "Modesty" },
-    { id: 17, label: "Curiosity" }, { id: 18, label: "Respectfulness" },
-    { id: 19, label: "Determination" }, { id: 20, label: "Empathy" },
-    { id: 21, label: "Dedication" }, { id: 22, label: "Persistent" },
-    { id: 23, label: "Humility" }, { id: 24, label: "Diligence" },
-    { id: 25, label: "Self-Confidence" }, { id: 26, label: "Reliable" },
-    { id: 27, label: "Laughter Humor" }, { id: 28, label: "Tranquillity" },
-    { id: 29, label: "Strength / Endurance" }, { id: 30, label: "Freedom" },
-    { id: 31, label: "Gratitude" }, { id: 32, label: "Trust" },
-    { id: 33, label: "Patience" }, { id: 34, label: "Optimism" },
-    { id: 35, label: "Benevolence" }, { id: 36, label: "Honesty" },
-    { id: 37, label: "Consolation" }, { id: 38, label: "Tolerance" },
-    { id: 39, label: "Respect" }, { id: 40, label: "Clarity" },
-    { id: 41, label: "Courage to try something new" }, { id: 42, label: "Nature-experience" },
-    { id: 43, label: "Feeling of Security" }, { id: 44, label: "Make Sports" },
-    { id: 45, label: "Asceticism" }, { id: 46, label: "Willpower" },
-    { id: 47, label: "Reduce Constraints" }, { id: 48, label: "Joy of live" },
-    { id: 49, label: "Retire" }, { id: 50, label: "Be casual" },
-    { id: 51, label: "be combative" }, { id: 52, label: "perseverant" },
-    { id: 53, label: "Carpe Diem" }, { id: 54, label: "Panta Rhei" },
-    { id: 55, label: "consideration" }, { id: 56, label: 'not thinking: "I must"' },
-    { id: 57, label: "fearless" }, { id: 58, label: "new horizons" },
-    { id: 59, label: "contentment" }, { id: 60, label: "islands of pleasure" },
-    { id: 61, label: "offensive" }, { id: 62, label: "letting go" },
-    { id: 63, label: "offensive" }, { id: 64, label: "carefree living" },
-    { id: 65, label: "take a break" }, { id: 66, label: "Tidying up" },
-    { id: 67, label: "tackling things" }, { id: 68, label: "have success" },
-    { id: 69, label: "organized" }, { id: 70, label: "allowing contact" },
-    { id: 71, label: "responsibility" }, { id: 72, label: "love worthy" },
-    { id: 73, label: "satisfaction" }, { id: 74, label: "curious" },
-    { id: 75, label: "liberty" }, { id: 76, label: "no sorrows" },
-    { id: 77, label: "resoluteness" }, { id: 78, label: "Euphoria" },
+    { id: 1, label: "Mindfulness" },
+    { id: 2, label: "New beginning" },
+    { id: 3, label: "Discipline" },
+    { id: 4, label: "Trust in the future" },
+    { id: 5, label: "Frugality" },
+    { id: 6, label: "Offensive Spirit" },
+    { id: 7, label: "Love" },
+    { id: 8, label: "Harmony" },
+    { id: 9, label: "Serenity" },
+    { id: 10, label: "Enthusiasm" },
+    { id: 11, label: "Generosity" },
+    { id: 12, label: "Forgiveness" },
+    { id: 13, label: "Self Care" },
+    { id: 14, label: "Indulgence towards oneself" },
+    { id: 15, label: "Indulgence towards others" },
+    { id: 16, label: "Modesty" },
+    { id: 17, label: "Curiosity" },
+    { id: 18, label: "Respectfulness" },
+    { id: 19, label: "Determination" },
+    { id: 20, label: "Empathy" },
+    { id: 21, label: "Dedication" },
+    { id: 22, label: "Persistent" },
+    { id: 23, label: "Humility" },
+    { id: 24, label: "Diligence" },
+    { id: 25, label: "Self-Confidence" },
+    { id: 26, label: "Reliable" },
+    { id: 27, label: "Laughter Humor" },
+    { id: 28, label: "Tranquillity" },
+    { id: 29, label: "Strength / Endurance" },
+    { id: 30, label: "Freedom" },
+    { id: 31, label: "Gratitude" },
+    { id: 32, label: "Trust" },
+    { id: 33, label: "Patience" },
+    { id: 34, label: "Optimism" },
+    { id: 35, label: "Benevolence" },
+    { id: 36, label: "Honesty" },
+    { id: 37, label: "Consolation" },
+    { id: 38, label: "Tolerance" },
+    { id: 39, label: "Respect" },
+    { id: 40, label: "Clarity" },
+    { id: 41, label: "Courage to try something new" },
+    { id: 42, label: "Nature-experience" },
+    { id: 43, label: "Feeling of Security" },
+    { id: 44, label: "Make Sports" },
+    { id: 45, label: "Asceticism" },
+    { id: 46, label: "Willpower" },
+    { id: 47, label: "Reduce Constraints" },
+    { id: 48, label: "Joy of live" },
+    { id: 49, label: "Retire" },
+    { id: 50, label: "Be casual" },
+    { id: 51, label: "be combative" },
+    { id: 52, label: "perseverant" },
+    { id: 53, label: "Carpe Diem" },
+    { id: 54, label: "Panta Rhei" },
+    { id: 55, label: "consideration" },
+    { id: 56, label: 'not thinking: "I must"' },
+    { id: 57, label: "fearless" },
+    { id: 58, label: "new horizons" },
+    { id: 59, label: "contentment" },
+    { id: 60, label: "islands of pleasure" },
+    { id: 61, label: "offensive" },
+    { id: 62, label: "letting go" },
+    { id: 63, label: "offensive" },
+    { id: 64, label: "carefree living" },
+    { id: 65, label: "take a break" },
+    { id: 66, label: "Tidying up" },
+    { id: 67, label: "tackling things" },
+    { id: 68, label: "have success" },
+    { id: 69, label: "organized" },
+    { id: 70, label: "allowing contact" },
+    { id: 71, label: "responsibility" },
+    { id: 72, label: "love worthy" },
+    { id: 73, label: "satisfaction" },
+    { id: 74, label: "curious" },
+    { id: 75, label: "liberty" },
+    { id: 76, label: "no sorrows" },
+    { id: 77, label: "resoluteness" },
+    { id: 78, label: "Euphoria" },
   ];
 
   const themeColor = "#FBA90B";
@@ -173,13 +215,15 @@ const IntentionSelect = () => {
   return (
     <div className="relative h-screen w-full overflow-hidden">
       <div className="h-full flex items-start justify-center pt-[90px] sm:pt-[100px] md:pt-[120px] xl:pt-6 pb-4 overflow-y-auto custom-scrollbar">
-        <div
-          className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6"
-        >
+        <div className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6">
           <div className="flex w-full gap-[20px] sm:gap-[32px] md:gap-[48px] xl:gap-[0px] h-full relative z-10 justify-center">
             <div className="w-full max-w-[956px] flex flex-col h-full gap-[16px] sm:gap-[24px]">
               <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0">
-                <img src={intentionIcon} alt="Icon" className="w-9 h-9 object-contain shrink-0" />
+                <img
+                  src={intentionIcon}
+                  alt="Icon"
+                  className="w-9 h-9 object-contain shrink-0"
+                />
                 <div className="flex flex-col justify-center w-full">
                   <h1 className="text-[clamp(24px,5vw,32px)] font-inter font-bold text-white m-0 leading-tight tracking-[-0.3px]">
                     Intention Radar
@@ -191,14 +235,15 @@ const IntentionSelect = () => {
               </div>
 
               <div className="w-full min-h-[108px] bg-[#FBA90B]/10 border-[2px] border-[#FBA90B] rounded-[16px] p-[20px] flex items-center gap-[8px] shrink-0">
-                <Info
-                  size={24}
-                  className="text-white shrink-0"
-                />
+                <Info size={24} className="text-white shrink-0" />
                 <div className="flex-1 flex flex-col items-center justify-center">
                   <p className="font-inter font-semibold text-[22px] leading-[28px] tracking-[0px] text-[#FBA90B] m-0 text-center">
-                    You have now successfully identified your mindset and its deeper relations.<br />
-                    What new mindset do you want now to influence your state of mind?<br />
+                    You have now successfully identified your mindset and its
+                    deeper relations.
+                    <br />
+                    What new mindset do you want now to influence your state of
+                    mind?
+                    <br />
                     Double-clic those you want to see in your phone widget.
                   </p>
                 </div>
@@ -225,10 +270,11 @@ const IntentionSelect = () => {
                     <button
                       key={intention.id}
                       onClick={() => toggleSelection(intention.id)}
-                      className={`h-[48px] w-full max-w-[440px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${selectedIds.includes(intention.id)
-                        ? "text-white border-transparent shadow-lg active:scale-95"
-                        : "text-[#C2C2C2] hover:text-white"
-                        }`}
+                      className={`h-[48px] w-full max-w-[440px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${
+                        selectedIds.includes(intention.id)
+                          ? "text-white border-transparent shadow-lg active:scale-95"
+                          : "text-[#C2C2C2] hover:text-white"
+                      }`}
                       style={{
                         background: selectedIds.includes(intention.id)
                           ? themeGradient
@@ -249,7 +295,9 @@ const IntentionSelect = () => {
                   type="button"
                   onClick={() => navigate("/symptom")}
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all border-2 border-[#FBA90B]/50 text-[15px] md:text-[20px] hover:bg-[#FBA90B]/10 active:scale-95 shadow-lg"
-                  style={{ background: "linear-gradient(180deg, #FFD07550, #E39B1050)" }}
+                  style={{
+                    background: "linear-gradient(180deg, #FFD07550, #E39B1050)",
+                  }}
                 >
                   <ArrowLeft size={24} className="shrink-0" />
                   Back
@@ -260,8 +308,8 @@ const IntentionSelect = () => {
                     const id = selectedIds[0];
                     const intentionLabel =
                       id != null
-                        ? intentions.find((i) => i.id === id)?.label ??
-                          screeningDefaults.intentionLabel
+                        ? (intentions.find((i) => i.id === id)?.label ??
+                          screeningDefaults.intentionLabel)
                         : screeningDefaults.intentionLabel;
                     patchScreeningSelection({ intentionLabel });
                     navigate("/anchor");
@@ -288,7 +336,9 @@ const IntentionSelect = () => {
                 >
                   <div
                     className="absolute inset-0 bg-black/70 backdrop-blur-md"
-                    onClick={() => setOverlayConfig({ isVisible: false, text: "" })}
+                    onClick={() =>
+                      setOverlayConfig({ isVisible: false, text: "" })
+                    }
                     aria-hidden
                   />
                   <div
@@ -306,15 +356,17 @@ const IntentionSelect = () => {
                             .share({
                               text: overlayConfig.text.replace(/\n/g, " "),
                             })
-                            .catch(() => { });
+                            .catch(() => {});
                         } else {
-                          navigator.clipboard?.writeText(overlayConfig.text.replace(/\n/g, " "));
+                          navigator.clipboard?.writeText(
+                            overlayConfig.text.replace(/\n/g, " "),
+                          );
                         }
                       }}
                     />
                   </div>
                 </div>,
-                document.body
+                document.body,
               )}
 
             {/* Add Custom Intention Modal */}
@@ -328,7 +380,8 @@ const IntentionSelect = () => {
                   className="relative w-[632px] h-auto bg-[#27282E] rounded-[20px] p-[20px] flex flex-col gap-[20px] shadow-2xl animate-in fade-in zoom-in duration-300 overflow-hidden"
                   style={{
                     border: "1px solid transparent",
-                    backgroundImage: "linear-gradient(#27282E, #27282E), linear-gradient(180deg, #46474E 0%, rgba(53, 55, 67, 0.5) 100%)",
+                    backgroundImage:
+                      "linear-gradient(#27282E, #27282E), linear-gradient(180deg, #46474E 0%, rgba(53, 55, 67, 0.5) 100%)",
                     backgroundOrigin: "border-box",
                     backgroundClip: "padding-box, border-box",
                     backdropFilter: "blur(4px)",
@@ -360,7 +413,8 @@ const IntentionSelect = () => {
                       style={{
                         backgroundColor: "rgba(255, 255, 255, 0.1)",
                         border: "1px solid transparent",
-                        backgroundImage: "linear-gradient(#35374380, #46474E), linear-gradient(180deg, #46474E 0%, rgba(53, 55, 67, 0.5) 100%)",
+                        backgroundImage:
+                          "linear-gradient(#35374380, #46474E), linear-gradient(180deg, #46474E 0%, rgba(53, 55, 67, 0.5) 100%)",
                         backgroundOrigin: "border-box",
                         backgroundClip: "padding-box, border-box",
                         padding: "16px 20px",

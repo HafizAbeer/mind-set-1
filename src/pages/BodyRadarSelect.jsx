@@ -15,7 +15,7 @@ const BodyRadarSelect = () => {
   const navigate = useNavigate();
   const { mindsetLabel, causeLabel } = useScreeningSelection();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [selectedIds, setSelectedIds] = useState([4]); // Default selected: Bassin (id 4)
+  const [selectedIds, setSelectedIds] = useState([null]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [customInput, setCustomInput] = useState("");
 
@@ -215,13 +215,15 @@ const BodyRadarSelect = () => {
                             <button
                               key={opt.id}
                               onClick={() => toggleSelection(opt.id)}
-                              className={`h-[48px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${opt.fullWidth
+                              className={`h-[48px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${
+                                opt.fullWidth
                                   ? "sm:col-span-2 w-full"
                                   : "w-full max-w-[440px]"
-                                } ${selectedIds.includes(opt.id)
+                              } ${
+                                selectedIds.includes(opt.id)
                                   ? "text-white border-transparent shadow-lg active:scale-95"
                                   : "text-[#C5C5C5] hover:text-white"
-                                }`}
+                              }`}
                               style={{
                                 background: selectedIds.includes(opt.id)
                                   ? themeGradient

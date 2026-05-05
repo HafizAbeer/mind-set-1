@@ -10,7 +10,7 @@ import CustomRewardModal from "../components/dashboard/CustomRewardModal";
 const RewardChoiceSelect = () => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedReward, setSelectedReward] = useState("getting up late");
+  const [selectedReward, setSelectedReward] = useState(null);
 
   const rewards = [
     "a day off",

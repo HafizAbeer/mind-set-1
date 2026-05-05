@@ -16,7 +16,7 @@ import {
 const PositiveMindset = () => {
   const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [selectedId, setSelectedId] = useState(5);
+  const [selectedId, setSelectedId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const mindsetOptions = [
@@ -81,9 +81,7 @@ const PositiveMindset = () => {
       </div> */}
 
       <div className="h-full flex items-start justify-center pt-[100px] sm:pt-[100px] md:pt-[120px] xl:pt-6 pb-4 overflow-y-auto custom-scrollbar">
-        <div
-          className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6"
-        >
+        <div className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6">
           <div className="flex w-full gap-[20px] sm:gap-[32px] md:gap-[48px] xl:gap-[0px] h-full relative z-10 justify-center">
             {/* spacer keeps the same horizontal layout on larger screens, matching header width (220px + 13px left) */}
             {/* <div className="hidden xl:flex w-[233px] shrink-0 h-full" /> */}
@@ -123,10 +121,11 @@ const PositiveMindset = () => {
                     <button
                       key={opt.id}
                       onClick={() => setSelectedId(opt.id)}
-                      className={`h-[52px] rounded-[10px] px-6 flex items-center justify-between transition-all font-inter font-medium text-[16px] border ${selectedId === opt.id
-                        ? "bg-[#3EEA79] text-black border-[#3EEA79] shadow-[0_0_20px_rgba(62,234,121,0.3)]"
-                        : "bg-white/5 text-slate-100 border-white/10 hover:bg-white/10"
-                        }`}
+                      className={`h-[52px] rounded-[10px] px-6 flex items-center justify-between transition-all font-inter font-medium text-[16px] border ${
+                        selectedId === opt.id
+                          ? "bg-[#3EEA79] text-black border-[#3EEA79] shadow-[0_0_20px_rgba(62,234,121,0.3)]"
+                          : "bg-white/5 text-slate-100 border-white/10 hover:bg-white/10"
+                      }`}
                     >
                       <span className="truncate pr-2">{opt.label}</span>
                       <span
@@ -146,8 +145,7 @@ const PositiveMindset = () => {
                   variant="ghost"
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[10px] border-2 border-[#3EEA79] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all hover:opacity-90 active:scale-95 text-[15px] md:text-[20px]"
                   style={{
-                    background:
-                      "linear-gradient(180deg, #3EEA7950, #17833C50)",
+                    background: "linear-gradient(180deg, #3EEA7950, #17833C50)",
                   }}
                 >
                   <ArrowLeft size={24} className="shrink-0" />
@@ -157,8 +155,8 @@ const PositiveMindset = () => {
                   type="button"
                   onClick={() => {
                     const label =
-                      mindsetOptions.find((o) => o.id === selectedId)
-                        ?.label ?? screeningDefaults.mindsetLabel;
+                      mindsetOptions.find((o) => o.id === selectedId)?.label ??
+                      screeningDefaults.mindsetLabel;
                     patchScreeningSelection({ mindsetLabel: label });
                     navigate("/trigger");
                   }}

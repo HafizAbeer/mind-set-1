@@ -11,7 +11,7 @@ import {
 
 const LifeScriptSelect = () => {
   const navigate = useNavigate();
-  const [selectedIds, setSelectedIds] = useState([7]); // Default selected: The Smart (id 7)
+  const [selectedIds, setSelectedIds] = useState([null]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [customInput, setCustomInput] = useState("");
 
@@ -24,29 +24,52 @@ const LifeScriptSelect = () => {
   };
 
   const scripts = [
-    { id: 1, label: "The Maker" }, { id: 2, label: "The Helper" },
-    { id: 3, label: "The Understanding One" }, { id: 4, label: "The Incompetent" },
-    { id: 5, label: "The Anxious" }, { id: 6, label: "The Casual" },
-    { id: 7, label: "The Smart" }, { id: 8, label: "The mediator" },
-    { id: 9, label: "The Organizer" }, { id: 10, label: "The Insecure" },
-    { id: 11, label: "The Obedient" }, { id: 12, label: "The Weak" },
-    { id: 13, label: "The One Left Behind" }, { id: 14, label: "The Unable" },
-    { id: 15, label: "The Helpless" }, { id: 16, label: "The Torn" },
-    { id: 17, label: "The Chronically III" }, { id: 18, label: "The Melancholic" },
-    { id: 19, label: "The Misunderstood" }, { id: 20, label: "The Sceptic" },
-    { id: 21, label: "The Leader" }, { id: 22, label: "The Critic" },
-    { id: 23, label: "The Pacifist" }, { id: 24, label: "The Independent" },
-    { id: 25, label: "The Thrifty" }, { id: 26, label: "The Epicurean" },
-    { id: 27, label: "The Generous" }, { id: 28, label: "The High-Flyer" },
-    { id: 29, label: "The Silent" }, { id: 30, label: "The Arrogant" },
-    { id: 31, label: "The Supporter" }, { id: 32, label: "The ever-balanced one" },
-    { id: 33, label: "The Cosy One" }, { id: 34, label: "The Cheated One" },
-    { id: 35, label: "The Loser" }, { id: 36, label: "The Teacher" },
-    { id: 37, label: "The Righteous One" }, { id: 38, label: "The Entertainer" },
-    { id: 39, label: "The Angry One" }, { id: 40, label: "The Oppositionist" },
-    { id: 41, label: "The Follower" }, { id: 42, label: "The Untidy One" },
-    { id: 43, label: "The Lone Wolf" }, { id: 44, label: "The Irreplaceable" },
-    { id: 45, label: "The Provider" }, { id: 46, label: "The Avenger" },
+    { id: 1, label: "The Maker" },
+    { id: 2, label: "The Helper" },
+    { id: 3, label: "The Understanding One" },
+    { id: 4, label: "The Incompetent" },
+    { id: 5, label: "The Anxious" },
+    { id: 6, label: "The Casual" },
+    { id: 7, label: "The Smart" },
+    { id: 8, label: "The mediator" },
+    { id: 9, label: "The Organizer" },
+    { id: 10, label: "The Insecure" },
+    { id: 11, label: "The Obedient" },
+    { id: 12, label: "The Weak" },
+    { id: 13, label: "The One Left Behind" },
+    { id: 14, label: "The Unable" },
+    { id: 15, label: "The Helpless" },
+    { id: 16, label: "The Torn" },
+    { id: 17, label: "The Chronically III" },
+    { id: 18, label: "The Melancholic" },
+    { id: 19, label: "The Misunderstood" },
+    { id: 20, label: "The Sceptic" },
+    { id: 21, label: "The Leader" },
+    { id: 22, label: "The Critic" },
+    { id: 23, label: "The Pacifist" },
+    { id: 24, label: "The Independent" },
+    { id: 25, label: "The Thrifty" },
+    { id: 26, label: "The Epicurean" },
+    { id: 27, label: "The Generous" },
+    { id: 28, label: "The High-Flyer" },
+    { id: 29, label: "The Silent" },
+    { id: 30, label: "The Arrogant" },
+    { id: 31, label: "The Supporter" },
+    { id: 32, label: "The ever-balanced one" },
+    { id: 33, label: "The Cosy One" },
+    { id: 34, label: "The Cheated One" },
+    { id: 35, label: "The Loser" },
+    { id: 36, label: "The Teacher" },
+    { id: 37, label: "The Righteous One" },
+    { id: 38, label: "The Entertainer" },
+    { id: 39, label: "The Angry One" },
+    { id: 40, label: "The Oppositionist" },
+    { id: 41, label: "The Follower" },
+    { id: 42, label: "The Untidy One" },
+    { id: 43, label: "The Lone Wolf" },
+    { id: 44, label: "The Irreplaceable" },
+    { id: 45, label: "The Provider" },
+    { id: 46, label: "The Avenger" },
   ];
 
   const themeColor = "#E2E464";
@@ -55,20 +78,22 @@ const LifeScriptSelect = () => {
   return (
     <div className="relative h-screen w-full overflow-hidden">
       <div className="h-full flex items-start justify-center pt-[100px] sm:pt-[100px] md:pt-[120px] xl:pt-6 pb-4 overflow-y-auto custom-scrollbar">
-        <div
-          className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6"
-        >
+        <div className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6">
           <div className="flex w-full gap-[20px] sm:gap-[32px] md:gap-[48px] xl:gap-[0px] h-full relative z-10 justify-center">
-
             <div className="w-full max-w-[956px] flex flex-col h-full gap-[16px] sm:gap-[24px]">
               <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0">
-                <img src={scriptIcon} alt="Icon" className="w-9 h-9 object-contain shrink-0" />
+                <img
+                  src={scriptIcon}
+                  alt="Icon"
+                  className="w-9 h-9 object-contain shrink-0"
+                />
                 <div className="flex flex-col justify-center w-full">
                   <h1 className="text-[clamp(24px,5vw,32px)] font-inter font-bold text-white m-0 leading-tight tracking-[-0.3px]">
                     Life Script Radar
                   </h1>
                   <p className="text-[clamp(14px,4vw,18px)] font-inter font-medium text-[#C5C5C5] m-0 leading-snug mt-1 sm:mt-2">
-                    Select the scripts do you think you are following in your life.
+                    Select the scripts do you think you are following in your
+                    life.
                   </p>
                 </div>
               </div>
@@ -103,10 +128,11 @@ const LifeScriptSelect = () => {
                     <button
                       key={script.id}
                       onClick={() => toggleSelection(script.id)}
-                      className={`h-[48px] w-full max-w-[440px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${selectedIds.includes(script.id)
-                        ? "text-white border-transparent shadow-lg active:scale-95"
-                        : "text-[#C2C2C2] hover:text-white"
-                        }`}
+                      className={`h-[48px] w-full max-w-[440px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${
+                        selectedIds.includes(script.id)
+                          ? "text-white border-transparent shadow-lg active:scale-95"
+                          : "text-[#C2C2C2] hover:text-white"
+                      }`}
                       style={{
                         background: selectedIds.includes(script.id)
                           ? themeGradient
@@ -127,7 +153,9 @@ const LifeScriptSelect = () => {
                   type="button"
                   onClick={() => navigate("/life-script")}
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all border-2 border-[#E2E464]/50 text-[15px] md:text-[20px] hover:bg-[#E2E464]/10 active:scale-95 shadow-lg"
-                  style={{ background: 'linear-gradient(180deg, #F6F36250, #C9C50050)' }}
+                  style={{
+                    background: "linear-gradient(180deg, #F6F36250, #C9C50050)",
+                  }}
                 >
                   <ArrowLeft size={24} className="shrink-0" />
                   Back
@@ -138,8 +166,8 @@ const LifeScriptSelect = () => {
                     const id = selectedIds[0];
                     const lifeScriptLabel =
                       id != null
-                        ? scripts.find((s) => s.id === id)?.label ??
-                          screeningDefaults.lifeScriptLabel
+                        ? (scripts.find((s) => s.id === id)?.label ??
+                          screeningDefaults.lifeScriptLabel)
                         : screeningDefaults.lifeScriptLabel;
                     patchScreeningSelection({ lifeScriptLabel });
                     navigate("/old-script");
@@ -169,7 +197,8 @@ const LifeScriptSelect = () => {
             className="relative w-[min(632px,95%)] h-auto bg-[#27282E] rounded-[20px] p-[20px] flex flex-col gap-[20px] shadow-2xl animate-in fade-in zoom-in duration-300 overflow-hidden"
             style={{
               border: "1px solid transparent",
-              backgroundImage: "linear-gradient(#27282E, #27282E), linear-gradient(180deg, #46474E 0%, rgba(53, 55, 67, 0.5) 100%)",
+              backgroundImage:
+                "linear-gradient(#27282E, #27282E), linear-gradient(180deg, #46474E 0%, rgba(53, 55, 67, 0.5) 100%)",
               backgroundOrigin: "border-box",
               backgroundClip: "padding-box, border-box",
               backdropFilter: "blur(4px)",
@@ -201,7 +230,8 @@ const LifeScriptSelect = () => {
                 style={{
                   backgroundColor: "rgba(255, 255, 255, 0.1)",
                   border: "1px solid transparent",
-                  backgroundImage: "linear-gradient(#35374380, #46474E), linear-gradient(180deg, #46474E 0%, rgba(53, 55, 67, 0.5) 100%)",
+                  backgroundImage:
+                    "linear-gradient(#35374380, #46474E), linear-gradient(180deg, #46474E 0%, rgba(53, 55, 67, 0.5) 100%)",
                   backgroundOrigin: "border-box",
                   backgroundClip: "padding-box, border-box",
                 }}

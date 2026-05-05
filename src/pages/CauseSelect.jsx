@@ -14,7 +14,7 @@ import {
 
 const CauseSelect = () => {
   const navigate = useNavigate();
-  const [selectedId, setSelectedId] = useState(5); // Default: 'generalise' per image
+  const [selectedId, setSelectedId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { mindsetLabel, triggerLabel } = useScreeningSelection();
 
@@ -147,10 +147,11 @@ const CauseSelect = () => {
                       <button
                         key={opt.id}
                         onClick={() => setSelectedId(opt.id)}
-                        className={`w-full max-w-[440px] h-[48px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${selectedId === opt.id
+                        className={`w-full max-w-[440px] h-[48px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${
+                          selectedId === opt.id
                             ? "text-white border-transparent shadow-lg active:scale-95"
                             : "text-[#C5C5C5] hover:text-white"
-                          }`}
+                        }`}
                         style={{
                           background:
                             selectedId === opt.id
@@ -170,10 +171,11 @@ const CauseSelect = () => {
                       <button
                         key={opt.id}
                         onClick={() => setSelectedId(opt.id)}
-                        className={`w-full max-w-[440px] h-[48px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${selectedId === opt.id
+                        className={`w-full max-w-[440px] h-[48px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${
+                          selectedId === opt.id
                             ? "text-white border-transparent shadow-lg active:scale-95"
                             : "text-[#C5C5C5] hover:text-white"
-                          }`}
+                        }`}
                         style={{
                           background:
                             selectedId === opt.id
@@ -192,10 +194,11 @@ const CauseSelect = () => {
                 <div className="w-full flex justify-center mt-[10px]">
                   <button
                     onClick={() => setSelectedId(999)}
-                    className={`w-full max-w-[440px] md:max-w-[928px] h-[48px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${selectedId === 999
+                    className={`w-full max-w-[440px] md:max-w-[928px] h-[48px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${
+                      selectedId === 999
                         ? "text-white border-transparent shadow-lg active:scale-95"
                         : "text-[#C5C5C5] hover:text-white"
-                      }`}
+                    }`}
                     style={{
                       background:
                         selectedId === 999
@@ -229,8 +232,8 @@ const CauseSelect = () => {
                     const causeLabel =
                       selectedId === 999
                         ? "no can't identify a definite cause"
-                        : causeOptions.find((o) => o.id === selectedId)?.label ??
-                          screeningDefaults.causeLabel;
+                        : (causeOptions.find((o) => o.id === selectedId)
+                            ?.label ?? screeningDefaults.causeLabel);
                     patchScreeningSelection({ causeLabel });
                     navigate("/reflection");
                   }}

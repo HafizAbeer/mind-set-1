@@ -13,7 +13,7 @@ import {
 const OldScriptSelect = () => {
   const navigate = useNavigate();
   const { lifeScriptLabel } = useScreeningSelection();
-  const [selectedIds, setSelectedIds] = useState([7]); // Default selected: to be a smart aleck (id 7)
+  const [selectedIds, setSelectedIds] = useState([null]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [customInput, setCustomInput] = useState("");
 
@@ -26,27 +26,48 @@ const OldScriptSelect = () => {
   };
 
   const scripts = [
-    { id: 1, label: "to practice to much actionism" }, { id: 2, label: "to often helper syndrome" },
-    { id: 3, label: "to be too understanding" }, { id: 4, label: "to feel too often incompetent" },
-    { id: 5, label: "to much anxiety" }, { id: 6, label: "to behave exaggerated casualty" },
-    { id: 7, label: "to be a smart aleck" }, { id: 8, label: "giving oneself up" },
-    { id: 9, label: "to show off too much" }, { id: 10, label: "be too unsure" },
-    { id: 11, label: "to be too submissive" }, { id: 12, label: "not believe in myself" },
-    { id: 13, label: "to be too uninterested" }, { id: 14, label: "to be clumsy" },
-    { id: 15, label: "to be not self-employed" }, { id: 16, label: "to be indecisive" },
-    { id: 17, label: "to be whiny" }, { id: 18, label: "to be pessimistic" },
-    { id: 19, label: "to be easily offended" }, { id: 20, label: "to be overly suspicious" },
-    { id: 21, label: "difficulty asserting oneself" }, { id: 22, label: "to be suspicious" },
-    { id: 23, label: "to be stingy" }, { id: 24, label: "to be excessive" },
-    { id: 25, label: "to be too selfless" }, { id: 26, label: "to be too unconfident" },
-    { id: 27, label: "to be too reserved" }, { id: 28, label: "to be overconfident" },
-    { id: 29, label: "to be too sluggish" }, { id: 30, label: "not assertive enough" },
-    { id: 31, label: "to be too much of a victim" }, { id: 32, label: "to be overly educational" },
-    { id: 33, label: "to be too pedantic" }, { id: 34, label: "to be too self-absorbed" },
-    { id: 35, label: "to be too irritable" }, { id: 36, label: "feel too easily oppressed" },
-    { id: 37, label: "to be too dependent" }, { id: 38, label: "to be too disorganized" },
-    { id: 39, label: "to be too much of a Rambo" }, { id: 40, label: "too full of own self-importance" },
-    { id: 41, label: "to be too obedient" }, { id: 42, label: "to be too vindictive" },
+    { id: 1, label: "to practice to much actionism" },
+    { id: 2, label: "to often helper syndrome" },
+    { id: 3, label: "to be too understanding" },
+    { id: 4, label: "to feel too often incompetent" },
+    { id: 5, label: "to much anxiety" },
+    { id: 6, label: "to behave exaggerated casualty" },
+    { id: 7, label: "to be a smart aleck" },
+    { id: 8, label: "giving oneself up" },
+    { id: 9, label: "to show off too much" },
+    { id: 10, label: "be too unsure" },
+    { id: 11, label: "to be too submissive" },
+    { id: 12, label: "not believe in myself" },
+    { id: 13, label: "to be too uninterested" },
+    { id: 14, label: "to be clumsy" },
+    { id: 15, label: "to be not self-employed" },
+    { id: 16, label: "to be indecisive" },
+    { id: 17, label: "to be whiny" },
+    { id: 18, label: "to be pessimistic" },
+    { id: 19, label: "to be easily offended" },
+    { id: 20, label: "to be overly suspicious" },
+    { id: 21, label: "difficulty asserting oneself" },
+    { id: 22, label: "to be suspicious" },
+    { id: 23, label: "to be stingy" },
+    { id: 24, label: "to be excessive" },
+    { id: 25, label: "to be too selfless" },
+    { id: 26, label: "to be too unconfident" },
+    { id: 27, label: "to be too reserved" },
+    { id: 28, label: "to be overconfident" },
+    { id: 29, label: "to be too sluggish" },
+    { id: 30, label: "not assertive enough" },
+    { id: 31, label: "to be too much of a victim" },
+    { id: 32, label: "to be overly educational" },
+    { id: 33, label: "to be too pedantic" },
+    { id: 34, label: "to be too self-absorbed" },
+    { id: 35, label: "to be too irritable" },
+    { id: 36, label: "feel too easily oppressed" },
+    { id: 37, label: "to be too dependent" },
+    { id: 38, label: "to be too disorganized" },
+    { id: 39, label: "to be too much of a Rambo" },
+    { id: 40, label: "too full of own self-importance" },
+    { id: 41, label: "to be too obedient" },
+    { id: 42, label: "to be too vindictive" },
   ];
 
   const themeColor = "#48C856";
@@ -55,14 +76,15 @@ const OldScriptSelect = () => {
   return (
     <div className="relative h-screen w-full overflow-hidden">
       <div className="h-full flex items-start justify-center pt-[100px] sm:pt-[100px] md:pt-[120px] xl:pt-6 pb-4 overflow-y-auto custom-scrollbar">
-        <div
-          className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6"
-        >
+        <div className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6">
           <div className="flex w-full gap-[20px] sm:gap-[32px] md:gap-[48px] xl:gap-[0px] h-full relative z-10 justify-center">
-
             <div className="w-full max-w-[956px] flex flex-col h-full gap-[16px] sm:gap-[24px]">
               <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0">
-                <img src={oldScriptIcon} alt="Icon" className="w-9 h-9 object-contain shrink-0" />
+                <img
+                  src={oldScriptIcon}
+                  alt="Icon"
+                  className="w-9 h-9 object-contain shrink-0"
+                />
                 <div className="flex flex-col justify-center w-full">
                   <h1 className="text-[clamp(24px,5vw,32px)] font-inter font-bold text-white m-0 leading-tight tracking-[-0.3px]">
                     Old Script Radar
@@ -77,8 +99,14 @@ const OldScriptSelect = () => {
                 <Info size={24} className="text-white shrink-0" />
                 <div className="flex-1 flex flex-col items-center justify-center">
                   <p className="font-inter font-semibold text-[clamp(16px,4vw,22px)] leading-tight sm:leading-[28px] tracking-[0px] text-[#48C856] m-0 text-center">
-                    You have identified <span style={{ color: 'white' }}>“{lifeScriptLabel}”</span> as your Life Script. Which of the following<br className="hidden sm:block" />
-                    <span style={{ color: 'white' }}>“Old Life Script qualities”</span> would you like to leave behind?
+                    You have identified{" "}
+                    <span style={{ color: "white" }}>“{lifeScriptLabel}”</span>{" "}
+                    as your Life Script. Which of the following
+                    <br className="hidden sm:block" />
+                    <span style={{ color: "white" }}>
+                      “Old Life Script qualities”
+                    </span>{" "}
+                    would you like to leave behind?
                   </p>
                 </div>
               </div>
@@ -104,10 +132,11 @@ const OldScriptSelect = () => {
                     <button
                       key={script.id}
                       onClick={() => toggleSelection(script.id)}
-                      className={`h-[48px] w-full max-w-[440px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${selectedIds.includes(script.id)
-                        ? "text-white border-transparent shadow-lg active:scale-95"
-                        : "text-[#C2C2C2] hover:text-white"
-                        }`}
+                      className={`h-[48px] w-full max-w-[440px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${
+                        selectedIds.includes(script.id)
+                          ? "text-white border-transparent shadow-lg active:scale-95"
+                          : "text-[#C2C2C2] hover:text-white"
+                      }`}
                       style={{
                         background: selectedIds.includes(script.id)
                           ? themeGradient
@@ -128,7 +157,9 @@ const OldScriptSelect = () => {
                   type="button"
                   onClick={() => navigate("/old-script")}
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all border-2 border-[#48C856]/50 text-[15px] md:text-[20px] hover:bg-[#48C856]/10 active:scale-95 shadow-lg"
-                  style={{ background: 'linear-gradient(180deg, #48C85650, #2A7D3350)' }}
+                  style={{
+                    background: "linear-gradient(180deg, #48C85650, #2A7D3350)",
+                  }}
                 >
                   <ArrowLeft size={24} className="shrink-0" />
                   Back
@@ -170,7 +201,8 @@ const OldScriptSelect = () => {
             className="relative w-full max-w-[632px] h-auto bg-[#27282E] rounded-[20px] p-[20px] flex flex-col gap-[20px] shadow-2xl animate-in fade-in zoom-in duration-300 overflow-hidden"
             style={{
               border: "1px solid transparent",
-              backgroundImage: "linear-gradient(#27282E, #27282E), linear-gradient(180deg, #46474E 0%, rgba(53, 55, 67, 0.5) 100%)",
+              backgroundImage:
+                "linear-gradient(#27282E, #27282E), linear-gradient(180deg, #46474E 0%, rgba(53, 55, 67, 0.5) 100%)",
               backgroundOrigin: "border-box",
               backgroundClip: "padding-box, border-box",
               backdropFilter: "blur(4px)",
@@ -202,7 +234,8 @@ const OldScriptSelect = () => {
                 style={{
                   backgroundColor: "rgba(255, 255, 255, 0.1)",
                   border: "1px solid transparent",
-                  backgroundImage: "linear-gradient(#35374380, #46474E), linear-gradient(180deg, #46474E 0%, rgba(53, 55, 67, 0.5) 100%)",
+                  backgroundImage:
+                    "linear-gradient(#35374380, #46474E), linear-gradient(180deg, #46474E 0%, rgba(53, 55, 67, 0.5) 100%)",
                   backgroundOrigin: "border-box",
                   backgroundClip: "padding-box, border-box",
                 }}

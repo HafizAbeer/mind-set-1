@@ -18,7 +18,7 @@ import {
 const TriggerRadar = () => {
   const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [selectedId, setSelectedId] = useState(9);
+  const [selectedId, setSelectedId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { mindsetLabel } = useScreeningSelection();
 
@@ -118,11 +118,8 @@ const TriggerRadar = () => {
       </div> */}
 
       <div className="h-full flex items-start justify-center pt-[100px] sm:pt-[100px] md:pt-[120px] xl:pt-6 pb-4 overflow-y-auto custom-scrollbar">
-        <div
-          className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6"
-        >
+        <div className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6">
           <div className="flex w-full gap-[20px] sm:gap-[32px] md:gap-[48px] xl:gap-[0px] h-full relative z-10 justify-center">
-
             <div className="w-full max-w-[956px] flex flex-col h-full gap-[16px] sm:gap-[24px]">
               <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0">
                 <div className="w-11 h-11 bg-[#3C56D8]/20 rounded-full flex items-center justify-center shrink-0">
@@ -139,14 +136,13 @@ const TriggerRadar = () => {
               </div>
 
               <div className="w-full bg-[#3C56D8]/10 border border-[#3C56D8] rounded-[10px] p-[20px] flex items-center justify-center shrink-0 min-h-0 gap-3 relative">
-                <Info
-                  size={24}
-                  className="shrink-0"
-                />
+                <Info size={24} className="shrink-0" />
                 <div className="w-full max-w-[857px] flex flex-col items-center justify-center">
                   <p className="font-inter font-medium text-[24px] leading-[33px] tracking-[-2px] text-[#6B83FF] m-0 text-center">
                     You have chosen “
-                    <span className="font-medium text-white">{mindsetLabel}</span>
+                    <span className="font-medium text-white">
+                      {mindsetLabel}
+                    </span>
                     ” as your mindset. What triggered this mindset?
                     <br />
                     Has it a Intentionful or an avoiding character?
@@ -178,10 +174,11 @@ const TriggerRadar = () => {
                         <button
                           key={opt.id}
                           onClick={() => setSelectedId(opt.id)}
-                          className={`w-full max-w-[440px] h-[44px] rounded-[10px] px-6 flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${selectedId === opt.id
-                            ? "bg-[#3C56D8] text-white border-[#3C56D8] shadow-[0_0_20px_rgba(60,86,216,0.3)]"
-                            : "bg-white/5 text-slate-100 border-white/10 hover:bg-white/10"
-                            }`}
+                          className={`w-full max-w-[440px] h-[44px] rounded-[10px] px-6 flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${
+                            selectedId === opt.id
+                              ? "bg-[#3C56D8] text-white border-[#3C56D8] shadow-[0_0_20px_rgba(60,86,216,0.3)]"
+                              : "bg-white/5 text-slate-100 border-white/10 hover:bg-white/10"
+                          }`}
                         >
                           {opt.label}
                         </button>
@@ -193,10 +190,11 @@ const TriggerRadar = () => {
                         <button
                           key={opt.id}
                           onClick={() => setSelectedId(opt.id)}
-                          className={`w-full max-w-[440px] h-[44px] rounded-[10px] px-6 flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${selectedId === opt.id
-                            ? "bg-[#3C56D8] text-white border-[#3C56D8] shadow-[0_0_20px_rgba(60,86,216,0.3)]"
-                            : "bg-white/5 text-slate-100 border-white/10 hover:bg-white/10"
-                            }`}
+                          className={`w-full max-w-[440px] h-[44px] rounded-[10px] px-6 flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${
+                            selectedId === opt.id
+                              ? "bg-[#3C56D8] text-white border-[#3C56D8] shadow-[0_0_20px_rgba(60,86,216,0.3)]"
+                              : "bg-white/5 text-slate-100 border-white/10 hover:bg-white/10"
+                          }`}
                         >
                           {opt.label}
                         </button>
@@ -207,10 +205,11 @@ const TriggerRadar = () => {
                   <div className="flex w-full px-[8px]">
                     <button
                       onClick={() => setSelectedId(0)}
-                      className={`w-full h-[44px] rounded-[10px] px-6 flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${selectedId === 0
-                        ? "bg-[#3C56D8] text-white border-[#3C56D8]"
-                        : "bg-white/5 text-slate-100 border-white/10 hover:bg-white/10"
-                        }`}
+                      className={`w-full h-[44px] rounded-[10px] px-6 flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${
+                        selectedId === 0
+                          ? "bg-[#3C56D8] text-white border-[#3C56D8]"
+                          : "bg-white/5 text-slate-100 border-white/10 hover:bg-white/10"
+                      }`}
                     >
                       no clear trigger
                     </button>
@@ -225,8 +224,7 @@ const TriggerRadar = () => {
                   variant="ghost"
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[10px] border-2 border-[#526FFF] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all text-[15px] md:text-[20px] hover:opacity-90 active:scale-95 shadow-lg"
                   style={{
-                    background:
-                      "linear-gradient(180deg, #738AFF50, #3C56D850)",
+                    background: "linear-gradient(180deg, #738AFF50, #3C56D850)",
                   }}
                 >
                   <ArrowLeft size={24} className="shrink-0" />
@@ -238,8 +236,8 @@ const TriggerRadar = () => {
                     const triggerLabel =
                       selectedId === 0
                         ? "no clear trigger"
-                        : allTriggerOptions.find((o) => o.id === selectedId)
-                            ?.label ?? screeningDefaults.triggerLabel;
+                        : (allTriggerOptions.find((o) => o.id === selectedId)
+                            ?.label ?? screeningDefaults.triggerLabel);
                     patchScreeningSelection({ triggerLabel });
                     navigate("/cause");
                   }}
