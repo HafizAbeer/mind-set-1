@@ -4,9 +4,15 @@ import { ArrowLeft, ArrowRight, Plus, Info } from "lucide-react";
 import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
 import newScriptIcon from "../assets/radarModulesIcon/newScript-purple-icon.svg";
+import {
+  patchScreeningSelection,
+  screeningDefaults,
+  useScreeningSelection,
+} from "@/lib/screeningSelection";
 
 const NewScriptSelect = () => {
   const navigate = useNavigate();
+  const { oldScriptSummary, oldScriptSentence } = useScreeningSelection();
   const [selectedIds, setSelectedIds] = useState([null]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [customInput, setCustomInput] = useState("");
@@ -20,48 +26,48 @@ const NewScriptSelect = () => {
   };
 
   const scripts = [
-    { id: 1, label: "to think more before acting" },
-    { id: 2, label: 'saying "no" more often' },
-    { id: 3, label: "to be more critical" },
-    { id: 4, label: "to be more confident in me" },
-    { id: 5, label: "to be more laid back" },
-    { id: 6, label: "to be less cool" },
-    { id: 7, label: "to be wiser than smartie" },
-    { id: 8, label: "take better care of myself" },
-    { id: 9, label: "to be more reserved" },
-    { id: 10, label: "to be a bit safer" },
-    { id: 11, label: "to be less submissive" },
-    { id: 12, label: "to believe more in myself" },
-    { id: 13, label: "to be more curious" },
-    { id: 14, label: "to be more aware" },
-    { id: 15, label: "to be more autonomous" },
-    { id: 16, label: "to be more decisive" },
-    { id: 17, label: "to be stronger" },
-    { id: 18, label: "to be more optimistic" },
-    { id: 19, label: "to be more assertive" },
-    { id: 20, label: "to be more trusting" },
-    { id: 21, label: "more self-confidence" },
-    { id: 22, label: "to place more trust" },
-    { id: 23, label: "be to more generous" },
-    { id: 24, label: "to be more abstinent" },
-    { id: 25, label: "to be more self-caring" },
-    { id: 26, label: "to be less confident" },
-    { id: 27, label: "to be more reserved" },
-    { id: 28, label: "to be more thoughtful" },
-    { id: 29, label: "to be more dynamic" },
-    { id: 30, label: "to be more decisive" },
-    { id: 31, label: "to be more courageous" },
-    { id: 32, label: "to listen more than talk" },
-    { id: 33, label: "to be less pedantic" },
-    { id: 34, label: "to be less self-absorbed" },
-    { id: 35, label: "to be less irritable" },
-    { id: 36, label: "to feel less easily oppressed" },
-    { id: 37, label: "to be more independent" },
-    { id: 38, label: "to be more disorganized" },
-    { id: 39, label: "to be more team player" },
-    { id: 40, label: "to be more altruistic" },
-    { id: 41, label: "to be less obedient" },
-    { id: 42, label: "to be more forgiving" },
+    { id: 1, label: "to think more before acting", sentence: "I want [label]" },
+    { id: 2, label: 'saying "no" more often', sentence: "I want [label]" },
+    { id: 3, label: "to be more critical", sentence: "I want [label]" },
+    { id: 4, label: "to be more confident in me", sentence: "I want [label]" },
+    { id: 5, label: "to be more laid back", sentence: "I want [label]" },
+    { id: 6, label: "to be less cool", sentence: "I want [label]" },
+    { id: 7, label: "to be wiser than smartie", sentence: "I want [label]" },
+    { id: 8, label: "take better care of myself", sentence: "I want [label]" },
+    { id: 9, label: "to be more reserved", sentence: "I want [label]" },
+    { id: 10, label: "to be a bit safer", sentence: "I want [label]" },
+    { id: 11, label: "to be less submissive", sentence: "I want [label]" },
+    { id: 12, label: "to believe more in myself", sentence: "I want [label]" },
+    { id: 13, label: "to be more curious", sentence: "I want [label]" },
+    { id: 14, label: "to be more aware", sentence: "I want [label]" },
+    { id: 15, label: "to be more autonomous", sentence: "I want [label]" },
+    { id: 16, label: "to be more decisive", sentence: "I want [label]" },
+    { id: 17, label: "to be stronger", sentence: "I want [label]" },
+    { id: 18, label: "to be more optimistic", sentence: "I want [label]" },
+    { id: 19, label: "to be more assertive", sentence: "I want [label]" },
+    { id: 20, label: "to be more trusting", sentence: "I want [label]" },
+    { id: 21, label: "more self-confidence", sentence: "I want [label]" },
+    { id: 22, label: "to place more trust", sentence: "I want [label]" },
+    { id: 23, label: "be to more generous", sentence: "I want [label]" },
+    { id: 24, label: "to be more abstinent", sentence: "I want [label]" },
+    { id: 25, label: "to be more self-caring", sentence: "I want [label]" },
+    { id: 26, label: "to be less confident", sentence: "I want [label]" },
+    { id: 27, label: "to be more reserved", sentence: "I want [label]" },
+    { id: 28, label: "to be more thoughtful", sentence: "I want [label]" },
+    { id: 29, label: "to be more dynamic", sentence: "I want [label]" },
+    { id: 30, label: "to be more decisive", sentence: "I want [label]" },
+    { id: 31, label: "to be more courageous", sentence: "I want [label]" },
+    { id: 32, label: "to listen more than talk", sentence: "I want [label]" },
+    { id: 33, label: "to be less pedantic", sentence: "I want [label]" },
+    { id: 34, label: "to be less self-absorbed", sentence: "I want [label]" },
+    { id: 35, label: "to be less irritable", sentence: "I want [label]" },
+    { id: 36, label: "to feel less easily oppressed", sentence: "I want [label]" },
+    { id: 37, label: "to be more independent", sentence: "I want [label]" },
+    { id: 38, label: "to be more disorganized", sentence: "I want [label]" },
+    { id: 39, label: "to be more team player", sentence: "I want [label]" },
+    { id: 40, label: "to be more altruistic", sentence: "I want [label]" },
+    { id: 41, label: "to be less obedient", sentence: "I want [label]" },
+    { id: 42, label: "to be more forgiving", sentence: "I want [label]" },
   ];
 
   const themeColor = "#CE5CFF";
@@ -93,10 +99,17 @@ const NewScriptSelect = () => {
                 <Info size={24} className="text-white shrink-0" />
                 <div className="flex-1 flex flex-col items-center justify-center">
                   <p className="font-inter font-semibold text-[clamp(16px,4vw,22px)] leading-tight sm:leading-[28px] tracking-[0px] text-[#CE5CFF] m-0 text-center">
-                    You have identified “*******” as a trait you want to call
-                    <br className="hidden sm:block" />
-                    your “Old Script”. With which of the following New Script
-                    qualities
+                    {(() => {
+                      const parts = oldScriptSentence.split("[label]");
+                      return (
+                        <>
+                          {parts[0]}
+                          <span style={{ color: "white" }}>“{oldScriptSummary}”</span>
+                          {parts[1]}
+                        </>
+                      );
+                    })()}
+                    . With which of the following New Script qualities
                     <br className="hidden sm:block" />
                     you would like to replace it?
                   </p>
@@ -124,11 +137,10 @@ const NewScriptSelect = () => {
                     <button
                       key={script.id}
                       onClick={() => toggleSelection(script.id)}
-                      className={`h-[48px] w-full max-w-[440px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${
-                        selectedIds.includes(script.id)
+                      className={`h-[48px] w-full max-w-[440px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${selectedIds.includes(script.id)
                           ? "text-white border-transparent shadow-lg active:scale-95"
                           : "text-[#C2C2C2] hover:text-white"
-                      }`}
+                        }`}
                       style={{
                         background: selectedIds.includes(script.id)
                           ? themeGradient
@@ -158,7 +170,18 @@ const NewScriptSelect = () => {
                 </button>
                 <button
                   type="button"
-                  onClick={() => navigate("/success-gauge")}
+                  onClick={() => {
+                    const id = selectedIds[0];
+                    const selected = scripts.find((s) => s.id === id);
+                    const newScriptSummary = selected?.label ?? screeningDefaults.newScriptSummary;
+                    const newScriptSentence = selected?.sentence ?? screeningDefaults.newScriptSentence;
+
+                    patchScreeningSelection({ 
+                      newScriptSummary,
+                      newScriptSentence
+                    });
+                    navigate("/success-gauge");
+                  }}
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all shadow-lg border-2 border-[#CE5CFF] text-[15px] md:text-[20px] hover:opacity-90 active:scale-95"
                   style={{ background: themeGradient }}
                 >

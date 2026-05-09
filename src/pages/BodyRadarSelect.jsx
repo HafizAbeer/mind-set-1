@@ -13,7 +13,7 @@ import collapseIcon from "../assets/icons/collapse-icon.svg";
 
 const BodyRadarSelect = () => {
   const navigate = useNavigate();
-  const { mindsetLabel, causeLabel } = useScreeningSelection();
+  const { mindsetLabel, mindsetSentence, triggerLabel, causeLabel } = useScreeningSelection();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedIds, setSelectedIds] = useState([null]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -96,7 +96,7 @@ const BodyRadarSelect = () => {
         { id: 37, label: "Taste Mouth" },
         { id: 38, label: "Hearing Ears" },
         { id: 39, label: "View Eyes" },
-        { id: 40, label: "Gleichgewicht Innenohr" },
+        { id: 40, label: "Equilibrium" },
       ],
     },
     {
@@ -179,16 +179,24 @@ const BodyRadarSelect = () => {
                 <Info size={24} className="text-white shrink-0" />
                 <div className="flex-1 flex flex-col items-center justify-center">
                   <p className="font-inter font-semibold text-[22px] leading-[28px] tracking-[0px] text-white m-0 text-center">
-                    You have found{" "}
+                    {(() => {
+                      if (!mindsetSentence || !triggerLabel) return null;
+                      const parts = mindsetSentence.split("[trigger]");
+                      return (
+                        <>
+                          {parts[0]}
+                          <span className="font-semibold italic text-[#D16868]">
+                            “{triggerLabel}”
+                          </span>
+                          {parts[1]}
+                        </>
+                      );
+                    })()}
+                    , caused by{" "}
                     <span className="font-semibold italic text-[#D16868]">
                       “{causeLabel}”
-                    </span>{" "}
-                    as deeper cause for{" "}
-                    <span className="font-semibold italic text-[#D16868]">
-                      “{mindsetLabel}”
-                    </span>{" "}
-                    mindset. where in your body do you feel the mindset most
-                    clearly?
+                    </span>
+                    . Where in your body do you feel this most clearly?
                   </p>
                 </div>
               </div>

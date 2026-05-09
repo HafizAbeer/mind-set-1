@@ -12,9 +12,9 @@ import {
 
 const SymptomSelect = () => {
   const navigate = useNavigate();
-  const { mindsetLabel, triggerLabel, bodyStructureLabel } =
+  const { mindsetLabel, mindsetSentence, triggerLabel, bodyStructureLabel } =
     useScreeningSelection();
-  const [selectedIds, setSelectedIds] = useState([null]);
+  const [selectedIds, setSelectedIds] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [customInput, setCustomInput] = useState("");
 
@@ -92,15 +92,20 @@ const SymptomSelect = () => {
                 <Info size={24} className="text-white shrink-0" />
                 <div className="flex-1 flex flex-col items-center justify-center">
                   <p className="font-inter font-semibold text-[clamp(16px,4vw,22px)] leading-tight sm:leading-[28px] tracking-[0px] text-white m-0 text-center">
-                    You have identified{" "}
-                    <span className="font-semibold italic text-[#2AABEE]">
-                      “{triggerLabel}”
-                    </span>{" "}
-                    as your trigger for{" "}
-                    <span className="font-semibold italic text-[#2AABEE]">
-                      “{mindsetLabel}”
-                    </span>{" "}
-                    as mindset. What symptom you perceive most clearly in your{" "}
+                    {(() => {
+                      if (!mindsetSentence || !triggerLabel) return null;
+                      const parts = mindsetSentence.split("[trigger]");
+                      return (
+                        <>
+                          {parts[0]}
+                          <span className="font-semibold italic text-[#2AABEE]">
+                            “{triggerLabel}”
+                          </span>
+                          {parts[1]}
+                        </>
+                      );
+                    })()}
+                    . What symptom you perceive most clearly in your{" "}
                     <span className="font-semibold italic text-[#2AABEE]">
                       “{bodyStructureLabel}”
                     </span>
@@ -130,11 +135,10 @@ const SymptomSelect = () => {
                     <button
                       key={symptom.id}
                       onClick={() => toggleSelection(symptom.id)}
-                      className={`h-[48px] w-full max-w-[440px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${
-                        selectedIds.includes(symptom.id)
-                          ? "text-white border-transparent shadow-lg active:scale-95"
-                          : "text-[#C2C2C2] hover:text-white"
-                      }`}
+                      className={`h-[48px] w-full max-w-[440px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${selectedIds.includes(symptom.id)
+                        ? "text-white border-transparent shadow-lg active:scale-95"
+                        : "text-[#C2C2C2] hover:text-white"
+                        }`}
                       style={{
                         background: selectedIds.includes(symptom.id)
                           ? themeGradient

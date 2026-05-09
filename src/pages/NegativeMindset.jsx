@@ -20,40 +20,40 @@ const NegativeMindset = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const mindsetOptions = [
-    { id: 1, label: "anger / rage about..." },
-    { id: 2, label: "bothered by..." },
-    { id: 3, label: "worries about..." },
-    { id: 4, label: "disappointment with..." },
-    { id: 5, label: "feeling of senselessness" },
-    { id: 6, label: "feeling of loss of control over" },
-    { id: 7, label: "unable to cope with..." },
-    { id: 8, label: "burned out by..." },
-    { id: 9, label: "felt offended by..." },
-    { id: 10, label: "felt attacked by..." },
-    { id: 11, label: "unsatisfied with..." },
-    { id: 12, label: "guilty feeling about..." },
-    { id: 13, label: "humiliated by..." },
-    { id: 14, label: "anxiety about..." },
-    { id: 15, label: "betrayed by..." },
-    { id: 16, label: "desperate about..." },
-    { id: 17, label: "impatient for..." },
-    { id: 18, label: "pain" },
-    { id: 19, label: "fear of..." },
-    { id: 20, label: "reluctance against..." },
-    { id: 21, label: "frustrated by..." },
-    { id: 22, label: "rejection from" },
-    { id: 23, label: "traumatic memory of..." },
-    { id: 24, label: "financial difficulties" },
-    { id: 25, label: "mourn for..." },
-    { id: 26, label: "illness of..." },
-    { id: 27, label: "harassed by..." },
-    { id: 28, label: "future fears about..." },
-    { id: 29, label: "bored by..." },
-    { id: 30, label: "feeling misunderstood by..." },
-    { id: 31, label: "be at a loss about..." },
-    { id: 32, label: "feel disoriented" },
-    { id: 33, label: "weary of life" },
-    { id: 34, label: "depressed" },
+    { id: 1, label: "anger / rage about...", sentence: "I feel anger and rage about [trigger]" },
+    { id: 2, label: "bothered by...", sentence: "I am bothered by [trigger]" },
+    { id: 3, label: "worries about...", sentence: "I have worries about [trigger]" },
+    { id: 4, label: "disappointment with...", sentence: "I feel disappointment with [trigger]" },
+    { id: 5, label: "feeling of senselessness", sentence: "I have a feeling of senselessness about [trigger]" },
+    { id: 6, label: "feeling of loss of control over", sentence: "I feel a loss of control over [trigger]" },
+    { id: 7, label: "unable to cope with...", sentence: "I feel unable to cope with [trigger]" },
+    { id: 8, label: "burned out by...", sentence: "I feel burned out by [trigger]" },
+    { id: 9, label: "felt offended by...", sentence: "I felt offended by [trigger]" },
+    { id: 10, label: "felt attacked by...", sentence: "I felt attacked by [trigger]" },
+    { id: 11, label: "unsatisfied with...", sentence: "I am unsatisfied with [trigger]" },
+    { id: 12, label: "guilty feeling about...", sentence: "I have a guilty feeling about [trigger]" },
+    { id: 13, label: "humiliated by...", sentence: "I feel humiliated by [trigger]" },
+    { id: 14, label: "anxiety about...", sentence: "I have anxiety about [trigger]" },
+    { id: 15, label: "betrayed by...", sentence: "I feel betrayed by [trigger]" },
+    { id: 16, label: "desperate about...", sentence: "I feel desperate about [trigger]" },
+    { id: 17, label: "impatient for...", sentence: "I am impatient for [trigger]" },
+    { id: 18, label: "pain", sentence: "I feel pain because of [trigger]" },
+    { id: 19, label: "fear of...", sentence: "I have a fear of [trigger]" },
+    { id: 20, label: "reluctance against...", sentence: "I have reluctance against [trigger]" },
+    { id: 21, label: "frustrated by...", sentence: "I am frustrated by [trigger]" },
+    { id: 22, label: "rejection from", sentence: "I feel rejection from [trigger]" },
+    { id: 23, label: "traumatic memory of...", sentence: "I have a traumatic memory of [trigger]" },
+    { id: 24, label: "financial difficulties", sentence: "I have financial difficulties because of [trigger]" },
+    { id: 25, label: "mourn for...", sentence: "I mourn for [trigger]" },
+    { id: 26, label: "illness of...", sentence: "I feel concerned about the illness of [trigger]" },
+    { id: 27, label: "harassed by...", sentence: "I feel harassed by [trigger]" },
+    { id: 28, label: "future fears about...", sentence: "I have future fears about [trigger]" },
+    { id: 29, label: "bored by...", sentence: "I am bored by [trigger]" },
+    { id: 30, label: "feeling misunderstood by...", sentence: "I feel misunderstood by [trigger]" },
+    { id: 31, label: "be at a loss about...", sentence: "I am at a loss about [trigger]" },
+    { id: 32, label: "feel disoriented", sentence: "I feel disoriented by [trigger]" },
+    { id: 33, label: "weary of life", sentence: "I feel weary of life because of [trigger]" },
+    { id: 34, label: "depressed", sentence: "I feel depressed because of [trigger]" },
   ];
 
   const themeColor = "#B23737";
@@ -171,10 +171,10 @@ const NegativeMindset = () => {
                 <Button
                   type="button"
                   onClick={() => {
-                    const label =
-                      mindsetOptions.find((o) => o.id === selectedId)?.label ??
-                      screeningDefaults.mindsetLabel;
-                    patchScreeningSelection({ mindsetLabel: label });
+                    const option = mindsetOptions.find((o) => o.id === selectedId);
+                    const label = option?.label ?? screeningDefaults.mindsetLabel;
+                    const sentence = option?.sentence ?? screeningDefaults.mindsetSentence;
+                    patchScreeningSelection({ mindsetLabel: label, mindsetSentence: sentence });
                     navigate("/trigger");
                   }}
                   variant="ghost"

@@ -6,7 +6,7 @@ import { useScreeningSelection } from "@/lib/screeningSelection";
 
 const BodyRadar = () => {
   const navigate = useNavigate();
-  const { mindsetLabel, triggerLabel, causeLabel } = useScreeningSelection();
+  const { mindsetLabel, mindsetSentence, triggerLabel, causeLabel } = useScreeningSelection();
 
   return (
     <RadarModuleLayout
@@ -16,20 +16,23 @@ const BodyRadar = () => {
       stepTitle="My compliment!"
       description={
         <>
-          You have found{" "}
+          {(() => {
+            if (!mindsetSentence || !triggerLabel) return null;
+            const parts = mindsetSentence.split("[trigger]");
+            return (
+              <>
+                {parts[0]}
+                <span style={{ color: "#D16868" }} className="italic">
+                  “{triggerLabel}”
+                </span>
+                {parts[1]}
+              </>
+            );
+          })()}
+          , caused by{" "}
           <span style={{ color: "#D16868" }} className="italic">
             “{causeLabel}”
-          </span>
-          <br />
-          as deeper cause for{" "}
-          <span style={{ color: "#D16868" }} className="italic">
-            “{triggerLabel}”
-          </span>{" "}
-          of{" "}
-          <span style={{ color: "#D16868" }} className="italic">
-            “{mindsetLabel}”
-          </span>
-          .<br />
+          </span>.<br />
           You have also reflected carefully about the details of this
           <br />
           combination.

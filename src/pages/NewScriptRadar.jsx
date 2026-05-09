@@ -6,7 +6,7 @@ import { useScreeningSelection } from '@/lib/screeningSelection';
 
 const NewScriptRadar = () => {
   const navigate = useNavigate();
-  const { lifeScriptLabel, oldScriptSummary } = useScreeningSelection();
+  const { lifeScriptLabel, lifeScriptSentence, oldScriptSummary, oldScriptSentence } = useScreeningSelection();
 
   return (
     <RadarModuleLayout
@@ -16,8 +16,32 @@ const NewScriptRadar = () => {
       stepTitle="All right,"
       description={
         <>
-          You have defined <span className="italic text-[#CE5CFF]">“{lifeScriptLabel}”</span> as your actual life-script and<br />
-          found <span className="italic text-[#CE5CFF]">“{oldScriptSummary}”</span> as disturbing aspect/s in it.<br />
+          {(() => {
+            const parts = lifeScriptSentence.split("[label]");
+            return (
+              <>
+                {parts[0]}
+                <span className="italic text-[#CE5CFF]">
+                  “{lifeScriptLabel}”
+                </span>
+                {parts[1]}
+              </>
+            );
+          })()}
+          {" and "}
+          {(() => {
+            const parts = oldScriptSentence.split("[label]");
+            return (
+              <>
+                {parts[0]}
+                <span className="italic text-[#CE5CFF]">
+                  “{oldScriptSummary}”
+                </span>
+                {parts[1]}
+              </>
+            );
+          })()}
+          .<br />
           With which new positively estimated <span className="text-[#CE5CFF]">script-characteristic/s</span><br />
           you want to strengthen or enhance your life script.
         </>

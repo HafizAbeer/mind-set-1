@@ -8,7 +8,7 @@ import { useScreeningSelection } from '@/lib/screeningSelection';
 const ReflectionRadar = () => {
   const navigate = useNavigate();
   const [isInfoModalOpen, setIsInfoModalOpen] = React.useState(false);
-  const { mindsetLabel, triggerLabel, causeLabel } = useScreeningSelection();
+  const { mindsetLabel, mindsetSentence, triggerLabel, causeLabel } = useScreeningSelection();
 
   return (
     <>
@@ -19,9 +19,20 @@ const ReflectionRadar = () => {
         stepTitle="Very well, you got off to a good start."
         description={
           <>
-            You’ve identified <span style={{ color: '#F0B614' }} className="italic">“{causeLabel}”</span> as an underlying<br />
-            cause for <span style={{ color: '#F0B614' }} className="italic">“{triggerLabel}”</span> as trigger of <span style={{ color: '#F0B614' }} className="italic">“{mindsetLabel}”</span> in<br />
-            your mindset screening.
+            {(() => {
+              if (!mindsetSentence || !triggerLabel) return null;
+              const parts = mindsetSentence.split("[trigger]");
+              return (
+                <>
+                  {parts[0]}
+                  <span style={{ color: '#F0B614' }} className="italic">
+                    “{triggerLabel}”
+                  </span>
+                  {parts[1]}
+                </>
+              );
+            })()}
+            , caused by <span style={{ color: '#F0B614' }} className="italic">“{causeLabel}”</span>.<br />
           </>
         }
         footerTitle={null}

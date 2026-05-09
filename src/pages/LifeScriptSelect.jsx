@@ -24,52 +24,52 @@ const LifeScriptSelect = () => {
   };
 
   const scripts = [
-    { id: 1, label: "The Maker" },
-    { id: 2, label: "The Helper" },
-    { id: 3, label: "The Understanding One" },
-    { id: 4, label: "The Incompetent" },
-    { id: 5, label: "The Anxious" },
-    { id: 6, label: "The Casual" },
-    { id: 7, label: "The Smart" },
-    { id: 8, label: "The mediator" },
-    { id: 9, label: "The Organizer" },
-    { id: 10, label: "The Insecure" },
-    { id: 11, label: "The Obedient" },
-    { id: 12, label: "The Weak" },
-    { id: 13, label: "The One Left Behind" },
-    { id: 14, label: "The Unable" },
-    { id: 15, label: "The Helpless" },
-    { id: 16, label: "The Torn" },
-    { id: 17, label: "The Chronically III" },
-    { id: 18, label: "The Melancholic" },
-    { id: 19, label: "The Misunderstood" },
-    { id: 20, label: "The Sceptic" },
-    { id: 21, label: "The Leader" },
-    { id: 22, label: "The Critic" },
-    { id: 23, label: "The Pacifist" },
-    { id: 24, label: "The Independent" },
-    { id: 25, label: "The Thrifty" },
-    { id: 26, label: "The Epicurean" },
-    { id: 27, label: "The Generous" },
-    { id: 28, label: "The High-Flyer" },
-    { id: 29, label: "The Silent" },
-    { id: 30, label: "The Arrogant" },
-    { id: 31, label: "The Supporter" },
-    { id: 32, label: "The ever-balanced one" },
-    { id: 33, label: "The Cosy One" },
-    { id: 34, label: "The Cheated One" },
-    { id: 35, label: "The Loser" },
-    { id: 36, label: "The Teacher" },
-    { id: 37, label: "The Righteous One" },
-    { id: 38, label: "The Entertainer" },
-    { id: 39, label: "The Angry One" },
-    { id: 40, label: "The Oppositionist" },
-    { id: 41, label: "The Follower" },
-    { id: 42, label: "The Untidy One" },
-    { id: 43, label: "The Lone Wolf" },
-    { id: 44, label: "The Irreplaceable" },
-    { id: 45, label: "The Provider" },
-    { id: 46, label: "The Avenger" },
+    { id: 1, label: "The Maker", sentence: "I see myself in the role of [label]" },
+    { id: 2, label: "The Helper", sentence: "I see myself in the role of [label]" },
+    { id: 3, label: "The Understanding One", sentence: "I see myself in the role of [label]" },
+    { id: 4, label: "The Incompetent", sentence: "I see myself in the role of [label]" },
+    { id: 5, label: "The Anxious", sentence: "I see myself in the role of [label]" },
+    { id: 6, label: "The Casual", sentence: "I see myself in the role of [label]" },
+    { id: 7, label: "The Smart", sentence: "I see myself in the role of [label]" },
+    { id: 8, label: "The mediator", sentence: "I see myself in the role of [label]" },
+    { id: 9, label: "The Organizer", sentence: "I see myself in the role of [label]" },
+    { id: 10, label: "The Insecure", sentence: "I see myself in the role of [label]" },
+    { id: 11, label: "The Obedient", sentence: "I see myself in the role of [label]" },
+    { id: 12, label: "The Weak", sentence: "I see myself in the role of [label]" },
+    { id: 13, label: "The One Left Behind", sentence: "I see myself in the role of [label]" },
+    { id: 14, label: "The Unable", sentence: "I see myself in the role of [label]" },
+    { id: 15, label: "The Helpless", sentence: "I see myself in the role of [label]" },
+    { id: 16, label: "The Torn", sentence: "I see myself in the role of [label]" },
+    { id: 17, label: "The Chronically III", sentence: "I see myself in the role of [label]" },
+    { id: 18, label: "The Melancholic", sentence: "I see myself in the role of [label]" },
+    { id: 19, label: "The Misunderstood", sentence: "I see myself in the role of [label]" },
+    { id: 20, label: "The Sceptic", sentence: "I see myself in the role of [label]" },
+    { id: 21, label: "The Leader", sentence: "I see myself in the role of [label]" },
+    { id: 22, label: "The Critic", sentence: "I see myself in the role of [label]" },
+    { id: 23, label: "The Pacifist", sentence: "I see myself in the role of [label]" },
+    { id: 24, label: "The Independent", sentence: "I see myself in the role of [label]" },
+    { id: 25, label: "The Thrifty", sentence: "I see myself in the role of [label]" },
+    { id: 26, label: "The Epicurean", sentence: "I see myself in the role of [label]" },
+    { id: 27, label: "The Generous", sentence: "I see myself in the role of [label]" },
+    { id: 28, label: "The High-Flyer", sentence: "I see myself in the role of [label]" },
+    { id: 29, label: "The Silent", sentence: "I see myself in the role of [label]" },
+    { id: 30, label: "The Arrogant", sentence: "I see myself in the role of [label]" },
+    { id: 31, label: "The Supporter", sentence: "I see myself in the role of [label]" },
+    { id: 32, label: "The ever-balanced one", sentence: "I see myself in the role of [label]" },
+    { id: 33, label: "The Cosy One", sentence: "I see myself in the role of [label]" },
+    { id: 34, label: "The Cheated One", sentence: "I see myself in the role of [label]" },
+    { id: 35, label: "The Loser", sentence: "I see myself in the role of [label]" },
+    { id: 36, label: "The Teacher", sentence: "I see myself in the role of [label]" },
+    { id: 37, label: "The Righteous One", sentence: "I see myself in the role of [label]" },
+    { id: 38, label: "The Entertainer", sentence: "I see myself in the role of [label]" },
+    { id: 39, label: "The Angry One", sentence: "I see myself in the role of [label]" },
+    { id: 40, label: "The Oppositionist", sentence: "I see myself in the role of [label]" },
+    { id: 41, label: "The Follower", sentence: "I see myself in the role of [label]" },
+    { id: 42, label: "The Untidy One", sentence: "I see myself in the role of [label]" },
+    { id: 43, label: "The Lone Wolf", sentence: "I see myself in the role of [label]" },
+    { id: 44, label: "The Irreplaceable", sentence: "I see myself in the role of [label]" },
+    { id: 45, label: "The Provider", sentence: "I see myself in the role of [label]" },
+    { id: 46, label: "The Avenger", sentence: "I see myself in the role of [label]" },
   ];
 
   const themeColor = "#E2E464";
@@ -164,12 +164,14 @@ const LifeScriptSelect = () => {
                   type="button"
                   onClick={() => {
                     const id = selectedIds[0];
-                    const lifeScriptLabel =
-                      id != null
-                        ? (scripts.find((s) => s.id === id)?.label ??
-                          screeningDefaults.lifeScriptLabel)
-                        : screeningDefaults.lifeScriptLabel;
-                    patchScreeningSelection({ lifeScriptLabel });
+                    const selected = scripts.find((s) => s.id === id);
+                    const lifeScriptLabel = selected?.label ?? screeningDefaults.lifeScriptLabel;
+                    const lifeScriptSentence = selected?.sentence ?? screeningDefaults.lifeScriptSentence;
+                    
+                    patchScreeningSelection({ 
+                      lifeScriptLabel,
+                      lifeScriptSentence
+                    });
                     navigate("/old-script");
                   }}
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all shadow-lg border-2 border-[#E2E464] text-[15px] md:text-[20px] hover:opacity-90 active:scale-95"

@@ -12,7 +12,7 @@ import {
 
 const OldScriptSelect = () => {
   const navigate = useNavigate();
-  const { lifeScriptLabel } = useScreeningSelection();
+  const { lifeScriptLabel, lifeScriptSentence } = useScreeningSelection();
   const [selectedIds, setSelectedIds] = useState([null]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [customInput, setCustomInput] = useState("");
@@ -26,48 +26,48 @@ const OldScriptSelect = () => {
   };
 
   const scripts = [
-    { id: 1, label: "to practice to much actionism" },
-    { id: 2, label: "to often helper syndrome" },
-    { id: 3, label: "to be too understanding" },
-    { id: 4, label: "to feel too often incompetent" },
-    { id: 5, label: "to much anxiety" },
-    { id: 6, label: "to behave exaggerated casualty" },
-    { id: 7, label: "to be a smart aleck" },
-    { id: 8, label: "giving oneself up" },
-    { id: 9, label: "to show off too much" },
-    { id: 10, label: "be too unsure" },
-    { id: 11, label: "to be too submissive" },
-    { id: 12, label: "not believe in myself" },
-    { id: 13, label: "to be too uninterested" },
-    { id: 14, label: "to be clumsy" },
-    { id: 15, label: "to be not self-employed" },
-    { id: 16, label: "to be indecisive" },
-    { id: 17, label: "to be whiny" },
-    { id: 18, label: "to be pessimistic" },
-    { id: 19, label: "to be easily offended" },
-    { id: 20, label: "to be overly suspicious" },
-    { id: 21, label: "difficulty asserting oneself" },
-    { id: 22, label: "to be suspicious" },
-    { id: 23, label: "to be stingy" },
-    { id: 24, label: "to be excessive" },
-    { id: 25, label: "to be too selfless" },
-    { id: 26, label: "to be too unconfident" },
-    { id: 27, label: "to be too reserved" },
-    { id: 28, label: "to be overconfident" },
-    { id: 29, label: "to be too sluggish" },
-    { id: 30, label: "not assertive enough" },
-    { id: 31, label: "to be too much of a victim" },
-    { id: 32, label: "to be overly educational" },
-    { id: 33, label: "to be too pedantic" },
-    { id: 34, label: "to be too self-absorbed" },
-    { id: 35, label: "to be too irritable" },
-    { id: 36, label: "feel too easily oppressed" },
-    { id: 37, label: "to be too dependent" },
-    { id: 38, label: "to be too disorganized" },
-    { id: 39, label: "to be too much of a Rambo" },
-    { id: 40, label: "too full of own self-importance" },
-    { id: 41, label: "to be too obedient" },
-    { id: 42, label: "to be too vindictive" },
+    { id: 1, label: "to practice to much actionism", sentence: "I used [label]" },
+    { id: 2, label: "to often helper syndrome", sentence: "I used [label]" },
+    { id: 3, label: "to be too understanding", sentence: "I used [label]" },
+    { id: 4, label: "to feel too often incompetent", sentence: "I used [label]" },
+    { id: 5, label: "to much anxiety", sentence: "I used [label]" },
+    { id: 6, label: "to behave exaggerated casualty", sentence: "I used [label]" },
+    { id: 7, label: "to be a smart aleck", sentence: "I used [label]" },
+    { id: 8, label: "giving oneself up", sentence: "I used [label]" },
+    { id: 9, label: "to show off too much", sentence: "I used [label]" },
+    { id: 10, label: "be too unsure", sentence: "I used [label]" },
+    { id: 11, label: "to be too submissive", sentence: "I used [label]" },
+    { id: 12, label: "not believe in myself", sentence: "I used [label]" },
+    { id: 13, label: "to be too uninterested", sentence: "I used [label]" },
+    { id: 14, label: "to be clumsy", sentence: "I used [label]" },
+    { id: 15, label: "to be not self-employed", sentence: "I used [label]" },
+    { id: 16, label: "to be indecisive", sentence: "I used [label]" },
+    { id: 17, label: "to be whiny", sentence: "I used [label]" },
+    { id: 18, label: "to be pessimistic", sentence: "I used [label]" },
+    { id: 19, label: "to be easily offended", sentence: "I used [label]" },
+    { id: 20, label: "to be overly suspicious", sentence: "I used [label]" },
+    { id: 21, label: "difficulty asserting oneself", sentence: "I used [label]" },
+    { id: 22, label: "to be suspicious", sentence: "I used [label]" },
+    { id: 23, label: "to be stingy", sentence: "I used [label]" },
+    { id: 24, label: "to be excessive", sentence: "I used [label]" },
+    { id: 25, label: "to be too selfless", sentence: "I used [label]" },
+    { id: 26, label: "to be too unconfident", sentence: "I used [label]" },
+    { id: 27, label: "to be too reserved", sentence: "I used [label]" },
+    { id: 28, label: "to be overconfident", sentence: "I used [label]" },
+    { id: 29, label: "to be too sluggish", sentence: "I used [label]" },
+    { id: 30, label: "not assertive enough", sentence: "I used [label]" },
+    { id: 31, label: "to be too much of a victim", sentence: "I used [label]" },
+    { id: 32, label: "to be overly educational", sentence: "I used [label]" },
+    { id: 33, label: "to be too pedantic", sentence: "I used [label]" },
+    { id: 34, label: "to be too self-absorbed", sentence: "I used [label]" },
+    { id: 35, label: "to be too irritable", sentence: "I used [label]" },
+    { id: 36, label: "feel too easily oppressed", sentence: "I used [label]" },
+    { id: 37, label: "to be too dependent", sentence: "I used [label]" },
+    { id: 38, label: "to be too disorganized", sentence: "I used [label]" },
+    { id: 39, label: "to be too much of a Rambo", sentence: "I used [label]" },
+    { id: 40, label: "too full of own self-importance", sentence: "I used [label]" },
+    { id: 41, label: "to be too obedient", sentence: "I used [label]" },
+    { id: 42, label: "to be too vindictive", sentence: "I used [label]" },
   ];
 
   const themeColor = "#48C856";
@@ -99,9 +99,17 @@ const OldScriptSelect = () => {
                 <Info size={24} className="text-white shrink-0" />
                 <div className="flex-1 flex flex-col items-center justify-center">
                   <p className="font-inter font-semibold text-[clamp(16px,4vw,22px)] leading-tight sm:leading-[28px] tracking-[0px] text-[#48C856] m-0 text-center">
-                    You have identified{" "}
-                    <span style={{ color: "white" }}>“{lifeScriptLabel}”</span>{" "}
-                    as your Life Script. Which of the following
+                    {(() => {
+                      const parts = lifeScriptSentence.split("[label]");
+                      return (
+                        <>
+                          {parts[0]}
+                          <span style={{ color: "white" }}>“{lifeScriptLabel}”</span>
+                          {parts[1]}
+                        </>
+                      );
+                    })()}
+                    . Which of the following
                     <br className="hidden sm:block" />
                     <span style={{ color: "white" }}>
                       “Old Life Script qualities”
@@ -132,11 +140,10 @@ const OldScriptSelect = () => {
                     <button
                       key={script.id}
                       onClick={() => toggleSelection(script.id)}
-                      className={`h-[48px] w-full max-w-[440px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${
-                        selectedIds.includes(script.id)
+                      className={`h-[48px] w-full max-w-[440px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${selectedIds.includes(script.id)
                           ? "text-white border-transparent shadow-lg active:scale-95"
                           : "text-[#C2C2C2] hover:text-white"
-                      }`}
+                        }`}
                       style={{
                         background: selectedIds.includes(script.id)
                           ? themeGradient
@@ -167,13 +174,15 @@ const OldScriptSelect = () => {
                 <button
                   type="button"
                   onClick={() => {
-                    const labels = selectedIds
-                      .map((id) => scripts.find((s) => s.id === id)?.label)
-                      .filter(Boolean);
-                    const oldScriptSummary = labels.length
-                      ? labels.join(", ")
-                      : screeningDefaults.oldScriptSummary;
-                    patchScreeningSelection({ oldScriptSummary });
+                    const id = selectedIds[0];
+                    const selected = scripts.find((s) => s.id === id);
+                    const oldScriptSummary = selected?.label ?? screeningDefaults.oldScriptSummary;
+                    const oldScriptSentence = selected?.sentence ?? screeningDefaults.oldScriptSentence;
+
+                    patchScreeningSelection({ 
+                      oldScriptSummary,
+                      oldScriptSentence
+                    });
                     navigate("/new-script");
                   }}
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all shadow-lg border-2 border-[#48C856] text-[15px] md:text-[20px] hover:opacity-90 active:scale-95"

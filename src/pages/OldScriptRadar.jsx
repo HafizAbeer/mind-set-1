@@ -6,7 +6,7 @@ import { useScreeningSelection } from '@/lib/screeningSelection';
 
 const OldScriptRadar = () => {
   const navigate = useNavigate();
-  const { lifeScriptLabel } = useScreeningSelection();
+  const { lifeScriptLabel, lifeScriptSentence } = useScreeningSelection();
 
   return (
     <RadarModuleLayout
@@ -16,9 +16,21 @@ const OldScriptRadar = () => {
       stepTitle="Fine..."
       description={
         <>
-          So let’s start with this role of <span style={{ color: '#48C856' }} className="italic">“{lifeScriptLabel}”</span> as your actual life script.<br />
-          Unfortunately you’r feeling stressed right now in this role.<br />
-          Which of your troublesome Traits inherent in your script you<br />
+          {(() => {
+            const parts = lifeScriptSentence.split("[label]");
+            return (
+              <>
+                {parts[0]}
+                <span style={{ color: '#48C856' }} className="italic">
+                  “{lifeScriptLabel}”
+                </span>
+                {parts[1]}
+              </>
+            );
+          })()}
+          .<br />
+          Unfortunately, you're feeling stressed right now in this role.<br />
+          Which of the troublesome traits inherent in your script do you<br />
           want to fight in the near future?
         </>
       }

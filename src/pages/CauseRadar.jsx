@@ -6,7 +6,7 @@ import { useScreeningSelection } from "@/lib/screeningSelection";
 
 const CauseRadar = () => {
   const navigate = useNavigate();
-  const { mindsetLabel, triggerLabel } = useScreeningSelection();
+  const { mindsetLabel, mindsetSentence, triggerLabel } = useScreeningSelection();
 
   return (
     <RadarModuleLayout
@@ -15,18 +15,19 @@ const CauseRadar = () => {
       moduleSubtitle={`Select the deeper emotional cause of your ${triggerLabel}`}
       stepTitle="Very good!!!"
       description={
-        <>
-          You have identified{" "}
-          <span style={{ color: "#88EC65" }} className="italic">
-            “{triggerLabel}”
-          </span>
-          <br />
-          as the trigger for{" "}
-          <span style={{ color: "#88EC65" }} className="italic">
-            “{mindsetLabel}”
-          </span>
-          .
-        </>
+        (() => {
+          if (!mindsetSentence || !triggerLabel) return null;
+          const parts = mindsetSentence.split("[trigger]");
+          return (
+            <>
+              {parts[0]}
+              <span style={{ color: "#88EC65" }} className="italic">
+                “{triggerLabel}”
+              </span>
+              {parts[1]}
+            </>
+          );
+        })()
       }
       footerTitle="Mindfully explore:"
       footerText={

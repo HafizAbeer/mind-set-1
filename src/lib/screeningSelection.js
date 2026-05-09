@@ -5,13 +5,18 @@ const CHANGE_EVENT = "mindset-screening-selection-change";
 
 export const screeningDefaults = {
   mindsetLabel: "mindset",
+  mindsetSentence: "I feel [mindset] by [trigger]",
   triggerLabel: "trigger",
   causeLabel: "cause",
   bodyStructureLabel: "body structure",
   symptomSummary: "symptom",
   intentionLabel: "Intention",
   lifeScriptLabel: "life script",
+  lifeScriptSentence: "My life script is [label]",
   oldScriptSummary: "old script/s",
+  oldScriptSentence: "My old script is [label]",
+  newScriptSummary: "new script/s",
+  newScriptSentence: "My new script is [label]",
 };
 
 function readStored() {
@@ -35,6 +40,7 @@ export function getScreeningSelection() {
   const raw = readStored();
   return {
     mindsetLabel: resolveLabel(raw.mindsetLabel, screeningDefaults.mindsetLabel),
+    mindsetSentence: resolveLabel(raw.mindsetSentence, screeningDefaults.mindsetSentence),
     triggerLabel: resolveLabel(raw.triggerLabel, screeningDefaults.triggerLabel),
     causeLabel: resolveLabel(raw.causeLabel, screeningDefaults.causeLabel),
     bodyStructureLabel: resolveLabel(
@@ -53,9 +59,25 @@ export function getScreeningSelection() {
       raw.lifeScriptLabel,
       screeningDefaults.lifeScriptLabel
     ),
+    lifeScriptSentence: resolveLabel(
+      raw.lifeScriptSentence,
+      screeningDefaults.lifeScriptSentence
+    ),
     oldScriptSummary: resolveLabel(
       raw.oldScriptSummary,
       screeningDefaults.oldScriptSummary
+    ),
+    oldScriptSentence: resolveLabel(
+      raw.oldScriptSentence,
+      screeningDefaults.oldScriptSentence
+    ),
+    newScriptSummary: resolveLabel(
+      raw.newScriptSummary,
+      screeningDefaults.newScriptSummary
+    ),
+    newScriptSentence: resolveLabel(
+      raw.newScriptSentence,
+      screeningDefaults.newScriptSentence
     ),
   };
 }
@@ -64,13 +86,18 @@ function selectionSnapshot() {
   const s = getScreeningSelection();
   return JSON.stringify([
     s.mindsetLabel,
+    s.mindsetSentence,
     s.triggerLabel,
     s.causeLabel,
     s.bodyStructureLabel,
     s.symptomSummary,
     s.intentionLabel,
     s.lifeScriptLabel,
+    s.lifeScriptSentence,
     s.oldScriptSummary,
+    s.oldScriptSentence,
+    s.newScriptSummary,
+    s.newScriptSentence,
   ]);
 }
 
@@ -97,22 +124,32 @@ export function useScreeningSelection() {
   );
   const [
     mindsetLabel,
+    mindsetSentence,
     triggerLabel,
     causeLabel,
     bodyStructureLabel,
     symptomSummary,
     intentionLabel,
     lifeScriptLabel,
+    lifeScriptSentence,
     oldScriptSummary,
+    oldScriptSentence,
+    newScriptSummary,
+    newScriptSentence,
   ] = JSON.parse(snapshot);
   return {
     mindsetLabel,
+    mindsetSentence,
     triggerLabel,
     causeLabel,
     bodyStructureLabel,
     symptomSummary,
     intentionLabel,
     lifeScriptLabel,
+    lifeScriptSentence,
     oldScriptSummary,
+    oldScriptSentence,
+    newScriptSummary,
+    newScriptSentence,
   };
 }
