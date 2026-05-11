@@ -26,13 +26,13 @@ const IntentionRadar = () => {
         description={
           <>
             You have assigned{" "}
-            <span style={{ color: "#FBA90B" }} className="italic">
-              “{symptomSummary}”
+            <span style={{ color: "#FBA90B" }}>
+              {symptomSummary}
             </span>{" "}
             in the
             <br />
-            <span style={{ color: "#FBA90B" }} className="italic">
-              “{bodyStructureLabel}”
+            <span style={{ color: "#FBA90B" }}>
+              {bodyStructureLabel}
             </span>{" "}
             as associated
             <br />
@@ -48,15 +48,15 @@ const IntentionRadar = () => {
             ones would you ideally like to adopt in order to be able to cope
             with
             <br />
-            <span style={{ color: "#FBA90B" }} className="italic">
-              ‘{mindsetLabel}’
+            <span style={{ color: "#FBA90B" }}>
+              {mindsetLabel}
             </span>{" "}
-            <span style={{ color: "#2AABEE" }} className="italic">
-              ‘{triggerLabel}’
+            <span style={{ color: "#2AABEE" }}>
+              {triggerLabel}
             </span>{" "}
             and{" "}
-            <span style={{ color: "#88EC65" }} className="italic">
-              ‘{causeLabel}’
+            <span style={{ color: "#88EC65" }}>
+              {causeLabel}
             </span>{" "}
             in the future?
           </>

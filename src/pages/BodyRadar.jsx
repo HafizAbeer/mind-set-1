@@ -22,16 +22,16 @@ const BodyRadar = () => {
             return (
               <>
                 {parts[0]}
-                <span style={{ color: "#D16868" }} className="italic">
-                  “{triggerLabel}”
+                <span style={{ color: "#D16868" }}>
+                  {triggerLabel}
                 </span>
                 {parts[1]}
               </>
             );
           })()}
           , caused by{" "}
-          <span style={{ color: "#D16868" }} className="italic">
-            “{causeLabel}”
+          <span style={{ color: "#D16868" }}>
+            {causeLabel}
           </span>.<br />
           You have also reflected carefully about the details of this
           <br />

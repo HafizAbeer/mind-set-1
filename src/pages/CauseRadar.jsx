@@ -21,8 +21,8 @@ const CauseRadar = () => {
           return (
             <>
               {parts[0]}
-              <span style={{ color: "#88EC65" }} className="italic">
-                “{triggerLabel}”
+              <span style={{ color: "#88EC65" }}>
+                {triggerLabel}
               </span>
               {parts[1]}
             </>

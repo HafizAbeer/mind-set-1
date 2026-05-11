@@ -17,8 +17,8 @@ const AnchorRadar = () => {
       description={
         <>
           You have now gone through all the steps of the <span className="font-semibold">mindfulness</span><br />
-          process and determined <span style={{ color: '#FF5B86' }} className="italic">“{intentionLabel}”</span> as desired<br />
-          <span style={{ color: '#FF5B86' }} className="italic">“{mindsetLabel}”</span>
+          process and determined <span style={{ color: '#FF5B86' }}>{intentionLabel}</span> targeted Intention<br />
+          <span style={{ color: '#FF5B86' }}>{mindsetLabel}</span>
         </>
       }
       footerTitle="Now:"

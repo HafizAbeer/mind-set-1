@@ -79,14 +79,14 @@ const ReflectionQuestions = () => {
                       return (
                         <>
                           {parts[0]}
-                          <span className="text-white italic">
-                            “{triggerLabel}”
+                          <span className="text-white">
+                            {triggerLabel}
                           </span>
                           {parts[1]}
                         </>
                       );
                     })()}
-                    , caused by <span className="text-white italic">“{causeLabel}”</span>. <br className="hidden sm:block" />
+                    , caused by <span className="text-white">{causeLabel}</span>. <br className="hidden sm:block" />
                     Try to openly reflect on at least one of the considerations.
                   </p>
                 </div>

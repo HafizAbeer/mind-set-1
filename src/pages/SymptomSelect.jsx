@@ -98,16 +98,16 @@ const SymptomSelect = () => {
                       return (
                         <>
                           {parts[0]}
-                          <span className="font-semibold italic text-[#2AABEE]">
-                            “{triggerLabel}”
+                          <span className="font-semibold text-[#2AABEE]">
+                            {triggerLabel}
                           </span>
                           {parts[1]}
                         </>
                       );
                     })()}
                     . What symptom you perceive most clearly in your{" "}
-                    <span className="font-semibold italic text-[#2AABEE]">
-                      “{bodyStructureLabel}”
+                    <span className="font-semibold text-[#2AABEE]">
+                      {bodyStructureLabel}
                     </span>
                     ?
                   </p>

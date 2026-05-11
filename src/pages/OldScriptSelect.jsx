@@ -104,7 +104,7 @@ const OldScriptSelect = () => {
                       return (
                         <>
                           {parts[0]}
-                          <span style={{ color: "white" }}>“{lifeScriptLabel}”</span>
+                          <span style={{ color: "white" }}>{lifeScriptLabel}</span>
                           {parts[1]}
                         </>
                       );

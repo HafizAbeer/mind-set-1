@@ -139,11 +139,11 @@ const TriggerRadar = () => {
                 <Info size={24} className="shrink-0" />
                 <div className="w-full max-w-[857px] flex flex-col items-center justify-center">
                   <p className="font-inter font-medium text-[24px] leading-[33px] tracking-[-2px] text-[#6B83FF] m-0 text-center">
-                    You have chosen “
+                    You have chosen{" "}
                     <span className="font-medium text-white">
                       {mindsetLabel}
                     </span>
-                    ” as your mindset. What triggered this mindset?
+                    {" "}as your mindset. What triggered this mindset?
                     <br />
                     Has it a Intentionful or an avoiding character?
                   </p>

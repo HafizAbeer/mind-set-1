@@ -25,14 +25,14 @@ const ReflectionRadar = () => {
               return (
                 <>
                   {parts[0]}
-                  <span style={{ color: '#F0B614' }} className="italic">
-                    “{triggerLabel}”
+                  <span style={{ color: '#F0B614' }}>
+                    {triggerLabel}
                   </span>
                   {parts[1]}
                 </>
               );
             })()}
-            , caused by <span style={{ color: '#F0B614' }} className="italic">“{causeLabel}”</span>.<br />
+            , caused by <span style={{ color: '#F0B614' }}>{causeLabel}</span>.<br />
           </>
         }
         footerTitle={null}
