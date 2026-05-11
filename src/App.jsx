@@ -32,6 +32,7 @@ import ExercisesSelect from "./pages/ExercisesSelect";
 import LifeScriptSelect from "./pages/LifeScriptSelect";
 import OldScriptSelect from "./pages/OldScriptSelect";
 import NewScriptSelect from "./pages/NewScriptSelect";
+import ProtocolSummary from "./pages/ProtocolSummary";
 import SuccessGaugeSelect from "./pages/SuccessGaugeSelect";
 import SlightImprovement from "./pages/SlightImprovement";
 import ClearImprovement from "./pages/ClearImprovement";
@@ -131,6 +132,7 @@ function App() {
           <Route path="/life-script-select" element={<LifeScriptSelect />} />
           <Route path="/old-script-select" element={<OldScriptSelect />} />
           <Route path="/new-script-select" element={<NewScriptSelect />} />
+          <Route path="/protocol-summary" element={<ProtocolSummary />} />
           <Route
             path="/success-gauge-select"
             element={<SuccessGaugeSelect />}

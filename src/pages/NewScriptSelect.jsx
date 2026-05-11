@@ -176,11 +176,11 @@ const NewScriptSelect = () => {
                     const newScriptSummary = selected?.label ?? screeningDefaults.newScriptSummary;
                     const newScriptSentence = selected?.sentence ?? screeningDefaults.newScriptSentence;
 
-                    patchScreeningSelection({ 
+                    patchScreeningSelection({
                       newScriptSummary,
                       newScriptSentence
                     });
-                    navigate("/success-gauge");
+                    navigate("/protocol-summary");
                   }}
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all shadow-lg border-2 border-[#CE5CFF] text-[15px] md:text-[20px] hover:opacity-90 active:scale-95"
                   style={{ background: themeGradient }}
