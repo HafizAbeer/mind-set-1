@@ -115,8 +115,8 @@ const CauseSelect = () => {
                       return (
                         <>
                           {parts[0]}
-                          <span className="font-semibold italic text-white">
-                            “{triggerLabel}”
+                          <span className="font-semibold text-white">
+                            {triggerLabel}
                           </span>
                           {parts[1]}.
                         </>
@@ -193,10 +193,10 @@ const CauseSelect = () => {
                   </div>
                 </div>
 
-                <div className="w-full flex justify-center mt-[10px]">
+                <div className="flex w-full px-[8px] mt-[10px]">
                   <button
                     onClick={() => setSelectedId(999)}
-                    className={`w-full max-w-[440px] md:max-w-[928px] h-[48px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${selectedId === 999
+                    className={`w-full h-[48px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${selectedId === 999
                       ? "text-white border-transparent shadow-lg active:scale-95"
                       : "text-[#C5C5C5] hover:text-white"
                       }`}

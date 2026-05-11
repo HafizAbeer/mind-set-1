@@ -21,8 +21,8 @@ const OldScriptRadar = () => {
             return (
               <>
                 {parts[0]}
-                <span style={{ color: '#48C856' }} className="italic">
-                  “{lifeScriptLabel}”
+                <span style={{ color: '#48C856' }}>
+                  {lifeScriptLabel}
                 </span>
                 {parts[1]}
               </>

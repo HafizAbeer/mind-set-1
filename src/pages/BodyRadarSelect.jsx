@@ -185,16 +185,16 @@ const BodyRadarSelect = () => {
                       return (
                         <>
                           {parts[0]}
-                          <span className="font-semibold italic text-[#D16868]">
-                            “{triggerLabel}”
+                          <span className="font-semibold text-[#D16868]">
+                            {triggerLabel}
                           </span>
                           {parts[1]}
                         </>
                       );
                     })()}
                     , caused by{" "}
-                    <span className="font-semibold italic text-[#D16868]">
-                      “{causeLabel}”
+                    <span className="font-semibold text-[#D16868]">
+                      {causeLabel}
                     </span>
                     . Where in your body do you feel this most clearly?
                   </p>

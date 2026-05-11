@@ -21,8 +21,8 @@ const NewScriptRadar = () => {
             return (
               <>
                 {parts[0]}
-                <span className="italic text-[#CE5CFF]">
-                  “{lifeScriptLabel}”
+                <span className="text-[#CE5CFF]">
+                  {lifeScriptLabel}
                 </span>
                 {parts[1]}
               </>
@@ -34,8 +34,8 @@ const NewScriptRadar = () => {
             return (
               <>
                 {parts[0]}
-                <span className="italic text-[#CE5CFF]">
-                  “{oldScriptSummary}”
+                <span className="text-[#CE5CFF]">
+                  {oldScriptSummary}
                 </span>
                 {parts[1]}
               </>

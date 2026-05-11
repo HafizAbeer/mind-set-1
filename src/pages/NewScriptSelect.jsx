@@ -104,7 +104,7 @@ const NewScriptSelect = () => {
                       return (
                         <>
                           {parts[0]}
-                          <span style={{ color: "white" }}>“{oldScriptSummary}”</span>
+                          <span style={{ color: "white" }}>{oldScriptSummary}</span>
                           {parts[1]}
                         </>
                       );

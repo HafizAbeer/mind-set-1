@@ -24,7 +24,7 @@ const TriggerIntroPage = () => {
       description={
         <p className="m-0">
           You have chosen{" "}
-          <span className="italic text-[#6B83FF]">“{mindsetLabel}”</span>
+          <span className="text-[#6B83FF]">{mindsetLabel}</span>
           <br />
           as your mindset!
         </p>
