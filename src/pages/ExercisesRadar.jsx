@@ -28,7 +28,7 @@ const ExercisesRadar = () => {
         footerText={
           <>
             You can choose from the following list which exercises you prefer in<br />
-            order to strengthen and develop <span style={{ color: '#FF6721' }} className="italic">‘{intentionLabel}’</span> as your new mindset.
+            order to strengthen and develop <span style={{ color: '#FF6721' }}>{intentionLabel}</span> as your new mindset.
           </>
         }
         themeColor="#FF6721"

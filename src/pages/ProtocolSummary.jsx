@@ -7,8 +7,8 @@ import { useScreeningSelection } from "@/lib/screeningSelection";
 const accent = "#CE5CFF";
 
 const Highlight = ({ children }) => (
-  <span className="italic font-semibold" style={{ color: accent }}>
-    “{children}”
+  <span className="font-semibold" style={{ color: accent }}>
+    {children}
   </span>
 );
 
