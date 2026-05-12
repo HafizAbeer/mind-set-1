@@ -18,22 +18,22 @@ const ReflectionRadar = () => {
         moduleSubtitle="How close to validity is your interpretation?"
         stepTitle="Very well, you got off to a good start."
         description={
-          <>
+          <span style={{ color: '#F0B614' }}>
             {(() => {
               if (!mindsetSentence || !triggerLabel) return null;
               const parts = mindsetSentence.split("[trigger]");
               return (
                 <>
                   {parts[0]}
-                  <span style={{ color: '#F0B614' }}>
+                  <span style={{ color: '#FFFFFF' }}>
                     {triggerLabel}
                   </span>
                   {parts[1]}
                 </>
               );
             })()}
-            , caused by <span style={{ color: '#F0B614' }}>{causeLabel}</span>.<br />
-          </>
+            , caused by <span style={{ color: '#FFFFFF' }}>{causeLabel}</span>.<br />
+          </span>
         }
         footerTitle={null}
         footerText={

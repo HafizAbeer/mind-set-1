@@ -19,13 +19,13 @@ const CauseRadar = () => {
           if (!mindsetSentence || !triggerLabel) return null;
           const parts = mindsetSentence.split("[trigger]");
           return (
-            <>
+            <span style={{ color: "#88EC65" }}>
               {parts[0]}
-              <span style={{ color: "#88EC65" }}>
+              <span style={{ color: "#FFFFFF" }}>
                 {triggerLabel}
               </span>
               {parts[1]}
-            </>
+            </span>
           );
         })()
       }

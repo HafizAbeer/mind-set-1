@@ -178,14 +178,14 @@ const BodyRadarSelect = () => {
               <div className="w-full min-h-[88px] bg-[#D16868]/10 border-[2px] border-[#D16868] rounded-[16px] p-[20px] flex items-center gap-[8px] shrink-0">
                 <Info size={24} className="text-white shrink-0" />
                 <div className="flex-1 flex flex-col items-center justify-center">
-                  <p className="font-inter font-semibold text-[22px] leading-[28px] tracking-[0px] text-white m-0 text-center">
+                  <p className="font-inter font-semibold text-[22px] leading-[28px] tracking-[0px] text-[#D16868] m-0 text-center">
                     {(() => {
                       if (!mindsetSentence || !triggerLabel) return null;
                       const parts = mindsetSentence.split("[trigger]");
                       return (
                         <>
                           {parts[0]}
-                          <span className="font-semibold text-[#D16868]">
+                          <span className="font-semibold text-white">
                             {triggerLabel}
                           </span>
                           {parts[1]}
@@ -193,7 +193,7 @@ const BodyRadarSelect = () => {
                       );
                     })()}
                     , caused by{" "}
-                    <span className="font-semibold text-[#D16868]">
+                    <span className="font-semibold text-white">
                       {causeLabel}
                     </span>
                     . Where in your body do you feel this most clearly?

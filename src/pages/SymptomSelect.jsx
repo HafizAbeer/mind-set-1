@@ -91,14 +91,14 @@ const SymptomSelect = () => {
               <div className="w-full min-h-0 bg-[#2AABEE]/10 border-2 border-[#2AABEE] rounded-[16px] p-4 sm:p-[20px] flex items-center gap-[8px] shrink-0">
                 <Info size={24} className="text-white shrink-0" />
                 <div className="flex-1 flex flex-col items-center justify-center">
-                  <p className="font-inter font-semibold text-[clamp(16px,4vw,22px)] leading-tight sm:leading-[28px] tracking-[0px] text-white m-0 text-center">
+                  <p className="font-inter font-semibold text-[clamp(16px,4vw,22px)] leading-tight sm:leading-[28px] tracking-[0px] text-[#2AABEE] m-0 text-center">
                     {(() => {
                       if (!mindsetSentence || !triggerLabel) return null;
                       const parts = mindsetSentence.split("[trigger]");
                       return (
                         <>
                           {parts[0]}
-                          <span className="font-semibold text-[#2AABEE]">
+                          <span className="font-semibold text-white">
                             {triggerLabel}
                           </span>
                           {parts[1]}
@@ -106,7 +106,7 @@ const SymptomSelect = () => {
                       );
                     })()}
                     . What symptom you perceive most clearly in your{" "}
-                    <span className="font-semibold text-[#2AABEE]">
+                    <span className="font-semibold text-white">
                       {bodyStructureLabel}
                     </span>
                     ?

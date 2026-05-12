@@ -15,14 +15,14 @@ const BodyRadar = () => {
       moduleSubtitle="Select in which region of body you feel your mindset most clearly"
       stepTitle="My compliment!"
       description={
-        <>
+        <span style={{ color: "#D16868" }}>
           {(() => {
             if (!mindsetSentence || !triggerLabel) return null;
             const parts = mindsetSentence.split("[trigger]");
             return (
               <>
                 {parts[0]}
-                <span style={{ color: "#D16868" }}>
+                <span style={{ color: "#FFFFFF" }}>
                   {triggerLabel}
                 </span>
                 {parts[1]}
@@ -30,13 +30,13 @@ const BodyRadar = () => {
             );
           })()}
           , caused by{" "}
-          <span style={{ color: "#D16868" }}>
+          <span style={{ color: "#FFFFFF" }}>
             {causeLabel}
           </span>.<br />
           You have also reflected carefully about the details of this
           <br />
           combination.
-        </>
+        </span>
       }
       footerTitle="Now mindfully explore:"
       footerText={
