@@ -123,13 +123,13 @@ const PositiveMindset = () => {
                       onClick={() => setSelectedId(opt.id)}
                       className={`h-[52px] rounded-[10px] px-6 flex items-center justify-between transition-all font-inter font-medium text-[16px] border ${
                         selectedId === opt.id
-                          ? "bg-[#3EEA79] text-black border-[#3EEA79] shadow-[0_0_20px_rgba(62,234,121,0.3)]"
+                          ? "bg-[#3EEA79] text-white border-[#3EEA79] shadow-[0_0_20px_rgba(62,234,121,0.3)]"
                           : "bg-white/5 text-slate-100 border-white/10 hover:bg-white/10"
                       }`}
                     >
                       <span className="truncate pr-2">{opt.label}</span>
                       <span
-                        className={`text-[12px] font-bold shrink-0 ${selectedId === opt.id ? "text-black/60" : "text-slate-500"}`}
+                        className={`text-[12px] font-bold shrink-0 ${selectedId === opt.id ? "text-white/60" : "text-slate-500"}`}
                       >
                         + 1 p
                       </span>
