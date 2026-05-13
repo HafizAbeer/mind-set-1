@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
 import newScriptIcon from "../assets/radarModulesIcon/newScript-purple-icon.svg";
-import { useScreeningSelection } from "@/lib/screeningSelection";
+import { useScreeningSelection, splitMindsetSentence } from "@/lib/screeningSelection";
 
 const accent = "#CE5CFF";
 
@@ -15,7 +15,8 @@ const Highlight = ({ children }) => (
 const ProtocolSummary = () => {
   const navigate = useNavigate();
   const {
-    mindsetLabel,
+    mindsetPhrase,
+    mindsetSentence,
     triggerLabel,
     causeLabel,
     bodyStructureLabel,
@@ -63,9 +64,14 @@ const ProtocolSummary = () => {
                 >
                   <div className="flex flex-col gap-4 sm:gap-5 max-w-[820px]">
                     <p className="text-[clamp(16px,3.5vw,20px)] font-inter font-medium text-white/95 leading-relaxed">
-                      I feel <Highlight>{mindsetLabel}</Highlight> by{" "}
-                      <Highlight>{triggerLabel}</Highlight>, caused by{" "}
-                      <Highlight>{causeLabel}</Highlight>.
+                      {splitMindsetSentence(mindsetSentence).map((seg, i) => {
+                        if (seg === "[mindset]")
+                          return <Highlight key={i}>{mindsetPhrase}</Highlight>;
+                        if (seg === "[trigger]")
+                          return <Highlight key={i}>{triggerLabel}</Highlight>;
+                        return <React.Fragment key={i}>{seg}</React.Fragment>;
+                      })}
+                      , caused by <Highlight>{causeLabel}</Highlight>.
                     </p>
                     <p className="text-[clamp(16px,3.5vw,20px)] font-inter font-medium text-white/95 leading-relaxed">
                       In my body I notice{" "}

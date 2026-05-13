@@ -11,11 +11,11 @@ import {
 import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
 import reflectionIcon from "../assets/radarModulesIcon/reflection-yellow-icon.svg";
-import { useScreeningSelection } from "@/lib/screeningSelection";
+import { useScreeningSelection, splitMindsetSentence } from "@/lib/screeningSelection";
 
 const ReflectionQuestions = () => {
   const navigate = useNavigate();
-  const { mindsetLabel, mindsetSentence, triggerLabel, causeLabel } = useScreeningSelection();
+  const { mindsetLabel, mindsetPhrase, mindsetSentence, triggerLabel, causeLabel } = useScreeningSelection();
   const [selectedId, setSelectedId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [customInput, setCustomInput] = useState("");
@@ -75,16 +75,13 @@ const ReflectionQuestions = () => {
                   <p className="font-inter font-medium text-[clamp(16px,4vw,24px)] leading-tight sm:leading-[36px] tracking-[0px] text-[#F0B614] m-0 text-center">
                     {(() => {
                       if (!mindsetSentence || !triggerLabel) return null;
-                      const parts = mindsetSentence.split("[trigger]");
-                      return (
-                        <>
-                          {parts[0]}
-                          <span className="text-white">
-                            {triggerLabel}
-                          </span>
-                          {parts[1]}
-                        </>
-                      );
+                      return splitMindsetSentence(mindsetSentence).map((seg, i) => {
+                        if (seg === "[mindset]")
+                          return <span key={i} className="text-white">{mindsetPhrase}</span>;
+                        if (seg === "[trigger]")
+                          return <span key={i} className="text-white">{triggerLabel}</span>;
+                        return <React.Fragment key={i}>{seg}</React.Fragment>;
+                      });
                     })()}
                     , caused by <span className="text-white">{causeLabel}</span>. <br className="hidden sm:block" />
                     Try to openly reflect on at least one of the considerations.

@@ -20,24 +20,24 @@ const UnclearMindset = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const mindsetOptions = [
-    { id: 1, label: "uncertain about...", sentence: "I feel uncertain about [trigger]" },
-    { id: 2, label: "excitement from...", sentence: "I feel excitement from [trigger]" },
-    { id: 3, label: "jealous of...", sentence: "I am jealous of [trigger]" },
-    { id: 4, label: "missing...", sentence: "I am missing [trigger]" },
-    { id: 5, label: "hunger and thirst of...", sentence: "I have hunger and thirst of [trigger]" },
-    { id: 6, label: "doubts about...", sentence: "I have doubts about [trigger]" },
-    { id: 7, label: "exhaustion from...", sentence: "I feel exhaustion from [trigger]" },
-    { id: 8, label: "sense of duty for...", sentence: "I feel a sense of duty for [trigger]" },
-    { id: 9, label: "craving for...", sentence: "I have a craving for [trigger]" },
-    { id: 10, label: "expectation of...", sentence: "I have an expectation of [trigger]" },
-    { id: 11, label: "fatigue through...", sentence: "I feel fatigue through [trigger]" },
-    { id: 12, label: "challenged by...", sentence: "I feel challenged by [trigger]" },
-    { id: 13, label: "lamp fever", sentence: "I feel lamp fever about [trigger]" },
-    { id: 14, label: "responsibility for...", sentence: "I feel responsibility for [trigger]" },
-    { id: 15, label: "sceptic about...", sentence: "I am sceptic about [trigger]" },
-    { id: 16, label: "sacrificing oneself for", sentence: "I am sacrificing myself for [trigger]" },
-    { id: 17, label: "search for sense", sentence: "I search for sense in [trigger]" },
-    { id: 18, label: "sacrificing oneself for", sentence: "I am sacrificing myself for [trigger]" },
+    { id: 1, label: "uncertain about...", mindset: "uncertain", sentence: "I feel [mindset] about [trigger]" },
+    { id: 2, label: "excitement from...", mindset: "excitement", sentence: "I feel [mindset] from [trigger]" },
+    { id: 3, label: "jealous of...", mindset: "jealous", sentence: "I am [mindset] of [trigger]" },
+    { id: 4, label: "missing...", mindset: "missing", sentence: "I am [mindset] [trigger]" },
+    { id: 5, label: "hunger and thirst of...", mindset: "hunger and thirst", sentence: "I have [mindset] of [trigger]" },
+    { id: 6, label: "doubts about...", mindset: "doubts", sentence: "I have [mindset] about [trigger]" },
+    { id: 7, label: "exhaustion from...", mindset: "exhaustion", sentence: "I feel [mindset] from [trigger]" },
+    { id: 8, label: "sense of duty for...", mindset: "sense of duty", sentence: "I feel a [mindset] for [trigger]" },
+    { id: 9, label: "craving for...", mindset: "craving", sentence: "I have a [mindset] for [trigger]" },
+    { id: 10, label: "expectation of...", mindset: "expectation", sentence: "I have an [mindset] of [trigger]" },
+    { id: 11, label: "fatigue through...", mindset: "fatigue", sentence: "I feel [mindset] through [trigger]" },
+    { id: 12, label: "challenged by...", mindset: "challenged", sentence: "I feel [mindset] by [trigger]" },
+    { id: 13, label: "lamp fever", mindset: "lamp fever", sentence: "I feel [mindset] about [trigger]" },
+    { id: 14, label: "responsibility for...", mindset: "responsibility", sentence: "I feel [mindset] for [trigger]" },
+    { id: 15, label: "sceptic about...", mindset: "sceptic", sentence: "I am [mindset] about [trigger]" },
+    { id: 16, label: "sacrificing oneself for", mindset: "sacrificing myself", sentence: "I am [mindset] for [trigger]" },
+    { id: 17, label: "search for sense", mindset: "sense", sentence: "I search for [mindset] in [trigger]" },
+    { id: 18, label: "sacrificing oneself for", mindset: "sacrificing myself", sentence: "I am [mindset] for [trigger]" },
   ];
 
   const themeColor = "#C3840B";
@@ -157,8 +157,13 @@ const UnclearMindset = () => {
                   onClick={() => {
                     const option = mindsetOptions.find((o) => o.id === selectedId);
                     const label = option?.label ?? screeningDefaults.mindsetLabel;
+                    const phrase = option?.mindset ?? screeningDefaults.mindsetPhrase;
                     const sentence = option?.sentence ?? screeningDefaults.mindsetSentence;
-                    patchScreeningSelection({ mindsetLabel: label, mindsetSentence: sentence });
+                    patchScreeningSelection({
+                      mindsetLabel: label,
+                      mindsetPhrase: phrase,
+                      mindsetSentence: sentence,
+                    });
                     navigate("/trigger");
                   }}
                   variant="ghost"

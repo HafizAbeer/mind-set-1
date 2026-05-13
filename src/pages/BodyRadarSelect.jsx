@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import {
   patchScreeningSelection,
   screeningDefaults,
+  splitMindsetSentence,
   useScreeningSelection,
 } from "@/lib/screeningSelection";
 import mindsetLogo from "../assets/mindset-logo.svg";
@@ -13,7 +14,7 @@ import collapseIcon from "../assets/icons/collapse-icon.svg";
 
 const BodyRadarSelect = () => {
   const navigate = useNavigate();
-  const { mindsetLabel, mindsetSentence, triggerLabel, causeLabel } = useScreeningSelection();
+  const { mindsetLabel, mindsetPhrase, mindsetSentence, triggerLabel, causeLabel } = useScreeningSelection();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedIds, setSelectedIds] = useState([null]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -178,22 +179,19 @@ const BodyRadarSelect = () => {
               <div className="w-full min-h-[88px] bg-[#D16868]/10 border-[2px] border-[#D16868] rounded-[16px] p-[20px] flex items-center gap-[8px] shrink-0">
                 <Info size={24} className="text-white shrink-0" />
                 <div className="flex-1 flex flex-col items-center justify-center">
-                  <p className="font-inter font-semibold text-[22px] leading-[28px] tracking-[0px] text-white m-0 text-center">
+                  <p className="font-inter font-semibold text-[22px] leading-[28px] tracking-[0px] text-[#D16868] m-0 text-center">
                     {(() => {
                       if (!mindsetSentence || !triggerLabel) return null;
-                      const parts = mindsetSentence.split("[trigger]");
-                      return (
-                        <>
-                          {parts[0]}
-                          <span className="font-semibold text-[#D16868]">
-                            {triggerLabel}
-                          </span>
-                          {parts[1]}
-                        </>
-                      );
+                      return splitMindsetSentence(mindsetSentence).map((seg, i) => {
+                        if (seg === "[mindset]")
+                          return <span key={i} className="font-semibold text-white">{mindsetPhrase}</span>;
+                        if (seg === "[trigger]")
+                          return <span key={i} className="font-semibold text-white">{triggerLabel}</span>;
+                        return <React.Fragment key={i}>{seg}</React.Fragment>;
+                      });
                     })()}
                     , caused by{" "}
-                    <span className="font-semibold text-[#D16868]">
+                    <span className="font-semibold text-white">
                       {causeLabel}
                     </span>
                     . Where in your body do you feel this most clearly?

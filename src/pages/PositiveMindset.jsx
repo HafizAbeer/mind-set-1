@@ -20,26 +20,26 @@ const PositiveMindset = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const mindsetOptions = [
-    { id: 1, label: "gratitude for...", sentence: "I feel gratitude for [trigger]" },
-    { id: 2, label: "laughter / humor", sentence: "I feel laughter and humor because of [trigger]" },
-    { id: 3, label: "compassion for...", sentence: "I feel compassion for [trigger]" },
-    { id: 4, label: "being happy about...", sentence: "I am happy about [trigger]" },
-    { id: 5, label: "serenity through", sentence: "I feel serenity through [trigger]" },
-    { id: 6, label: "sports performance", sentence: "I feel good about my sports performance with [trigger]" },
-    { id: 7, label: "praise / recognition for...", sentence: "I received praise / recognition for [trigger]" },
-    { id: 8, label: "experience of physical closeness with...", sentence: "I had an experience of physical closeness with [trigger]" },
-    { id: 9, label: "feeling sheltered from...", sentence: "I am feeling sheltered from [trigger]" },
-    { id: 10, label: "feeling love for...", sentence: "I am feeling love for [trigger]" },
-    { id: 11, label: "satisfaction with...", sentence: "I feel satisfaction with [trigger]" },
-    { id: 12, label: "be proud of...", sentence: "I am proud of [trigger]" },
-    { id: 13, label: "being delighted with...", sentence: "I am delighted with [trigger]" },
-    { id: 14, label: "feeling humble", sentence: "I am feeling humble about [trigger]" },
-    { id: 15, label: "having success with...", sentence: "I am having success with [trigger]" },
-    { id: 16, label: "freedom from...", sentence: "I feel freedom from [trigger]" },
-    { id: 17, label: "being relaxed by...", sentence: "I am being relaxed by [trigger]" },
-    { id: 18, label: "joyful anticipation of...", sentence: "I have joyful anticipation of [trigger]" },
-    { id: 19, label: "enjoying challenge", sentence: "I am enjoying the challenge of [trigger]" },
-    { id: 20, label: "joyful anticipation of...", sentence: "I have joyful anticipation of [trigger]" },
+    { id: 1, label: "gratitude for...", mindset: "gratitude", sentence: "I feel [mindset] for [trigger]" },
+    { id: 2, label: "laughter / humor", mindset: "laughter and humor", sentence: "I feel [mindset] because of [trigger]" },
+    { id: 3, label: "compassion for...", mindset: "compassion", sentence: "I feel [mindset] for [trigger]" },
+    { id: 4, label: "being happy about...", mindset: "happy", sentence: "I am [mindset] about [trigger]" },
+    { id: 5, label: "serenity through", mindset: "serenity", sentence: "I feel [mindset] through [trigger]" },
+    { id: 6, label: "sports performance", mindset: "sports performance", sentence: "I feel good about my [mindset] with [trigger]" },
+    { id: 7, label: "praise / recognition for...", mindset: "praise / recognition", sentence: "I received [mindset] for [trigger]" },
+    { id: 8, label: "experience of physical closeness with...", mindset: "physical closeness", sentence: "I had an experience of [mindset] with [trigger]" },
+    { id: 9, label: "feeling sheltered from...", mindset: "sheltered", sentence: "I am feeling [mindset] from [trigger]" },
+    { id: 10, label: "feeling love for...", mindset: "love", sentence: "I am feeling [mindset] for [trigger]" },
+    { id: 11, label: "satisfaction with...", mindset: "satisfaction", sentence: "I feel [mindset] with [trigger]" },
+    { id: 12, label: "be proud of...", mindset: "proud", sentence: "I am [mindset] of [trigger]" },
+    { id: 13, label: "being delighted with...", mindset: "delighted", sentence: "I am [mindset] with [trigger]" },
+    { id: 14, label: "feeling humble", mindset: "humble", sentence: "I am feeling [mindset] about [trigger]" },
+    { id: 15, label: "having success with...", mindset: "success", sentence: "I am having [mindset] with [trigger]" },
+    { id: 16, label: "freedom from...", mindset: "freedom", sentence: "I feel [mindset] from [trigger]" },
+    { id: 17, label: "being relaxed by...", mindset: "relaxed", sentence: "I am being [mindset] by [trigger]" },
+    { id: 18, label: "joyful anticipation of...", mindset: "joyful anticipation", sentence: "I have [mindset] of [trigger]" },
+    { id: 19, label: "enjoying challenge", mindset: "challenge", sentence: "I am enjoying the [mindset] of [trigger]" },
+    { id: 20, label: "joyful anticipation of...", mindset: "joyful anticipation", sentence: "I have [mindset] of [trigger]" },
   ];
 
   return (
@@ -123,13 +123,13 @@ const PositiveMindset = () => {
                       onClick={() => setSelectedId(opt.id)}
                       className={`h-[52px] rounded-[10px] px-6 flex items-center justify-between transition-all font-inter font-medium text-[16px] border ${
                         selectedId === opt.id
-                          ? "bg-[#3EEA79] text-black border-[#3EEA79] shadow-[0_0_20px_rgba(62,234,121,0.3)]"
+                          ? "bg-[#3EEA79] text-white border-[#3EEA79] shadow-[0_0_20px_rgba(62,234,121,0.3)]"
                           : "bg-white/5 text-slate-100 border-white/10 hover:bg-white/10"
                       }`}
                     >
                       <span className="truncate pr-2">{opt.label}</span>
                       <span
-                        className={`text-[12px] font-bold shrink-0 ${selectedId === opt.id ? "text-black/60" : "text-slate-500"}`}
+                        className={`text-[12px] font-bold shrink-0 ${selectedId === opt.id ? "text-white/60" : "text-slate-500"}`}
                       >
                         + 1 p
                       </span>
@@ -156,8 +156,13 @@ const PositiveMindset = () => {
                   onClick={() => {
                     const option = mindsetOptions.find((o) => o.id === selectedId);
                     const label = option?.label ?? screeningDefaults.mindsetLabel;
+                    const phrase = option?.mindset ?? screeningDefaults.mindsetPhrase;
                     const sentence = option?.sentence ?? screeningDefaults.mindsetSentence;
-                    patchScreeningSelection({ mindsetLabel: label, mindsetSentence: sentence });
+                    patchScreeningSelection({
+                      mindsetLabel: label,
+                      mindsetPhrase: phrase,
+                      mindsetSentence: sentence,
+                    });
                     navigate("/trigger");
                   }}
                   variant="ghost"
