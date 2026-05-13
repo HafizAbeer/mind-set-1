@@ -8,13 +8,9 @@ const getSpeechRecognition = () =>
 
 const ReflectionTextCard = ({ title, placeholder, value, onChange }) => {
   const [isRecording, setIsRecording] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const recognitionRef = useRef(null);
-  const valueRef = useRef(value);
   const supported = !!getSpeechRecognition();
-
-  useEffect(() => {
-    valueRef.current = value;
-  }, [value]);
 
   useEffect(() => {
     return () => {
@@ -33,20 +29,31 @@ const ReflectionTextCard = ({ title, placeholder, value, onChange }) => {
     const SpeechRecognition = getSpeechRecognition();
     const recognition = new SpeechRecognition();
     recognition.continuous = true;
-    recognition.interimResults = false;
-    recognition.lang = navigator.language || "en-US";
+    recognition.interimResults = true;
+    recognition.lang = "en-US";
+
+    const baseValue = value;
+    const baseSeparator = baseValue && !baseValue.endsWith(" ") ? " " : "";
+    let committed = "";
+
+    recognition.onstart = () => {
+      setErrorMessage("");
+      setIsRecording(true);
+    };
 
     recognition.onresult = (event) => {
-      let transcript = "";
+      let interim = "";
       for (let i = event.resultIndex; i < event.results.length; i += 1) {
-        if (event.results[i].isFinal) {
-          transcript += event.results[i][0].transcript;
+        const result = event.results[i];
+        if (result.isFinal) {
+          committed += result[0].transcript;
+        } else {
+          interim += result[0].transcript;
         }
       }
-      if (!transcript) return;
-      const current = valueRef.current;
-      const separator = current && !current.endsWith(" ") ? " " : "";
-      onChange(`${current}${separator}${transcript.trim()}`);
+      const addition = `${committed}${interim}`.trim();
+      if (!addition) return;
+      onChange(`${baseValue}${baseSeparator}${addition}`);
     };
 
     recognition.onend = () => {
@@ -54,14 +61,27 @@ const ReflectionTextCard = ({ title, placeholder, value, onChange }) => {
       recognitionRef.current = null;
     };
 
-    recognition.onerror = () => {
+    recognition.onerror = (event) => {
+      console.error("[SpeechRecognition] error:", event.error, event);
+      setErrorMessage(
+        event.error === "not-allowed"
+          ? "Microphone permission denied. Allow it in browser site settings and retry."
+          : event.error === "no-speech"
+            ? "No speech detected. Try speaking again."
+            : `Speech recognition error: ${event.error}`,
+      );
       setIsRecording(false);
       recognitionRef.current = null;
     };
 
     recognitionRef.current = recognition;
-    setIsRecording(true);
-    recognition.start();
+    try {
+      recognition.start();
+    } catch (err) {
+      console.error("[SpeechRecognition] failed to start:", err);
+      setErrorMessage(`Failed to start: ${err.message || err}`);
+      recognitionRef.current = null;
+    }
   };
 
   return (
@@ -85,6 +105,12 @@ const ReflectionTextCard = ({ title, placeholder, value, onChange }) => {
           className="w-full h-full bg-transparent border-[none] outline-none text-white font-inter text-[18px] leading-[28px] placeholder:text-[#C2C2C2] resize-none"
         />
       </div>
+
+      {errorMessage && (
+        <p className="text-[14px] text-[#FFB3B3] font-inter m-0 px-2">
+          {errorMessage}
+        </p>
+      )}
 
       <div className="flex items-center justify-end px-2">
         <button
