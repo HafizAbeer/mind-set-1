@@ -7,12 +7,13 @@ import symptomIcon from "../assets/radarModulesIcon/symptom-blue-icon.svg";
 import {
   patchScreeningSelection,
   screeningDefaults,
+  splitMindsetSentence,
   useScreeningSelection,
 } from "@/lib/screeningSelection";
 
 const SymptomSelect = () => {
   const navigate = useNavigate();
-  const { mindsetLabel, mindsetSentence, triggerLabel, bodyStructureLabel } =
+  const { mindsetLabel, mindsetPhrase, mindsetSentence, triggerLabel, bodyStructureLabel } =
     useScreeningSelection();
   const [selectedIds, setSelectedIds] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -94,16 +95,13 @@ const SymptomSelect = () => {
                   <p className="font-inter font-semibold text-[clamp(16px,4vw,22px)] leading-tight sm:leading-[28px] tracking-[0px] text-[#2AABEE] m-0 text-center">
                     {(() => {
                       if (!mindsetSentence || !triggerLabel) return null;
-                      const parts = mindsetSentence.split("[trigger]");
-                      return (
-                        <>
-                          {parts[0]}
-                          <span className="font-semibold text-white">
-                            {triggerLabel}
-                          </span>
-                          {parts[1]}
-                        </>
-                      );
+                      return splitMindsetSentence(mindsetSentence).map((seg, i) => {
+                        if (seg === "[mindset]")
+                          return <span key={i} className="font-semibold text-white">{mindsetPhrase}</span>;
+                        if (seg === "[trigger]")
+                          return <span key={i} className="font-semibold text-white">{triggerLabel}</span>;
+                        return <React.Fragment key={i}>{seg}</React.Fragment>;
+                      });
                     })()}
                     . What symptom you perceive most clearly in your{" "}
                     <span className="font-semibold text-white">

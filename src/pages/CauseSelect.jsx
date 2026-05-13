@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import {
   patchScreeningSelection,
   screeningDefaults,
+  splitMindsetSentence,
   useScreeningSelection,
 } from "@/lib/screeningSelection";
 
@@ -16,7 +17,7 @@ const CauseSelect = () => {
   const navigate = useNavigate();
   const [selectedId, setSelectedId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { mindsetLabel, mindsetSentence, triggerLabel } = useScreeningSelection();
+  const { mindsetLabel, mindsetPhrase, mindsetSentence, triggerLabel } = useScreeningSelection();
 
   const causeOptions = [
     { id: 1, label: "Catastrophising" },
@@ -111,14 +112,16 @@ const CauseSelect = () => {
                   <p className="font-inter font-semibold text-[24px] leading-[34px] tracking-[0px] text-[#96FF71] m-0 text-center">
                     {(() => {
                       if (!mindsetSentence || !triggerLabel) return null;
-                      const parts = mindsetSentence.split("[trigger]");
                       return (
                         <>
-                          {parts[0]}
-                          <span className="font-semibold text-white">
-                            {triggerLabel}
-                          </span>
-                          {parts[1]}.
+                          {splitMindsetSentence(mindsetSentence).map((seg, i) => {
+                            if (seg === "[mindset]")
+                              return <span key={i} className="font-semibold text-white">{mindsetPhrase}</span>;
+                            if (seg === "[trigger]")
+                              return <span key={i} className="font-semibold text-white">{triggerLabel}</span>;
+                            return <React.Fragment key={i}>{seg}</React.Fragment>;
+                          })}
+                          .
                         </>
                       );
                     })()}

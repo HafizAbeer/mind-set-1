@@ -2,11 +2,11 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import RadarModuleLayout from "../components/dashboard/RadarModuleLayout";
 import bodyIcon from "../assets/radarModulesIcon/body-red-icon.svg";
-import { useScreeningSelection } from "@/lib/screeningSelection";
+import { useScreeningSelection, splitMindsetSentence } from "@/lib/screeningSelection";
 
 const BodyRadar = () => {
   const navigate = useNavigate();
-  const { mindsetLabel, mindsetSentence, triggerLabel, causeLabel } = useScreeningSelection();
+  const { mindsetLabel, mindsetPhrase, mindsetSentence, triggerLabel, causeLabel } = useScreeningSelection();
 
   return (
     <RadarModuleLayout
@@ -18,16 +18,13 @@ const BodyRadar = () => {
         <span style={{ color: "#D16868" }}>
           {(() => {
             if (!mindsetSentence || !triggerLabel) return null;
-            const parts = mindsetSentence.split("[trigger]");
-            return (
-              <>
-                {parts[0]}
-                <span style={{ color: "#FFFFFF" }}>
-                  {triggerLabel}
-                </span>
-                {parts[1]}
-              </>
-            );
+            return splitMindsetSentence(mindsetSentence).map((seg, i) => {
+              if (seg === "[mindset]")
+                return <span key={i} style={{ color: "#FFFFFF" }}>{mindsetPhrase}</span>;
+              if (seg === "[trigger]")
+                return <span key={i} style={{ color: "#FFFFFF" }}>{triggerLabel}</span>;
+              return <React.Fragment key={i}>{seg}</React.Fragment>;
+            });
           })()}
           , caused by{" "}
           <span style={{ color: "#FFFFFF" }}>

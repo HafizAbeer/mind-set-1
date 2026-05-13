@@ -5,6 +5,7 @@ const CHANGE_EVENT = "mindset-screening-selection-change";
 
 export const screeningDefaults = {
   mindsetLabel: "mindset",
+  mindsetPhrase: "mindset",
   mindsetSentence: "I feel [mindset] by [trigger]",
   triggerLabel: "trigger",
   causeLabel: "cause",
@@ -40,6 +41,7 @@ export function getScreeningSelection() {
   const raw = readStored();
   return {
     mindsetLabel: resolveLabel(raw.mindsetLabel, screeningDefaults.mindsetLabel),
+    mindsetPhrase: resolveLabel(raw.mindsetPhrase, screeningDefaults.mindsetPhrase),
     mindsetSentence: resolveLabel(raw.mindsetSentence, screeningDefaults.mindsetSentence),
     triggerLabel: resolveLabel(raw.triggerLabel, screeningDefaults.triggerLabel),
     causeLabel: resolveLabel(raw.causeLabel, screeningDefaults.causeLabel),
@@ -86,6 +88,7 @@ function selectionSnapshot() {
   const s = getScreeningSelection();
   return JSON.stringify([
     s.mindsetLabel,
+    s.mindsetPhrase,
     s.mindsetSentence,
     s.triggerLabel,
     s.causeLabel,
@@ -124,6 +127,7 @@ export function useScreeningSelection() {
   );
   const [
     mindsetLabel,
+    mindsetPhrase,
     mindsetSentence,
     triggerLabel,
     causeLabel,
@@ -139,6 +143,7 @@ export function useScreeningSelection() {
   ] = JSON.parse(snapshot);
   return {
     mindsetLabel,
+    mindsetPhrase,
     mindsetSentence,
     triggerLabel,
     causeLabel,
@@ -152,4 +157,8 @@ export function useScreeningSelection() {
     newScriptSummary,
     newScriptSentence,
   };
+}
+
+export function splitMindsetSentence(sentence) {
+  return sentence.split(/(\[mindset\]|\[trigger\])/g);
 }
