@@ -1,42 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Plus } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import mindsetLogo from "../assets/mindset-logo.svg";
 import reflectionIcon from "../assets/radarModulesIcon/reflection-yellow-icon.svg";
-import micIcon from "../assets/icons/mic-icon.svg";
-
-const Card = ({ title, placeholder, value, onChange }) => (
-  <div
-    className="w-full max-w-[554px] min-h-[400px] xl:h-[452px] rounded-[20px] p-6 sm:p-[32px] flex flex-col gap-[20px] shadow-xl relative"
-    style={{
-      backgroundColor: "rgba(240, 182, 20, 0.3)",
-      border: "2px solid #F0B61480",
-      backdropFilter: "blur(4px)",
-    }}
-  >
-    <h2 className="text-[20px] sm:text-[24px] font-inter font-bold text-white text-center m-0">
-      {title}
-    </h2>
-
-    <div className="flex-1 rounded-[16px] p-[20px] bg-[#27282E]/50 border border-[#F0B614] overflow-hidden">
-      <textarea
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder={placeholder}
-        className="w-full h-full bg-transparent border-[none] outline-none text-white font-inter text-[18px] leading-[28px] placeholder:text-[#C2C2C2] resize-none"
-      />
-    </div>
-
-    <div className="flex items-center justify-between px-2">
-      <button className="w-[50px] h-[50px] rounded-full bg-gradient-to-b from-[#FFD767] to-[#DFA400] flex items-center justify-center text-black hover:opacity-90 transition-all active:scale-90 shadow-lg">
-        <Plus size={20} color="white" />
-      </button>
-      <button className="w-[50px] h-[50px] rounded-full bg-gradient-to-b from-[#FFD767] to-[#DFA400] flex items-center justify-center text-black hover:opacity-90 transition-all active:scale-90 shadow-lg">
-        <img src={micIcon} alt="Logo" className="w-5 h-5" />
-      </button>
-    </div>
-  </div>
-);
+import ReflectionTextCard from "../components/dashboard/ReflectionTextCard";
 
 const ReflectionBehaviour = () => {
   const navigate = useNavigate();
@@ -45,39 +12,6 @@ const ReflectionBehaviour = () => {
     outletContext?.setLegacySidebarOpen || (() => {});
   const [realValue, setRealValue] = useState("");
   const [intendedValue, setIntendedValue] = useState("");
-
-  // const Card = ({ title, placeholder, value, onChange }) => (
-  //   <div
-  //     className="w-full max-w-[554px] min-h-[400px] xl:h-[452px] rounded-[20px] p-6 sm:p-[32px] flex flex-col gap-[20px] shadow-xl relative"
-  //     style={{
-  //       backgroundColor: "rgba(240, 182, 20, 0.3)",
-  //       border: "2px solid #F0B61480",
-  //       backdropFilter: "blur(4px)",
-  //     }}
-  //   >
-  //     <h2 className="text-[20px] sm:text-[24px] font-inter font-bold text-white text-center m-0">
-  //       {title}
-  //     </h2>
-
-  //     <div className="flex-1 rounded-[16px] p-[20px] bg-[#27282E]/50 border border-[#F0B614] overflow-hidden">
-  //       <textarea
-  //         value={value}
-  //         onChange={(e) => onChange(e.target.value)}
-  //         placeholder={placeholder}
-  //         className="w-full h-full bg-transparent border-[none] outline-none text-white font-inter text-[18px] leading-[28px] placeholder:text-[#C2C2C2] resize-none"
-  //       />
-  //     </div>
-
-  //     <div className="flex items-center justify-between px-2">
-  //       <button className="w-[50px] h-[50px] rounded-full bg-gradient-to-b from-[#FFD767] to-[#DFA400] flex items-center justify-center text-black hover:opacity-90 transition-all active:scale-90 shadow-lg">
-  //         <Plus size={20} color="white" />
-  //       </button>
-  //       <button className="w-[50px] h-[50px] rounded-full bg-gradient-to-b from-[#FFD767] to-[#DFA400] flex items-center justify-center text-black hover:opacity-90 transition-all active:scale-90 shadow-lg">
-  //         <img src={micIcon} alt="Logo" className="w-5 h-5" />
-  //       </button>
-  //     </div>
-  //   </div>
-  // );
 
   return (
     <div className="min-h-screen w-full relative overflow-hidden flex flex-col items-center">
@@ -114,13 +48,13 @@ const ReflectionBehaviour = () => {
         <div className="w-full flex flex-col items-center gap-[28px]">
           {/* Side by side cards */}
           <div className="w-full flex flex-col xl:flex-row items-center justify-between gap-[20px]">
-            <Card
+            <ReflectionTextCard
               title="Real behaviour"
               placeholder="Write here your showed behaviour:"
               value={realValue}
               onChange={setRealValue}
             />
-            <Card
+            <ReflectionTextCard
               title="Intended behaviour"
               placeholder="Write here how you intended to react:"
               value={intendedValue}
