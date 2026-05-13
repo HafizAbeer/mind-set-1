@@ -45,7 +45,7 @@ const IntentionRadar = () => {
             From the list of desired mindsets, thoughts or emotional states,
             which
             <br />
-            ones would you ideally like to adopt in order to be able to cope
+            one would you ideally like to adopt in order to be able to cope
             with
             <br />
             <span style={{ color: "#FBA90B" }}>
