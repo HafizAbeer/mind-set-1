@@ -103,11 +103,11 @@ const SymptomSelect = () => {
                         return <React.Fragment key={i}>{seg}</React.Fragment>;
                       });
                     })()}
-                    . What symptom you perceive most clearly in your{" "}
+                    . I perceive this mindset in the{" "}
                     <span className="font-semibold text-white">
                       {bodyStructureLabel}
                     </span>
-                    ?
+                    . Which of the following symptoms do you feel most clearly there?
                   </p>
                 </div>
               </div>
