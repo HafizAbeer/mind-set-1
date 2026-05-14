@@ -73,6 +73,7 @@ const ReflectionQuestions = () => {
                 <Info size={24} color="white" className="shrink-0" />
                 <div className="flex-1 flex flex-col items-center justify-center">
                   <p className="font-inter font-medium text-[clamp(16px,4vw,24px)] leading-tight sm:leading-[36px] tracking-[0px] text-[#F0B614] m-0 text-center">
+                    „
                     {(() => {
                       if (!mindsetSentence || !triggerLabel) return null;
                       return splitMindsetSentence(mindsetSentence).map((seg, i) => {
@@ -83,7 +84,7 @@ const ReflectionQuestions = () => {
                         return <React.Fragment key={i}>{seg}</React.Fragment>;
                       });
                     })()}
-                    , caused by <span className="text-white">{causeLabel}</span>. <br className="hidden sm:block" />
+                    , caused by <span className="text-white">{causeLabel}</span>." <br className="hidden sm:block" />
                     Try to openly reflect on at least one of the considerations.
                   </p>
                 </div>

@@ -93,6 +93,7 @@ const SymptomSelect = () => {
                 <Info size={24} className="text-white shrink-0" />
                 <div className="flex-1 flex flex-col items-center justify-center">
                   <p className="font-inter font-semibold text-[clamp(16px,4vw,22px)] leading-tight sm:leading-[28px] tracking-[0px] text-[#2AABEE] m-0 text-center">
+                    „
                     {(() => {
                       if (!mindsetSentence || !triggerLabel) return null;
                       return splitMindsetSentence(mindsetSentence).map((seg, i) => {
@@ -103,11 +104,11 @@ const SymptomSelect = () => {
                         return <React.Fragment key={i}>{seg}</React.Fragment>;
                       });
                     })()}
-                    . I perceive this mindset in the{" "}
+                    ." „I perceive this mindset in the{" "}
                     <span className="font-semibold text-white">
                       {bodyStructureLabel}
                     </span>
-                    . Which of the following symptoms do you feel most clearly there?
+                    ." Which of the following symptoms do you feel most clearly there?
                   </p>
                 </div>
               </div>
