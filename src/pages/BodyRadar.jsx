@@ -16,6 +16,7 @@ const BodyRadar = () => {
       stepTitle="My compliment!"
       description={
         <span style={{ color: "#D16868" }}>
+          „
           {(() => {
             if (!mindsetSentence || !triggerLabel) return null;
             return splitMindsetSentence(mindsetSentence).map((seg, i) => {
@@ -29,10 +30,10 @@ const BodyRadar = () => {
           , caused by{" "}
           <span style={{ color: "#FFFFFF" }}>
             {causeLabel}
-          </span>.<br />
-          I have also reflected carefully about the details of this
+          </span>."<br />
+          „I have also reflected carefully about the details of this
           <br />
-          combination.
+          combination."
         </span>
       }
       footerTitle="Now mindfully explore:"
