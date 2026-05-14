@@ -16,7 +16,7 @@ const SymptomRadar = () => {
       stepTitle="Fine !!!"
       description={
         <>
-          You have now determined the <span style={{ color: '#2AABEE' }}>{bodyStructureLabel}</span><br />
+          I have now determined the <span style={{ color: '#2AABEE' }}>{bodyStructureLabel}</span><br />
           as embodiment for the present mindset.
         </>
       }

@@ -30,7 +30,7 @@ const BodyRadar = () => {
           <span style={{ color: "#FFFFFF" }}>
             {causeLabel}
           </span>.<br />
-          You have also reflected carefully about the details of this
+          I have also reflected carefully about the details of this
           <br />
           combination.
         </span>

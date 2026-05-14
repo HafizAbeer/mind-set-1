@@ -23,10 +23,10 @@ const TriggerIntroPage = () => {
       stepTitle="Great!"
       description={
         <p className="m-0">
-          You have chosen{" "}
+          I have chosen{" "}
           <span className="text-[#6B83FF]">{mindsetLabel}</span>
           <br />
-          as your mindset!
+          as my mindset!
         </p>
       }
       centerIcon={triggerLogo}
