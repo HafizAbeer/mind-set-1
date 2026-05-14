@@ -177,13 +177,13 @@ const RadarModuleLayout = ({
             </CardContent>
           </Card>
 
-          <div className="flex w-full max-w-[956px] shrink-0 flex-col gap-4 pt-4 lg:flex-row lg:items-center lg:justify-between lg:gap-0">
+          <div className="flex w-full max-w-[956px] shrink-0 flex-row items-center justify-between gap-3 pt-4 sm:gap-4 lg:gap-0">
             <Button
               type="button"
               variant="ghost"
               onClick={onBack}
               className={cn(
-                "box-border h-auto min-h-[64px] w-full gap-2 whitespace-normal rounded-[10px] p-5 font-inter text-base text-[20px] font-bold text-white transition-all hover:bg-white/5 active:scale-95 lg:w-[min(468px,100%)]",
+                "box-border h-auto min-h-[64px] flex-1 gap-2 whitespace-normal rounded-[10px] p-3 font-inter text-[15px] font-bold text-white transition-all hover:bg-white/5 active:scale-95 sm:p-4 sm:text-[18px] lg:w-[min(468px,100%)] lg:flex-none lg:p-5 lg:text-[20px]",
               )}
               style={{
                 background: themeGradientGhost,
@@ -198,7 +198,7 @@ const RadarModuleLayout = ({
               variant="ghost"
               onClick={onContinue}
               className={cn(
-                "box-border h-auto min-h-[64px] w-full gap-2 whitespace-normal rounded-[10px] p-5 font-inter text-base text-[20px] font-bold text-white shadow-lg transition-all hover:opacity-90 active:scale-95 lg:w-[min(468px,100%)]",
+                "box-border h-auto min-h-[64px] flex-1 gap-2 whitespace-normal rounded-[10px] p-3 font-inter text-[15px] font-bold text-white shadow-lg transition-all hover:opacity-90 active:scale-95 sm:p-4 sm:text-[18px] lg:w-[min(468px,100%)] lg:flex-none lg:p-5 lg:text-[20px]",
               )}
               style={{
                 background: themeGradient,
