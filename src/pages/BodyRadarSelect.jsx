@@ -180,6 +180,7 @@ const BodyRadarSelect = () => {
                 <Info size={24} className="text-white shrink-0" />
                 <div className="flex-1 flex flex-col items-center justify-center">
                   <p className="font-inter font-semibold text-[22px] leading-[28px] tracking-[0px] text-[#D16868] m-0 text-center">
+                    „
                     {(() => {
                       if (!mindsetSentence || !triggerLabel) return null;
                       return splitMindsetSentence(mindsetSentence).map((seg, i) => {
@@ -194,7 +195,7 @@ const BodyRadarSelect = () => {
                     <span className="font-semibold text-white">
                       {causeLabel}
                     </span>
-                    . Where in your body do you feel this most clearly?
+                    ." Where in your body do you feel this most clearly?
                   </p>
                 </div>
               </div>

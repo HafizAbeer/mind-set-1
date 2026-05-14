@@ -25,7 +25,7 @@ const IntentionRadar = () => {
         stepTitle="Great, good body awareness!!!"
         description={
           <>
-            I have assigned{" "}
+            „I have assigned{" "}
             <span style={{ color: "#FBA90B" }}>
               {symptomSummary}
             </span>{" "}
@@ -36,7 +36,7 @@ const IntentionRadar = () => {
             </span>{" "}
             as associated
             <br />
-            symptom.
+            symptom."
           </>
         }
         footerTitle="Now Select:"

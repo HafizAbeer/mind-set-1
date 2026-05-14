@@ -19,6 +19,7 @@ const CauseRadar = () => {
           if (!mindsetSentence || !triggerLabel) return null;
           return (
             <span style={{ color: "#88EC65" }}>
+              „
               {splitMindsetSentence(mindsetSentence).map((seg, i) => {
                 if (seg === "[mindset]")
                   return <span key={i} style={{ color: "#FFFFFF" }}>{mindsetPhrase}</span>;
@@ -26,6 +27,7 @@ const CauseRadar = () => {
                   return <span key={i} style={{ color: "#FFFFFF" }}>{triggerLabel}</span>;
                 return <React.Fragment key={i}>{seg}</React.Fragment>;
               })}
+              "
             </span>
           );
         })()

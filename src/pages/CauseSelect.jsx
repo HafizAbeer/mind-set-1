@@ -114,6 +114,7 @@ const CauseSelect = () => {
                       if (!mindsetSentence || !triggerLabel) return null;
                       return (
                         <>
+                          „
                           {splitMindsetSentence(mindsetSentence).map((seg, i) => {
                             if (seg === "[mindset]")
                               return <span key={i} className="font-semibold text-white">{mindsetPhrase}</span>;
@@ -121,7 +122,7 @@ const CauseSelect = () => {
                               return <span key={i} className="font-semibold text-white">{triggerLabel}</span>;
                             return <React.Fragment key={i}>{seg}</React.Fragment>;
                           })}
-                          .
+                          ."
                         </>
                       );
                     })()}

@@ -19,6 +19,7 @@ const ReflectionRadar = () => {
         stepTitle="Very well, you got off to a good start."
         description={
           <span style={{ color: '#F0B614' }}>
+            „
             {(() => {
               if (!mindsetSentence || !triggerLabel) return null;
               return splitMindsetSentence(mindsetSentence).map((seg, i) => {
@@ -29,7 +30,7 @@ const ReflectionRadar = () => {
                 return <React.Fragment key={i}>{seg}</React.Fragment>;
               });
             })()}
-            , caused by <span style={{ color: '#FFFFFF' }}>{causeLabel}</span>.<br />
+            , caused by <span style={{ color: '#FFFFFF' }}>{causeLabel}</span>."<br />
           </span>
         }
         footerTitle={null}

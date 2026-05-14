@@ -64,6 +64,7 @@ const ProtocolSummary = () => {
                 >
                   <div className="flex flex-col gap-4 sm:gap-5 max-w-[820px]">
                     <p className="text-[clamp(16px,3.5vw,20px)] font-inter font-medium text-white/95 leading-relaxed">
+                      „
                       {splitMindsetSentence(mindsetSentence).map((seg, i) => {
                         if (seg === "[mindset]")
                           return <Highlight key={i}>{mindsetPhrase}</Highlight>;
@@ -71,16 +72,16 @@ const ProtocolSummary = () => {
                           return <Highlight key={i}>{triggerLabel}</Highlight>;
                         return <React.Fragment key={i}>{seg}</React.Fragment>;
                       })}
-                      , caused by <Highlight>{causeLabel}</Highlight>.
+                      , caused by <Highlight>{causeLabel}</Highlight>."
                     </p>
                     <p className="text-[clamp(16px,3.5vw,20px)] font-inter font-medium text-white/95 leading-relaxed">
-                      In my body I notice{" "}
+                      „In my body I notice{" "}
                       <Highlight>{bodyStructureLabel}</Highlight>, with symptoms
-                      of <Highlight>{symptomSummary}</Highlight>.
+                      of <Highlight>{symptomSummary}</Highlight>."
                     </p>
                     <p className="text-[clamp(16px,3.5vw,20px)] font-inter font-medium text-white/95 leading-relaxed">
-                      My positive intention for the future is{" "}
-                      <Highlight>{intentionLabel}</Highlight>.
+                      „My positive intention for the future is{" "}
+                      <Highlight>{intentionLabel}</Highlight>."
                     </p>
                     <p className="text-[clamp(16px,3.5vw,20px)] font-inter font-medium text-white/95 leading-relaxed">
                       My life script is <Highlight>{lifeScriptLabel}</Highlight>
