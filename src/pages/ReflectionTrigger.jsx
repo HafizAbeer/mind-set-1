@@ -63,10 +63,10 @@ const ReflectionTrigger = () => {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="w-full flex flex-col xl:flex-row items-center justify-between gap-[20px]">
+          <div className="w-full flex flex-row items-center justify-between gap-3 sm:gap-[20px]">
             <button
               onClick={() => navigate("/reflection-questions")}
-              className="w-full xl:w-[554px] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] font-inter font-bold text-white transition-all hover:bg-white/5 active:scale-95 border-2 border-[#F0B614] text-[18px] sm:text-[20px]"
+              className="flex-1 xl:flex-none xl:w-[554px] h-[56px] sm:h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] font-inter font-bold text-white transition-all hover:bg-white/5 active:scale-95 border-2 border-[#F0B614] text-[18px] sm:text-[20px]"
               style={{
                 background:
                   "linear-gradient(180deg, rgba(240, 182, 20, 0.4) 0%, rgba(223, 164, 0, 0.4) 100%)",
@@ -77,7 +77,7 @@ const ReflectionTrigger = () => {
             </button>
             <button
               onClick={() => navigate("/body")}
-              className="w-full xl:w-[554px] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] font-inter font-bold text-white transition-all hover:opacity-90 active:scale-95 border-2 border-[#F0B614] text-[18px] sm:text-[20px]"
+              className="flex-1 xl:flex-none xl:w-[554px] h-[56px] sm:h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] font-inter font-bold text-white transition-all hover:opacity-90 active:scale-95 border-2 border-[#F0B614] text-[18px] sm:text-[20px]"
               style={{
                 background: "linear-gradient(180deg, #FFD767 0%, #DFA400 100%)",
                 boxShadow: "0 8px 24px -6px rgba(240, 182, 20, 0.4)",
