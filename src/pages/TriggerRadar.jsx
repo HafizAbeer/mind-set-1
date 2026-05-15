@@ -20,6 +20,7 @@ const TriggerRadar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [customOptions, setCustomOptions] = useState([]);
   const { mindsetLabel } = useScreeningSelection();
 
   const strivingOptions = [
@@ -74,7 +75,20 @@ const TriggerRadar = () => {
     { id: 46, label: "illness" },
   ];
 
-  const allTriggerOptions = [...strivingOptions, ...aversionOptions];
+  const allTriggerOptions = [...strivingOptions, ...aversionOptions, ...customOptions];
+
+  const handleAddCustom = (text) => {
+    setCustomOptions((prev) => {
+      const nextId =
+        Math.max(
+          0,
+          ...strivingOptions.map((o) => o.id),
+          ...aversionOptions.map((o) => o.id),
+          ...prev.map((o) => o.id),
+        ) + 1;
+      return [...prev, { id: nextId, label: text }];
+    });
+  };
 
   const themeColor = "#3C56D8";
   const themeGradient = "linear-gradient(180deg, #738AFF 0%, #3C56D8 100%)";
@@ -202,6 +216,24 @@ const TriggerRadar = () => {
                     </div>
                   </div>
 
+                  {customOptions.length > 0 && (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[16px] gap-y-[10px] justify-items-center">
+                      {customOptions.map((opt) => (
+                        <button
+                          key={opt.id}
+                          onClick={() => setSelectedId(opt.id)}
+                          className={`w-full max-w-[440px] h-[44px] rounded-[10px] px-6 flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${
+                            selectedId === opt.id
+                              ? "bg-[#3C56D8] text-white border-[#3C56D8] shadow-[0_0_20px_rgba(60,86,216,0.3)]"
+                              : "bg-white/5 text-slate-100 border-white/10 hover:bg-white/10"
+                          }`}
+                        >
+                          {opt.label}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
                   <div className="flex w-full px-[8px]">
                     <button
                       onClick={() => setSelectedId(0)}
@@ -259,6 +291,7 @@ const TriggerRadar = () => {
       <CustomTriggerModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        onAdd={handleAddCustom}
       />
     </div>
   );

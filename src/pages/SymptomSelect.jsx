@@ -18,6 +18,7 @@ const SymptomSelect = () => {
   const [selectedIds, setSelectedIds] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [customInput, setCustomInput] = useState("");
+  const [customSymptoms, setCustomSymptoms] = useState([]);
 
   const toggleSelection = (id) => {
     if (selectedIds.includes(id)) {
@@ -27,7 +28,7 @@ const SymptomSelect = () => {
     }
   };
 
-  const symptoms = [
+  const baseSymptoms = [
     { id: 1, label: "pain" },
     { id: 2, label: "tension" },
     { id: 3, label: "cramping" },
@@ -63,6 +64,20 @@ const SymptomSelect = () => {
     { id: 33, label: "instability" },
     { id: 34, label: "dry mouth" },
   ];
+
+  const symptoms = [...baseSymptoms, ...customSymptoms];
+
+  const handleAddCustom = () => {
+    const trimmed = customInput.trim();
+    if (!trimmed) return;
+    setCustomSymptoms((prev) => {
+      const nextId =
+        Math.max(0, ...baseSymptoms.map((o) => o.id), ...prev.map((o) => o.id)) + 1;
+      return [...prev, { id: nextId, label: trimmed }];
+    });
+    setCustomInput("");
+    setIsModalOpen(false);
+  };
 
   const themeColor = "#71CFFF";
   const themeGradient = "linear-gradient(180deg, #71CFFF 0%, #0089CF 100%)";
@@ -229,6 +244,9 @@ const SymptomSelect = () => {
                 type="text"
                 value={customInput}
                 onChange={(e) => setCustomInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") handleAddCustom();
+                }}
                 placeholder="Enter your Symptom..."
                 className="w-full h-[56px] rounded-[10px] text-white font-inter text-[16px] outline-none placeholder:text-white transition-all"
                 style={{
@@ -251,11 +269,7 @@ const SymptomSelect = () => {
                 Cancel
               </button>
               <button
-                onClick={() => {
-                  console.log("Adding symptom:", customInput);
-                  setIsModalOpen(false);
-                  setCustomInput("");
-                }}
+                onClick={handleAddCustom}
                 className="px-6 h-[44px] rounded-[10px] text-white font-inter font-bold text-[15px] hover:opacity-90 transition-all active:scale-95 flex items-center justify-center m-0"
                 style={{ background: themeGradient }}
               >

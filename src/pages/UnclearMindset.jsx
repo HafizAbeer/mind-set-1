@@ -18,8 +18,9 @@ const UnclearMindset = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [customOptions, setCustomOptions] = useState([]);
 
-  const mindsetOptions = [
+  const baseMindsetOptions = [
     { id: 1, label: "uncertain about...", mindset: "uncertain", sentence: "I feel [mindset] about [trigger]" },
     { id: 2, label: "excitement from...", mindset: "excitement", sentence: "I feel [mindset] from [trigger]" },
     { id: 3, label: "jealous of...", mindset: "jealous", sentence: "I am [mindset] of [trigger]" },
@@ -39,6 +40,24 @@ const UnclearMindset = () => {
     { id: 17, label: "search for sense", mindset: "sense", sentence: "I search for [mindset] in [trigger]" },
     { id: 18, label: "sacrificing oneself for", mindset: "sacrificing myself", sentence: "I am [mindset] for [trigger]" },
   ];
+
+  const mindsetOptions = [...baseMindsetOptions, ...customOptions];
+
+  const handleAddCustom = (text) => {
+    setCustomOptions((prev) => {
+      const nextId =
+        Math.max(0, ...baseMindsetOptions.map((o) => o.id), ...prev.map((o) => o.id)) + 1;
+      return [
+        ...prev,
+        {
+          id: nextId,
+          label: text,
+          mindset: text,
+          sentence: "I feel [mindset] about [trigger]",
+        },
+      ];
+    });
+  };
 
   const themeColor = "#C3840B";
   const themeGradient = "linear-gradient(180deg, #FFC350 0%, #C3840B 100%)";
@@ -185,6 +204,7 @@ const UnclearMindset = () => {
       <CustomMindsetModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        onAdd={handleAddCustom}
         category="unclear"
       />
     </div>

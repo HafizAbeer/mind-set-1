@@ -18,8 +18,9 @@ const PositiveMindset = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [customOptions, setCustomOptions] = useState([]);
 
-  const mindsetOptions = [
+  const baseMindsetOptions = [
     { id: 1, label: "gratitude for...", mindset: "gratitude", sentence: "I feel [mindset] for [trigger]" },
     { id: 2, label: "laughter / humor", mindset: "laughter and humor", sentence: "I feel [mindset] because of [trigger]" },
     { id: 3, label: "compassion for...", mindset: "compassion", sentence: "I feel [mindset] for [trigger]" },
@@ -41,6 +42,24 @@ const PositiveMindset = () => {
     { id: 19, label: "enjoying challenge", mindset: "challenge", sentence: "I am enjoying the [mindset] of [trigger]" },
     { id: 20, label: "joyful anticipation of...", mindset: "joyful anticipation", sentence: "I have [mindset] of [trigger]" },
   ];
+
+  const mindsetOptions = [...baseMindsetOptions, ...customOptions];
+
+  const handleAddCustom = (text) => {
+    setCustomOptions((prev) => {
+      const nextId =
+        Math.max(0, ...baseMindsetOptions.map((o) => o.id), ...prev.map((o) => o.id)) + 1;
+      return [
+        ...prev,
+        {
+          id: nextId,
+          label: text,
+          mindset: text,
+          sentence: "I feel [mindset] about [trigger]",
+        },
+      ];
+    });
+  };
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
@@ -184,6 +203,7 @@ const PositiveMindset = () => {
       <CustomMindsetModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        onAdd={handleAddCustom}
         category="positive"
       />
     </div>

@@ -19,6 +19,7 @@ const BodyRadarSelect = () => {
   const [selectedIds, setSelectedIds] = useState([null]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [customInput, setCustomInput] = useState("");
+  const [customStructures, setCustomStructures] = useState([]);
 
   const toggleSelection = (id) => {
     if (selectedIds.includes(id)) {
@@ -28,7 +29,7 @@ const BodyRadarSelect = () => {
     }
   };
 
-  const sections = [
+  const baseSections = [
     {
       title: "Spine",
       subtitle:
@@ -111,6 +112,33 @@ const BodyRadarSelect = () => {
       ],
     },
   ];
+
+  const sections =
+    customStructures.length > 0
+      ? [
+          ...baseSections,
+          {
+            title: "Custom",
+            subtitle: "Your own added structures",
+            options: customStructures,
+          },
+        ]
+      : baseSections;
+
+  const handleAddCustom = () => {
+    const trimmed = customInput.trim();
+    if (!trimmed) return;
+    setCustomStructures((prev) => {
+      const baseMaxId = Math.max(
+        0,
+        ...baseSections.flatMap((s) => s.options.map((o) => o.id)),
+      );
+      const nextId = Math.max(baseMaxId, ...prev.map((o) => o.id)) + 1;
+      return [...prev, { id: nextId, label: trimmed }];
+    });
+    setCustomInput("");
+    setIsModalOpen(false);
+  };
 
   const themeColor = "#D16868";
   const themeGradient = "#D16868";
@@ -334,6 +362,9 @@ const BodyRadarSelect = () => {
                       type="text"
                       value={customInput}
                       onChange={(e) => setCustomInput(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") handleAddCustom();
+                      }}
                       placeholder="Enter your Structure.."
                       className="w-[592px] h-[56px] rounded-[10px] text-white font-inter text-[16px] outline-none placeholder:text-white transition-all"
                       style={{
@@ -356,11 +387,7 @@ const BodyRadarSelect = () => {
                       Cancel
                     </button>
                     <button
-                      onClick={() => {
-                        console.log("Adding structure:", customInput);
-                        setIsModalOpen(false);
-                        setCustomInput("");
-                      }}
+                      onClick={handleAddCustom}
                       className="px-6 h-[44px] rounded-[10px] text-white font-inter font-bold text-[15px] hover:opacity-90 transition-all active:scale-95 flex items-center justify-center m-0"
                       style={{ background: themeGradient }}
                     >

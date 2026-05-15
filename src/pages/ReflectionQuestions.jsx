@@ -19,8 +19,9 @@ const ReflectionQuestions = () => {
   const [selectedId, setSelectedId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [customInput, setCustomInput] = useState("");
+  const [customQuestions, setCustomQuestions] = useState([]);
 
-  const questions = [
+  const baseQuestions = [
     "What was the exact trigger?",
     "Is there another possible explanation for the situation?",
     "Am I personalizing something that doesn't just have to do with me?",
@@ -41,6 +42,16 @@ const ReflectionQuestions = () => {
     "What fear your are afraid facing?",
     "I'm not sure about this questions and want to skip, going to the next step",
   ];
+
+  const questions = [...baseQuestions, ...customQuestions];
+
+  const handleAddCustom = () => {
+    const trimmed = customInput.trim();
+    if (!trimmed) return;
+    setCustomQuestions((prev) => [...prev, trimmed]);
+    setCustomInput("");
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
@@ -140,6 +151,8 @@ const ReflectionQuestions = () => {
                           navigate("/reflection-views");
                         } else if (index === 18) {
                           navigate("/body");
+                        } else {
+                          navigate("/reflection-aspects");
                         }
                       }}
                       className={`w-full max-w-[896px] h-auto min-h-[56px] p-4 rounded-[10px] border transition-all active:scale-[0.99] font-inter text-[16px] sm:text-[18px] font-medium text-center ${selectedId === index
@@ -232,6 +245,9 @@ const ReflectionQuestions = () => {
                 type="text"
                 value={customInput}
                 onChange={(e) => setCustomInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") handleAddCustom();
+                }}
                 placeholder="Enter your Question.."
                 className="w-[592px] h-[56px] rounded-[10px] text-white font-inter text-[16px] outline-none placeholder:text-white transition-all"
                 style={{
@@ -254,11 +270,7 @@ const ReflectionQuestions = () => {
                 Cancel
               </button>
               <button
-                onClick={() => {
-                  console.log("Adding reflexion:", customInput);
-                  setIsModalOpen(false);
-                  setCustomInput("");
-                }}
+                onClick={handleAddCustom}
                 className="px-6 h-[44px] rounded-[10px] text-black font-inter font-bold text-[15px] hover:opacity-90 transition-all active:scale-95 flex items-center justify-center m-0"
                 style={{
                   background:

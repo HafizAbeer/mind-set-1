@@ -17,9 +17,10 @@ const CauseSelect = () => {
   const navigate = useNavigate();
   const [selectedId, setSelectedId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [customOptions, setCustomOptions] = useState([]);
   const { mindsetLabel, mindsetPhrase, mindsetSentence, triggerLabel } = useScreeningSelection();
 
-  const causeOptions = [
+  const baseCauseOptions = [
     { id: 1, label: "Catastrophising" },
     { id: 2, label: "Black and White thinking" },
     { id: 3, label: "Excessive self-criticism" },
@@ -79,6 +80,16 @@ const CauseSelect = () => {
     { id: 57, label: "desire for recognition" },
     { id: 58, label: "consider myself indispensable" },
   ];
+
+  const causeOptions = [...baseCauseOptions, ...customOptions];
+
+  const handleAddCustom = (text) => {
+    setCustomOptions((prev) => {
+      const nextId =
+        Math.max(0, ...baseCauseOptions.map((o) => o.id), ...prev.map((o) => o.id)) + 1;
+      return [...prev, { id: nextId, label: text }];
+    });
+  };
 
   const themeColor = "#5EAE41";
   const themeGradient = "linear-gradient(180deg, #96FF71 0%, #5EAE41 100%)";
@@ -260,6 +271,7 @@ const CauseSelect = () => {
       <CustomCauseModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        onAdd={handleAddCustom}
       />
     </div>
   );
