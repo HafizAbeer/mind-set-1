@@ -74,7 +74,7 @@ const CustomMindsetModal = ({ isOpen, onClose, onAdd, category = "positive" }) =
                   : "bg-[#FF646A]"
             }`}
           >
-            Add Item
+            Add Structure
           </button>
         </div>
       </div>

@@ -68,7 +68,7 @@ const CustomTriggerModal = ({ isOpen, onClose, onAdd }) => {
             onClick={handleAdd}
             className="flex-1 sm:flex-none px-[16px] sm:px-[24px] h-[44px] sm:h-[40px] rounded-[10px] bg-[#3C56D8] text-white font-inter font-semibold text-[15px] sm:text-[16px] hover:opacity-90 transition-all active:scale-95 shadow-md"
           >
-            Add Item
+            Add Structure
           </button>
         </div>
       </div>
