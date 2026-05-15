@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Plus, Info, User2, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronDown, Plus, Info, User2, X } from "lucide-react";
 import { LegacySidebarPortal } from "../components/dashboard/LegacySidebarPortal";
 import { cn } from "@/lib/utils";
 import {
@@ -20,6 +20,11 @@ const BodyRadarSelect = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [customInput, setCustomInput] = useState("");
   const [customStructures, setCustomStructures] = useState([]);
+  const [openSections, setOpenSections] = useState({});
+
+  const toggleSection = (key) => {
+    setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
 
   const toggleSelection = (id) => {
     if (selectedIds.includes(id)) {
@@ -228,51 +233,77 @@ const BodyRadarSelect = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col w-full gap-[32px]">
+              <div className="flex flex-col w-full gap-[16px]">
                 {sections.map((section, idx) => {
+                  const key = section.title || `section-${idx}`;
+                  const isOpen = !!openSections[key];
+                  const selectedCount = section.options.filter((o) =>
+                    selectedIds.includes(o.id),
+                  ).length;
                   return (
                     <div
-                      key={idx}
-                      className="w-full h-[350px] bg-[#1C1C24]/50 border-[2px] border-[#D16868] rounded-[16px] p-[30px] flex flex-col gap-[20px]"
+                      key={key}
+                      className="w-full bg-[#1C1C24]/50 border-[2px] border-[#D16868] rounded-[16px] overflow-hidden"
                     >
-                      <div className="flex flex-col shrink-0">
-                        <h2 className="text-[28px] font-inter font-bold text-[#D16868] m-0 leading-[32px]">
-                          {section.title}
-                        </h2>
-                        <p className="text-[18px] font-inter font-medium text-[#9CA1A7] m-0 leading-[24px] mt-1">
-                          {section.subtitle}
-                        </p>
-                      </div>
-
-                      <div className="flex-1 overflow-y-auto no-scrollbar pt-2">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-[16px] w-full max-w-[896px]">
-                          {section.options.map((opt) => (
-                            <button
-                              key={opt.id}
-                              onClick={() => toggleSelection(opt.id)}
-                              className={`h-[48px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${
-                                opt.fullWidth
-                                  ? "sm:col-span-2 w-full"
-                                  : "w-full max-w-[440px]"
-                              } ${
-                                selectedIds.includes(opt.id)
-                                  ? "text-white border-transparent shadow-lg active:scale-95"
-                                  : "text-[#C5C5C5] hover:text-white"
-                              }`}
-                              style={{
-                                background: selectedIds.includes(opt.id)
-                                  ? themeGradient
-                                  : "linear-gradient(#27282E, #27282E) padding-box, linear-gradient(180deg, #46474E 0%, rgba(53, 55, 67, 0.5) 50%) border-box",
-                                borderColor: selectedIds.includes(opt.id)
-                                  ? "#D16868"
-                                  : "transparent",
-                              }}
-                            >
-                              {opt.label}
-                            </button>
-                          ))}
+                      <button
+                        type="button"
+                        onClick={() => toggleSection(key)}
+                        aria-expanded={isOpen}
+                        className="w-full flex items-center justify-between gap-3 p-[20px] sm:p-[24px] text-left hover:bg-white/[0.03] transition-colors"
+                      >
+                        <div className="flex flex-col min-w-0">
+                          <h2 className="text-[22px] sm:text-[26px] font-inter font-bold text-[#D16868] m-0 leading-[28px] sm:leading-[32px]">
+                            {section.title}
+                            {selectedCount > 0 && (
+                              <span className="ml-2 text-[14px] sm:text-[16px] font-medium text-white/80">
+                                ({selectedCount})
+                              </span>
+                            )}
+                          </h2>
+                          <p className="text-[14px] sm:text-[16px] font-inter font-medium text-[#9CA1A7] m-0 leading-[20px] sm:leading-[22px] mt-1">
+                            {section.subtitle}
+                          </p>
                         </div>
-                      </div>
+                        <ChevronDown
+                          size={24}
+                          className={cn(
+                            "shrink-0 text-[#D16868] transition-transform duration-200",
+                            isOpen && "rotate-180",
+                          )}
+                        />
+                      </button>
+
+                      {isOpen && (
+                        <div className="px-[20px] sm:px-[24px] pb-[20px] sm:pb-[24px] pt-0">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-[12px] sm:gap-[16px] w-full max-w-[896px]">
+                            {section.options.map((opt) => (
+                              <button
+                                key={opt.id}
+                                onClick={() => toggleSelection(opt.id)}
+                                className={`h-[48px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${
+                                  opt.fullWidth
+                                    ? "sm:col-span-2 w-full"
+                                    : "w-full max-w-[440px]"
+                                } ${
+                                  selectedIds.includes(opt.id)
+                                    ? "text-white border-transparent shadow-lg active:scale-95"
+                                    : "text-[#C5C5C5] hover:text-white"
+                                }`}
+                                style={{
+                                  background: selectedIds.includes(opt.id)
+                                    ? themeGradient
+                                    : "linear-gradient(#27282E, #27282E) padding-box, linear-gradient(180deg, #46474E 0%, rgba(53, 55, 67, 0.5) 50%) border-box",
+                                  borderColor: selectedIds.includes(opt.id)
+                                    ? "#D16868"
+                                    : "transparent",
+                                }}
+                              >
+                                {opt.label}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   );
                 })}
