@@ -86,7 +86,7 @@ const ReflectionTextCard = ({ title, placeholder, value, onChange }) => {
 
   return (
     <div
-      className="w-full max-w-[554px] min-h-[180px] sm:min-h-[400px] xl:h-[452px] rounded-[20px] p-4 sm:p-[32px] flex flex-col gap-3 sm:gap-[20px] shadow-xl relative"
+      className="w-full max-w-[554px] flex-1 sm:flex-none min-h-[180px] sm:min-h-[400px] xl:h-[452px] rounded-[20px] p-4 sm:p-[32px] flex flex-col gap-3 sm:gap-[20px] shadow-xl relative"
       style={{
         backgroundColor: "rgba(240, 182, 20, 0.3)",
         border: "2px solid #F0B61480",

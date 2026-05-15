@@ -28,9 +28,9 @@ const ReflectionConsequences = () => {
       </div>
 
       {/* Main Content Container */}
-      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[1128px] px-4 pt-40 pb-10 translate-y-[-20px]">
+      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[1128px] px-4 pt-24 sm:pt-40 pb-10 translate-y-[-20px]">
         {/* Page Header Area */}
-        <div className="w-full flex items-center gap-[16px] mb-[40px]">
+        <div className="w-full flex items-center gap-[16px] mb-6 sm:mb-[40px]">
           <div className="flex items-center justify-center w-12 h-12 mt-3 shrink-0">
             <img src={reflectionIcon} alt="Logo" className="w-9 h-9" />
           </div>
@@ -45,9 +45,9 @@ const ReflectionConsequences = () => {
         </div>
 
         {/* Inner Content Area: Cards + Buttons */}
-        <div className="w-full flex flex-col items-center gap-[28px]">
+        <div className="w-full flex flex-1 flex-col items-center gap-4 sm:gap-[28px]">
           {/* Side by side cards */}
-          <div className="w-full flex flex-col xl:flex-row items-center justify-between gap-[20px]">
+          <div className="w-full flex flex-1 sm:flex-none flex-col xl:flex-row items-center justify-between gap-3 sm:gap-[20px]">
             <ReflectionTextCard
               title="worst-case"
               placeholder="Write here your worst expectations..."

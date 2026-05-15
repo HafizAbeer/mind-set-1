@@ -46,9 +46,9 @@ const ReflectionAspects = () => {
         </div>
 
         {/* Inner Content Area: Cards + Buttons */}
-        <div className="w-full flex flex-col items-center gap-[28px]">
+        <div className="w-full flex flex-1 flex-col items-center gap-4 sm:gap-[28px]">
           {/* Side by side cards */}
-          <div className="w-full flex flex-col xl:flex-row items-center justify-between gap-[20px]">
+          <div className="w-full flex flex-1 sm:flex-none flex-col xl:flex-row items-center justify-between gap-3 sm:gap-[20px]">
             <ReflectionTextCard
               title="Pro aspects"
               placeholder="Yes, because..."
