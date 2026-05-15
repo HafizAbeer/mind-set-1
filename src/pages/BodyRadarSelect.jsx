@@ -233,7 +233,7 @@ const BodyRadarSelect = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col w-full gap-[12px]">
+              <div className="grid grid-cols-2 w-full gap-[12px]">
                 {(() => {
                   const visibleSections = openSection
                     ? sections.filter(
@@ -250,7 +250,10 @@ const BodyRadarSelect = () => {
                     return (
                       <div
                         key={key}
-                        className="w-full bg-[#1C1C24]/50 border-[2px] border-[#D16868] rounded-[16px] overflow-hidden"
+                        className={cn(
+                          "w-full bg-[#1C1C24]/50 border-[2px] border-[#D16868] rounded-[16px] overflow-hidden",
+                          isOpen && "col-span-2",
+                        )}
                       >
                         <button
                           type="button"
