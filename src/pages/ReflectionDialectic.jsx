@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import mindsetLogo from "../assets/mindset-logo.svg";
 import reflectionIcon from "../assets/radarModulesIcon/reflection-yellow-icon.svg";
 import ReflectionTextCard from "../components/dashboard/ReflectionTextCard";
+import { patchScreeningSelection } from "@/lib/screeningSelection";
 
 const KINDS = {
   trigger: {
@@ -81,6 +82,16 @@ const ReflectionDialectic = ({ kind }) => {
 
   const config = KINDS[kind];
 
+  const handleContinue = () => {
+    patchScreeningSelection({
+      reflectionATitle: config.a.title,
+      reflectionAValue: valueA,
+      reflectionBTitle: config.b.title,
+      reflectionBValue: valueB,
+    });
+    navigate("/body");
+  };
+
   return (
     <div className="min-h-screen w-full relative overflow-hidden flex flex-col items-center">
       {/* Brain Logo Top-Left */}
@@ -144,7 +155,7 @@ const ReflectionDialectic = ({ kind }) => {
               Back
             </button>
             <button
-              onClick={() => navigate("/body")}
+              onClick={handleContinue}
               className="flex-1 xl:flex-none xl:w-[554px] h-[56px] sm:h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] font-inter font-bold text-white transition-all hover:opacity-90 active:scale-95 border-2 border-[#F0B614] text-[18px] sm:text-[20px]"
               style={{
                 background: "linear-gradient(180deg, #FFD767 0%, #DFA400 100%)",
