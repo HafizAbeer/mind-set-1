@@ -86,33 +86,18 @@ const ReflectionTextCard = ({ title, placeholder, value, onChange }) => {
 
   return (
     <div
-      className="w-full max-w-[554px] min-h-[400px] xl:h-[452px] rounded-[20px] p-6 sm:p-[32px] flex flex-col gap-[20px] shadow-xl relative"
+      className="w-full max-w-[554px] flex-1 sm:flex-none min-h-[180px] sm:min-h-[400px] xl:h-[452px] rounded-[20px] p-4 sm:p-[32px] flex flex-col gap-3 sm:gap-[20px] shadow-xl relative"
       style={{
         backgroundColor: "rgba(240, 182, 20, 0.3)",
         border: "2px solid #F0B61480",
         backdropFilter: "blur(4px)",
       }}
     >
-      <h2 className="text-[20px] sm:text-[24px] font-inter font-bold text-white text-center m-0">
-        {title}
-      </h2>
-
-      <div className="flex-1 rounded-[16px] p-[20px] bg-[#27282E]/50 border border-[#F0B614] overflow-hidden">
-        <textarea
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder={placeholder}
-          className="w-full h-full bg-transparent border-[none] outline-none text-white font-inter text-[18px] leading-[28px] placeholder:text-[#C2C2C2] resize-none"
-        />
-      </div>
-
-      {errorMessage && (
-        <p className="text-[14px] text-[#FFB3B3] font-inter m-0 px-2">
-          {errorMessage}
-        </p>
-      )}
-
-      <div className="flex items-center justify-end px-2">
+      <div className="flex items-center justify-between gap-3">
+        <div className="w-10 sm:w-[50px] shrink-0" aria-hidden="true" />
+        <h2 className="flex-1 text-[20px] sm:text-[24px] font-inter font-bold text-white text-center m-0">
+          {title}
+        </h2>
         <button
           type="button"
           onClick={toggleRecording}
@@ -126,7 +111,7 @@ const ReflectionTextCard = ({ title, placeholder, value, onChange }) => {
           }
           aria-label={isRecording ? "Stop recording" : "Start recording"}
           aria-pressed={isRecording}
-          className="w-[50px] h-[50px] rounded-full flex items-center justify-center hover:opacity-90 transition-all active:scale-90 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-10 h-10 sm:w-[50px] sm:h-[50px] shrink-0 rounded-full flex items-center justify-center hover:opacity-90 transition-all active:scale-90 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
           style={{
             background: isRecording
               ? "linear-gradient(180deg, #FF6B6B 0%, #C0392B 100%)"
@@ -136,6 +121,21 @@ const ReflectionTextCard = ({ title, placeholder, value, onChange }) => {
           <img src={micIcon} alt="" className="w-5 h-5" />
         </button>
       </div>
+
+      <div className="flex-1 rounded-[16px] p-3 sm:p-[20px] bg-[#27282E]/50 border border-[#F0B614] overflow-hidden">
+        <textarea
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder={placeholder}
+          className="w-full h-full bg-transparent border-[none] outline-none text-white font-inter text-[16px] sm:text-[18px] leading-[22px] sm:leading-[28px] placeholder:text-[#C2C2C2] resize-none"
+        />
+      </div>
+
+      {errorMessage && (
+        <p className="text-[14px] text-[#FFB3B3] font-inter m-0 px-2">
+          {errorMessage}
+        </p>
+      )}
     </div>
   );
 };

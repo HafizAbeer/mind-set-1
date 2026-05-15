@@ -28,9 +28,9 @@ const ReflectionExperiences = () => {
       </div>
 
       {/* Main Content Container */}
-      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[1128px] px-4 pt-40 pb-10 translate-y-[-20px]">
+      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[1128px] px-4 pt-24 sm:pt-40 pb-10 translate-y-[-20px]">
         {/* Page Header Area */}
-        <div className="w-full flex items-center gap-[16px] mb-[40px]">
+        <div className="w-full flex items-center gap-[16px] mb-6 sm:mb-[40px]">
           <div className="flex items-center justify-center w-12 h-12 mt-3 shrink-0">
             <img src={reflectionIcon} alt="Logo" className="w-9 h-9" />
           </div>
@@ -45,9 +45,9 @@ const ReflectionExperiences = () => {
         </div>
 
         {/* Inner Content Area: Cards + Buttons */}
-        <div className="w-full flex flex-col items-center gap-[28px]">
+        <div className="w-full flex flex-1 flex-col items-center gap-4 sm:gap-[28px]">
           {/* Side by side cards */}
-          <div className="w-full flex flex-col xl:flex-row items-center justify-between gap-[20px]">
+          <div className="w-full flex flex-1 sm:flex-none flex-col xl:flex-row items-center justify-between gap-3 sm:gap-[20px]">
             <ReflectionTextCard
               title="Emotional aspects"
               placeholder="Write your emotional thoughts here..."
@@ -63,10 +63,10 @@ const ReflectionExperiences = () => {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="w-full flex flex-col xl:flex-row items-center justify-between gap-[20px]">
+          <div className="w-full flex flex-row items-center justify-between gap-3 sm:gap-[20px]">
             <button
               onClick={() => navigate("/reflection-questions")}
-              className="w-full xl:w-[554px] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] font-inter font-bold text-white transition-all hover:bg-white/5 active:scale-95 border-2 border-[#F0B614] text-[18px] sm:text-[20px]"
+              className="flex-1 xl:flex-none xl:w-[554px] h-[56px] sm:h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] font-inter font-bold text-white transition-all hover:bg-white/5 active:scale-95 border-2 border-[#F0B614] text-[18px] sm:text-[20px]"
               style={{
                 background:
                   "linear-gradient(180deg, rgba(240, 182, 20, 0.4) 0%, rgba(223, 164, 0, 0.4) 100%)",
@@ -77,7 +77,7 @@ const ReflectionExperiences = () => {
             </button>
             <button
               onClick={() => navigate("/body")}
-              className="w-full xl:w-[554px] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] font-inter font-bold text-white transition-all hover:opacity-90 active:scale-95 border-2 border-[#F0B614] text-[18px] sm:text-[20px]"
+              className="flex-1 xl:flex-none xl:w-[554px] h-[56px] sm:h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] font-inter font-bold text-white transition-all hover:opacity-90 active:scale-95 border-2 border-[#F0B614] text-[18px] sm:text-[20px]"
               style={{
                 background: "linear-gradient(180deg, #FFD767 0%, #DFA400 100%)",
                 boxShadow: "0 8px 24px -6px rgba(240, 182, 20, 0.4)",
