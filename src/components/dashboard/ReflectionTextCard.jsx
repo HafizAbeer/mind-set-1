@@ -86,7 +86,7 @@ const ReflectionTextCard = ({ title, placeholder, value, onChange }) => {
 
   return (
     <div
-      className="w-full max-w-[554px] min-h-[400px] xl:h-[452px] rounded-[20px] p-6 sm:p-[32px] flex flex-col gap-[20px] shadow-xl relative"
+      className="w-full max-w-[554px] min-h-[180px] sm:min-h-[400px] xl:h-[452px] rounded-[20px] p-4 sm:p-[32px] flex flex-col gap-3 sm:gap-[20px] shadow-xl relative"
       style={{
         backgroundColor: "rgba(240, 182, 20, 0.3)",
         border: "2px solid #F0B61480",
@@ -97,12 +97,12 @@ const ReflectionTextCard = ({ title, placeholder, value, onChange }) => {
         {title}
       </h2>
 
-      <div className="flex-1 rounded-[16px] p-[20px] bg-[#27282E]/50 border border-[#F0B614] overflow-hidden">
+      <div className="flex-1 rounded-[16px] p-3 sm:p-[20px] bg-[#27282E]/50 border border-[#F0B614] overflow-hidden">
         <textarea
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
-          className="w-full h-full bg-transparent border-[none] outline-none text-white font-inter text-[18px] leading-[28px] placeholder:text-[#C2C2C2] resize-none"
+          className="w-full h-full bg-transparent border-[none] outline-none text-white font-inter text-[16px] sm:text-[18px] leading-[22px] sm:leading-[28px] placeholder:text-[#C2C2C2] resize-none"
         />
       </div>
 
@@ -126,7 +126,7 @@ const ReflectionTextCard = ({ title, placeholder, value, onChange }) => {
           }
           aria-label={isRecording ? "Stop recording" : "Start recording"}
           aria-pressed={isRecording}
-          className="w-[50px] h-[50px] rounded-full flex items-center justify-center hover:opacity-90 transition-all active:scale-90 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-10 h-10 sm:w-[50px] sm:h-[50px] rounded-full flex items-center justify-center hover:opacity-90 transition-all active:scale-90 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
           style={{
             background: isRecording
               ? "linear-gradient(180deg, #FF6B6B 0%, #C0392B 100%)"

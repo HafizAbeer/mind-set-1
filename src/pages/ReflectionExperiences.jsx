@@ -28,9 +28,9 @@ const ReflectionExperiences = () => {
       </div>
 
       {/* Main Content Container */}
-      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[1128px] px-4 pt-40 pb-10 translate-y-[-20px]">
+      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-[1128px] px-4 pt-24 sm:pt-40 pb-10 translate-y-[-20px]">
         {/* Page Header Area */}
-        <div className="w-full flex items-center gap-[16px] mb-[40px]">
+        <div className="w-full flex items-center gap-[16px] mb-6 sm:mb-[40px]">
           <div className="flex items-center justify-center w-12 h-12 mt-3 shrink-0">
             <img src={reflectionIcon} alt="Logo" className="w-9 h-9" />
           </div>
