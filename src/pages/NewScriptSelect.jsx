@@ -16,6 +16,7 @@ const NewScriptSelect = () => {
   const [selectedIds, setSelectedIds] = useState([null]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [customInput, setCustomInput] = useState("");
+  const [customScripts, setCustomScripts] = useState([]);
 
   const toggleSelection = (id) => {
     if (selectedIds.includes(id)) {
@@ -25,7 +26,7 @@ const NewScriptSelect = () => {
     }
   };
 
-  const scripts = [
+  const baseScripts = [
     { id: 1, label: "to think more before acting", sentence: "I want [label]" },
     { id: 2, label: 'saying "no" more often', sentence: "I want [label]" },
     { id: 3, label: "to be more critical", sentence: "I want [label]" },
@@ -69,6 +70,26 @@ const NewScriptSelect = () => {
     { id: 41, label: "to be less obedient", sentence: "I want [label]" },
     { id: 42, label: "to be more forgiving", sentence: "I want [label]" },
   ];
+
+  const scripts = [...customScripts, ...baseScripts];
+
+  const handleAddCustom = () => {
+    const trimmed = customInput.trim();
+    if (!trimmed) return;
+    const nextId =
+      Math.max(
+        0,
+        ...baseScripts.map((o) => o.id),
+        ...customScripts.map((o) => o.id),
+      ) + 1;
+    setCustomScripts((prev) => [
+      { id: nextId, label: trimmed, sentence: "I want [label]" },
+      ...prev,
+    ]);
+    setSelectedIds([nextId]);
+    setCustomInput("");
+    setIsModalOpen(false);
+  };
 
   const themeColor = "#CE5CFF";
   const themeGradient = "linear-gradient(180deg, #CE5CFF 0%, #9228C0 100%)";
@@ -235,6 +256,9 @@ const NewScriptSelect = () => {
                 type="text"
                 value={customInput}
                 onChange={(e) => setCustomInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") handleAddCustom();
+                }}
                 placeholder="Enter your Script..."
                 className="w-full h-[56px] rounded-[10px] text-white font-inter text-[16px] outline-none placeholder:text-white transition-all px-5"
                 style={{
@@ -256,11 +280,7 @@ const NewScriptSelect = () => {
                 Cancel
               </button>
               <button
-                onClick={() => {
-                  console.log("Adding script:", customInput);
-                  setIsModalOpen(false);
-                  setCustomInput("");
-                }}
+                onClick={handleAddCustom}
                 className="px-6 h-[44px] rounded-[10px] text-white font-inter font-bold text-[15px] hover:opacity-90 transition-all active:scale-95 flex items-center justify-center m-0"
                 style={{ background: themeGradient }}
               >

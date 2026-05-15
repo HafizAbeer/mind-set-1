@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import { X, Plus } from "lucide-react";
 
-const CustomCauseModal = ({ isOpen, onClose }) => {
+const CustomCauseModal = ({ isOpen, onClose, onAdd }) => {
   const [inputValue, setInputValue] = useState("");
 
   if (!isOpen) return null;
+
+  const handleAdd = () => {
+    const trimmed = inputValue.trim();
+    if (!trimmed) return;
+    onAdd?.(trimmed);
+    setInputValue("");
+    onClose();
+  };
 
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
@@ -46,6 +54,9 @@ const CustomCauseModal = ({ isOpen, onClose }) => {
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") handleAdd();
+            }}
             placeholder="Enter your Cause..."
             className="w-full h-[50px] sm:h-[56px] bg-[#3B3B42] border border-white/10 rounded-[10px] px-[16px] sm:px-[20px] text-white font-inter text-[16px] sm:text-[20px] focus:outline-none focus:border-[#96FF71]/50 transition-colors placeholder:text-[#9CA1A7]"
           />
@@ -59,10 +70,7 @@ const CustomCauseModal = ({ isOpen, onClose }) => {
             Cancel
           </button>
           <button
-            onClick={() => {
-              console.log("Adding custom cause:", inputValue);
-              onClose();
-            }}
+            onClick={handleAdd}
             className="flex-1 sm:flex-none sm:w-[172px] h-[44px] sm:h-[48px] rounded-[10px] font-inter font-bold text-white text-[16px] sm:text-[18px] transition-all hover:opacity-90 active:scale-95 shadow-lg"
             style={{
               background: "linear-gradient(180deg, #96FF71 0%, #5EAE41 100%)",

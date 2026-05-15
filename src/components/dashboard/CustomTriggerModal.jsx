@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { X } from "lucide-react";
 
-const CustomTriggerModal = ({ isOpen, onClose }) => {
+const CustomTriggerModal = ({ isOpen, onClose, onAdd }) => {
+  const [value, setValue] = useState("");
+
   if (!isOpen) return null;
+
+  const handleAdd = () => {
+    const trimmed = value.trim();
+    if (!trimmed) return;
+    onAdd?.(trimmed);
+    setValue("");
+    onClose();
+  };
 
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/60 backdrop-blur-[4px]">
@@ -37,6 +47,11 @@ const CustomTriggerModal = ({ isOpen, onClose }) => {
         <div className="w-full h-[56px] sm:h-[64px] bg-[#32333A] rounded-[10px] flex items-center px-4 border border-white/5">
           <input
             type="text"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") handleAdd();
+            }}
             placeholder="Enter your Trigger."
             className="w-full bg-transparent border-none outline-none text-[16px] sm:text-[18px] text-white placeholder-[#83848A] font-inter"
           />
@@ -50,12 +65,10 @@ const CustomTriggerModal = ({ isOpen, onClose }) => {
             Cancel
           </button>
           <button
-            onClick={() => {
-              onClose();
-            }}
+            onClick={handleAdd}
             className="flex-1 sm:flex-none px-[16px] sm:px-[24px] h-[44px] sm:h-[40px] rounded-[10px] bg-[#3C56D8] text-white font-inter font-semibold text-[15px] sm:text-[16px] hover:opacity-90 transition-all active:scale-95 shadow-md"
           >
-            Add Structure
+            Add Item
           </button>
         </div>
       </div>

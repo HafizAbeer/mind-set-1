@@ -104,6 +104,7 @@ const IntentionSelect = () => {
     text: "",
   });
   const [customInput, setCustomInput] = useState("");
+  const [customIntentions, setCustomIntentions] = useState([]);
 
   useEffect(() => {
     if (!overlayConfig.isVisible) return;
@@ -128,7 +129,7 @@ const IntentionSelect = () => {
     }
   };
 
-  const intentions = [
+  const baseIntentions = [
     { id: 1, label: "Mindfulness" },
     { id: 2, label: "New beginning" },
     { id: 3, label: "Discipline" },
@@ -208,6 +209,23 @@ const IntentionSelect = () => {
     { id: 77, label: "resoluteness" },
     { id: 78, label: "Euphoria" },
   ];
+
+  const intentions = [...customIntentions, ...baseIntentions];
+
+  const handleAddCustom = () => {
+    const trimmed = customInput.trim();
+    if (!trimmed) return;
+    const nextId =
+      Math.max(
+        0,
+        ...baseIntentions.map((o) => o.id),
+        ...customIntentions.map((o) => o.id),
+      ) + 1;
+    setCustomIntentions((prev) => [{ id: nextId, label: trimmed }, ...prev]);
+    setSelectedIds([nextId]);
+    setCustomInput("");
+    setIsModalOpen(false);
+  };
 
   const themeColor = "#FBA90B";
   const themeGradient = "linear-gradient(180deg, #FFD075 0%, #E39B10 100%)";
@@ -408,6 +426,9 @@ const IntentionSelect = () => {
                       type="text"
                       value={customInput}
                       onChange={(e) => setCustomInput(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") handleAddCustom();
+                      }}
                       placeholder="Enter your Intention..."
                       className="w-full h-[56px] rounded-[10px] text-white font-inter text-[16px] outline-none placeholder:text-white transition-all"
                       style={{
@@ -430,11 +451,7 @@ const IntentionSelect = () => {
                       Cancel
                     </button>
                     <button
-                      onClick={() => {
-                        console.log("Adding intention:", customInput);
-                        setIsModalOpen(false);
-                        setCustomInput("");
-                      }}
+                      onClick={handleAddCustom}
                       className="px-6 h-[44px] rounded-[10px] text-white font-inter font-bold text-[15px] hover:opacity-90 transition-all active:scale-95 flex items-center justify-center m-0"
                       style={{ background: themeGradient }}
                     >

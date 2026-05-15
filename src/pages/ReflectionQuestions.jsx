@@ -19,8 +19,9 @@ const ReflectionQuestions = () => {
   const [selectedId, setSelectedId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [customInput, setCustomInput] = useState("");
+  const [customQuestions, setCustomQuestions] = useState([]);
 
-  const questions = [
+  const baseQuestions = [
     "What was the exact trigger?",
     "Is there another possible explanation for the situation?",
     "Am I personalizing something that doesn't just have to do with me?",
@@ -41,6 +42,17 @@ const ReflectionQuestions = () => {
     "What fear your are afraid facing?",
     "I'm not sure about this questions and want to skip, going to the next step",
   ];
+
+  const questions = [...customQuestions, ...baseQuestions];
+
+  const handleAddCustom = () => {
+    const trimmed = customInput.trim();
+    if (!trimmed) return;
+    setCustomQuestions((prev) => [trimmed, ...prev]);
+    setSelectedId(0);
+    setCustomInput("");
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
@@ -111,35 +123,39 @@ const ReflectionQuestions = () => {
                       key={index}
                       onClick={() => {
                         setSelectedId(index);
-                        // ... (navigation logic preserved)
-                        if (index === 0) {
+                        const baseIndex = index - customQuestions.length;
+                        if (baseIndex < 0) {
+                          navigate("/reflection-aspects");
+                        } else if (baseIndex === 0) {
                           navigate("/reflection-trigger");
                         } else if (
-                          (index >= 1 && index <= 3) ||
-                          index === 6 ||
-                          index === 9 ||
-                          index === 14 ||
-                          index === 15
+                          (baseIndex >= 1 && baseIndex <= 3) ||
+                          baseIndex === 6 ||
+                          baseIndex === 9 ||
+                          baseIndex === 14 ||
+                          baseIndex === 15
                         ) {
                           navigate("/reflection-aspects");
                         } else if (
-                          index === 4 ||
-                          index === 10 ||
-                          index === 11 ||
-                          index === 12 ||
-                          index === 13 ||
-                          index === 16 ||
-                          index === 17
+                          baseIndex === 4 ||
+                          baseIndex === 10 ||
+                          baseIndex === 11 ||
+                          baseIndex === 12 ||
+                          baseIndex === 13 ||
+                          baseIndex === 16 ||
+                          baseIndex === 17
                         ) {
                           navigate("/reflection-experiences");
-                        } else if (index === 5) {
+                        } else if (baseIndex === 5) {
                           navigate("/reflection-behaviour");
-                        } else if (index === 7) {
+                        } else if (baseIndex === 7) {
                           navigate("/reflection-consequences");
-                        } else if (index === 8) {
+                        } else if (baseIndex === 8) {
                           navigate("/reflection-views");
-                        } else if (index === 18) {
+                        } else if (baseIndex === 18) {
                           navigate("/body");
+                        } else {
+                          navigate("/reflection-aspects");
                         }
                       }}
                       className={`w-full max-w-[896px] h-auto min-h-[56px] p-4 rounded-[10px] border transition-all active:scale-[0.99] font-inter text-[16px] sm:text-[18px] font-medium text-center ${selectedId === index
@@ -232,6 +248,9 @@ const ReflectionQuestions = () => {
                 type="text"
                 value={customInput}
                 onChange={(e) => setCustomInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") handleAddCustom();
+                }}
                 placeholder="Enter your Question.."
                 className="w-[592px] h-[56px] rounded-[10px] text-white font-inter text-[16px] outline-none placeholder:text-white transition-all"
                 style={{
@@ -254,11 +273,7 @@ const ReflectionQuestions = () => {
                 Cancel
               </button>
               <button
-                onClick={() => {
-                  console.log("Adding reflexion:", customInput);
-                  setIsModalOpen(false);
-                  setCustomInput("");
-                }}
+                onClick={handleAddCustom}
                 className="px-6 h-[44px] rounded-[10px] text-black font-inter font-bold text-[15px] hover:opacity-90 transition-all active:scale-95 flex items-center justify-center m-0"
                 style={{
                   background:

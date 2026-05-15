@@ -18,8 +18,9 @@ const NegativeMindset = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [customOptions, setCustomOptions] = useState([]);
 
-  const mindsetOptions = [
+  const baseMindsetOptions = [
     { id: 1, label: "anger / rage about...", mindset: "anger and rage", sentence: "I feel [mindset] about [trigger]" },
     { id: 2, label: "bothered by...", mindset: "bothered", sentence: "I am [mindset] by [trigger]" },
     { id: 3, label: "worries about...", mindset: "worries", sentence: "I have [mindset] about [trigger]" },
@@ -55,6 +56,27 @@ const NegativeMindset = () => {
     { id: 33, label: "weary of life", mindset: "weary of life", sentence: "I feel [mindset] because of [trigger]" },
     { id: 34, label: "depressed", mindset: "depressed", sentence: "I feel [mindset] because of [trigger]" },
   ];
+
+  const mindsetOptions = [...customOptions, ...baseMindsetOptions];
+
+  const handleAddCustom = (text) => {
+    const nextId =
+      Math.max(
+        0,
+        ...baseMindsetOptions.map((o) => o.id),
+        ...customOptions.map((o) => o.id),
+      ) + 1;
+    setCustomOptions((prev) => [
+      {
+        id: nextId,
+        label: text,
+        mindset: text,
+        sentence: "I feel [mindset] about [trigger]",
+      },
+      ...prev,
+    ]);
+    setSelectedId(nextId);
+  };
 
   const themeColor = "#B23737";
   const themeGradient = "linear-gradient(180deg, #FF646A 0%, #B23737 100%)";
@@ -201,6 +223,7 @@ const NegativeMindset = () => {
       <CustomMindsetModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        onAdd={handleAddCustom}
         category="negative"
       />
     </div>

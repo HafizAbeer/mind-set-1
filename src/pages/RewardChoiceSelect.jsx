@@ -11,8 +11,9 @@ const RewardChoiceSelect = () => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedReward, setSelectedReward] = useState(null);
+  const [customRewards, setCustomRewards] = useState([]);
 
-  const rewards = [
+  const baseRewards = [
     "a day off",
     "take a siesta",
     "a day with the family",
@@ -40,6 +41,13 @@ const RewardChoiceSelect = () => {
     "read a book on the sofa",
     "a day off with my partner",
   ];
+
+  const rewards = [...customRewards, ...baseRewards];
+
+  const handleAddCustom = (text) => {
+    setCustomRewards((prev) => [text, ...prev]);
+    setSelectedReward(text);
+  };
 
   const themeColor = "#6CB083";
   const themeGradient = "linear-gradient(180deg, #6CB083 0%, #115A2A 100%)";
@@ -154,6 +162,7 @@ const RewardChoiceSelect = () => {
       <CustomRewardModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        onAdd={handleAddCustom}
       />
     </div>
   );

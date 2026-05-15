@@ -74,6 +74,7 @@ const ExercisesSelect = () => {
     text: "",
   });
   const [customInput, setCustomInput] = useState("");
+  const [customExercises, setCustomExercises] = useState([]);
 
   useEffect(() => {
     if (!overlayConfig.isVisible) return;
@@ -98,7 +99,7 @@ const ExercisesSelect = () => {
     }
   };
 
-  const exercises = [
+  const baseExercises = [
     { id: 1, label: "hands on stress" },
     { id: 2, label: "walk in the park" },
     { id: 3, label: "sleep / powernap" },
@@ -152,6 +153,23 @@ const ExercisesSelect = () => {
     { id: 51, label: "stand steady" },
     { id: 52, label: "avoid useless conflicts" },
   ];
+
+  const exercises = [...customExercises, ...baseExercises];
+
+  const handleAddCustom = () => {
+    const trimmed = customInput.trim();
+    if (!trimmed) return;
+    const nextId =
+      Math.max(
+        0,
+        ...baseExercises.map((o) => o.id),
+        ...customExercises.map((o) => o.id),
+      ) + 1;
+    setCustomExercises((prev) => [{ id: nextId, label: trimmed }, ...prev]);
+    setSelectedIds([nextId]);
+    setCustomInput("");
+    setIsModalOpen(false);
+  };
 
   const themeColor = "#FF6721";
   const themeGradient = "linear-gradient(180deg, #FF996A 0%, #FF6721 100%)";
@@ -340,6 +358,9 @@ const ExercisesSelect = () => {
                       type="text"
                       value={customInput}
                       onChange={(e) => setCustomInput(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") handleAddCustom();
+                      }}
                       placeholder="Enter your Exercise..."
                       className="w-full h-[56px] rounded-[10px] text-white font-inter text-[16px] outline-none placeholder:text-white transition-all"
                       style={{
@@ -362,11 +383,7 @@ const ExercisesSelect = () => {
                       Cancel
                     </button>
                     <button
-                      onClick={() => {
-                        console.log("Adding exercise:", customInput);
-                        setIsModalOpen(false);
-                        setCustomInput("");
-                      }}
+                      onClick={handleAddCustom}
                       className="px-6 h-[44px] rounded-[10px] text-white font-inter font-bold text-[15px] hover:opacity-90 transition-all active:scale-95 flex items-center justify-center m-0"
                       style={{ background: themeGradient }}
                     >
