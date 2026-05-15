@@ -82,6 +82,22 @@ const ReflectionDialectic = ({ kind }) => {
 
   const config = KINDS[kind];
 
+  const handleChangeA = (next) => {
+    setValueA(next);
+    patchScreeningSelection({
+      reflectionATitle: config.a.title,
+      reflectionAValue: next,
+    });
+  };
+
+  const handleChangeB = (next) => {
+    setValueB(next);
+    patchScreeningSelection({
+      reflectionBTitle: config.b.title,
+      reflectionBValue: next,
+    });
+  };
+
   const handleContinue = () => {
     patchScreeningSelection({
       reflectionATitle: config.a.title,
@@ -131,13 +147,13 @@ const ReflectionDialectic = ({ kind }) => {
               title={config.a.title}
               placeholder={config.a.placeholder}
               value={valueA}
-              onChange={setValueA}
+              onChange={handleChangeA}
             />
             <ReflectionTextCard
               title={config.b.title}
               placeholder={config.b.placeholder}
               value={valueB}
-              onChange={setValueB}
+              onChange={handleChangeB}
             />
           </div>
 
