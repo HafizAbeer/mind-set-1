@@ -65,16 +65,19 @@ const SymptomSelect = () => {
     { id: 34, label: "dry mouth" },
   ];
 
-  const symptoms = [...baseSymptoms, ...customSymptoms];
+  const symptoms = [...customSymptoms, ...baseSymptoms];
 
   const handleAddCustom = () => {
     const trimmed = customInput.trim();
     if (!trimmed) return;
-    setCustomSymptoms((prev) => {
-      const nextId =
-        Math.max(0, ...baseSymptoms.map((o) => o.id), ...prev.map((o) => o.id)) + 1;
-      return [...prev, { id: nextId, label: trimmed }];
-    });
+    const nextId =
+      Math.max(
+        0,
+        ...baseSymptoms.map((o) => o.id),
+        ...customSymptoms.map((o) => o.id),
+      ) + 1;
+    setCustomSymptoms((prev) => [{ id: nextId, label: trimmed }, ...prev]);
+    setSelectedIds((prev) => [...prev, nextId]);
     setCustomInput("");
     setIsModalOpen(false);
   };

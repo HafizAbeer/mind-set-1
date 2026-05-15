@@ -81,14 +81,17 @@ const CauseSelect = () => {
     { id: 58, label: "consider myself indispensable" },
   ];
 
-  const causeOptions = [...baseCauseOptions, ...customOptions];
+  const causeOptions = [...customOptions, ...baseCauseOptions];
 
   const handleAddCustom = (text) => {
-    setCustomOptions((prev) => {
-      const nextId =
-        Math.max(0, ...baseCauseOptions.map((o) => o.id), ...prev.map((o) => o.id)) + 1;
-      return [...prev, { id: nextId, label: text }];
-    });
+    const nextId =
+      Math.max(
+        0,
+        ...baseCauseOptions.map((o) => o.id),
+        ...customOptions.map((o) => o.id),
+      ) + 1;
+    setCustomOptions((prev) => [{ id: nextId, label: text }, ...prev]);
+    setSelectedId(nextId);
   };
 
   const themeColor = "#5EAE41";

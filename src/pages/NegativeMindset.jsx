@@ -57,22 +57,25 @@ const NegativeMindset = () => {
     { id: 34, label: "depressed", mindset: "depressed", sentence: "I feel [mindset] because of [trigger]" },
   ];
 
-  const mindsetOptions = [...baseMindsetOptions, ...customOptions];
+  const mindsetOptions = [...customOptions, ...baseMindsetOptions];
 
   const handleAddCustom = (text) => {
-    setCustomOptions((prev) => {
-      const nextId =
-        Math.max(0, ...baseMindsetOptions.map((o) => o.id), ...prev.map((o) => o.id)) + 1;
-      return [
-        ...prev,
-        {
-          id: nextId,
-          label: text,
-          mindset: text,
-          sentence: "I feel [mindset] about [trigger]",
-        },
-      ];
-    });
+    const nextId =
+      Math.max(
+        0,
+        ...baseMindsetOptions.map((o) => o.id),
+        ...customOptions.map((o) => o.id),
+      ) + 1;
+    setCustomOptions((prev) => [
+      {
+        id: nextId,
+        label: text,
+        mindset: text,
+        sentence: "I feel [mindset] about [trigger]",
+      },
+      ...prev,
+    ]);
+    setSelectedId(nextId);
   };
 
   const themeColor = "#B23737";

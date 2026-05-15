@@ -43,22 +43,25 @@ const PositiveMindset = () => {
     { id: 20, label: "joyful anticipation of...", mindset: "joyful anticipation", sentence: "I have [mindset] of [trigger]" },
   ];
 
-  const mindsetOptions = [...baseMindsetOptions, ...customOptions];
+  const mindsetOptions = [...customOptions, ...baseMindsetOptions];
 
   const handleAddCustom = (text) => {
-    setCustomOptions((prev) => {
-      const nextId =
-        Math.max(0, ...baseMindsetOptions.map((o) => o.id), ...prev.map((o) => o.id)) + 1;
-      return [
-        ...prev,
-        {
-          id: nextId,
-          label: text,
-          mindset: text,
-          sentence: "I feel [mindset] about [trigger]",
-        },
-      ];
-    });
+    const nextId =
+      Math.max(
+        0,
+        ...baseMindsetOptions.map((o) => o.id),
+        ...customOptions.map((o) => o.id),
+      ) + 1;
+    setCustomOptions((prev) => [
+      {
+        id: nextId,
+        label: text,
+        mindset: text,
+        sentence: "I feel [mindset] about [trigger]",
+      },
+      ...prev,
+    ]);
+    setSelectedId(nextId);
   };
 
   return (

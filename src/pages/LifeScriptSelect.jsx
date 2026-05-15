@@ -73,19 +73,22 @@ const LifeScriptSelect = () => {
     { id: 46, label: "The Avenger", sentence: "I see myself in the role of [label]" },
   ];
 
-  const scripts = [...baseScripts, ...customScripts];
+  const scripts = [...customScripts, ...baseScripts];
 
   const handleAddCustom = () => {
     const trimmed = customInput.trim();
     if (!trimmed) return;
-    setCustomScripts((prev) => {
-      const nextId =
-        Math.max(0, ...baseScripts.map((o) => o.id), ...prev.map((o) => o.id)) + 1;
-      return [
-        ...prev,
-        { id: nextId, label: trimmed, sentence: "I see myself in the role of [label]" },
-      ];
-    });
+    const nextId =
+      Math.max(
+        0,
+        ...baseScripts.map((o) => o.id),
+        ...customScripts.map((o) => o.id),
+      ) + 1;
+    setCustomScripts((prev) => [
+      { id: nextId, label: trimmed, sentence: "I see myself in the role of [label]" },
+      ...prev,
+    ]);
+    setSelectedIds([nextId]);
     setCustomInput("");
     setIsModalOpen(false);
   };

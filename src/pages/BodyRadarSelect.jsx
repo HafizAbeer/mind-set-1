@@ -116,26 +116,26 @@ const BodyRadarSelect = () => {
   const sections =
     customStructures.length > 0
       ? [
-          ...baseSections,
           {
             title: "Custom",
             subtitle: "Your own added structures",
             options: customStructures,
           },
+          ...baseSections,
         ]
       : baseSections;
 
   const handleAddCustom = () => {
     const trimmed = customInput.trim();
     if (!trimmed) return;
-    setCustomStructures((prev) => {
-      const baseMaxId = Math.max(
-        0,
-        ...baseSections.flatMap((s) => s.options.map((o) => o.id)),
-      );
-      const nextId = Math.max(baseMaxId, ...prev.map((o) => o.id)) + 1;
-      return [...prev, { id: nextId, label: trimmed }];
-    });
+    const baseMaxId = Math.max(
+      0,
+      ...baseSections.flatMap((s) => s.options.map((o) => o.id)),
+    );
+    const nextId =
+      Math.max(baseMaxId, ...customStructures.map((o) => o.id)) + 1;
+    setCustomStructures((prev) => [{ id: nextId, label: trimmed }, ...prev]);
+    setSelectedIds((prev) => [...prev, nextId]);
     setCustomInput("");
     setIsModalOpen(false);
   };

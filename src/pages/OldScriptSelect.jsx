@@ -71,16 +71,22 @@ const OldScriptSelect = () => {
     { id: 42, label: "to be too vindictive", sentence: "I used [label]" },
   ];
 
-  const scripts = [...baseScripts, ...customScripts];
+  const scripts = [...customScripts, ...baseScripts];
 
   const handleAddCustom = () => {
     const trimmed = customInput.trim();
     if (!trimmed) return;
-    setCustomScripts((prev) => {
-      const nextId =
-        Math.max(0, ...baseScripts.map((o) => o.id), ...prev.map((o) => o.id)) + 1;
-      return [...prev, { id: nextId, label: trimmed, sentence: "I used [label]" }];
-    });
+    const nextId =
+      Math.max(
+        0,
+        ...baseScripts.map((o) => o.id),
+        ...customScripts.map((o) => o.id),
+      ) + 1;
+    setCustomScripts((prev) => [
+      { id: nextId, label: trimmed, sentence: "I used [label]" },
+      ...prev,
+    ]);
+    setSelectedIds([nextId]);
     setCustomInput("");
     setIsModalOpen(false);
   };

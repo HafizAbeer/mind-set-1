@@ -43,12 +43,13 @@ const ReflectionQuestions = () => {
     "I'm not sure about this questions and want to skip, going to the next step",
   ];
 
-  const questions = [...baseQuestions, ...customQuestions];
+  const questions = [...customQuestions, ...baseQuestions];
 
   const handleAddCustom = () => {
     const trimmed = customInput.trim();
     if (!trimmed) return;
-    setCustomQuestions((prev) => [...prev, trimmed]);
+    setCustomQuestions((prev) => [trimmed, ...prev]);
+    setSelectedId(0);
     setCustomInput("");
     setIsModalOpen(false);
   };
@@ -122,34 +123,36 @@ const ReflectionQuestions = () => {
                       key={index}
                       onClick={() => {
                         setSelectedId(index);
-                        // ... (navigation logic preserved)
-                        if (index === 0) {
+                        const baseIndex = index - customQuestions.length;
+                        if (baseIndex < 0) {
+                          navigate("/reflection-aspects");
+                        } else if (baseIndex === 0) {
                           navigate("/reflection-trigger");
                         } else if (
-                          (index >= 1 && index <= 3) ||
-                          index === 6 ||
-                          index === 9 ||
-                          index === 14 ||
-                          index === 15
+                          (baseIndex >= 1 && baseIndex <= 3) ||
+                          baseIndex === 6 ||
+                          baseIndex === 9 ||
+                          baseIndex === 14 ||
+                          baseIndex === 15
                         ) {
                           navigate("/reflection-aspects");
                         } else if (
-                          index === 4 ||
-                          index === 10 ||
-                          index === 11 ||
-                          index === 12 ||
-                          index === 13 ||
-                          index === 16 ||
-                          index === 17
+                          baseIndex === 4 ||
+                          baseIndex === 10 ||
+                          baseIndex === 11 ||
+                          baseIndex === 12 ||
+                          baseIndex === 13 ||
+                          baseIndex === 16 ||
+                          baseIndex === 17
                         ) {
                           navigate("/reflection-experiences");
-                        } else if (index === 5) {
+                        } else if (baseIndex === 5) {
                           navigate("/reflection-behaviour");
-                        } else if (index === 7) {
+                        } else if (baseIndex === 7) {
                           navigate("/reflection-consequences");
-                        } else if (index === 8) {
+                        } else if (baseIndex === 8) {
                           navigate("/reflection-views");
-                        } else if (index === 18) {
+                        } else if (baseIndex === 18) {
                           navigate("/body");
                         } else {
                           navigate("/reflection-aspects");

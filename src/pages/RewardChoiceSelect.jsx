@@ -42,10 +42,11 @@ const RewardChoiceSelect = () => {
     "a day off with my partner",
   ];
 
-  const rewards = [...baseRewards, ...customRewards];
+  const rewards = [...customRewards, ...baseRewards];
 
   const handleAddCustom = (text) => {
-    setCustomRewards((prev) => [...prev, text]);
+    setCustomRewards((prev) => [text, ...prev]);
+    setSelectedReward(text);
   };
 
   const themeColor = "#6CB083";

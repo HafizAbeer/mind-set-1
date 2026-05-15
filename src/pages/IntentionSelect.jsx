@@ -210,16 +210,19 @@ const IntentionSelect = () => {
     { id: 78, label: "Euphoria" },
   ];
 
-  const intentions = [...baseIntentions, ...customIntentions];
+  const intentions = [...customIntentions, ...baseIntentions];
 
   const handleAddCustom = () => {
     const trimmed = customInput.trim();
     if (!trimmed) return;
-    setCustomIntentions((prev) => {
-      const nextId =
-        Math.max(0, ...baseIntentions.map((o) => o.id), ...prev.map((o) => o.id)) + 1;
-      return [...prev, { id: nextId, label: trimmed }];
-    });
+    const nextId =
+      Math.max(
+        0,
+        ...baseIntentions.map((o) => o.id),
+        ...customIntentions.map((o) => o.id),
+      ) + 1;
+    setCustomIntentions((prev) => [{ id: nextId, label: trimmed }, ...prev]);
+    setSelectedIds([nextId]);
     setCustomInput("");
     setIsModalOpen(false);
   };

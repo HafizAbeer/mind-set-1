@@ -154,16 +154,19 @@ const ExercisesSelect = () => {
     { id: 52, label: "avoid useless conflicts" },
   ];
 
-  const exercises = [...baseExercises, ...customExercises];
+  const exercises = [...customExercises, ...baseExercises];
 
   const handleAddCustom = () => {
     const trimmed = customInput.trim();
     if (!trimmed) return;
-    setCustomExercises((prev) => {
-      const nextId =
-        Math.max(0, ...baseExercises.map((o) => o.id), ...prev.map((o) => o.id)) + 1;
-      return [...prev, { id: nextId, label: trimmed }];
-    });
+    const nextId =
+      Math.max(
+        0,
+        ...baseExercises.map((o) => o.id),
+        ...customExercises.map((o) => o.id),
+      ) + 1;
+    setCustomExercises((prev) => [{ id: nextId, label: trimmed }, ...prev]);
+    setSelectedIds([nextId]);
     setCustomInput("");
     setIsModalOpen(false);
   };
