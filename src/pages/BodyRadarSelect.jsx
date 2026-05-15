@@ -233,7 +233,7 @@ const BodyRadarSelect = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 w-full gap-[12px]">
+              <div className="flex flex-col w-full gap-[12px]">
                 {(() => {
                   const visibleSections = openSection
                     ? sections.filter(
@@ -250,10 +250,7 @@ const BodyRadarSelect = () => {
                     return (
                       <div
                         key={key}
-                        className={cn(
-                          "w-full bg-[#1C1C24]/50 border-[2px] border-[#D16868] rounded-[16px] overflow-hidden",
-                          isOpen && "col-span-2",
-                        )}
+                        className="w-full bg-[#1C1C24]/50 border-[2px] border-[#D16868] rounded-[16px] overflow-hidden"
                       >
                         <button
                           type="button"
@@ -287,14 +284,14 @@ const BodyRadarSelect = () => {
 
                         {isOpen && (
                           <div className="px-[16px] sm:px-[20px] pb-[16px] sm:pb-[20px] pt-0">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[12px] sm:gap-[16px] w-full max-w-[896px]">
+                            <div className="grid grid-cols-2 gap-[12px] sm:gap-[16px] w-full max-w-[896px]">
                               {section.options.map((opt) => (
                                 <button
                                   key={opt.id}
                                   onClick={() => toggleSelection(opt.id)}
-                                  className={`h-[48px] rounded-[10px] p-[12px_20px] flex items-center justify-center transition-all font-inter font-medium text-[15px] border ${
+                                  className={`h-[48px] rounded-[10px] p-[8px_12px] sm:p-[12px_20px] flex items-center justify-center text-center transition-all font-inter font-medium text-[13px] sm:text-[15px] border ${
                                     opt.fullWidth
-                                      ? "sm:col-span-2 w-full"
+                                      ? "col-span-2 w-full"
                                       : "w-full max-w-[440px]"
                                   } ${
                                     selectedIds.includes(opt.id)
