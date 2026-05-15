@@ -6,7 +6,18 @@ import { useScreeningSelection, splitMindsetSentence } from "@/lib/screeningSele
 
 const BodyRadar = () => {
   const navigate = useNavigate();
-  const { mindsetLabel, mindsetPhrase, mindsetSentence, triggerLabel, causeLabel } = useScreeningSelection();
+  const {
+    mindsetLabel,
+    mindsetPhrase,
+    mindsetSentence,
+    triggerLabel,
+    causeLabel,
+    reflectionATitle,
+    reflectionAValue,
+    reflectionBTitle,
+    reflectionBValue,
+  } = useScreeningSelection();
+  const hasReflection = Boolean(reflectionAValue && reflectionBValue);
 
   return (
     <RadarModuleLayout
@@ -34,6 +45,15 @@ const BodyRadar = () => {
           „I have also reflected carefully about the details of this
           <br />
           combination."
+          {hasReflection && (
+            <>
+              <br />„My{" "}
+              <span style={{ color: "#FFFFFF" }}>{reflectionATitle}</span> is{" "}
+              <span style={{ color: "#FFFFFF" }}>{reflectionAValue}</span> and
+              my <span style={{ color: "#FFFFFF" }}>{reflectionBTitle}</span> is{" "}
+              <span style={{ color: "#FFFFFF" }}>{reflectionBValue}</span>."
+            </>
+          )}
         </span>
       }
       footerTitle="Now mindfully explore:"

@@ -18,6 +18,10 @@ export const screeningDefaults = {
   oldScriptSentence: "My old script is [label]",
   newScriptSummary: "new script/s",
   newScriptSentence: "My new script is [label]",
+  reflectionATitle: "",
+  reflectionAValue: "",
+  reflectionBTitle: "",
+  reflectionBValue: "",
 };
 
 function readStored() {
@@ -81,6 +85,22 @@ export function getScreeningSelection() {
       raw.newScriptSentence,
       screeningDefaults.newScriptSentence
     ),
+    reflectionATitle: resolveLabel(
+      raw.reflectionATitle,
+      screeningDefaults.reflectionATitle
+    ),
+    reflectionAValue: resolveLabel(
+      raw.reflectionAValue,
+      screeningDefaults.reflectionAValue
+    ),
+    reflectionBTitle: resolveLabel(
+      raw.reflectionBTitle,
+      screeningDefaults.reflectionBTitle
+    ),
+    reflectionBValue: resolveLabel(
+      raw.reflectionBValue,
+      screeningDefaults.reflectionBValue
+    ),
   };
 }
 
@@ -101,6 +121,10 @@ function selectionSnapshot() {
     s.oldScriptSentence,
     s.newScriptSummary,
     s.newScriptSentence,
+    s.reflectionATitle,
+    s.reflectionAValue,
+    s.reflectionBTitle,
+    s.reflectionBValue,
   ]);
 }
 
@@ -140,6 +164,10 @@ export function useScreeningSelection() {
     oldScriptSentence,
     newScriptSummary,
     newScriptSentence,
+    reflectionATitle,
+    reflectionAValue,
+    reflectionBTitle,
+    reflectionBValue,
   ] = JSON.parse(snapshot);
   return {
     mindsetLabel,
@@ -156,6 +184,10 @@ export function useScreeningSelection() {
     oldScriptSentence,
     newScriptSummary,
     newScriptSentence,
+    reflectionATitle,
+    reflectionAValue,
+    reflectionBTitle,
+    reflectionBValue,
   };
 }
 

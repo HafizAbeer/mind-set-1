@@ -20,12 +20,7 @@ import CauseRadar from "./pages/CauseRadar";
 import CauseSelect from "./pages/CauseSelect";
 import ReflectionRadar from "./pages/ReflectionRadar";
 import ReflectionQuestions from "./pages/ReflectionQuestions";
-import ReflectionTrigger from "./pages/ReflectionTrigger";
-import ReflectionAspects from "./pages/ReflectionAspects";
-import ReflectionExperiences from "./pages/ReflectionExperiences";
-import ReflectionBehaviour from "./pages/ReflectionBehaviour";
-import ReflectionConsequences from "./pages/ReflectionConsequences";
-import ReflectionViews from "./pages/ReflectionViews";
+import ReflectionDialectic from "./pages/ReflectionDialectic";
 import SymptomSelect from "./pages/SymptomSelect";
 import IntentionSelect from "./pages/IntentionSelect";
 import ExercisesSelect from "./pages/ExercisesSelect";
@@ -111,21 +106,30 @@ function App() {
             path="/reflection-questions"
             element={<ReflectionQuestions />}
           />
-          <Route path="/reflection-trigger" element={<ReflectionTrigger />} />
-          <Route path="/reflection-aspects" element={<ReflectionAspects />} />
+          <Route
+            path="/reflection-trigger"
+            element={<ReflectionDialectic kind="trigger" />}
+          />
+          <Route
+            path="/reflection-aspects"
+            element={<ReflectionDialectic kind="aspects" />}
+          />
           <Route
             path="/reflection-experiences"
-            element={<ReflectionExperiences />}
+            element={<ReflectionDialectic kind="experiences" />}
           />
           <Route
             path="/reflection-behaviour"
-            element={<ReflectionBehaviour />}
+            element={<ReflectionDialectic kind="behaviour" />}
           />
           <Route
             path="/reflection-consequences"
-            element={<ReflectionConsequences />}
+            element={<ReflectionDialectic kind="consequences" />}
           />
-          <Route path="/reflection-views" element={<ReflectionViews />} />
+          <Route
+            path="/reflection-views"
+            element={<ReflectionDialectic kind="views" />}
+          />
           <Route path="/symptom-select" element={<SymptomSelect />} />
           <Route path="/intention-select" element={<IntentionSelect />} />
           <Route path="/exercises-select" element={<ExercisesSelect />} />
