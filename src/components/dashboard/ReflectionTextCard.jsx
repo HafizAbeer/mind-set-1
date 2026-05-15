@@ -93,9 +93,34 @@ const ReflectionTextCard = ({ title, placeholder, value, onChange }) => {
         backdropFilter: "blur(4px)",
       }}
     >
-      <h2 className="text-[20px] sm:text-[24px] font-inter font-bold text-white text-center m-0">
-        {title}
-      </h2>
+      <div className="flex items-center justify-between gap-3">
+        <div className="w-10 sm:w-[50px] shrink-0" aria-hidden="true" />
+        <h2 className="flex-1 text-[20px] sm:text-[24px] font-inter font-bold text-white text-center m-0">
+          {title}
+        </h2>
+        <button
+          type="button"
+          onClick={toggleRecording}
+          disabled={!supported}
+          title={
+            supported
+              ? isRecording
+                ? "Stop recording"
+                : "Start recording"
+              : "Speech recognition not supported in this browser"
+          }
+          aria-label={isRecording ? "Stop recording" : "Start recording"}
+          aria-pressed={isRecording}
+          className="w-10 h-10 sm:w-[50px] sm:h-[50px] shrink-0 rounded-full flex items-center justify-center hover:opacity-90 transition-all active:scale-90 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+          style={{
+            background: isRecording
+              ? "linear-gradient(180deg, #FF6B6B 0%, #C0392B 100%)"
+              : "linear-gradient(180deg, #FFD767 0%, #DFA400 100%)",
+          }}
+        >
+          <img src={micIcon} alt="" className="w-5 h-5" />
+        </button>
+      </div>
 
       <div className="flex-1 rounded-[16px] p-3 sm:p-[20px] bg-[#27282E]/50 border border-[#F0B614] overflow-hidden">
         <textarea
@@ -111,31 +136,6 @@ const ReflectionTextCard = ({ title, placeholder, value, onChange }) => {
           {errorMessage}
         </p>
       )}
-
-      <div className="flex items-center justify-end px-2">
-        <button
-          type="button"
-          onClick={toggleRecording}
-          disabled={!supported}
-          title={
-            supported
-              ? isRecording
-                ? "Stop recording"
-                : "Start recording"
-              : "Speech recognition not supported in this browser"
-          }
-          aria-label={isRecording ? "Stop recording" : "Start recording"}
-          aria-pressed={isRecording}
-          className="w-10 h-10 sm:w-[50px] sm:h-[50px] rounded-full flex items-center justify-center hover:opacity-90 transition-all active:scale-90 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-          style={{
-            background: isRecording
-              ? "linear-gradient(180deg, #FF6B6B 0%, #C0392B 100%)"
-              : "linear-gradient(180deg, #FFD767 0%, #DFA400 100%)",
-          }}
-        >
-          <img src={micIcon} alt="" className="w-5 h-5" />
-        </button>
-      </div>
     </div>
   );
 };
