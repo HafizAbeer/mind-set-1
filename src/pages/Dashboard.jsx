@@ -134,7 +134,7 @@ const Dashboard = () => {
                     </div>
                   </div>
 
-                  <div className="w-full flex max-w-full items-center justify-center mt-0 mb-2 lg:mb-8 px-2 sm:px-3">
+                  <div className="w-full flex max-w-full items-center justify-center mt-8 sm:mt-10 lg:mt-6 mb-2 lg:mb-8 px-2 sm:px-3">
                     {/* Radar ~570px wide before scale; max-sm needs ~0.65 so 425px viewports don't clip */}
                     <div className="relative h-[340px] w-full max-w-[min(100%,640px)] origin-center overflow-visible max-sm:scale-[0.65] sm:h-[460px] sm:scale-[0.82] md:h-[560px] lg:h-[560px] lg:scale-100">
                       <RadarVisualization />
