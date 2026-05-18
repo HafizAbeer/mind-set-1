@@ -75,7 +75,7 @@ const RadarModuleLayout = ({
         )}
       </div>
 
-      <div className="relative z-10 mt-0 flex w-full max-w-[956px] flex-col gap-[28px] min-h-0">
+      <div className="relative z-10 mt-0 flex w-full max-w-[956px] flex-1 flex-col gap-[28px] min-h-0">
         {(moduleTitle || moduleSubtitle) && (
           <div className="flex h-auto min-h-[68px] w-full items-center gap-4 pl-14 sm:gap-[16px] lg:pl-0">
             <img
@@ -94,7 +94,7 @@ const RadarModuleLayout = ({
           </div>
         )}
 
-        <div className="flex w-full min-w-0 shrink-0 flex-col gap-[28px]">
+        <div className="flex w-full min-w-0 flex-1 flex-col justify-between gap-[28px]">
           <Card
             className={cn(
               "relative flex w-full shrink-0 flex-col items-center justify-center rounded-[24px] border-0 p-6 text-center shadow-none transition-all sm:p-10 md:p-[56px]",
