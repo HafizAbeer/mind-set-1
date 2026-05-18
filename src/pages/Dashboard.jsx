@@ -94,10 +94,10 @@ const Dashboard = () => {
 
                     <div className="flex flex-col items-center mx-auto gap-4 lg:gap-6">
                       <h1
-                        className="m-0 text-center"
+                        className="m-0 text-center whitespace-nowrap"
                         style={{
                           fontFamily: '"Inter", sans-serif',
-                          fontSize: "clamp(34px, 4vw, 48px)",
+                          fontSize: "clamp(26px, 6vw, 48px)",
                           fontWeight: 400,
                           lineHeight: 1.25,
                           letterSpacing: "-0.01em",
@@ -108,7 +108,7 @@ const Dashboard = () => {
                           style={{
                             fontFamily: '"Inter", sans-serif',
                             fontWeight: 700,
-                            fontSize: "clamp(34px, 4vw, 48px)",
+                            fontSize: "clamp(26px, 6vw, 48px)",
                           }}
                         >
                           New Mindset
