@@ -5,8 +5,8 @@ export default function TermsOfUse() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-dvh w-full bg-black flex items-center justify-center p-4">
-      <div className="relative w-full max-w-[1100px] rounded-xl border border-white/15 bg-black/80 px-6 py-10 sm:px-10 sm:py-12">
+    <div className="min-h-dvh w-full bg-black flex flex-col p-4">
+      <div className="relative m-auto w-full max-w-[1100px] rounded-xl border border-white/15 bg-black/80 px-6 py-10 sm:px-10 sm:py-12">
         <button
           type="button"
           onClick={() => navigate(-1)}
