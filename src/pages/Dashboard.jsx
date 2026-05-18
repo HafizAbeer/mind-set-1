@@ -18,7 +18,7 @@ const Dashboard = () => {
     <div className="min-h-screen flex items-center justify-center overflow-y-scroll overflow-x-hidden custom-scrollbar">
       <div className="w-full max-w-[1440px] min-h-screen relative flex flex-col text-white">
         <main className="flex-1 relative flex flex-col items-center justify-center m-0 overflow-hidden">
-          <div className="w-full max-w-[1300px] z-10 px-4 pt-16 md:pt-2 lg:pt-0 pb-4">
+          <div className="w-full max-w-[1300px] z-10 px-4 pt-16 md:pt-2 lg:pt-6 pb-4">
             <div className="relative flex flex-col">
               <div className="flex-1 flex flex-col lg:flex-row items-stretch gap-8">
                 {/* Desktop only: Status cards + logout (2-column, no absolute overlap) */}
