@@ -101,9 +101,9 @@ const MindsetSelect = () => {
               <div className="h-full w-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.05)_0%,transparent_70%)]" />
             </div>
 
-            <div className="relative z-10 flex w-full min-w-0 origin-top flex-col items-center gap-8 px-1 transition-all duration-300 mt-32 gap-10 px-3 md:mt-26 lg:mt-20 lg:gap-12 lg:scale-[0.9]">
+            <div className="relative z-10 mt-3 flex w-full min-w-0 flex-1 origin-top flex-col items-center justify-between gap-10 px-3 transition-all duration-300 lg:gap-12 lg:scale-[0.9]">
               <div className="flex min-h-0 w-full max-w-[956px] flex-col items-start gap-6 self-center sm:gap-[28px]">
-                <div className="flex min-h-[68px] w-full items-center gap-4 sm:gap-[16px]">
+                <div className="flex min-h-[68px] w-full items-center gap-4 pl-16 sm:gap-[16px] xl:pl-0">
                   <img
                     src={mindsetIcon}
                     alt="Icon"
