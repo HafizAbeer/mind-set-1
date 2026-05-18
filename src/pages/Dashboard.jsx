@@ -16,14 +16,14 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center overflow-y-scroll overflow-x-hidden custom-scrollbar">
-      <div className="w-full max-w-[1440px] min-h-[1024px] relative flex flex-col text-white">
+      <div className="w-full max-w-[1440px] min-h-screen relative flex flex-col text-white">
         <main className="flex-1 relative flex flex-col items-center justify-center m-0 overflow-hidden">
-          <div className="w-full max-w-[1300px] z-10 px-4 pt-18 md:pt-3 pb-4">
-            <div className="relative min-h-[882px] flex flex-col">
+          <div className="w-full max-w-[1300px] z-10 px-4 pt-16 md:pt-2 lg:pt-0 pb-4">
+            <div className="relative flex flex-col">
               <div className="flex-1 flex flex-col lg:flex-row items-stretch gap-8">
                 {/* Desktop only: Status cards + logout (2-column, no absolute overlap) */}
-                <div className="hidden lg:flex w-[234px] shrink-0 flex-col justify-end gap-6">
-                  <div className="flex flex-col lg:gap-6 lg:ml-10 lg:mb-5 xl:gap-8 xl:ml-20 xl:mb-5">
+                <div className="hidden lg:flex w-[234px] shrink-0 flex-col justify-center gap-6">
+                  <div className="flex flex-col lg:gap-6 lg:ml-10 xl:gap-8 xl:ml-20">
                     <StatusCard
                       icon={BarChart3}
                       title="Statistics"
@@ -58,7 +58,7 @@ const Dashboard = () => {
 
                   <button
                     onClick={handleLogout}
-                    className="w-full h-11 text-white font-inter font-semibold lg:ml-10 lg:mb-5 xl:ml-20 xl:mb-10 leading-[20px] flex items-center justify-center hover:opacity-90 transition-all shadow-lg"
+                    className="w-full h-11 text-white font-inter font-semibold lg:ml-10 xl:ml-20 leading-[20px] flex items-center justify-center hover:opacity-90 transition-all shadow-lg"
                     style={{
                       borderRadius: "16px",
                       background:
@@ -71,8 +71,8 @@ const Dashboard = () => {
                 </div>
 
                 {/* Welcome + Radar — below lg: stretch (full-width cards); lg+: centered */}
-                <div className="flex-1 w-full max-lg:items-stretch flex flex-col items-center lg:items-center">
-                  <div className="text-center mb-4 mt-2 lg:mb-8 lg:mt-3 shrink-0 w-full max-w-[900px] relative z-10">
+                <div className="flex-1 w-full max-lg:items-stretch flex flex-col items-center lg:items-center lg:justify-start">
+                  <div className="text-center mb-2 mt-2 lg:mb-4 lg:mt-0 shrink-0 w-full max-w-[900px] relative z-10">
                     <div className="flex justify-center mb-4 lg:mb-6">
                       <div
                         className="flex items-center justify-center gap-2"
@@ -92,12 +92,7 @@ const Dashboard = () => {
                       </div>
                     </div>
 
-                    <div
-                      className="flex flex-col items-center mx-auto gap-6 lg:gap-12"
-                      style={{
-                        minHeight: 168,
-                      }}
-                    >
+                    <div className="flex flex-col items-center mx-auto gap-4 lg:gap-6">
                       <h1
                         className="m-0 text-center"
                         style={{
@@ -139,9 +134,9 @@ const Dashboard = () => {
                     </div>
                   </div>
 
-                  <div className="w-full flex max-w-full items-center justify-center mt-2 lg:mt-0 mb-4 lg:mb-18 px-2 sm:px-3">
+                  <div className="w-full flex max-w-full items-center justify-center mt-0 mb-2 lg:mb-8 px-2 sm:px-3">
                     {/* Radar ~570px wide before scale; max-sm needs ~0.65 so 425px viewports don't clip */}
-                    <div className="relative h-[340px] w-full max-w-[min(100%,640px)] origin-center overflow-visible max-sm:scale-[0.65] sm:h-[460px] sm:scale-[0.82] md:h-[560px] md:scale-95 lg:h-[620px] lg:scale-100">
+                    <div className="relative h-[340px] w-full max-w-[min(100%,640px)] origin-center overflow-visible max-sm:scale-[0.65] sm:h-[460px] sm:scale-[0.82] md:h-[560px] lg:h-[560px] lg:scale-100">
                       <RadarVisualization />
 
                       <button
@@ -149,7 +144,7 @@ const Dashboard = () => {
                         className="hidden lg:flex absolute z-30 glass text-white hover:bg-white/10 items-center justify-center w-[218px] h-[56px] font-inter font-semibold leading-[24px] tracking-[5px]
                         lg:left-[400px]
                         xl:left-[calc(50%+220px)]
-                        bottom-[-30px] 
+                        bottom-[-12px]
                         "
                         style={{
                           borderRadius: "13px",
