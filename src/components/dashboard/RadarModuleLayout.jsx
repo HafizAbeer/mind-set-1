@@ -34,7 +34,7 @@ const RadarModuleLayout = ({
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="relative flex min-h-screen flex-1 flex-col items-center overflow-hidden px-4 py-10 font-sans sm:px-6">
+    <div className="relative flex min-h-screen flex-1 flex-col items-center overflow-hidden px-4 pt-[20px] pb-10 font-sans sm:px-6">
       <LegacySidebarPortal
         open={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
@@ -75,9 +75,9 @@ const RadarModuleLayout = ({
         )}
       </div>
 
-      <div className="relative z-10 mt-12 flex w-full max-w-[956px] flex-col gap-[28px] min-h-0">
+      <div className="relative z-10 mt-0 flex w-full max-w-[956px] flex-col gap-[28px] min-h-0">
         {(moduleTitle || moduleSubtitle) && (
-          <div className="flex h-auto min-h-[68px] w-full items-center gap-4 sm:gap-[16px]">
+          <div className="flex h-auto min-h-[68px] w-full items-center gap-4 pl-14 sm:gap-[16px] lg:pl-0">
             <img
               src={ModuleIconUrl}
               alt="Module Icon"
