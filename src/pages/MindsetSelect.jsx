@@ -144,14 +144,14 @@ const MindsetSelect = () => {
               </div>
 
               <Card
-                className="mt-4 flex w-full max-w-[956px] shrink-0 items-center justify-center rounded-[16px] border-2 border-[#CDCDCD] bg-transparent p-0 text-white shadow-none transition-all sm:mt-8 min-h-[min(506px,75vh)] sm:min-h-[506px]"
+                className="mt-4 flex w-full max-w-[956px] shrink-0 items-center justify-center rounded-[16px] border-2 border-[#CDCDCD] bg-transparent p-0 text-white shadow-none transition-all sm:mt-8"
                 style={{
                   backgroundColor: "rgba(255, 255, 255, 0.02)",
                   backdropFilter: "blur(10px)",
                 }}
               >
-                <CardContent className="flex min-h-0 w-full items-center justify-center p-4 sm:p-[30px]">
-                  <div className="flex w-full max-w-[896px] min-h-0 flex-col items-center gap-8 py-2 sm:gap-12 md:gap-16 lg:gap-[85px]">
+                <CardContent className="flex min-h-0 w-full items-center justify-center p-4 sm:p-6">
+                  <div className="flex w-full max-w-[896px] min-h-0 flex-col items-center gap-4 sm:gap-6 md:gap-8">
                     {categories.map((cat, idx) => (
                       <Button
                         key={idx}
