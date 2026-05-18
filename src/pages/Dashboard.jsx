@@ -72,8 +72,8 @@ const Dashboard = () => {
 
                 {/* Welcome + Radar — below lg: stretch (full-width cards); lg+: centered */}
                 <div className="flex-1 w-full max-lg:items-stretch flex flex-col items-center lg:items-center">
-                  <div className="text-center mb-8 mt-3 shrink-0 w-full max-w-[900px] relative z-10">
-                    <div className="flex justify-center mb-6">
+                  <div className="text-center mb-4 mt-2 lg:mb-8 lg:mt-3 shrink-0 w-full max-w-[900px] relative z-10">
+                    <div className="flex justify-center mb-4 lg:mb-6">
                       <div
                         className="flex items-center justify-center gap-2"
                         style={{
@@ -93,10 +93,9 @@ const Dashboard = () => {
                     </div>
 
                     <div
-                      className="flex flex-col items-center mx-auto"
+                      className="flex flex-col items-center mx-auto gap-6 lg:gap-12"
                       style={{
                         minHeight: 168,
-                        gap: 48,
                       }}
                     >
                       <h1
@@ -140,9 +139,9 @@ const Dashboard = () => {
                     </div>
                   </div>
 
-                  <div className="w-full flex max-w-full items-center justify-center mt-6 lg:mt-0 mb-18 px-2 sm:px-3">
+                  <div className="w-full flex max-w-full items-center justify-center mt-2 lg:mt-0 mb-4 lg:mb-18 px-2 sm:px-3">
                     {/* Radar ~570px wide before scale; max-sm needs ~0.65 so 425px viewports don't clip */}
-                    <div className="relative h-[480px] w-full max-w-[min(100%,640px)] origin-center overflow-visible max-sm:scale-[0.65] sm:h-[560px] sm:scale-[0.82] md:h-[600px] md:scale-95 lg:h-[620px] lg:scale-100">
+                    <div className="relative h-[340px] w-full max-w-[min(100%,640px)] origin-center overflow-visible max-sm:scale-[0.65] sm:h-[460px] sm:scale-[0.82] md:h-[560px] md:scale-95 lg:h-[620px] lg:scale-100">
                       <RadarVisualization />
 
                       <button

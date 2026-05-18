@@ -39,8 +39,8 @@ export default function AgreementTherapist() {
   };
 
   return (
-    <div className="min-h-dvh w-full bg-black flex items-center justify-center p-4">
-      <div className="w-full max-w-[1040px] flex flex-col items-center text-center px-3 py-10">
+    <div className="min-h-dvh w-full bg-black flex flex-col p-4">
+      <div className="m-auto w-full max-w-[1040px] flex flex-col items-center text-center px-3 py-10">
         <h1 className="text-white text-2xl sm:text-3xl font-bold mb-8 sm:mb-12">
           Agreement
         </h1>

@@ -5,8 +5,8 @@ export default function Disclaimer() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-dvh w-full bg-black flex items-center justify-center p-4">
-      <div className="relative w-full max-w-[980px] border border-white/20 bg-black/80 px-6 py-12 sm:px-10 sm:py-14">
+    <div className="min-h-dvh w-full bg-black flex flex-col p-4">
+      <div className="relative m-auto w-full max-w-[980px] border border-white/20 bg-black/80 px-6 py-12 sm:px-10 sm:py-14">
         <button
           type="button"
           onClick={() => navigate(-1)}
