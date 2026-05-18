@@ -94,12 +94,12 @@ const Dashboard = () => {
 
                     <div className="flex flex-col items-center mx-auto gap-4 lg:gap-6">
                       <h1
-                        className="m-0 text-center whitespace-nowrap"
+                        className="m-0 text-center"
                         style={{
                           fontFamily: '"Inter", sans-serif',
                           fontSize: "clamp(26px, 6vw, 48px)",
                           fontWeight: 400,
-                          lineHeight: 1.25,
+                          lineHeight: 1.1,
                           letterSpacing: "-0.01em",
                         }}
                       >
