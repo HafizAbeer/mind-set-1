@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Plus, Info, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Plus, X } from "lucide-react";
 import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
 import intentionIcon from "../assets/radarModulesIcon/intention-yellow-icon.svg";
@@ -253,7 +253,6 @@ const IntentionSelect = () => {
               </div>
 
               <div className="w-full min-h-[108px] bg-[#FBA90B]/10 border-[2px] border-[#FBA90B] rounded-[16px] p-[20px] flex items-center gap-[8px] shrink-0">
-                <Info size={24} className="text-white shrink-0" />
                 <div className="flex-1 flex flex-col items-center justify-center">
                   <p className="font-inter font-semibold text-[22px] leading-[28px] tracking-[0px] text-[#FBA90B] m-0 text-center">
                     You have now successfully identified your mindset and its

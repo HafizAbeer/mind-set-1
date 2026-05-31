@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import {
   ArrowLeft,
   ArrowRight,
-  Info,
   Plus,
   X,
   Link as LinkIcon,
@@ -82,7 +81,6 @@ const ReflectionQuestions = () => {
               <div
                 className="w-full min-h-0 bg-[#EAF408]/10 border-2 border-[#F0B614] rounded-[16px] p-4 sm:p-[20px] flex items-center gap-[8px] shrink-0"
               >
-                <Info size={24} color="white" className="shrink-0" />
                 <div className="flex-1 flex flex-col items-center justify-center">
                   <p className="font-inter font-medium text-[clamp(16px,4vw,24px)] leading-tight sm:leading-[36px] tracking-[0px] text-[#F0B614] m-0 text-center">
                     „

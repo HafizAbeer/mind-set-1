@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Plus, Info } from "lucide-react";
+import { ArrowLeft, ArrowRight, Plus } from "lucide-react";
 
 import { LegacySidebarPortal } from "../components/dashboard/LegacySidebarPortal";
 import mindsetLogo from "../assets/mindset-logo.svg";
@@ -149,7 +149,6 @@ const TriggerRadar = () => {
               </div>
 
               <div className="w-full bg-[#3C56D8]/10 border border-[#3C56D8] rounded-[10px] p-[20px] flex items-center justify-center shrink-0 min-h-0 gap-3 relative">
-                <Info size={24} className="shrink-0" />
                 <div className="w-full max-w-[857px] flex flex-col items-center justify-center">
                   <p className="font-inter font-medium text-[24px] leading-[33px] tracking-[-2px] text-[#6B83FF] m-0 text-center">
                     You have chosen{" "}

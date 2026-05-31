@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Plus, Info } from "lucide-react";
+import { ArrowLeft, ArrowRight, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
@@ -83,9 +83,6 @@ const RewardChoiceSelect = () => {
                   background: "#FBA90B3A",
                 }}
               >
-                <div className="">
-                  <Info size={24} className="shrink-0" />
-                </div>
                 <div className="w-full flex flex-col items-center justify-center text-center px-0 sm:px-12">
                   <p className="font-inter font-bold text-[clamp(16px,4vw,20px)] leading-relaxed text-white m-0 max-w-[800px]">
                     You have now successfully worked and improved your mindset

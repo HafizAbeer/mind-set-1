@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Plus, Info } from "lucide-react";
+import { ArrowLeft, ArrowRight, Plus } from "lucide-react";
 import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
 import newScriptIcon from "../assets/radarModulesIcon/newScript-purple-icon.svg";
@@ -117,7 +117,6 @@ const NewScriptSelect = () => {
               </div>
 
               <div className="w-full min-h-0 bg-[#CE5CFF]/10 border-2 border-[#CE5CFF] rounded-[16px] p-4 sm:p-[20px] flex items-center gap-[8px] shrink-0">
-                <Info size={24} className="text-white shrink-0" />
                 <div className="flex-1 flex flex-col items-center justify-center">
                   <p className="font-inter font-semibold text-[clamp(16px,4vw,22px)] leading-tight sm:leading-[28px] tracking-[0px] text-[#CE5CFF] m-0 text-center">
                     {(() => {

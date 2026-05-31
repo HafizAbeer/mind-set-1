@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, ArrowLeft, ArrowRight, Plus, Info } from "lucide-react";
+import { Search, ArrowLeft, ArrowRight, Plus } from "lucide-react";
 import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
 import CustomCauseModal from "../components/dashboard/CustomCauseModal";
@@ -121,7 +121,6 @@ const CauseSelect = () => {
               </div>
 
               <div className="w-full min-h-0 bg-[#88EC65]/10 border-2 border-[#88EC65] rounded-[16px] p-[20px] flex items-center justify-center gap-[8px] shrink-0 relative">
-                <Info size={24} className="shrink-0" />
                 <div className="w-full max-w-[857px] flex flex-col items-center justify-center">
                   <p className="font-inter font-semibold text-[24px] leading-[34px] tracking-[0px] text-[#96FF71] m-0 text-center">
                     {(() => {

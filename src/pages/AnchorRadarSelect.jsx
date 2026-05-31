@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Save, Info } from "lucide-react";
+import { ArrowLeft, Save } from "lucide-react";
 import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
 import anchorIcon from "../assets/radarModulesIcon/anchor-pink-icon.svg";
@@ -41,9 +41,6 @@ const AnchorRadarSelect = () => {
               </div>
 
               <div className="flex items-center w-full min-h-0 bg-[#FF5B86]/15 border-2 border-[#FF5B86] rounded-[16px] p-4 sm:p-[16px] gap-[16px] shrink-0">
-                <div className="flex items-center justify-center w-[32px] h-[32px] shrink-0">
-                  <Info size={24} color="white" />
-                </div>
                 <p className="text-[clamp(16px,4vw,20px)] font-inter font-bold text-[#FF5B86] m-0 leading-tight sm:leading-[24px]">
                   Now you can choose a favorite background image that will be a
                   support and anchor for you in moments of crisis and need.
