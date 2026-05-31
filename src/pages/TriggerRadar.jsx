@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Plus, Info } from "lucide-react";
+import { ArrowLeft, ArrowRight, Plus } from "lucide-react";
 
 import { LegacySidebarPortal } from "../components/dashboard/LegacySidebarPortal";
 import mindsetLogo from "../assets/mindset-logo.svg";
@@ -130,11 +130,11 @@ const TriggerRadar = () => {
         </div>
       </div> */}
 
-      <div className="h-full flex items-start justify-center pt-[100px] sm:pt-[100px] md:pt-[120px] xl:pt-6 pb-4 overflow-y-auto custom-scrollbar">
+      <div className="h-full flex items-start justify-center pt-8 xl:pt-6 pb-4 overflow-y-auto custom-scrollbar">
         <div className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6">
           <div className="flex w-full gap-[20px] sm:gap-[32px] md:gap-[48px] xl:gap-[0px] h-full relative z-10 justify-center">
             <div className="w-full max-w-[956px] flex flex-col h-full gap-[16px] sm:gap-[24px]">
-              <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0">
+              <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0 pl-16 xl:pl-0">
                 <div className="w-11 h-11 bg-[#3C56D8]/20 rounded-full flex items-center justify-center shrink-0">
                   <img src={triggerLogo} alt="Logo" className="w-9 h-9" />
                 </div>
@@ -149,7 +149,6 @@ const TriggerRadar = () => {
               </div>
 
               <div className="w-full bg-[#3C56D8]/10 border border-[#3C56D8] rounded-[10px] p-[20px] flex items-center justify-center shrink-0 min-h-0 gap-3 relative">
-                <Info size={24} className="shrink-0" />
                 <div className="w-full max-w-[857px] flex flex-col items-center justify-center">
                   <p className="font-inter font-medium text-[24px] leading-[33px] tracking-[-2px] text-[#6B83FF] m-0 text-center">
                     You have chosen{" "}

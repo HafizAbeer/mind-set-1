@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, ArrowLeft, ArrowRight, Plus, Info } from "lucide-react";
+import { Search, ArrowLeft, ArrowRight, Plus } from "lucide-react";
 import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
 import CustomCauseModal from "../components/dashboard/CustomCauseModal";
@@ -102,13 +102,13 @@ const CauseSelect = () => {
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
-      <div className="h-full flex items-start justify-center pt-[100px] sm:pt-[100px] md:pt-[120px] xl:pt-6 pb-4 overflow-y-auto custom-scrollbar">
+      <div className="h-full flex items-start justify-center pt-8 xl:pt-6 pb-4 overflow-y-auto custom-scrollbar">
         <div className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6">
           <div className="flex w-full gap-[20px] sm:gap-[32px] md:gap-[48px] xl:gap-[0px] h-full relative z-10 justify-center">
             {/* spacer keeps the same horizontal layout on larger screens, matching header width (220px + 13px left) */}
 
             <div className="w-full max-w-[956px] flex flex-col h-full gap-[16px] sm:gap-[24px]">
-              <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0">
+              <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0 pl-16 xl:pl-0">
                 <Search size={36} className="text-[#96FF71] shrink-0" />
                 <div className="flex flex-col justify-center w-full">
                   <h1 className="text-[clamp(24px,5vw,32px)] font-inter font-bold text-white m-0 leading-tight tracking-[-0.3px]">
@@ -121,7 +121,6 @@ const CauseSelect = () => {
               </div>
 
               <div className="w-full min-h-0 bg-[#88EC65]/10 border-2 border-[#88EC65] rounded-[16px] p-[20px] flex items-center justify-center gap-[8px] shrink-0 relative">
-                <Info size={24} className="shrink-0" />
                 <div className="w-full max-w-[857px] flex flex-col items-center justify-center">
                   <p className="font-inter font-semibold text-[24px] leading-[34px] tracking-[0px] text-[#96FF71] m-0 text-center">
                     {(() => {

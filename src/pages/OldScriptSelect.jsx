@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Plus, Info } from "lucide-react";
+import { ArrowLeft, ArrowRight, Plus } from "lucide-react";
 import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
 import oldScriptIcon from "../assets/radarModulesIcon/oldScriptGreen-icon.svg";
@@ -96,11 +96,11 @@ const OldScriptSelect = () => {
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
-      <div className="h-full flex items-start justify-center pt-[100px] sm:pt-[100px] md:pt-[120px] xl:pt-6 pb-4 overflow-y-auto custom-scrollbar">
+      <div className="h-full flex items-start justify-center pt-8 xl:pt-6 pb-4 overflow-y-auto custom-scrollbar">
         <div className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6">
           <div className="flex w-full gap-[20px] sm:gap-[32px] md:gap-[48px] xl:gap-[0px] h-full relative z-10 justify-center">
             <div className="w-full max-w-[956px] flex flex-col h-full gap-[16px] sm:gap-[24px]">
-              <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0">
+              <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0 pl-16 xl:pl-0">
                 <img
                   src={oldScriptIcon}
                   alt="Icon"
@@ -117,7 +117,6 @@ const OldScriptSelect = () => {
               </div>
 
               <div className="w-full min-h-0 bg-[#48C856]/10 border-2 border-[#48C856] rounded-[16px] p-4 sm:p-[20px] flex items-center gap-[8px] shrink-0">
-                <Info size={24} className="text-white shrink-0" />
                 <div className="flex-1 flex flex-col items-center justify-center">
                   <p className="font-inter font-semibold text-[clamp(16px,4vw,22px)] leading-tight sm:leading-[28px] tracking-[0px] text-[#48C856] m-0 text-center">
                     {(() => {

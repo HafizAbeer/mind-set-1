@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, ChevronDown, Plus, Info, User2, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronDown, Plus, User2, X } from "lucide-react";
 import { LegacySidebarPortal } from "../components/dashboard/LegacySidebarPortal";
 import { cn } from "@/lib/utils";
 import {
@@ -149,7 +149,7 @@ const BodyRadarSelect = () => {
   const themeGradient = "#D16868";
 
   return (
-    <div className="relative min-h-screen w-full overflow-x-hidden">
+    <div className="relative h-screen w-full overflow-hidden">
       <LegacySidebarPortal
         open={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
@@ -187,16 +187,11 @@ const BodyRadarSelect = () => {
         </div> */}
       </div>
 
-      <div className="min-h-screen flex items-start justify-center overflow-auto custom-scrollbar px-2 pt-[100px] pb-6 sm:px-5 sm:pt-10 md:pt-10">
-        <div
-          className="relative flex w-full max-w-[1400px] text-white overflow-hidden font-sans transition-all duration-300"
-          style={{
-            minHeight: "min(1129px, 100dvh)",
-          }}
-        >
-          <div className="flex w-full h-full p-[20px] gap-[20px] justify-center relative z-10 overflow-y-auto custom-scrollbar">
-            <div className="w-full max-w-[956px] h-auto flex flex-col items-start gap-[28px] overflow-visible pb-12">
-              <div className="flex items-center min-h-[68px] gap-[16px] w-full shrink-0 h-auto py-2">
+      <div className="h-full flex items-start justify-center overflow-y-auto custom-scrollbar px-2 pt-8 pb-6 sm:px-5 sm:pt-10 md:pt-10">
+        <div className="relative flex flex-col w-full max-w-[1400px] h-full text-white overflow-hidden font-sans transition-all duration-300">
+          <div className="flex w-full h-full p-[20px] gap-[20px] justify-center relative z-10 overflow-hidden">
+            <div className="w-full max-w-[956px] h-full min-h-0 flex flex-col items-start gap-[28px]">
+              <div className="flex items-center min-h-[68px] gap-[16px] w-full shrink-0 h-auto py-2 pl-16 xl:pl-0">
                 <User2 size={36} className="text-[#D16868] shrink-0" />
                 <div className="flex flex-col justify-center h-full w-full gap-0">
                   <h1 className="text-[32px] font-inter font-bold text-white m-0 leading-[36px] tracking-[-0.3px]">
@@ -210,7 +205,6 @@ const BodyRadarSelect = () => {
               </div>
 
               <div className="w-full min-h-[88px] bg-[#D16868]/10 border-[2px] border-[#D16868] rounded-[16px] p-[20px] flex items-center gap-[8px] shrink-0">
-                <Info size={24} className="text-white shrink-0" />
                 <div className="flex-1 flex flex-col items-center justify-center">
                   <p className="font-inter font-semibold text-[22px] leading-[28px] tracking-[0px] text-[#D16868] m-0 text-center">
                     „
@@ -233,7 +227,8 @@ const BodyRadarSelect = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col w-full gap-[12px]">
+              <div className="w-full flex-1 min-h-0 flex flex-col gap-[28px] overflow-y-auto no-scrollbar">
+                <div className="flex flex-col w-full gap-[12px]">
                 {(() => {
                   const visibleSections = openSection
                     ? sections.filter(
@@ -330,8 +325,9 @@ const BodyRadarSelect = () => {
                 <Plus size={18} />
                 Add your own structure
               </button>
+              </div>
 
-              <div className="flex gap-4 xl:flex-row xl:items-center xl:justify-between w-full mt-4">
+              <div className="flex gap-4 xl:flex-row xl:items-center xl:justify-between w-full mt-4 shrink-0">
                 <button
                   onClick={() => navigate("/body")}
                   className="flex-1 xl:w-[468px] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all border-2 border-[#D16868] text-[15px] md:text-[20px] hover:bg-[#D16868]/10 active:scale-95 shadow-lg"
@@ -361,8 +357,6 @@ const BodyRadarSelect = () => {
                   <ArrowRight size={24} className="shrink-0" />
                 </button>
               </div>
-
-              <div className="h-10 w-full shrink-0" />
             </div>
             {/* Add Custom Structure Modal */}
             {isModalOpen && (

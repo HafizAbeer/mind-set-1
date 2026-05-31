@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Plus, Info } from "lucide-react";
+import { ArrowLeft, ArrowRight, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
@@ -54,11 +54,11 @@ const RewardChoiceSelect = () => {
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
-      <div className="h-full flex items-start justify-center pt-[100px] sm:pt-[100px] md:pt-[120px] xl:pt-6 pb-4 overflow-y-auto custom-scrollbar">
+      <div className="h-full flex items-start justify-center pt-8 xl:pt-6 pb-4 overflow-y-auto custom-scrollbar">
         <div className="relative flex min-h-0 flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6">
           <div className="flex w-full min-h-0 gap-[20px] sm:gap-[32px] md:gap-[48px] xl:gap-[0px] h-full relative z-10 justify-center">
             <div className="flex h-full min-h-0 w-full max-w-[956px] flex-col gap-[16px] sm:gap-[20px]">
-              <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0">
+              <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0 pl-16 xl:pl-0">
                 <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0">
                   <img
                     src={rewardRedIcon}
@@ -83,9 +83,6 @@ const RewardChoiceSelect = () => {
                   background: "#FBA90B3A",
                 }}
               >
-                <div className="">
-                  <Info size={24} className="shrink-0" />
-                </div>
                 <div className="w-full flex flex-col items-center justify-center text-center px-0 sm:px-12">
                   <p className="font-inter font-bold text-[clamp(16px,4vw,20px)] leading-relaxed text-white m-0 max-w-[800px]">
                     You have now successfully worked and improved your mindset
