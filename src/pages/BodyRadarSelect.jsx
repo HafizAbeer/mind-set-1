@@ -187,7 +187,7 @@ const BodyRadarSelect = () => {
         </div> */}
       </div>
 
-      <div className="min-h-screen flex items-start justify-center overflow-auto custom-scrollbar px-2 pt-[100px] pb-6 sm:px-5 sm:pt-10 md:pt-10">
+      <div className="min-h-screen flex items-start justify-center overflow-auto custom-scrollbar px-2 pt-8 pb-6 sm:px-5 sm:pt-10 md:pt-10">
         <div
           className="relative flex w-full max-w-[1400px] text-white overflow-hidden font-sans transition-all duration-300"
           style={{
@@ -196,7 +196,7 @@ const BodyRadarSelect = () => {
         >
           <div className="flex w-full h-full p-[20px] gap-[20px] justify-center relative z-10 overflow-y-auto custom-scrollbar">
             <div className="w-full max-w-[956px] h-auto flex flex-col items-start gap-[28px] overflow-visible pb-12">
-              <div className="flex items-center min-h-[68px] gap-[16px] w-full shrink-0 h-auto py-2">
+              <div className="flex items-center min-h-[68px] gap-[16px] w-full shrink-0 h-auto py-2 pl-16 xl:pl-0">
                 <User2 size={36} className="text-[#D16868] shrink-0" />
                 <div className="flex flex-col justify-center h-full w-full gap-0">
                   <h1 className="text-[32px] font-inter font-bold text-white m-0 leading-[36px] tracking-[-0.3px]">

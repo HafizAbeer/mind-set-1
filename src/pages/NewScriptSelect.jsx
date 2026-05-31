@@ -96,11 +96,11 @@ const NewScriptSelect = () => {
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
-      <div className="h-full flex items-start justify-center pt-[100px] sm:pt-[100px] md:pt-[120px] xl:pt-6 pb-4 overflow-y-auto custom-scrollbar">
+      <div className="h-full flex items-start justify-center pt-8 xl:pt-6 pb-4 overflow-y-auto custom-scrollbar">
         <div className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6">
           <div className="flex w-full gap-[20px] sm:gap-[32px] md:gap-[48px] xl:gap-[0px] h-full relative z-10 justify-center">
             <div className="w-full max-w-[956px] flex flex-col h-full gap-[16px] sm:gap-[24px]">
-              <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0">
+              <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0 pl-16 xl:pl-0">
                 <img
                   src={newScriptIcon}
                   alt="Icon"
