@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowLeft, ArrowRight, Info } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -25,10 +25,8 @@ const RadarModuleLayout = ({
   themeGhostCircle = "rgba(255, 89, 92, 0.20)",
   themeCardBg = "rgba(255, 89, 92, 0.24)",
   backButtonText = "Back",
-  showInfoIcon = false,
   onBack,
   onContinue,
-  onInfoClick,
   minimalHeader = true,
 }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -107,15 +105,6 @@ const RadarModuleLayout = ({
               backdropFilter: "blur(4px)",
             }}
           >
-            {showInfoIcon && (
-              <div
-                className="absolute bottom-4 right-4 cursor-pointer transition-opacity hover:opacity-80 sm:bottom-8 sm:right-8"
-                onClick={onInfoClick}
-              >
-                <Info size={32} color={themeColor} />
-              </div>
-            )}
-
             <CardContent className="w-full max-w-[846px] p-0">
               <div className="flex w-full flex-col items-center justify-center gap-[clamp(20px,4vw,34px)]">
                 <div className="flex w-full flex-col items-center gap-[clamp(16px,3vw,30px)]">

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Info } from "lucide-react";
 
 import Sidebar from "../components/dashboard/Sidebar";
 import { Button } from "@/components/ui/button";
@@ -127,11 +126,6 @@ const MindsetSelect = () => {
                   }}
                 >
                   <CardContent className="flex items-center justify-center gap-3 p-4 sm:flex-row sm:gap-[8px] sm:p-[20px]">
-                    <Info
-                      size={24}
-                      color="white"
-                      className="shrink-0"
-                    />
                     <span className="text-center font-inter text-[clamp(1rem,3.5vw,1.5rem)] font-semibold leading-snug text-[#FF595C] sm:text-[24px] sm:leading-[24px]">
                       Which character of mindset has caught your attention?
                     </span>
