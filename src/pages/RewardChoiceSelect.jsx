@@ -132,7 +132,7 @@ const RewardChoiceSelect = () => {
                   onClick={() => navigate("/dashboard")}
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[16px] flex items-center justify-center gap-[12px] p-[10px] md:p-[16px] font-inter font-bold text-white transition-all shadow-lg border-[2px] border-white text-[15px] md:text-[20px] active:scale-95"
                   style={{
-                    background: "linear-gradient(180deg, #FF5C5C 0%, #C62020 100%)",
+                    background: "linear-gradient(90deg, #FF5C5C 0%, #C62020 100%)",
                   }}
                 >
                   Continue
