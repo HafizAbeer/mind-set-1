@@ -22,6 +22,7 @@ const BodyRadar = () => {
   return (
     <RadarModuleLayout
       moduleIcon={bodyIcon}
+      centerIconClassName="brightness-0 invert"
       moduleTitle="Body Radar"
       moduleSubtitle="Select in which region of body you feel your mindset most clearly"
       stepTitle="My compliment!"

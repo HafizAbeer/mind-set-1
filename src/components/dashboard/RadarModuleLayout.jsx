@@ -17,6 +17,7 @@ const RadarModuleLayout = ({
   footerText,
   footerTitle = "Press Continue:",
   centerIcon: CenterIconUrl,
+  centerIconClassName = "",
   themeColor = "linear-gradient(180deg, #FF7E7E 0%, #CD4343 100%)",
   themeGradient = "linear-gradient(180deg, #FF7E7E 0%, #CD4343 100%)",
   themeGradientGhost =
@@ -95,7 +96,7 @@ const RadarModuleLayout = ({
                     <img
                       src={CenterIconUrl || ModuleIconUrl}
                       alt=""
-                      className="h-full w-full object-contain"
+                      className={cn("h-full w-full object-contain", centerIconClassName)}
                     />
                   </div>
 
