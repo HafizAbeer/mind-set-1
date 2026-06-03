@@ -203,7 +203,7 @@ const BodyRadarSelect = () => {
               <div className="w-full min-h-[88px] bg-[#D16868]/10 border-[2px] border-[#D16868] rounded-[16px] p-[20px] flex items-center gap-[8px] shrink-0">
                 <div className="flex-1 flex flex-col items-center justify-center">
                   <p className="font-inter font-semibold text-[22px] leading-[28px] tracking-[0px] text-[#D16868] m-0 text-center">
-                    „
+                    "
                     {(() => {
                       if (!mindsetSentence || !triggerLabel) return null;
                       return splitMindsetSentence(mindsetSentence).map((seg, i) => {
