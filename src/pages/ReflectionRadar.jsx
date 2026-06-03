@@ -23,6 +23,7 @@ const ReflectionRadar = () => {
             This is your assessment of the present situation:
           </span>
           <br />
+          <br />
           <span style={{ color: '#F0B614' }}>
             „
             {(() => {
