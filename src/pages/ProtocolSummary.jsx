@@ -44,7 +44,7 @@ const ProtocolSummary = () => {
                 menuClassName=""
               />
 
-              <div className="flex flex-1 flex-col items-center justify-center w-full">
+              <div className="flex flex-1 flex-col items-center justify-start w-full">
                 <div
                   className="w-full h-auto rounded-[32px] p-6 sm:p-12 flex flex-col items-center justify-center text-center gap-6 sm:gap-8 border-2 shadow-2xl relative overflow-hidden"
                   style={{
