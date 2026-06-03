@@ -125,6 +125,9 @@
     background-position: center;
     background-attachment: fixed;
     color: white;
+    /* Safety net: long user-entered values (mindset/trigger/cause labels,
+       custom "Add your own" entries) break instead of overflowing their box. */
+    overflow-wrap: break-word;
     @apply antialiased;
   }
 
