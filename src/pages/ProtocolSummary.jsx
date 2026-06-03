@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
 import newScriptIcon from "../assets/radarModulesIcon/newScript-purple-icon.svg";
+import RadarPageHeader from "../components/dashboard/RadarPageHeader";
 import { useScreeningSelection, splitMindsetSentence } from "@/lib/screeningSelection";
 
 const accent = "#CE5CFF";
@@ -35,21 +36,13 @@ const ProtocolSummary = () => {
         <div className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6">
           <div className="flex w-full gap-[20px] sm:gap-[32px] md:gap-[48px] xl:gap-[0px] h-full relative z-10 justify-center">
             <div className="w-full max-w-[956px] flex flex-col h-full gap-[16px] sm:gap-[24px]">
-              <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0">
-                <img
-                  src={newScriptIcon}
-                  alt="Icon"
-                  className="w-12 h-12 object-contain shrink-0"
-                />
-                <div className="flex flex-col justify-center w-full">
-                  <h1 className="text-[clamp(24px,5vw,32px)] font-inter font-bold text-white m-0 leading-tight tracking-[-0.3px]">
-                    Protocol Summary
-                  </h1>
-                  <p className="text-[clamp(14px,4vw,18px)] font-inter font-medium text-[#C5C5C5] m-0 leading-snug mt-1 sm:mt-2">
-                    A review of what you discovered through the protocol
-                  </p>
-                </div>
-              </div>
+              <RadarPageHeader
+                icon={newScriptIcon}
+                iconAlt="Icon"
+                title="Protocol Summary"
+                subtitle="A review of what you discovered through the protocol"
+                menuClassName=""
+              />
 
               <div className="flex flex-col items-center justify-center w-full">
                 <div
