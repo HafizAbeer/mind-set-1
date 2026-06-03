@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 import { LegacySidebarPortal } from "./LegacySidebarPortal";
+import RadarPageHeader from "./RadarPageHeader";
 import mindsetLogo from "../../assets/mindset-logo.svg";
 import collapseIcon from "../../assets/icons/collapse-icon.svg";
 
@@ -75,21 +76,13 @@ const RadarModuleLayout = ({
 
       <div className="relative z-10 mt-0 flex w-full max-w-[956px] flex-1 flex-col gap-[28px] min-h-0">
         {(moduleTitle || moduleSubtitle) && (
-          <div className="flex h-auto min-h-[68px] w-full items-center gap-4 pl-14 sm:gap-[16px] lg:pl-0">
-            <img
-              src={ModuleIconUrl}
-              alt="Module Icon"
-              className="h-9 w-9 shrink-0 object-contain"
-            />
-            <div className="min-w-0 flex flex-col">
-              <h1 className="m-0 font-inter text-[clamp(22px,4vw,32px)] font-bold leading-tight tracking-[-0.3px] text-white sm:text-[32px] sm:leading-[36px]">
-                {moduleTitle}
-              </h1>
-              <p className="m-0 font-inter text-[clamp(14px,3vw,20px)] font-medium leading-snug tracking-[-0.3px] text-[#9CA1A7] sm:text-[20px] sm:leading-[24px]">
-                {moduleSubtitle}
-              </p>
-            </div>
-          </div>
+          <RadarPageHeader
+            icon={ModuleIconUrl}
+            iconAlt="Module Icon"
+            title={moduleTitle}
+            subtitle={moduleSubtitle}
+            className="pl-14 lg:pl-0"
+          />
         )}
 
         <div className="flex w-full min-w-0 flex-1 flex-col justify-between gap-[28px]">

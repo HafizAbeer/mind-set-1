@@ -1,21 +1,28 @@
 import React from "react";
+import { cn } from "@/lib/utils";
 
 /**
- * Shared header for the radar "select" pages.
+ * Shared header for the radar intro and "select" pages.
  *
- * Owns all formatting (icon size, type scale, colors, spacing, alignment with
- * the mobile menu icon) so every select page stays in sync — only the data
- * (icon / title / subtitle) is passed in. Matches the radar intro header
- * rendered by RadarModuleLayout.
+ * Owns all formatting (icon size, type scale, colors, spacing) so every radar
+ * page stays in sync — only the data (icon / title / subtitle) is passed in.
+ * The default left padding clears the select-page menu icon; the radar intro
+ * (RadarModuleLayout) overrides it via `className`.
  *
  * @param {string|React.ReactNode} icon - image src (rendered as <img>) or a node (e.g. a lucide icon)
  * @param {string} iconAlt - alt text when `icon` is an image src
  * @param {React.ReactNode} title
  * @param {React.ReactNode} subtitle
+ * @param {string} [className] - extra container classes (e.g. override the menu-icon clearance padding)
  */
-const RadarPageHeader = ({ icon, iconAlt = "", title, subtitle }) => {
+const RadarPageHeader = ({ icon, iconAlt = "", title, subtitle, className }) => {
   return (
-    <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0 pl-16 xl:pl-0">
+    <div
+      className={cn(
+        "flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0 pl-16 xl:pl-0",
+        className,
+      )}
+    >
       {typeof icon === "string" ? (
         <img
           src={icon}
