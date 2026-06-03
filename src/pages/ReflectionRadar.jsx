@@ -19,7 +19,7 @@ const ReflectionRadar = () => {
         stepTitle="Very well, you got off to a good start."
         description={
           <>
-          <span style={{ color: '#FFFFFF' }}>
+          <span className="font-inter text-[clamp(20px,4vw,28px)] font-bold leading-tight text-white sm:text-[28px] sm:leading-[32px]">
             This is your assessment of the present situation:
           </span>
           <br />
