@@ -28,7 +28,7 @@ const BodyRadar = () => {
       stepTitle="My compliment!"
       description={
         <span style={{ color: "#D16868" }}>
-          "
+          „
           {(() => {
             if (!mindsetSentence || !triggerLabel) return null;
             return splitMindsetSentence(mindsetSentence).map((seg, i) => {
@@ -43,12 +43,12 @@ const BodyRadar = () => {
           <span style={{ color: "#FFFFFF" }}>
             {causeLabel}
           </span>."<br />
-          "I have also reflected carefully about the details of this
+          „I have also reflected carefully about the details of this
           <br />
           combination."
           {hasReflection && (
             <>
-              <br />"My{" "}
+              <br />„My{" "}
               <span style={{ color: "#FFFFFF" }}>{reflectionATitle}</span> is{" "}
               <span style={{ color: "#FFFFFF" }}>{reflectionAValue}</span> and
               my <span style={{ color: "#FFFFFF" }}>{reflectionBTitle}</span> is{" "}

@@ -19,7 +19,7 @@ const ReflectionRadar = () => {
         stepTitle="Very well, you got off to a good start."
         description={
           <span style={{ color: '#F0B614' }}>
-            "
+            „
             {(() => {
               if (!mindsetSentence || !triggerLabel) return null;
               return splitMindsetSentence(mindsetSentence).map((seg, i) => {
