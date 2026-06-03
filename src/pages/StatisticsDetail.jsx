@@ -381,8 +381,8 @@ const StatisticsDetail = () => {
 
       <main className="relative z-10 flex flex-col items-center px-4 sm:px-8 pt-[20px] pb-12">
         <div className="w-full max-w-[1300px] flex flex-col gap-8 md:gap-10">
-          <header className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pl-16 xl:pl-0">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 w-full md:w-auto">
+          <header className="flex flex-row items-start md:items-center justify-between gap-6 pl-16 xl:pl-0">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 min-w-0 md:w-auto">
               <div className="flex items-center gap-5">
                 <img
                   src={statisticIcon}
