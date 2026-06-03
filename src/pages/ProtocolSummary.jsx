@@ -32,7 +32,7 @@ const ProtocolSummary = () => {
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
-      <div className="h-full flex items-start justify-center pt-8 xl:pt-6 pb-4 overflow-y-auto custom-scrollbar">
+      <div className="h-full flex items-start justify-center pt-[20px] pb-4 overflow-y-auto custom-scrollbar">
         <div className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6">
           <div className="flex w-full gap-[20px] sm:gap-[32px] md:gap-[48px] xl:gap-[0px] h-full relative z-10 justify-center">
             <div className="w-full max-w-[956px] flex flex-col h-full gap-[16px] sm:gap-[24px]">
@@ -44,7 +44,7 @@ const ProtocolSummary = () => {
                 menuClassName=""
               />
 
-              <div className="flex flex-col items-center justify-center w-full">
+              <div className="flex flex-1 flex-col items-center justify-center w-full">
                 <div
                   className="w-full h-auto rounded-[32px] p-6 sm:p-12 flex flex-col items-center justify-center text-center gap-6 sm:gap-8 border-2 shadow-2xl relative overflow-hidden"
                   style={{
