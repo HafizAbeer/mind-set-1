@@ -187,9 +187,9 @@ const BodyRadarSelect = () => {
         </div> */}
       </div>
 
-      <div className="h-full flex items-start justify-center overflow-y-auto custom-scrollbar px-2 pt-8 pb-6 sm:px-5 sm:pt-10 md:pt-10">
+      <div className="h-full flex items-start justify-center overflow-y-auto custom-scrollbar px-2 pt-8 pb-6 sm:px-5 xl:pt-6">
         <div className="relative flex flex-col w-full max-w-[1400px] h-full text-white overflow-hidden font-sans transition-all duration-300">
-          <div className="flex w-full h-full p-[20px] gap-[20px] justify-center relative z-10 overflow-hidden">
+          <div className="flex w-full h-full px-[20px] pb-[20px] gap-[20px] justify-center relative z-10 overflow-hidden">
             <div className="w-full max-w-[956px] h-full min-h-0 flex flex-col items-start gap-[28px]">
               <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0 pl-16 xl:pl-0">
                 <User2 size={36} className="text-[#D16868] shrink-0" />
