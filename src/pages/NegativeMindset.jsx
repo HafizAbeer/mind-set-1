@@ -5,6 +5,7 @@ import { Brain, ArrowLeft, ArrowRight, Plus } from "lucide-react";
 import { LegacySidebarPortal } from "../components/dashboard/LegacySidebarPortal";
 import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
+import RadarPageHeader from "../components/dashboard/RadarPageHeader";
 import CustomMindsetModal from "../components/dashboard/CustomMindsetModal";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -119,24 +120,18 @@ const NegativeMindset = () => {
         </div>
       </div> */}
 
-      <div className="h-full flex items-start justify-center pt-8 xl:pt-6 pb-4 overflow-y-auto custom-scrollbar">
+      <div className="h-full flex items-start justify-center pt-[20px] pb-4 overflow-y-auto custom-scrollbar">
         <div className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6">
           <div className="flex w-full gap-[20px] sm:gap-[32px] md:gap-[48px] xl:gap-[0px] h-full relative z-10 justify-center">
             {/* spacer keeps the same horizontal layout on larger screens, matching header width (220px + 13px left) */}
             {/* <div className="hidden xl:flex w-[233px] shrink-0 h-full" /> */}
 
             <div className="w-full max-w-[956px] flex flex-col h-full gap-[16px] sm:gap-[24px]">
-              <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0 pl-16 xl:pl-0">
-                <Brain size={36} className="text-[#FF6A6A] shrink-0" />
-                <div className="flex flex-col justify-center w-full">
-                  <h1 className="text-[clamp(24px,5vw,32px)] font-inter font-bold text-white m-0 leading-tight tracking-[-0.3px]">
-                    Negative Mindset
-                  </h1>
-                  <p className="text-[clamp(14px,4vw,18px)] font-inter font-medium text-[#C5C5C5] m-0 leading-snug mt-1 sm:mt-2">
-                    Which mindset is bothering you right now?
-                  </p>
-                </div>
-              </div>
+              <RadarPageHeader
+                icon={<Brain size={36} className="text-[#FF6A6A]" />}
+                title="Negative Mindset"
+                subtitle="Which mindset is bothering you right now?"
+              />
 
               <Button
                 type="button"
