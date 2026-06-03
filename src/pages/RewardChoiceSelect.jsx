@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
+import RadarPageHeader from "../components/dashboard/RadarPageHeader";
 import rewardRedIcon from "../assets/radarModulesIcon/reward-red-icon.svg";
 import CustomRewardModal from "../components/dashboard/CustomRewardModal";
 
@@ -58,24 +59,12 @@ const RewardChoiceSelect = () => {
         <div className="relative flex min-h-0 flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6">
           <div className="flex w-full min-h-0 gap-[20px] sm:gap-[32px] md:gap-[48px] xl:gap-[0px] h-full relative z-10 justify-center">
             <div className="flex h-full min-h-0 w-full max-w-[956px] flex-col gap-[16px] sm:gap-[20px]">
-              <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0 pl-16 xl:pl-0">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0">
-                  <img
-                    src={rewardRedIcon}
-                    alt="Reward Icon"
-                    className="w-10 h-10 object-contain"
-                  />
-                </div>
-                <div className="flex flex-col justify-center w-full">
-                  <h1 className="text-[clamp(24px,5vw,32px)] font-inter font-bold text-white m-0 leading-tight tracking-[-0.3px]">
-                    Reward Choice
-                  </h1>
-                  <p className="text-[clamp(14px,4vw,18px)] font-inter font-medium text-[#C5C5C5] m-0 leading-snug mt-1 sm:mt-2">
-                    Now select the reward for your diligent work on your
-                    mindset.
-                  </p>
-                </div>
-              </div>
+              <RadarPageHeader
+                icon={rewardRedIcon}
+                iconAlt="Reward Icon"
+                title="Reward Choice"
+                subtitle="Now select the reward for your diligent work on your mindset."
+              />
 
               <div
                 className="w-full border rounded-[10px] p-[16px_20px] sm:p-[20px_32px] flex items-center justify-center shrink-0 relative border-2 border-[#FBA90B] rounded-[10px]"

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Save } from "lucide-react";
 import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
+import RadarPageHeader from "../components/dashboard/RadarPageHeader";
 import anchorIcon from "../assets/radarModulesIcon/anchor-pink-icon.svg";
 
 const AnchorRadarSelect = () => {
@@ -23,22 +24,12 @@ const AnchorRadarSelect = () => {
             {/* spacer keeps the same horizontal layout on larger screens, matching header width (220px + 13px left) */}
 
             <div className="w-full max-w-[956px] flex flex-col h-full gap-[16px] sm:gap-[24px]">
-              <div className="flex items-center h-auto min-h-[60px] gap-[16px] w-full shrink-0 pl-16 xl:pl-0">
-                <img
-                  src={anchorIcon}
-                  alt="Icon"
-                  className="w-12 h-12 object-contain shrink-0"
-                />
-                <div className="flex flex-col justify-center w-full">
-                  <h1 className="text-[clamp(24px,5vw,32px)] font-inter font-bold text-white m-0 leading-tight tracking-[-0.3px]">
-                    Anchor Radar
-                  </h1>
-                  <p className="text-[clamp(14px,4vw,18px)] font-inter font-medium text-[#C5C5C5] m-0 leading-snug mt-1 sm:mt-2">
-                    You have now gone through all the steps of the mindfulness
-                    process.
-                  </p>
-                </div>
-              </div>
+              <RadarPageHeader
+                icon={anchorIcon}
+                iconAlt="Icon"
+                title="Anchor Radar"
+                subtitle="You have now gone through all the steps of the mindfulness process."
+              />
 
               <div className="flex items-center w-full min-h-0 bg-[#FF5B86]/15 border-2 border-[#FF5B86] rounded-[16px] p-4 sm:p-[16px] gap-[16px] shrink-0">
                 <p className="text-[clamp(16px,4vw,20px)] font-inter font-bold text-[#FF5B86] m-0 leading-tight sm:leading-[24px]">

@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import mindsetIcon from "../assets/radarModulesIcon/mindset-red-icon.svg";
 import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
+import RadarPageHeader from "../components/dashboard/RadarPageHeader";
 
 const MindsetSelect = () => {
   const navigate = useNavigate();
@@ -102,22 +103,12 @@ const MindsetSelect = () => {
 
             <div className="relative z-10 mt-8 flex w-full min-w-0 origin-top flex-col items-center gap-10 px-3 transition-all duration-300 lg:gap-12 lg:scale-[0.9]">
               <div className="flex min-h-0 w-full max-w-[956px] flex-col items-start gap-6 self-center sm:gap-[28px]">
-                <div className="flex min-h-[68px] w-full items-start gap-4 pl-16 sm:gap-[16px] xl:pl-0">
-                  <img
-                    src={mindsetIcon}
-                    alt="Icon"
-                    className="h-9 w-9 shrink-0 object-contain"
-                  />
-
-                  <div className="min-w-0 flex flex-col">
-                    <h1 className="m-0 font-inter text-[clamp(1.375rem,4vw,2rem)] font-bold leading-tight tracking-[-0.3px] text-white sm:text-[32px] sm:leading-[36px]">
-                      Mindset Radar
-                    </h1>
-                    <p className="m-0 mt-2 font-inter text-[clamp(0.875rem,3vw,1.25rem)] font-medium leading-snug tracking-[-0.3px] text-[#9CA1A7] sm:mt-3 sm:leading-[24px]">
-                      Identify your current mindset character
-                    </p>
-                  </div>
-                </div>
+                <RadarPageHeader
+                  icon={mindsetIcon}
+                  iconAlt="Icon"
+                  title="Mindset Radar"
+                  subtitle="Identify your current mindset character"
+                />
 
                 <Card
                   className="min-h-0 w-full shrink-0 rounded-[16px] border-2 border-[#FF595C] bg-transparent text-white shadow-none sm:min-h-[64px]"

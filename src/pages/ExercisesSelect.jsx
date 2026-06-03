@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Plus, X } from "lucide-react";
 import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
+import RadarPageHeader from "../components/dashboard/RadarPageHeader";
 import exerciseIcon from "../assets/radarModulesIcon/exercise-orange-icon.svg";
 import ExerciseOverlayCard from "../components/dashboard/ExerciseOverlayCard";
 
@@ -180,22 +181,12 @@ const ExercisesSelect = () => {
         <div className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6">
           <div className="flex w-full gap-[20px] sm:gap-[32px] md:gap-[48px] xl:gap-[0px] h-full relative z-10 justify-center">
             <div className="w-full max-w-[956px] flex flex-col h-full gap-[16px] sm:gap-[24px]">
-              <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0 pl-16 xl:pl-0">
-                <img
-                  src={exerciseIcon}
-                  alt="Icon"
-                  className="w-9 h-9 object-contain shrink-0"
-                />
-                <div className="flex flex-col justify-center w-full">
-                  <h1 className="text-[clamp(24px,5vw,32px)] font-inter font-bold text-white m-0 leading-tight tracking-[-0.3px]">
-                    Exercises Radar
-                  </h1>
-                  <p className="text-[clamp(14px,4vw,18px)] font-inter font-medium text-[#C5C5C5] m-0 leading-snug mt-1 sm:mt-2">
-                    Select which exercises you prefer to strengthen your new
-                    mindset.
-                  </p>
-                </div>
-              </div>
+              <RadarPageHeader
+                icon={exerciseIcon}
+                iconAlt="Icon"
+                title="Exercises Radar"
+                subtitle="Select which exercises you prefer to strengthen your new mindset."
+              />
 
               <div className="w-full min-h-0 bg-[#FF6721]/10 border-[2px] border-[#FF6721] rounded-[16px] p-[20px] flex items-center gap-[8px] shrink-0">
                 <div className="flex-1 flex flex-col items-center justify-center">

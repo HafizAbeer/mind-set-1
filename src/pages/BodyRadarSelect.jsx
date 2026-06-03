@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight, ChevronDown, Plus, X } from "lucide-react";
 import { LegacySidebarPortal } from "../components/dashboard/LegacySidebarPortal";
+import RadarPageHeader from "../components/dashboard/RadarPageHeader";
 import { cn } from "@/lib/utils";
 import {
   patchScreeningSelection,
@@ -192,22 +193,12 @@ const BodyRadarSelect = () => {
         <div className="relative flex flex-col w-full max-w-[1400px] h-full text-white overflow-hidden font-sans transition-all duration-300">
           <div className="flex w-full h-full px-[20px] pb-[20px] gap-[20px] justify-center relative z-10 overflow-hidden">
             <div className="w-full max-w-[956px] h-full min-h-0 flex flex-col items-start gap-[28px]">
-              <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0 pl-16 xl:pl-0">
-                <img
-                  src={bodyIcon}
-                  alt="Body Icon"
-                  className="h-9 w-9 shrink-0 object-contain"
-                />
-                <div className="min-w-0 flex flex-col">
-                  <h1 className="m-0 font-inter text-[clamp(22px,4vw,32px)] font-bold leading-tight tracking-[-0.3px] text-white sm:text-[32px] sm:leading-[36px]">
-                    Body Radar
-                  </h1>
-                  <p className="m-0 font-inter text-[clamp(14px,3vw,20px)] font-medium leading-snug tracking-[-0.3px] text-[#9CA1A7] sm:text-[20px] sm:leading-[24px]">
-                    Select in which region of body you feel your mindset most
-                    clearly
-                  </p>
-                </div>
-              </div>
+              <RadarPageHeader
+                icon={bodyIcon}
+                iconAlt="Body Icon"
+                title="Body Radar"
+                subtitle="Select in which region of body you feel your mindset most clearly"
+              />
 
               <div className="w-full min-h-[88px] bg-[#D16868]/10 border-[2px] border-[#D16868] rounded-[16px] p-[20px] flex items-center gap-[8px] shrink-0">
                 <div className="flex-1 flex flex-col items-center justify-center">
