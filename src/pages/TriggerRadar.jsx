@@ -6,6 +6,7 @@ import { LegacySidebarPortal } from "../components/dashboard/LegacySidebarPortal
 import mindsetLogo from "../assets/mindset-logo.svg";
 import triggerLogo from "../assets/radarModulesIcon/trigger-blue-icon.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
+import RadarPageHeader from "../components/dashboard/RadarPageHeader";
 import CustomTriggerModal from "../components/dashboard/CustomTriggerModal";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -130,23 +131,16 @@ const TriggerRadar = () => {
         </div>
       </div> */}
 
-      <div className="h-full flex items-start justify-center pt-8 xl:pt-6 pb-4 overflow-y-auto custom-scrollbar">
+      <div className="h-full flex items-start justify-center pt-[20px] pb-4 overflow-y-auto custom-scrollbar">
         <div className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6">
           <div className="flex w-full gap-[20px] sm:gap-[32px] md:gap-[48px] xl:gap-[0px] h-full relative z-10 justify-center">
             <div className="w-full max-w-[956px] flex flex-col h-full gap-[16px] sm:gap-[24px]">
-              <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0 pl-16 xl:pl-0">
-                <div className="w-11 h-11 bg-[#3C56D8]/20 rounded-full flex items-center justify-center shrink-0">
-                  <img src={triggerLogo} alt="Logo" className="w-9 h-9" />
-                </div>
-                <div className="flex flex-col justify-center w-full">
-                  <h1 className="text-[clamp(24px,5vw,32px)] font-inter font-bold text-white m-0 leading-tight tracking-[-0.3px]">
-                    Trigger Radar
-                  </h1>
-                  <p className="text-[clamp(14px,4vw,18px)] font-inter font-medium text-[#C5C5C5] m-0 leading-snug mt-1 sm:mt-2">
-                    Select the current trigger of your mindset.
-                  </p>
-                </div>
-              </div>
+              <RadarPageHeader
+                icon={triggerLogo}
+                iconAlt="Trigger Icon"
+                title="Trigger Radar"
+                subtitle="Select the current trigger of your mindset."
+              />
 
               <div className="w-full bg-[#3C56D8]/10 border border-[#3C56D8] rounded-[10px] p-[20px] flex items-center justify-center shrink-0 min-h-0 gap-3 relative">
                 <div className="w-full max-w-[857px] flex flex-col items-center justify-center">
@@ -279,8 +273,6 @@ const TriggerRadar = () => {
                   <ArrowRight size={24} className="shrink-0" />
                 </Button>
               </div>
-
-              <div className="h-10 w-full shrink-0" />
             </div>
           </div>
         </div>

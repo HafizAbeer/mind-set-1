@@ -6,8 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 import { LegacySidebarPortal } from "./LegacySidebarPortal";
-import mindsetLogo from "../../assets/mindset-logo.svg";
-import collapseIcon from "../../assets/icons/collapse-icon.svg";
+import RadarPageHeader from "./RadarPageHeader";
 
 const RadarModuleLayout = ({
   moduleIcon: ModuleIconUrl,
@@ -18,6 +17,7 @@ const RadarModuleLayout = ({
   footerText,
   footerTitle = "Press Continue:",
   centerIcon: CenterIconUrl,
+  centerIconClassName = "",
   themeColor = "linear-gradient(180deg, #FF7E7E 0%, #CD4343 100%)",
   themeGradient = "linear-gradient(180deg, #FF7E7E 0%, #CD4343 100%)",
   themeGradientGhost =
@@ -27,7 +27,6 @@ const RadarModuleLayout = ({
   backButtonText = "Back",
   onBack,
   onContinue,
-  minimalHeader = true,
 }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -42,54 +41,16 @@ const RadarModuleLayout = ({
         <div className="h-full w-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.05)_0%,transparent_70%)]" />
       </div>
 
-      <div className="absolute left-4 top-8 z-50 flex items-center gap-4 sm:left-8">
-        {minimalHeader ? (
-          <div
-            className="cursor-pointer transition-transform active:scale-95"
-            onClick={() => setIsSidebarOpen(true)}
-          >
-            <img src={mindsetLogo} alt="Logo" className="h-[44px] w-[44px]" />
-          </div>
-        ) : (
-          <div className="flex w-full max-w-[220px] items-center justify-between rounded-xl border border-white/10 bg-[#1C1C24] p-2 pr-4 shadow-xl">
-            <div
-              className="flex cursor-pointer items-center gap-3 transition-transform active:scale-95"
-              onClick={() => setIsSidebarOpen(true)}
-            >
-              <img src={mindsetLogo} alt="Logo" className="h-11 w-11" />
-              <span className="font-inter text-[20px] font-semibold leading-[24px] text-white">
-                New
-                <br />
-                Mindset
-              </span>
-            </div>
-            <img
-              src={collapseIcon}
-              alt="Collapse"
-              className="h-6 w-6 cursor-pointer object-contain transition-transform hover:scale-110"
-              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            />
-          </div>
-        )}
-      </div>
-
       <div className="relative z-10 mt-0 flex w-full max-w-[956px] flex-1 flex-col gap-[28px] min-h-0">
         {(moduleTitle || moduleSubtitle) && (
-          <div className="flex h-auto min-h-[68px] w-full items-center gap-4 pl-14 sm:gap-[16px] lg:pl-0">
-            <img
-              src={ModuleIconUrl}
-              alt="Module Icon"
-              className="h-9 w-9 shrink-0 object-contain"
-            />
-            <div className="min-w-0 flex flex-col">
-              <h1 className="m-0 font-inter text-[clamp(22px,4vw,32px)] font-bold leading-tight tracking-[-0.3px] text-white sm:text-[32px] sm:leading-[36px]">
-                {moduleTitle}
-              </h1>
-              <p className="m-0 font-inter text-[clamp(14px,3vw,20px)] font-medium leading-snug tracking-[-0.3px] text-[#9CA1A7] sm:text-[20px] sm:leading-[24px]">
-                {moduleSubtitle}
-              </p>
-            </div>
-          </div>
+          <RadarPageHeader
+            onMenuClick={() => setIsSidebarOpen(true)}
+            menuClassName=""
+            icon={ModuleIconUrl}
+            iconAlt="Module Icon"
+            title={moduleTitle}
+            subtitle={moduleSubtitle}
+          />
         )}
 
         <div className="flex w-full min-w-0 flex-1 flex-col justify-between gap-[28px]">
@@ -135,7 +96,7 @@ const RadarModuleLayout = ({
                     <img
                       src={CenterIconUrl || ModuleIconUrl}
                       alt=""
-                      className="h-full w-full object-contain"
+                      className={cn("h-full w-full object-contain", centerIconClassName)}
                     />
                   </div>
 

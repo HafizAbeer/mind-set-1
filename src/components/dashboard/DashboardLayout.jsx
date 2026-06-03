@@ -99,8 +99,9 @@ export default function DashboardLayout() {
           )}
 
           <main className="relative flex-1 overflow-x-hidden">
-            {/* Mobile sidebar trigger OR fixed single trigger for special pages like Pricing */}
-            {(shouldShowAppSidebar || isPricingPage) && (
+            {/* Mobile sidebar trigger for non-radar pages. Radar pages render
+                the menu icon inside their header (RadarPageHeader) instead. */}
+            {(isDashboardScreen || isTherapistPage || isPricingPage) && (
               <div
                 className={`absolute left-[13px] top-[21px] z-50 ${isPricingPage ? "" : "xl:hidden"}`}
               >
