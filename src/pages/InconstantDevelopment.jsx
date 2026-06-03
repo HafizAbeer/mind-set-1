@@ -109,7 +109,6 @@ const InconstantDevelopment = () => {
                 </button>
               </div>
 
-              <div className="h-10 w-full shrink-0" />
             </div>
           </div>
         </div>

@@ -131,7 +131,7 @@ const TriggerRadar = () => {
         </div>
       </div> */}
 
-      <div className="h-full flex items-start justify-center pt-8 xl:pt-6 pb-4 overflow-y-auto custom-scrollbar">
+      <div className="h-full flex items-start justify-center pt-[20px] pb-4 overflow-y-auto custom-scrollbar">
         <div className="relative flex flex-col w-full max-w-[1400px] h-full text-white font-sans transition-all duration-300 px-3 sm:px-6">
           <div className="flex w-full gap-[20px] sm:gap-[32px] md:gap-[48px] xl:gap-[0px] h-full relative z-10 justify-center">
             <div className="w-full max-w-[956px] flex flex-col h-full gap-[16px] sm:gap-[24px]">
@@ -273,8 +273,6 @@ const TriggerRadar = () => {
                   <ArrowRight size={24} className="shrink-0" />
                 </Button>
               </div>
-
-              <div className="h-10 w-full shrink-0" />
             </div>
           </div>
         </div>

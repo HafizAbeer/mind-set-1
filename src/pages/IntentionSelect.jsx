@@ -331,7 +331,6 @@ const IntentionSelect = () => {
                 </button>
               </div>
 
-              <div className="h-10 w-full shrink-0" />
             </div>
 
             {/* Mindset Quote Overlay Modal (Dynamic Quote) */}
