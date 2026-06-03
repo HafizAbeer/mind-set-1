@@ -18,6 +18,12 @@ const ReflectionRadar = () => {
         moduleSubtitle="How close to validity is your interpretation?"
         stepTitle="Very well, you got off to a good start."
         description={
+          <>
+          <span className="font-inter text-[clamp(20px,4vw,28px)] font-bold leading-tight text-white sm:text-[28px] sm:leading-[32px]">
+            This is your assessment of the present situation:
+          </span>
+          <br />
+          <br />
           <span style={{ color: '#F0B614' }}>
             „
             {(() => {
@@ -32,6 +38,7 @@ const ReflectionRadar = () => {
             })()}
             , caused by <span style={{ color: '#FFFFFF' }}>{causeLabel}</span>."<br />
           </span>
+          </>
         }
         footerTitle={null}
         footerText={

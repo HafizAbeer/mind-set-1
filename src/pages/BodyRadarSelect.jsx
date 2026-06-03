@@ -223,6 +223,18 @@ const BodyRadarSelect = () => {
                 </div>
               </div>
 
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="w-full h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] p-[20px] text-white font-inter font-medium text-[15px] hover:bg-[#83848A]/10 transition-all shrink-0"
+                style={{
+                  backgroundColor: "#27282E",
+                  backgroundImage: `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='%2383848A' stroke-width='2' stroke-dasharray='6%2c 6' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e")`,
+                }}
+              >
+                <Plus size={18} />
+                Add your own structure
+              </button>
+
               <div className="w-full flex-1 min-h-0 flex flex-col gap-[28px] overflow-y-auto no-scrollbar">
                 <div className="flex flex-col w-full gap-[12px]">
                 {(() => {
@@ -309,18 +321,6 @@ const BodyRadarSelect = () => {
                   });
                 })()}
               </div>
-
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="w-full h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] p-[20px] text-white font-inter font-medium text-[15px] hover:bg-[#83848A]/10 transition-all mb-2"
-                style={{
-                  backgroundColor: "#27282E",
-                  backgroundImage: `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='%2383848A' stroke-width='2' stroke-dasharray='6%2c 6' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e")`,
-                }}
-              >
-                <Plus size={18} />
-                Add your own structure
-              </button>
               </div>
 
               <div className="flex gap-4 xl:flex-row xl:items-center xl:justify-between w-full mt-4 shrink-0">

@@ -50,8 +50,8 @@ const RewardChoiceSelect = () => {
     setSelectedReward(text);
   };
 
-  const themeColor = "#6CB083";
-  const themeGradient = "linear-gradient(180deg, #6CB083 0%, #115A2A 100%)";
+  const themeColor = "#FF3535";
+  const themeGradient = "linear-gradient(180deg, #FF7E7E 0%, #CD4343 100%)";
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
@@ -67,9 +67,9 @@ const RewardChoiceSelect = () => {
               />
 
               <div
-                className="w-full border rounded-[10px] p-[16px_20px] sm:p-[20px_32px] flex items-center justify-center shrink-0 relative border-2 border-[#FBA90B] rounded-[10px]"
+                className="w-full border rounded-[10px] p-[16px_20px] sm:p-[20px_32px] flex items-center justify-center shrink-0 relative border-2 border-[#FF3535] rounded-[10px]"
                 style={{
-                  background: "#FBA90B3A",
+                  background: "#FF35353A",
                 }}
               >
                 <div className="w-full flex flex-col items-center justify-center text-center px-0 sm:px-12">
@@ -96,7 +96,7 @@ const RewardChoiceSelect = () => {
                 </div>
               </button>
 
-              <div className="relative w-full min-h-[300px] flex-1 overflow-y-auto p-4 sm:p-[32px] md:p-[40px] border-2 border-[#FBA90B] rounded-[24px] bg-white/2 backdrop-blur-md custom-scrollbar">
+              <div className="relative w-full min-h-[300px] flex-1 overflow-y-auto p-4 sm:p-[32px] md:p-[40px] border-2 border-[#FF3535] rounded-[24px] bg-white/2 backdrop-blur-md custom-scrollbar">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-[12px] w-full items-start">
                   {rewards.map((reward, index) => (
                     <button
@@ -105,7 +105,7 @@ const RewardChoiceSelect = () => {
                       className={cn(
                         "min-h-[56px] w-full rounded-[10px] px-6 py-3 flex items-center justify-center transition-all font-inter font-medium text-[16px] sm:text-[18px] border-[1px] text-center",
                         selectedReward === reward
-                          ? "bg-[#F7383B] text-white border-[#F7383B] font-bold shadow-lg"
+                          ? "bg-[#FF3535] text-white border-[#FF3535] font-bold shadow-lg"
                           : "bg-white/5 text-[#E0E0E0] border-white/10 hover:bg-white/10",
                       )}
                     >
@@ -119,9 +119,9 @@ const RewardChoiceSelect = () => {
                 <button
                   type="button"
                   onClick={() => navigate("/reward-choice")}
-                  className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[16px] flex items-center justify-center gap-[12px] p-[10px] md:p-[16px] font-inter font-bold text-white transition-all shadow-lg border-[2px] border-[#A17116] text-[15px] md:text-[20px] active:scale-95 bg-white/5"
+                  className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[16px] flex items-center justify-center gap-[12px] p-[10px] md:p-[16px] font-inter font-bold text-white transition-all shadow-lg border-[2px] border-white text-[15px] md:text-[20px] active:scale-95"
                   style={{
-                    background: "#FF353569",
+                    background: "#60211F",
                   }}
                 >
                   <ArrowLeft size={24} className="shrink-0" />
@@ -130,9 +130,9 @@ const RewardChoiceSelect = () => {
                 <button
                   type="button"
                   onClick={() => navigate("/dashboard")}
-                  className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[16px] flex items-center justify-center gap-[12px] p-[10px] md:p-[16px] font-inter font-bold text-white transition-all shadow-lg border-[2px] border-[#A17116] text-[15px] md:text-[20px] active:scale-95"
+                  className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[16px] flex items-center justify-center gap-[12px] p-[10px] md:p-[16px] font-inter font-bold text-white transition-all shadow-lg border-[2px] border-white text-[15px] md:text-[20px] active:scale-95"
                   style={{
-                    background: "#FF3535",
+                    background: "linear-gradient(180deg, #341719 0%, #EC4033 100%)",
                   }}
                 >
                   Continue
