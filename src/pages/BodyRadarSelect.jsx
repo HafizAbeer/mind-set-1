@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, ChevronDown, Plus, User2, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronDown, Plus, X } from "lucide-react";
 import { LegacySidebarPortal } from "../components/dashboard/LegacySidebarPortal";
 import { cn } from "@/lib/utils";
 import {
@@ -11,6 +11,7 @@ import {
 } from "@/lib/screeningSelection";
 import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
+import bodyIcon from "../assets/radarModulesIcon/body-red-icon.svg";
 
 const BodyRadarSelect = () => {
   const navigate = useNavigate();
@@ -187,17 +188,21 @@ const BodyRadarSelect = () => {
         </div> */}
       </div>
 
-      <div className="h-full flex items-start justify-center overflow-y-auto custom-scrollbar px-2 pt-8 pb-6 sm:px-5 xl:pt-6">
+      <div className="h-full flex items-start justify-center overflow-y-auto custom-scrollbar px-2 pt-[20px] pb-6 sm:px-5">
         <div className="relative flex flex-col w-full max-w-[1400px] h-full text-white overflow-hidden font-sans transition-all duration-300">
           <div className="flex w-full h-full px-[20px] pb-[20px] gap-[20px] justify-center relative z-10 overflow-hidden">
             <div className="w-full max-w-[956px] h-full min-h-0 flex flex-col items-start gap-[28px]">
               <div className="flex items-center h-auto min-h-[68px] gap-[16px] w-full shrink-0 pl-16 xl:pl-0">
-                <User2 size={36} className="text-[#D16868] shrink-0" />
-                <div className="flex flex-col justify-center w-full">
-                  <h1 className="text-[clamp(24px,5vw,32px)] font-inter font-bold text-white m-0 leading-tight tracking-[-0.3px]">
+                <img
+                  src={bodyIcon}
+                  alt="Body Icon"
+                  className="h-9 w-9 shrink-0 object-contain"
+                />
+                <div className="min-w-0 flex flex-col">
+                  <h1 className="m-0 font-inter text-[clamp(22px,4vw,32px)] font-bold leading-tight tracking-[-0.3px] text-white sm:text-[32px] sm:leading-[36px]">
                     Body Radar
                   </h1>
-                  <p className="text-[clamp(14px,4vw,18px)] font-inter font-medium text-[#C5C5C5] m-0 leading-snug mt-1 sm:mt-2">
+                  <p className="m-0 font-inter text-[clamp(14px,3vw,20px)] font-medium leading-snug tracking-[-0.3px] text-[#9CA1A7] sm:text-[20px] sm:leading-[24px]">
                     Select in which region of body you feel your mindset most
                     clearly
                   </p>
