@@ -11,8 +11,10 @@ const app = express();
 app.use(cors());
 app.use(express.json()); // Parses JSON bodies
 
-// Connect to Database
-connectDB();
+// Connect to Database (cached/reused across warm serverless invocations)
+connectDB().catch((err) =>
+  console.error("DB connection error:", err.message),
+);
 
 // Routes
 app.use("/api/auth", authRoutes);
