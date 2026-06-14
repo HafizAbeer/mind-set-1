@@ -22,6 +22,8 @@ const errorHandler = (err, req, res, next) => {
   // Only log genuine server faults; 4xx are expected client errors.
   if (status >= 500) {
     console.error("Unhandled error:", err);
+    // Don't leak raw internal error messages (DB drivers, stack details).
+    message = "Server error";
   }
 
   res.status(status).json({ message });

@@ -385,11 +385,13 @@ const StatisticsDetail = () => {
   };
 
   // Donut geometry from real distribution.
-  const dist = momQ.data?.distribution || {
-    positivePct: 0,
-    unclearPct: 0,
-    negativePct: 0,
-    exercisesPct: 0,
+  const rawDist = momQ.data?.distribution || {};
+  // Coalesce every field so a missing pct can never produce a NaN strokeDasharray.
+  const dist = {
+    positivePct: rawDist.positivePct ?? 0,
+    unclearPct: rawDist.unclearPct ?? 0,
+    negativePct: rawDist.negativePct ?? 0,
+    exercisesPct: rawDist.exercisesPct ?? 0,
   };
   const R = 115;
   const C = 2 * Math.PI * R;
