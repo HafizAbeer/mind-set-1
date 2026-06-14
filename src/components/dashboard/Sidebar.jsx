@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useAuth } from "@/auth/AuthContext";
 import { ChevronDown } from "lucide-react";
 import mindsetLogo from "../../assets/mindset-logo.svg";
 import collapseIcon from "../../assets/icons/collapse-icon.svg";
@@ -79,22 +80,9 @@ const SidebarItem = ({
 
 const Sidebar = ({ isCollapsed, onToggle }) => {
   const [scriptOpen, setScriptOpen] = useState(false);
-  const [user, setUser] = useState({
-    name: "User Name",
-    email: "user@email.com",
-  });
+  const { user: authUser } = useAuth();
+  const user = authUser || { name: "User", email: "" };
   const location = useLocation();
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      try {
-        setUser(JSON.parse(storedUser));
-      } catch (error) {
-        console.error("Failed to parse user from localStorage", error);
-      }
-    }
-  }, []);
 
   return (
     <aside

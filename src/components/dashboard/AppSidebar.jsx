@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/sidebar";
 import { useNavigate, useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { useAuth } from "@/auth/AuthContext";
 import dashboardIcon from "../../assets/icons/dashboard-icon.svg";
 import statisticsIcon from "../../assets/icons/statistic-icon.svg";
 import mindsetIcon from "../../assets/icons/mindset-icon.svg";
@@ -222,10 +223,8 @@ export function AppSidebar() {
     }
   };
 
-  const [user, setUser] = useState({
-    name: "testuser",
-    email: "testuser@gmail.com",
-  });
+  const { user: authUser } = useAuth();
+  const user = authUser || { name: "User", email: "" };
 
   const isScriptActiveRoute = React.useMemo(() => {
     const radarGroup = navMain.find((g) => g.title === "Radar Modules");
@@ -244,17 +243,6 @@ export function AppSidebar() {
     });
   }, [location.pathname]);
   const [isScriptOpen, setIsScriptOpen] = useState(false);
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      try {
-        setUser(JSON.parse(storedUser));
-      } catch (error) {
-        console.error("Failed to parse user from localStorage", error);
-      }
-    }
-  }, []);
 
   useEffect(() => {
     // Agar user submenu wali route par hai, to Script dropdown auto-open rahega.
