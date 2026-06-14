@@ -1,5 +1,8 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const ProtocolSession = require("../models/ProtocolSession");
+const DiaryEntry = require("../models/DiaryEntry");
+const ReflectionEntry = require("../models/ReflectionEntry");
 const asyncHandler = require("../middleware/asyncHandler");
 const sendEmail = require("../utils/sendEmail");
 
@@ -227,7 +230,12 @@ exports.deleteAccount = asyncHandler(async (req, res) => {
   }
 
   // TODO(paywall): cancel the Stripe subscription first if user.stripeCustomerId.
-  // TODO(statistics): cascade-delete ProtocolSession/DiaryEntry/ReflectionEntry.
+  // GDPR erasure: cascade-delete all of the user's personal records.
+  await Promise.all([
+    ProtocolSession.deleteMany({ user: user._id }),
+    DiaryEntry.deleteMany({ user: user._id }),
+    ReflectionEntry.deleteMany({ user: user._id }),
+  ]);
   await user.deleteOne();
 
   res.json({ message: "Account deleted" });
