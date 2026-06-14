@@ -343,7 +343,11 @@ const BodyRadarSelect = () => {
                     const bodyStructureLabel = labels.length
                       ? labels.join(", ")
                       : screeningDefaults.bodyStructureLabel;
-                    patchScreeningSelection({ bodyStructureLabel });
+                    // Keep the joined string for display; persist the array for stats.
+                    patchScreeningSelection({
+                      bodyStructureLabel,
+                      bodyStructures: labels,
+                    });
                     navigate("/symptom");
                   }}
                   className="flex-1 xl:w-[468px] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all shadow-lg border-2 border-[#D16868] text-[15px] md:text-[20px] hover:opacity-90 active:scale-95"

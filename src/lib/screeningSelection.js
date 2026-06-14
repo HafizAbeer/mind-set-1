@@ -110,6 +110,12 @@ export function getScreeningSelection() {
       raw.reflectionBValue,
       screeningDefaults.reflectionBValue
     ),
+    // Array/object fields (not strings → read raw, default to []).
+    exercises: Array.isArray(raw.exercises) ? raw.exercises : [],
+    mantras: Array.isArray(raw.mantras) ? raw.mantras : [],
+    anchors: Array.isArray(raw.anchors) ? raw.anchors : [],
+    bodyStructures: Array.isArray(raw.bodyStructures) ? raw.bodyStructures : [],
+    symptoms: Array.isArray(raw.symptoms) ? raw.symptoms : [],
   };
 }
 
@@ -156,6 +162,15 @@ export function resetScreeningSelection() {
 export function buildProtocolPayload(runId) {
   const s = getScreeningSelection();
   const arr = (v, fallback) => (v && v !== fallback ? [v] : []);
+  // Body/symptom may arrive as a real array (new) or a comma-joined string
+  // (legacy/in-flight) — normalize both to a string array.
+  const splitJoined = (v, fallback) =>
+    v && v !== fallback
+      ? v
+          .split(",")
+          .map((x) => x.trim())
+          .filter(Boolean)
+      : [];
   return {
     runId,
     mindsetLabel: s.mindsetLabel,
@@ -164,9 +179,16 @@ export function buildProtocolPayload(runId) {
     mindsetSentence: s.mindsetSentence,
     triggers: arr(s.triggerLabel, screeningDefaults.triggerLabel),
     causes: arr(s.causeLabel, screeningDefaults.causeLabel),
-    bodyStructures: arr(s.bodyStructureLabel, screeningDefaults.bodyStructureLabel),
-    symptoms: arr(s.symptomSummary, screeningDefaults.symptomSummary),
+    bodyStructures: s.bodyStructures.length
+      ? s.bodyStructures
+      : splitJoined(s.bodyStructureLabel, screeningDefaults.bodyStructureLabel),
+    symptoms: s.symptoms.length
+      ? s.symptoms
+      : splitJoined(s.symptomSummary, screeningDefaults.symptomSummary),
     intentions: arr(s.intentionLabel, screeningDefaults.intentionLabel),
+    exercises: s.exercises,
+    mantras: s.mantras,
+    anchors: s.anchors,
     lifeScriptLabel: s.lifeScriptLabel,
     lifeScriptSentence: s.lifeScriptSentence,
     oldScriptSummary: s.oldScriptSummary,
