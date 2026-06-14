@@ -15,7 +15,9 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://mind-set-1-s6gf.vercel.app/",
+        // Override with VITE_API_PROXY=http://localhost:5000 to develop against
+        // a local backend; defaults to the deployed backend.
+        target: process.env.VITE_API_PROXY || "https://mind-set-1-s6gf.vercel.app/",
         changeOrigin: true,
       },
     },
