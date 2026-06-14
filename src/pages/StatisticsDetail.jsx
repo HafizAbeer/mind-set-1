@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import {
   FileText,
   BarChart3,
@@ -253,7 +253,6 @@ const PERIOD_BY_FILTER = {
 };
 
 const StatisticsDetail = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const [activeTab, setActiveTab] = useState("Overview");
   const [timeFilter, setTimeFilter] = useState("This Week");
@@ -365,8 +364,8 @@ const StatisticsDetail = () => {
       setDiaryMotivation("");
       setDiaryText("");
       setShowNewDiaryEntry(false);
-    } catch (e) {
-      // surfaced inline below
+    } catch {
+      // error surfaced inline via mutation.isError below
     }
   };
 
@@ -380,8 +379,8 @@ const StatisticsDetail = () => {
       setReflEmotional("");
       setReflRational("");
       setShowNewReflectionEntry(false);
-    } catch (e) {
-      // surfaced inline below
+    } catch {
+      // error surfaced inline via mutation.isError below
     }
   };
 
