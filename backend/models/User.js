@@ -1,6 +1,23 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
+// Embedded 1:1 preferences (Settings → Notifications + Language/Region).
+// Defaults mean users created before this change read sane values.
+const preferencesSchema = new mongoose.Schema(
+  {
+    notifications: {
+      calendar: { type: Boolean, default: true },
+      dialogues: { type: Boolean, default: true },
+      weekly: { type: Boolean, default: false },
+      // Off until a real push pipeline exists — the toggle only persists intent.
+      push: { type: Boolean, default: false },
+    },
+    language: { type: String, enum: ["en", "de", "es"], default: "en" },
+    region: { type: String, enum: ["US", "DE", "GB"], default: "US" },
+  },
+  { _id: false },
+);
+
 const userSchema = new mongoose.Schema(
   {
     name: {
@@ -43,6 +60,15 @@ const userSchema = new mongoose.Schema(
       type: Date,
       default: null,
     },
+    preferences: {
+      type: preferencesSchema,
+      default: () => ({}),
+    },
+    // Email change is verified out-of-band: a code is sent to the NEW address
+    // and the live email is only swapped once it is confirmed.
+    pendingEmail: { type: String, default: null },
+    pendingEmailCode: { type: String, default: null },
+    pendingEmailCodeExpire: { type: Date, default: null },
   },
   { timestamps: true },
 );

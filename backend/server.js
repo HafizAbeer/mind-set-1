@@ -9,6 +9,7 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const authRoutes = require("./routes/authRoutes");
+const userRoutes = require("./routes/userRoutes");
 const connectDB = require("./config/db");
 const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/errorHandler");
@@ -58,6 +59,7 @@ connectDB().catch((err) =>
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/user", userRoutes);
 
 // Root Endpoint
 app.get("/", (req, res) => {
