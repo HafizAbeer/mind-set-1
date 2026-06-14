@@ -45,6 +45,9 @@ app.use(
       if (/^https:\/\/[a-z0-9-]+\.vercel\.app$/i.test(origin)) {
         return callback(null, true);
       }
+      if (/^https:\/\/[a-z0-9-]+\.onrender\.com$/i.test(origin)) {
+        return callback(null, true);
+      }
       return callback(new Error("Not allowed by CORS"));
     },
     credentials: true,
@@ -73,7 +76,10 @@ app.use(notFound);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
-if (process.env.NODE_ENV !== "production") {
+// Listen when run directly (local dev, Render web service). When imported as a
+// serverless handler (Vercel's api/index.js), require.main !== module, so we
+// only export the app below instead of binding a port.
+if (require.main === module) {
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
   });
