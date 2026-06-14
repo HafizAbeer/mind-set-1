@@ -48,6 +48,9 @@ app.use(
       if (/^https:\/\/[a-z0-9-]+\.onrender\.com$/i.test(origin)) {
         return callback(null, true);
       }
+      if (/^https:\/\/[a-z0-9-]+\.ondigitalocean\.app$/i.test(origin)) {
+        return callback(null, true);
+      }
       return callback(new Error("Not allowed by CORS"));
     },
     credentials: true,
