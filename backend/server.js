@@ -7,6 +7,7 @@ validateEnv();
 
 const express = require("express");
 const cors = require("cors");
+const helmet = require("helmet");
 const authRoutes = require("./routes/authRoutes");
 const connectDB = require("./config/db");
 const notFound = require("./middleware/notFound");
@@ -14,8 +15,40 @@ const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
 
-// Middleware
-app.use(cors());
+// Trust one proxy hop (Vercel) so req.ip reflects the client for rate limiting.
+app.set("trust proxy", 1);
+
+// Security headers. This server is a JSON API (the SPA is served by a separate
+// frontend project), so CSP is irrelevant here; allow cross-origin resource use.
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+  }),
+);
+
+// CORS allowlist: configured origins + localhost (dev) + *.vercel.app previews.
+// Same-origin/proxied and non-browser requests (no Origin header) are allowed.
+const allowedOrigins = (process.env.CORS_ORIGINS || process.env.FRONTEND_URL || "")
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
+
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      if (/^http:\/\/localhost(:\d+)?$/.test(origin)) return callback(null, true);
+      if (/^https:\/\/[a-z0-9-]+\.vercel\.app$/i.test(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
+  }),
+);
+
 app.use(express.json()); // Parses JSON bodies
 
 // Connect to Database (cached/reused across warm serverless invocations)
