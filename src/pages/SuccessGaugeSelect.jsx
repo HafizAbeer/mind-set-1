@@ -5,6 +5,18 @@ import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
 import RadarPageHeader from "../components/dashboard/RadarPageHeader";
 import successGaugeIcon from "../assets/radarModulesIcon/successGuage-red-icon.svg";
+import { patchScreeningSelection } from "@/lib/screeningSelection";
+
+// UI label -> ProtocolSession.successRating enum (kept in sync with the backend).
+const RATING_MAP = {
+  "Slight Improvement": "SlightImprovement",
+  "Clear Improvement": "ClearImprovement",
+  "Inconstant Development": "InconstantDevelopment",
+  "Mostly Problem Free": "MostlyProblemFree",
+  "Little Worsening": "LittleWorsening",
+  "No Changings": "NoChangings",
+  "Long time Problem Free": "LongTimeProblemFree",
+};
 
 const SuccessGaugeSelect = () => {
   const navigate = useNavigate();
@@ -53,6 +65,11 @@ const SuccessGaugeSelect = () => {
                       key={option.id}
                       onClick={() => {
                         setSelectedId(option.id);
+                        if (RATING_MAP[option.label]) {
+                          patchScreeningSelection({
+                            successRating: RATING_MAP[option.label],
+                          });
+                        }
                         const routeMap = {
                           "Slight Improvement": "/slight-improvement",
                           "Clear Improvement": "/clear-improvement",

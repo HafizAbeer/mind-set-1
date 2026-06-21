@@ -5,9 +5,11 @@ import AuthLayout from "../components/auth/AuthLayout";
 import AuthInput from "../components/auth/AuthInput";
 import AuthButton from "../components/auth/AuthButton";
 import AuthCheckbox from "../components/auth/AuthCheckbox";
+import { useAuth } from "@/auth/AuthContext";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -41,8 +43,6 @@ const LoginPage = () => {
         throw new Error(data.message || "Login failed");
       }
 
-      localStorage.setItem("userToken", data.token);
-
       const userData = {
         name:
           data.user?.name ||
@@ -52,7 +52,9 @@ const LoginPage = () => {
           "User",
         email: data.user?.email || data.email || formData.email,
       };
-      localStorage.setItem("user", JSON.stringify(userData));
+      // Update AuthContext (token + user) so RequireAuth/sidebars see the
+      // session immediately — login() also persists to localStorage.
+      login(data.token, userData);
 
       navigate("/dashboard");
     } catch (err) {

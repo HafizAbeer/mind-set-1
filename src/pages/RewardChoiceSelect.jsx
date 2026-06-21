@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -7,12 +7,39 @@ import collapseIcon from "../assets/icons/collapse-icon.svg";
 import RadarPageHeader from "../components/dashboard/RadarPageHeader";
 import rewardRedIcon from "../assets/radarModulesIcon/reward-red-icon.svg";
 import CustomRewardModal from "../components/dashboard/CustomRewardModal";
+import {
+  patchScreeningSelection,
+  resetScreeningSelection,
+  buildProtocolPayload,
+} from "@/lib/screeningSelection";
+import { useFinalizeProtocol } from "@/hooks/useStatistics";
+
+function makeRunId() {
+  if (typeof crypto !== "undefined" && crypto.randomUUID) return crypto.randomUUID();
+  return `run-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+}
 
 const RewardChoiceSelect = () => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedReward, setSelectedReward] = useState(null);
   const [customRewards, setCustomRewards] = useState([]);
+  const finalize = useFinalizeProtocol();
+  // Stable per-mount id so a double-click finalizes the SAME run (idempotent).
+  const runId = useRef(makeRunId());
+
+  const handleContinue = async () => {
+    if (finalize.isPending) return; // in-flight guard
+    if (selectedReward) patchScreeningSelection({ selectedReward });
+    try {
+      await finalize.mutateAsync(buildProtocolPayload(runId.current));
+      resetScreeningSelection(); // clear so the next run starts clean
+    } catch (err) {
+      // Keep the selection for a retry, but don't trap the user on this screen.
+      console.error("Failed to save protocol run:", err.message);
+    }
+    navigate("/dashboard");
+  };
 
   const baseRewards = [
     "a day off",
@@ -129,13 +156,14 @@ const RewardChoiceSelect = () => {
                 </button>
                 <button
                   type="button"
-                  onClick={() => navigate("/dashboard")}
-                  className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[16px] flex items-center justify-center gap-[12px] p-[10px] md:p-[16px] font-inter font-bold text-white transition-all shadow-lg border-[2px] border-white text-[15px] md:text-[20px] active:scale-95"
+                  onClick={handleContinue}
+                  disabled={finalize.isPending}
+                  className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[16px] flex items-center justify-center gap-[12px] p-[10px] md:p-[16px] font-inter font-bold text-white transition-all shadow-lg border-[2px] border-white text-[15px] md:text-[20px] active:scale-95 disabled:opacity-60"
                   style={{
                     background: "linear-gradient(180deg, #341719 0%, #EC4033 100%)",
                   }}
                 >
-                  Continue
+                  {finalize.isPending ? "Saving…" : "Continue"}
                   <ArrowRight size={24} className="shrink-0" />
                 </button>
               </div>

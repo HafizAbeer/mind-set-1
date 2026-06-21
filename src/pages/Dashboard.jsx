@@ -3,15 +3,15 @@ import StatusCard from "../components/dashboard/StatusCard";
 import RadarVisualization from "../components/dashboard/RadarVisualization";
 import { BarChart3, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/auth/AuthContext";
 import successGaugeIcon from "../assets/radarModulesIcon/successGuage-red-icon.svg";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
   const handleLogout = () => {
-    localStorage.removeItem("userToken");
-    localStorage.removeItem("user");
-    navigate("/login");
+    logout();
   };
 
   return (

@@ -194,6 +194,7 @@ const NegativeMindset = () => {
                     const sentence = option?.sentence ?? screeningDefaults.mindsetSentence;
                     patchScreeningSelection({
                       mindsetLabel: label,
+                      mindsetCategory: "Negative",
                       mindsetPhrase: phrase,
                       mindsetSentence: sentence,
                     });

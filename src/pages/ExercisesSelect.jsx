@@ -7,6 +7,7 @@ import collapseIcon from "../assets/icons/collapse-icon.svg";
 import RadarPageHeader from "../components/dashboard/RadarPageHeader";
 import exerciseIcon from "../assets/radarModulesIcon/exercise-orange-icon.svg";
 import ExerciseOverlayCard from "../components/dashboard/ExerciseOverlayCard";
+import { patchScreeningSelection } from "@/lib/screeningSelection";
 
 const EXERCISE_QUOTES = {
   1: "As soon as I feel my familiar stress trigger coming on, I place my calming hand/s on the part of my body that I feel connected to it. I am determined to mindfully apply my desired mindset and no longer follow the old paths.",
@@ -253,7 +254,13 @@ const ExercisesSelect = () => {
                 </button>
                 <button
                   type="button"
-                  onClick={() => navigate("/life-script")}
+                  onClick={() => {
+                    const sel = exercises.find((e) => e.id === selectedIds[0]);
+                    patchScreeningSelection({
+                      exercises: sel ? [{ label: sel.label, score: 1 }] : [],
+                    });
+                    navigate("/life-script");
+                  }}
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all shadow-lg border-2 border-[#FF6721] text-[15px] md:text-[20px] hover:opacity-90 active:scale-95"
                   style={{ background: themeGradient }}
                 >

@@ -320,7 +320,14 @@ const IntentionSelect = () => {
                         ? (intentions.find((i) => i.id === id)?.label ??
                           screeningDefaults.intentionLabel)
                         : screeningDefaults.intentionLabel;
-                    patchScreeningSelection({ intentionLabel });
+                    // The intention's attached affirmation is the "mantra".
+                    patchScreeningSelection({
+                      intentionLabel,
+                      mantras:
+                        id != null
+                          ? [{ label: intentionLabel, score: 1 }]
+                          : [],
+                    });
                     navigate("/anchor");
                   }}
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[10px] flex items-center justify-center gap-[10px] p-[10px] md:p-[20px] font-inter font-bold text-white transition-all shadow-lg border-2 border-[#FBA90B] text-[15px] md:text-[20px] hover:opacity-90 active:scale-95"

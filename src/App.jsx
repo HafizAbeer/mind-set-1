@@ -4,6 +4,10 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "@/lib/queryClient";
+import { AuthProvider } from "@/auth/AuthContext";
+import RequireAuth from "@/routes/RequireAuth";
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
 import "./App.css";
 
@@ -83,7 +87,9 @@ import AgreementTherapist from "./pages/AgreementTherapist";
 function App() {
   return (
     <Router>
-      <Routes>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <Routes>
         {/* Auth Routes */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
@@ -93,8 +99,9 @@ function App() {
         <Route path="/enter-pin" element={<EnterPinPage />} />
         <Route path="/new-password" element={<NewPasswordPage />} />
 
-        {/* Dashboard Route */}
-        <Route element={<DashboardLayout />}>
+        {/* Dashboard Route (auth required) */}
+        <Route element={<RequireAuth />}>
+          <Route element={<DashboardLayout />}>
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/mindset" element={<MindsetModule />} />
           <Route path="/trigger" element={<TriggerIntroPage />} />
@@ -209,6 +216,7 @@ function App() {
           <Route path="/therapist-new-entry" element={<TherapistNewEntry />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/pricing" element={<Pricing />} />
+          </Route>
         </Route>
 
         {/* Default Redirect */}
@@ -220,7 +228,9 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/impressum" element={<Impressum />} />
 
-      </Routes>
+          </Routes>
+        </AuthProvider>
+      </QueryClientProvider>
     </Router>
   );
 }

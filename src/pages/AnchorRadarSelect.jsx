@@ -5,6 +5,7 @@ import mindsetLogo from "../assets/mindset-logo.svg";
 import collapseIcon from "../assets/icons/collapse-icon.svg";
 import RadarPageHeader from "../components/dashboard/RadarPageHeader";
 import anchorIcon from "../assets/radarModulesIcon/anchor-pink-icon.svg";
+import { patchScreeningSelection } from "@/lib/screeningSelection";
 
 const AnchorRadarSelect = () => {
   const navigate = useNavigate();
@@ -105,7 +106,15 @@ const AnchorRadarSelect = () => {
                 </button>
                 <button
                   type="button"
-                  onClick={() => navigate("/exercises")}
+                  onClick={() => {
+                    // selectedFile is a blob URL (no filename); record a count.
+                    patchScreeningSelection({
+                      anchors: selectedFile
+                        ? [{ label: "Personal anchor", score: 1 }]
+                        : [],
+                    });
+                    navigate("/exercises");
+                  }}
                   className="flex-1 md:w-[calc(50%-8px)] h-[64px] rounded-[16px] flex items-center justify-center gap-[12px] p-[10px] md:p-[16px] font-inter font-bold text-white transition-all shadow-lg border-2 border-[#FF5B86] text-[15px] md:text-[20px] active:scale-95"
                   style={{
                     background: "linear-gradient(180deg, #FF658E, #D22C57)",

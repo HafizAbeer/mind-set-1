@@ -5,9 +5,12 @@ const CHANGE_EVENT = "mindset-screening-selection-change";
 
 export const screeningDefaults = {
   mindsetLabel: "mindset",
+  mindsetCategory: "Unclear",
   mindsetPhrase: "mindset",
   mindsetSentence: "I feel [mindset] by [trigger]",
   triggerLabel: "trigger",
+  successRating: "",
+  selectedReward: "",
   causeLabel: "cause",
   bodyStructureLabel: "body structure",
   symptomSummary: "symptom",
@@ -45,6 +48,12 @@ export function getScreeningSelection() {
   const raw = readStored();
   return {
     mindsetLabel: resolveLabel(raw.mindsetLabel, screeningDefaults.mindsetLabel),
+    mindsetCategory: resolveLabel(
+      raw.mindsetCategory,
+      screeningDefaults.mindsetCategory
+    ),
+    successRating: resolveLabel(raw.successRating, screeningDefaults.successRating),
+    selectedReward: resolveLabel(raw.selectedReward, screeningDefaults.selectedReward),
     mindsetPhrase: resolveLabel(raw.mindsetPhrase, screeningDefaults.mindsetPhrase),
     mindsetSentence: resolveLabel(raw.mindsetSentence, screeningDefaults.mindsetSentence),
     triggerLabel: resolveLabel(raw.triggerLabel, screeningDefaults.triggerLabel),
@@ -101,6 +110,12 @@ export function getScreeningSelection() {
       raw.reflectionBValue,
       screeningDefaults.reflectionBValue
     ),
+    // Array/object fields (not strings → read raw, default to []).
+    exercises: Array.isArray(raw.exercises) ? raw.exercises : [],
+    mantras: Array.isArray(raw.mantras) ? raw.mantras : [],
+    anchors: Array.isArray(raw.anchors) ? raw.anchors : [],
+    bodyStructures: Array.isArray(raw.bodyStructures) ? raw.bodyStructures : [],
+    symptoms: Array.isArray(raw.symptoms) ? raw.symptoms : [],
   };
 }
 
@@ -135,6 +150,65 @@ export function patchScreeningSelection(partial) {
     JSON.stringify({ ...prev, ...partial })
   );
   window.dispatchEvent(new CustomEvent(CHANGE_EVENT));
+}
+
+// Clear the in-progress selection (call after a run is finalized/persisted).
+export function resetScreeningSelection() {
+  sessionStorage.removeItem(STORAGE_KEY);
+  window.dispatchEvent(new CustomEvent(CHANGE_EVENT));
+}
+
+// Map the (singular-label) selection into the ProtocolSession payload shape.
+export function buildProtocolPayload(runId) {
+  const s = getScreeningSelection();
+  const arr = (v, fallback) => (v && v !== fallback ? [v] : []);
+  // Body/symptom may arrive as a real array (new) or a comma-joined string
+  // (legacy/in-flight) — normalize both to a string array.
+  const splitJoined = (v, fallback) =>
+    v && v !== fallback
+      ? v
+          .split(",")
+          .map((x) => x.trim())
+          .filter(Boolean)
+      : [];
+  return {
+    runId,
+    mindsetLabel: s.mindsetLabel,
+    mindsetCategory: s.mindsetCategory,
+    mindsetPhrase: s.mindsetPhrase,
+    mindsetSentence: s.mindsetSentence,
+    triggers: arr(s.triggerLabel, screeningDefaults.triggerLabel),
+    causes: arr(s.causeLabel, screeningDefaults.causeLabel),
+    bodyStructures: s.bodyStructures.length
+      ? s.bodyStructures
+      : splitJoined(s.bodyStructureLabel, screeningDefaults.bodyStructureLabel),
+    symptoms: s.symptoms.length
+      ? s.symptoms
+      : splitJoined(s.symptomSummary, screeningDefaults.symptomSummary),
+    intentions: arr(s.intentionLabel, screeningDefaults.intentionLabel),
+    exercises: s.exercises,
+    mantras: s.mantras,
+    anchors: s.anchors,
+    lifeScriptLabel: s.lifeScriptLabel,
+    lifeScriptSentence: s.lifeScriptSentence,
+    oldScriptSummary: s.oldScriptSummary,
+    oldScriptSentence: s.oldScriptSentence,
+    newScriptSummary: s.newScriptSummary,
+    newScriptSentence: s.newScriptSentence,
+    reflections:
+      s.reflectionATitle || s.reflectionAValue || s.reflectionBValue
+        ? [
+            {
+              aTitle: s.reflectionATitle,
+              aValue: s.reflectionAValue,
+              bTitle: s.reflectionBTitle,
+              bValue: s.reflectionBValue,
+            },
+          ]
+        : [],
+    reward: s.selectedReward,
+    successRating: s.successRating || null,
+  };
 }
 
 function subscribe(onChange) {
